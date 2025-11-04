@@ -13,7 +13,12 @@ config_version=5
 config/name="GameOff2025-Waves"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=4 uid="uid://c1sqbdboxw6ev"]
+
+[ext_resource type="Texture2D" uid="uid://dkx113je8mbmk" path="res://tiles/tiles.aseprite" id="1_i05xf"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i05xf"]
+texture = ExtResource("1_i05xf")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -8)
+1:0/0 = 0
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, -8)
+3:0/0 = 0
+2:2/0 = 0
+2:2/0/texture_origin = Vector2i(0, -8)
+2:2/0/z_index = 1
+2:3/0 = 0
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, -8)
+0:2/0/z_index = 1
+0:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_3ckh4"]
+tile_shape = 1
+tile_size = Vector2i(32, 16)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_i05xf")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xd6sf"]
+texture = ExtResource("1_i05xf")
+texture_region_size = Vector2i(32, 32)
+use_texture_padding = false
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -8)
+1:0/0 = 0
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, -8)
+3:0/0 = 0
+2:2/0 = 0
+2:2/0/texture_origin = Vector2i(0, -8)
+2:3/0 = 0
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, -8)
+0:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_s6083"]
+tile_shape = 1
+tile_size = Vector2i(32, 16)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_xd6sf")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMapLayer3" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAPACUAAQACAAAAAAAQACYAAQACAAAAAAAQACUAAQACAAAAAAAQACQAAQACAAAAAAAPACcAAQACAAAAAAARACYAAQACAAAAAAAQACcAAQACAAAAAAAQACgAAQACAAAAAAAQACEAAQACAAAAAAARACIAAQACAAAAAAARACMAAQACAAAAAAASACIAAQACAAAAAAARACEAAQACAAAAAAARACAAAQACAAAAAAARAB8AAQACAAAAAAASACAAAQACAAAAAAASACEAAQACAAAAAAASACQAAQACAAAAAAASACMAAQACAAAAAAATACIAAQACAAAAAAARACcAAQACAAAAAAASACgAAQACAAAAAAARACkAAQACAAAAAAARACoAAQACAAAAAAARACgAAQACAAAAAAAQACkAAQACAAAAAAARACQAAQAAAAIAAAAQACMAAQAAAAIAAAARACUAAQAAAAIAAAAQACIAAQAAAAIAAAASACYAAQAAAAIAAAA=")
+tile_set = SubResource("TileSet_3ckh4")
+navigation_enabled = false
+metadata/_edit_lock_ = true
+
+[node name="stairs" type="TileMapLayer" parent="."]
+visible = false
+y_sort_enabled = true
+tile_set = SubResource("TileSet_s6083")
+navigation_enabled = false
+metadata/_edit_lock_ = true
