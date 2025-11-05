@@ -35,10 +35,7 @@ func update_water_tiles():
 			set_cell(cell, 1, WATER_TILE_INDEX)
 		
 
-
-
-
 func _on_v_slider_value_changed(value: float) -> void:
 	water_level = value
-	print_debug("water level: ", water_level)
+	#print_debug("water level: ", water_level)
 	update_water_tiles()
