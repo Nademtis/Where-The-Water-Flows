@@ -15,7 +15,7 @@ const WATER_TYPE_LAYER_NAME := "water_type"
 
  # the atlas coordinates for the correct FULL water tile
 const WATER_TILE_UP_INDEX : Vector2i = Vector2i(0, 0)
-const WATER_TILE_ALL_INDEX : Vector2i = Vector2i(1, 0)
+const WATER_TILE_ALL_INDEX : Vector2i = Vector2i(3, 3)
 const WATER_TILE_RIGHT_INDEX : Vector2i = Vector2i(3, 1)
 const WATER_TILE_LEFT_INDEX : Vector2i = Vector2i(3, 2)
 
