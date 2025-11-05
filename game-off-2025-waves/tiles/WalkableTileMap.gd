@@ -7,4 +7,3 @@ func _ready() -> void:
 		for neighbor: Vector2i in neighboring_tiles:
 			if get_cell_source_id(neighbor) == -1:
 				set_cell(neighbor, 1, Vector2i(0,1))
-				print("set somethiong")
