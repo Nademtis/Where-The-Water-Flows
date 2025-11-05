@@ -15,9 +15,9 @@ const WATER_TYPE_LAYER_NAME := "water_type"
 
  # the atlas coordinates for the correct FULL water tile
 const WATER_TILE_UP_INDEX : Vector2i = Vector2i(0, 0)
-const WATER_TILE_ALL_INDEX : Vector2i = Vector2i(3, 3)
-const WATER_TILE_RIGHT_INDEX : Vector2i = Vector2i(3, 1)
-const WATER_TILE_LEFT_INDEX : Vector2i = Vector2i(3, 2)
+const WATER_TILE_ALL_INDEX : Vector2i = Vector2i(4, 0)
+const WATER_TILE_RIGHT_INDEX : Vector2i = Vector2i(2, 0)
+const WATER_TILE_LEFT_INDEX : Vector2i = Vector2i(3, 0)
 
 
 
@@ -49,6 +49,8 @@ func _set_water_tile(cell : Vector2i, water_type : String) -> void:
 		"right": set_cell(cell, 0, WATER_TILE_RIGHT_INDEX)
 		"left": set_cell(cell, 0, WATER_TILE_LEFT_INDEX)
 		"all": set_cell(cell, 0, WATER_TILE_ALL_INDEX)
+		"stair": set_cell(cell, 0, WATER_TILE_ALL_INDEX)
+		_: printerr("water type not defined")
 
 func _on_v_slider_value_changed(value: float) -> void:
 	water_level = value
