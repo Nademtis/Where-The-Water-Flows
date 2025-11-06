@@ -3,7 +3,7 @@ extends TileMapLayer
 #waterController-gd
 #this class is responsible for the water going up
 
-@export var water_level : float = 2.0
+@export var water_level : float = 1.0
 
 @onready var height_map: TileMapLayer = $"../heightMap" # defines the height on the tiles - tiles are drawn on top of the walkable tilemaplayer
 # height is defines as a cumstom data layer
