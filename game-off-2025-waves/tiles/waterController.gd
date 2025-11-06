@@ -3,7 +3,7 @@ extends TileMapLayer
 #waterController-gd
 #this class is responsible for the water going up
 
-@export var water_level : float = 1.0
+@export var water_level : float = 2.0
 
 @onready var height_map: TileMapLayer = $"../heightMap" # defines the height on the tiles - tiles are drawn on top of the walkable tilemaplayer
 # height is defines as a cumstom data layer
@@ -40,29 +40,18 @@ func _process(_delta: float) -> void:
 	pass
 
 func update_water_tiles():
-	clear() # remove old water tiles before redrawing
+	clear()
 	print_debug("water level: ", water_level)
 	for cell : Vector2i in height_map.get_used_cells():
-		var data :TileData = height_map.get_cell_tile_data(cell)
+		var data : TileData = height_map.get_cell_tile_data(cell)
 		var cell_height : float = data.get_custom_data(HEIGHT_LAYER_NAME)
 		var cell_water_type : String = data.get_custom_data(WATER_TYPE_LAYER_NAME)
-		#print(cell_height)
-		#if cell_height < water_level:
-			#print("animate level: ", cell_height)
-			#_set_animation_corner_water_tile(cell, cell_water_type)
-		#elif cell_height == water_level:
-			#print("full water: ", cell_height)
-			#_set_full_water_tile(cell, cell_water_type)
+
 		if water_level == 1.0:
 			if cell_height == 1: _set_animation_corner_water_tile(cell, cell_water_type)
-		
-		elif water_level == 2.0:
-			if cell_height < 2.0: _set_full_water_tile(cell, cell_water_type)
-			if cell_height == 2.0: _set_animation_corner_water_tile(cell, cell_water_type)
-			
-		elif water_level == 3.0:
-			if cell_height < 3.0: _set_full_water_tile(cell, cell_water_type)
-			if cell_height == 3.0: _set_animation_corner_water_tile(cell, cell_water_type)
+		else:
+			if cell_height < water_level: _set_full_water_tile(cell, cell_water_type)
+			if cell_height == water_level: _set_animation_corner_water_tile(cell, cell_water_type)
 
 func _set_full_water_tile(cell : Vector2i, water_type : String) -> void:
 	match water_type:
