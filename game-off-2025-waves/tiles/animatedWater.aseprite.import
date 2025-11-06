@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/animatedWater.aseprite-2c4afb87d2316f83c8ce17
 
 [params]
 
-layer/exclude_layers_pattern=""
+layer/exclude_layers_pattern="playground"
 layer/only_visible_layers=false
 first_frame_only=true
 sheet/sheet_type="packed"
