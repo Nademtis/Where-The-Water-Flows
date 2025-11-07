@@ -4,7 +4,7 @@ extends TileMapLayer
 
 @export var water_level : float = 1.0 # should start as 1.0
 var previous_level : float = 1.0
-@export var water_animation_wait_time : float = 0.03
+@export var water_animation_wait_time : float = 0.02
 
 @onready var height_map: TileMapLayer = $"../heightMap" # this defines the height on the tiles - tiles are drawn on top of the walkable tilemaplayer
 # height and water_type is defines as a cumstom data layer in height_map
@@ -50,7 +50,6 @@ func _ready() -> void:
 
 func _update_water_level(going_up : bool) -> void:
 	previous_level = water_level
-	
 	if going_up:
 		water_level += 1
 	else:
@@ -60,36 +59,43 @@ func _update_water_level(going_up : bool) -> void:
 	update_water_tiles()
 
 func update_water_tiles():
-	var last_y := INF
-	var going_up := water_level > previous_level
+	var last_y : float = INF
+	var going_up : bool = water_level > previous_level
+	var count : int = sorted_cells.size()
 
-	for cell : Vector2i in sorted_cells:
-		var data : TileData = height_map.get_cell_tile_data(cell)
-		var cell_height : float = data.get_custom_data(HEIGHT_LAYER_NAME)
-		var cell_water_type : String = data.get_custom_data(WATER_TYPE_LAYER_NAME)
+	if going_up:
+		for i in range(count):  # iterate bottom -> top (water going up)
+			var cell : Vector2i = sorted_cells[i]
+			await _process_cell(cell, last_y, going_up)
+	else: # water going down
+		for i in range(count - 1, -1, -1): # iterate top -> bottom (water going down)
+			var cell : Vector2i = sorted_cells[i]
+			await _process_cell(cell, last_y, going_up)
 
-		if going_up:
-			# water going up
-			if cell_height < water_level and cell_height >= previous_level:
-				_set_full_water_tile(cell, cell_water_type)
-				if cell.y < last_y and cell_water_type == "up":
-					last_y = cell.y
-					await get_tree().create_timer(water_animation_wait_time).timeout
+func _process_cell(cell: Vector2i, last_y: float, going_up: bool) -> void:
+	var data : TileData = height_map.get_cell_tile_data(cell)
+	if data == null:
+		return
 
-			# new animation line
-			elif cell_height == water_level:
-				_set_animation_corner_water_tile(cell, cell_water_type)
+	var cell_height : float = data.get_custom_data(HEIGHT_LAYER_NAME)
+	var cell_water_type : String = data.get_custom_data(WATER_TYPE_LAYER_NAME)
 
-		else: # water going down
-			if cell_height > water_level and cell_height <= previous_level:
-				set_cell(cell, -1) # clear only this tile
-				if cell.y < last_y and cell_water_type == "up":
-					last_y = cell.y
-					await get_tree().create_timer(water_animation_wait_time).timeout
-
-			# restore new animation line
-			elif cell_height == water_level:
-				_set_animation_corner_water_tile(cell, cell_water_type)
+	if going_up:
+		if cell_height < water_level and cell_height >= previous_level:
+			_set_full_water_tile(cell, cell_water_type)
+			if cell.y < last_y + 1 and cell_water_type == "up":
+				last_y = cell.y
+				await get_tree().create_timer(water_animation_wait_time).timeout
+		elif cell_height == water_level:
+			_set_animation_corner_water_tile(cell, cell_water_type)
+	else:
+		if cell_height > water_level and cell_height <= previous_level:
+			set_cell(cell, -1)
+			if cell.y < last_y and cell_water_type == "up":
+				last_y = cell.y
+				await get_tree().create_timer(water_animation_wait_time).timeout
+		elif cell_height == water_level:
+			_set_animation_corner_water_tile(cell, cell_water_type)
 
 
 func _set_full_water_tile(cell : Vector2i, water_type : String) -> void:
