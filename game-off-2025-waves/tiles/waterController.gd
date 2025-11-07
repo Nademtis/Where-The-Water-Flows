@@ -48,7 +48,7 @@ func _process(_delta: float) -> void:
 
 func update_water_tiles():
 	clear()
-	print_debug("water level: ", water_level)
+	#print_debug("water level: ", water_level)
 	for cell : Vector2i in height_map.get_used_cells():
 		var data : TileData = height_map.get_cell_tile_data(cell)
 		var cell_height : float = data.get_custom_data(HEIGHT_LAYER_NAME)
