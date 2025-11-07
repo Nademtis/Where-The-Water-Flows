@@ -29,6 +29,10 @@ window/size/window_height_override=720
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/Mathias/Desktop/GameOff2025-exported/screenRecordings/movie.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
