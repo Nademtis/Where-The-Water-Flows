@@ -21,6 +21,13 @@ const WATER_TILE_ALL : Vector2i = Vector2i(4, 0)
 const WATER_TILE_LEFT_CORNER : Vector2i = Vector2i(5, 0)
 const WATER_TILE_RIGHT_CORNER : Vector2i = Vector2i(6, 0)
 
+# the atlas coordinates for the correct FULL LOWER water tile
+const WATER_LOWER_TILE_RIGHT : Vector2i = Vector2i(7, 0)
+const WATER_LOWER_TILE_LEFT : Vector2i = Vector2i(8, 0)
+const WATER_LOWER_TILE_LEFT_CORNER : Vector2i = Vector2i(9, 0)
+const WATER_LOWER_TILE_RIGHT_CORNER : Vector2i = Vector2i(10, 0)
+
+
 #corner animation tiles
 #const WATER_TILE_UP_ANIMATION_INDEX : Vector2i = Vector2i(0, 0)
 const WATER_TILE_RIGHT_ANIMATION : Vector2i = Vector2i(0, 1)
@@ -62,17 +69,21 @@ func _set_full_water_tile(cell : Vector2i, water_type : String) -> void:
 		"stair": set_cell(cell, 0, WATER_TILE_ALL)
 		"left_corner": set_cell(cell, 0, WATER_TILE_LEFT_CORNER)
 		"right_corner": set_cell(cell, 0, WATER_TILE_RIGHT_CORNER)
+		"lower_right_corner": set_cell(cell, 0, WATER_LOWER_TILE_RIGHT_CORNER)
+		"lower_left_corner": set_cell(cell, 0, WATER_LOWER_TILE_LEFT_CORNER)
+		"lower_right": set_cell(cell, 0, WATER_LOWER_TILE_RIGHT)
+		"lower_left": set_cell(cell, 0, WATER_LOWER_TILE_LEFT)
 		_: printerr("water type not defined")
 		
 func _set_animation_corner_water_tile(cell : Vector2i, water_type : String) -> void:
 	match water_type:
 		"up": pass
-		"right": set_cell(cell, 0, WATER_TILE_RIGHT_ANIMATION)
-		"left": set_cell(cell, 0, WATER_TILE_LEFT_ANIMATION)
 		"all": set_cell(cell, 0, WATER_TILE_ALL_ANIMATION)
 		"stair": set_cell(cell, 0, WATER_TILE_ALL_ANIMATION)
-		"left_corner": set_cell(cell, 0, WATER_TILE_LEFT_CORNER_ANIMATION)
-		"right_corner": set_cell(cell, 0, WATER_TILE_RIGHT_CORNER_ANIMATION)
+		"right", "lower_right": set_cell(cell, 0, WATER_TILE_RIGHT_ANIMATION)
+		"left", "lower_left": set_cell(cell, 0, WATER_TILE_LEFT_ANIMATION)
+		"left_corner", "lower_left_corner": set_cell(cell, 0, WATER_TILE_LEFT_CORNER_ANIMATION)
+		"right_corner", "lower_right_corner": set_cell(cell, 0, WATER_TILE_RIGHT_CORNER_ANIMATION)
 		_: printerr("water type not defined")
 
 func _on_v_slider_value_changed(value: float) -> void:
