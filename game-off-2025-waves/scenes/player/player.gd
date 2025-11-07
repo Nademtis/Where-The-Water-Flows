@@ -1,6 +1,13 @@
 extends CharacterBody2D
 
-const MOVESPEED : float = 2500
+const MOVESPEED : float = 35 * 100
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("water_up"):
+		move_water(true)
+	elif Input.is_action_just_pressed("water_down"):
+		move_water(false)
+
 
 func _physics_process(delta: float) -> void:
 	#var direction : Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -13,3 +20,6 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 	
 	move_and_slide()
+
+func move_water(is_up : bool) -> void:
+	Events.emit_signal("water_level_direction", is_up)

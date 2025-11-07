@@ -1,14 +1,11 @@
 extends TileMapLayer
+#waterController
+#this class is responsible for the water going up and down
 
-#waterController-gd
-#this class is responsible for the water going up
+@export var water_level : float = 1.0 # should start as 1.0
 
-@export var water_level : float = 1.0
-
-@onready var height_map: TileMapLayer = $"../heightMap" # defines the height on the tiles - tiles are drawn on top of the walkable tilemaplayer
-# height is defines as a cumstom data layer
-# it can be 1.00, 1.50, 2.0 and 2,5 
-# when it's .5 it a stair tile. might be relevant later
+@onready var height_map: TileMapLayer = $"../heightMap" # this defines the height on the tiles - tiles are drawn on top of the walkable tilemaplayer
+# height and water_type is defines as a cumstom data layer in height_map
 
 const HEIGHT_LAYER_NAME := "height"
 const WATER_TYPE_LAYER_NAME := "water_type"
@@ -39,16 +36,23 @@ const WATER_TILE_RIGHT_CORNER_ANIMATION : Vector2i = Vector2i(0, 5)
 
 func _ready() -> void:
 	update_water_tiles()
+	Events.connect("water_level_direction", _update_water_level)
 	pass
 
 func _process(_delta: float) -> void:
-	#update_water_tiles()
-	#print(water_level)
 	pass
+
+func _update_water_level(going_up : bool) -> void:
+	if going_up:
+		water_level += 1
+	else:
+		water_level -= 1
+	
+	water_level = clamp(water_level, 1.0, 5.0)
+	update_water_tiles()
 
 func update_water_tiles():
 	clear()
-	#print_debug("water level: ", water_level)
 	for cell : Vector2i in height_map.get_used_cells():
 		var data : TileData = height_map.get_cell_tile_data(cell)
 		var cell_height : float = data.get_custom_data(HEIGHT_LAYER_NAME)
@@ -88,5 +92,4 @@ func _set_animation_corner_water_tile(cell : Vector2i, water_type : String) -> v
 
 func _on_v_slider_value_changed(value: float) -> void:
 	water_level = value
-	#print_debug("water level: ", water_level)
 	update_water_tiles()
