@@ -4,7 +4,7 @@ extends TileMapLayer
 
 @export var water_level : float = 1.0 # should start as 1.0
 var previous_level : float = 1.0
-@export var water_animation_wait_time : float = 0.02
+@export var water_animation_wait_time : float = 0.01
 
 @onready var height_map: TileMapLayer = $"../heightMap" # this defines the height on the tiles - tiles are drawn on top of the walkable tilemaplayer
 # height and water_type is defines as a cumstom data layer in height_map
@@ -83,7 +83,7 @@ func _process_cell(cell: Vector2i, last_y: float, going_up: bool) -> void:
 	if going_up:
 		if cell_height < water_level and cell_height >= previous_level:
 			_set_full_water_tile(cell, cell_water_type)
-			if cell.y < last_y + 1 and cell_water_type == "up":
+			if cell.y < last_y and cell_water_type == "up":
 				last_y = cell.y
 				await get_tree().create_timer(water_animation_wait_time).timeout
 		elif cell_height == water_level:
