@@ -9,6 +9,8 @@ var previous_level : float = 1.0
 @onready var height_map: TileMapLayer = $"../heightMap" # this defines the height on the tiles - tiles are drawn on top of the walkable tilemaplayer
 # height and water_type is defines as a cumstom data layer in height_map
 
+var sorted_cells : Array[Vector2i] = []
+
 const HEIGHT_LAYER_NAME := "height"
 const WATER_TYPE_LAYER_NAME := "water_type"
 
@@ -36,7 +38,7 @@ const WATER_TILE_ALL_ANIMATION : Vector2i = Vector2i(0, 3)
 const WATER_TILE_LEFT_CORNER_ANIMATION : Vector2i = Vector2i(0, 4)
 const WATER_TILE_RIGHT_CORNER_ANIMATION : Vector2i = Vector2i(0, 5)
 #endregion water animation
-var sorted_cells : Array[Vector2i] = []
+
 
 func _ready() -> void:
 	var cells : Array[Vector2i] = height_map.get_used_cells()
@@ -54,7 +56,7 @@ func _update_water_level(going_up : bool) -> void:
 	else:
 		water_level -= 1
 	
-	water_level = clamp(water_level, 1.0, 5.0)
+	water_level = clamp(water_level, 1.0, 5.0) #TODO should probably not be max 5
 	update_water_tiles()
 
 func update_water_tiles():
@@ -63,9 +65,6 @@ func update_water_tiles():
 
 	for cell : Vector2i in sorted_cells:
 		var data : TileData = height_map.get_cell_tile_data(cell)
-		if data == null:
-			continue
-
 		var cell_height : float = data.get_custom_data(HEIGHT_LAYER_NAME)
 		var cell_water_type : String = data.get_custom_data(WATER_TYPE_LAYER_NAME)
 
@@ -81,9 +80,8 @@ func update_water_tiles():
 			elif cell_height == water_level:
 				_set_animation_corner_water_tile(cell, cell_water_type)
 
-		else:
-			# water going down
-			if cell_height >= water_level and cell_height <= previous_level:
+		else: # water going down
+			if cell_height > water_level and cell_height <= previous_level:
 				set_cell(cell, -1) # clear only this tile
 				if cell.y < last_y and cell_water_type == "up":
 					last_y = cell.y
