@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnig1k05n75h7"]
+[gd_scene load_steps=5 format=3 uid="uid://cnig1k05n75h7"]
 
 [ext_resource type="Texture2D" uid="uid://dhv30mgd1ceih" path="res://scenes/floating platform/floating_platform_left_asset.png" id="1_vbbk8"]
+[ext_resource type="Script" uid="uid://cb80cyiu6mij2" path="res://scenes/floating_object.gd" id="1_y8mln"]
 [ext_resource type="Script" uid="uid://c5cqw8htj2cl0" path="res://scripts/floatable_component.gd" id="2_q6fjv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q6fjv"]
@@ -8,6 +9,7 @@ radius = 5.0
 
 [node name="FloatingPlatform" type="CharacterBody2D"]
 motion_mode = 1
+script = ExtResource("1_y8mln")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_vbbk8")

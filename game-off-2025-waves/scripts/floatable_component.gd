@@ -11,9 +11,8 @@ var parent_body: Node2D
 
 func _ready() -> void:
 	parent_body = get_parent()
-	#Events.connect("water_level_changed", _adjust_height)
 	Events.connect("water_level_direction", _adjust_height)
-	target_y = parent_body.global_position.y
+	#target_y = parent_body.global_position.y
 
 func _process(_delta: float) -> void:
 	parent_body.global_position.y = target_y
