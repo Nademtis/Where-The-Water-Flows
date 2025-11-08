@@ -22,4 +22,4 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func move_water(is_up : bool) -> void:
-	Events.emit_signal("water_level_direction", is_up)
+	Events.emit_signal("requested_water_level_direction", is_up)

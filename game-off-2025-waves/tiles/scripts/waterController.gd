@@ -3,7 +3,13 @@ extends TileMapLayer
 #this class is responsible for the water going up and down
 
 @export var water_level : float = 1.0 # should start as 1.0
+@export var min_water_level : float = 1.0
+@export var max_water_level : float = 5.0
+
+#used for checking if between min and max
 var previous_level : float = 1.0
+
+#animation speed / wait time for specefied tiles. should probably refactor
 @export var water_animation_wait_time : float = 0.001
 
 @onready var height_map: TileMapLayer = $"../heightMap" # this defines the height on the tiles - tiles are drawn on top of the walkable tilemaplayer
@@ -46,18 +52,25 @@ func _ready() -> void:
 	sorted_cells = cells
 	
 	update_water_tiles()
-	Events.connect("water_level_direction", _update_water_level)
+	Events.connect("requested_water_level_direction", _update_water_level)
 
-func _update_water_level(going_up : bool) -> void:
+func _update_water_level(going_up: bool) -> void:
 	previous_level = water_level
+
+	var new_level : float= water_level
 	if going_up:
-		water_level += 1
+		new_level += 1.0
 	else:
-		water_level -= 1
-	
-	water_level = clamp(water_level, 1.0, 5.0) #TODO should probably not be max 5
-	Events.emit_signal("water_level_changed", water_level)
-	update_water_tiles()
+		new_level -= 1.0
+
+	new_level = clamp(new_level, min_water_level, max_water_level)
+
+	# only proceed if water actually changed
+	if new_level != water_level:
+		water_level = new_level
+		Events.emit_signal("confirmed_new_water_level_direction", going_up)
+		update_water_tiles()
+	print("water level: ", water_level)
 
 func update_water_tiles() -> void:
 	var last_y : float = INF

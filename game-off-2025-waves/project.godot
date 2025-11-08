@@ -18,6 +18,7 @@ boot_splash/show_image=false
 [autoload]
 
 Events="*res://scripts/globals/Events.gd"
+GameStats="*res://scripts/globals/GameStats.gd"
 
 [debug]
 

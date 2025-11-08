@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnig1k05n75h7"]
+[gd_scene load_steps=6 format=3 uid="uid://cnig1k05n75h7"]
 
 [ext_resource type="Texture2D" uid="uid://dhv30mgd1ceih" path="res://scenes/floating platform/floating_platform_left_asset.png" id="1_vbbk8"]
 [ext_resource type="Script" uid="uid://cb80cyiu6mij2" path="res://scenes/floating_object.gd" id="1_y8mln"]
 [ext_resource type="Script" uid="uid://c5cqw8htj2cl0" path="res://scripts/floatable_component.gd" id="2_q6fjv"]
+[ext_resource type="TileSet" uid="uid://ve68r0xefsom" path="res://tiles/tilesets/special_water_tileset.tres" id="4_5poo4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q6fjv"]
 radius = 5.0
@@ -24,3 +25,8 @@ metadata/_custom_type_script = "uid://c5cqw8htj2cl0"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_q6fjv")
+
+[node name="water" type="TileMapLayer" parent="."]
+modulate = Color(1, 1, 1, 0.8627451)
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 3, 0, 0, 0)
+tile_set = ExtResource("4_5poo4")
