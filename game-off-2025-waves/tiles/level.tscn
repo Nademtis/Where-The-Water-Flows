@@ -406,12 +406,26 @@ position = Vector2(400, 200)
 
 [node name="FloatingPlatform" parent="walkable/ysortWrapper" instance=ExtResource("4_3eowg")]
 position = Vector2(0, 16)
-
-[node name="FloatingPlatform2" parent="walkable/ysortWrapper" instance=ExtResource("4_3eowg")]
-position = Vector2(-96, 0)
+start_water_level = 1
 
 [node name="FloatingPlatform3" parent="walkable/ysortWrapper" instance=ExtResource("4_3eowg")]
-position = Vector2(243, -7)
+position = Vector2(224, 0)
+start_water_level = 2
+
+[node name="ysort wrapper" type="Node2D" parent="walkable"]
+position = Vector2(480, 144)
+
+[node name="FloatingPlatform2" parent="walkable/ysort wrapper" instance=ExtResource("4_3eowg")]
+start_water_level = 3
+
+[node name="Player" parent="walkable" instance=ExtResource("9_uk0w3")]
+z_index = 1
+position = Vector2(445, 233)
+
+[node name="Camera2D" type="Camera2D" parent="walkable/Player"]
+zoom = Vector2(5, 5)
+process_callback = 0
+position_smoothing_enabled = true
 
 [node name="WaterLevel" type="TileMapLayer" parent="."]
 modulate = Color(1, 1, 1, 0.8627451)
@@ -440,16 +454,6 @@ modulate = Color(1, 1, 1, 0.78431374)
 tile_map_data = PackedByteArray("AAAPABIAAAAAAAAAAAAOABMAAAAAAAAAAAAOABQAAAAAAAAAAAAQABIAAAAAAAAAAAAQABMAAAAAAAAAAAARABQAAAAAAAAAAAARABUAAAAAAAAAAAASABYAAAAAAAAAAAATAB0AAAAAAAAAAAATAB4AAAAAAAAAAAASAB8AAAAAAAAAAAASACEAAAAAAAAAAAASACQAAAAAAAIAAAASACcAAAAAAAAAAAASACkAAAAAAAAAAAASACoAAAAAAAAAAAARACsAAAAAAAAAAAARACwAAAAAAAAAAAAQACwAAAAAAAAAAAAPACwAAAAAAAAAAAAOACwAAAAAAAAAAAANACsAAAAAAAAAAAANACoAAAAAAAAAAAAMACkAAAAAAAAAAAAMACgAAAAAAAAAAAAMACIAAAAAAAAAAAALACMAAAAAAAAAAAAMACQAAAAAAAMAAAAPACAAAAABAAAAAAAMAB8AAAAAAAAAAAAMAB0AAAAAAAAAAAALAB0AAAAAAAAAAAAKAB0AAAAAAAAAAAAKABwAAAAAAAAAAAAJABsAAAAAAAAAAAALAB4AAAAAAAAAAAAMAB4AAAAAAAAAAAAMABwAAAAAAAEAAAAMABQAAAAAAAMAAAAKABQAAAAAAAMAAAAJABkAAAAAAAAAAAAKABkAAAAAAAEAAAAKABgAAAAAAAEAAAASACYAAAAAAAAAAAASACIAAAAAAAAAAAATABsAAAAAAAAAAAATABoAAAAAAAAAAAASABkAAAAAAAAAAAASABcAAAAAAAAAAAASABgAAAAAAAIAAAALABQAAAAAAAEAAAALABYAAAAAAAMAADAMACAAAAAAAAAAAAANABcAAAABAAEAAAANABUAAAAAAAAAAAANABYAAAAAAAAAAAANABgAAAAAAAEAAAAMABcAAAAAAAEAAAAMABYAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_1k522")
 metadata/_edit_lock_ = true
-
-[node name="Player" parent="." instance=ExtResource("9_uk0w3")]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(449, 232)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(5, 5)
-process_callback = 0
-position_smoothing_enabled = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_qppf5")

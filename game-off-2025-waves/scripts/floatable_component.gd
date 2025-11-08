@@ -8,7 +8,6 @@ var parent_body: Node2D
 
 func _ready() -> void:
 	parent_body = get_parent()
-	# Initialize target_y to current position
 	target_y = parent_body.global_position.y
 	
 	# Connect to your global water-level event

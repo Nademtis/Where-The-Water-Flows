@@ -2,9 +2,15 @@ extends Node2D
 class_name FloatingPlatform
 
 @onready var floatable_component: FloatableComponent = $FloatableComponent
-@export var float_speed: float = 4.0 # higher = faster
+@export var float_speed: float = 3.5 # higher = faster
+@export var start_water_level : int
 
 var player: CharacterBody2D = null
+
+func _ready() -> void:
+	if start_water_level and start_water_level != 1:
+		global_position.y += 16 * start_water_level
+		floatable_component.target_y = global_position.y
 
 func _process(delta: float) -> void:
 	var target_y := floatable_component.target_y
@@ -19,7 +25,7 @@ func _process(delta: float) -> void:
 		global_position.y += move_amount
 		diff_y = move_amount
 
-	# Move the player exactly by the same delta
+	# Move the player exactly by the same amount
 	if player:
 		player.global_position.y += diff_y
 
