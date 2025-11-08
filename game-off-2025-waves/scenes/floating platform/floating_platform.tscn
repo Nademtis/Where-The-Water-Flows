@@ -8,8 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5poo4"]
 size = Vector2(31.763416, 3.114214)
 
-[node name="FloatingPlatform" type="AnimatableBody2D"]
-collision_layer = 2
+[node name="Platform" type="Node2D"]
 script = ExtResource("1_y8mln")
 
 [node name="FloatableComponent" type="Node2D" parent="."]
@@ -131,5 +130,13 @@ rotation = -2.7015486
 shape = SubResource("RectangleShape2D_5poo4")
 disabled = true
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(0, -8, -30, 7, 0, 23, 30, 7)
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
+position = Vector2(0, 2)
+rotation = 0.0042755473
+polygon = PackedVector2Array(-26.9741, 6.115385, 0.08123515, 18.999828, 27.025408, 5.8845057, -0.034204274, -7.999927)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
