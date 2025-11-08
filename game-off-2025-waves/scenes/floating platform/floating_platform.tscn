@@ -1,27 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnig1k05n75h7"]
+[gd_scene load_steps=6 format=3 uid="uid://cnig1k05n75h7"]
 
 [ext_resource type="Texture2D" uid="uid://dhv30mgd1ceih" path="res://scenes/floating platform/floating_platform_left_asset.png" id="1_vbbk8"]
-[ext_resource type="Script" uid="uid://cb80cyiu6mij2" path="res://scenes/floating_object.gd" id="1_y8mln"]
+[ext_resource type="Script" uid="uid://cb80cyiu6mij2" path="res://scenes/floating_platform.gd" id="1_y8mln"]
 [ext_resource type="Script" uid="uid://c5cqw8htj2cl0" path="res://scripts/floatable_component.gd" id="2_q6fjv"]
 [ext_resource type="TileSet" uid="uid://ve68r0xefsom" path="res://tiles/tilesets/special_water_tileset.tres" id="4_5poo4"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_q6fjv"]
-radius = 5.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5poo4"]
 size = Vector2(31.763416, 3.114214)
 
-[node name="FloatingPlatform" type="CharacterBody2D"]
-motion_mode = 1
+[node name="FloatingPlatform" type="AnimatableBody2D"]
+collision_layer = 2
 script = ExtResource("1_y8mln")
 
 [node name="FloatableComponent" type="Node2D" parent="."]
 script = ExtResource("2_q6fjv")
 metadata/_custom_type_script = "uid://c5cqw8htj2cl0"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("CircleShape2D_q6fjv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_vbbk8")
@@ -55,22 +48,88 @@ modulate = Color(1, 1, 1, 0.8627451)
 tile_map_data = PackedByteArray(0, 0, 255, 255, 1, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0)
 tile_set = ExtResource("4_5poo4")
 
-[node name="CollUpRight" type="CollisionShape2D" parent="."]
+[node name="collAbove" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(0, -16)
+
+[node name="CollUpRight" type="CollisionShape2D" parent="collAbove"]
 position = Vector2(13, 1.0000019)
 rotation = -2.7015486
 shape = SubResource("RectangleShape2D_5poo4")
+disabled = true
 
-[node name="CollUpLeft" type="CollisionShape2D" parent="."]
+[node name="CollUpLeft" type="CollisionShape2D" parent="collAbove"]
 position = Vector2(-12.999998, 1)
 rotation = -0.43743053
 shape = SubResource("RectangleShape2D_5poo4")
+disabled = true
 
-[node name="CollDownRight" type="CollisionShape2D" parent="."]
+[node name="CollDownRight" type="CollisionShape2D" parent="collAbove"]
 position = Vector2(14, 14.000002)
 rotation = -0.43743053
 shape = SubResource("RectangleShape2D_5poo4")
+disabled = true
 
-[node name="CollDownLeft" type="CollisionShape2D" parent="."]
+[node name="CollDownLeft" type="CollisionShape2D" parent="collAbove"]
 position = Vector2(-13, 14)
 rotation = -2.7015486
 shape = SubResource("RectangleShape2D_5poo4")
+disabled = true
+
+[node name="collOn" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollUpRight" type="CollisionShape2D" parent="collOn"]
+position = Vector2(13, 1.0000019)
+rotation = -2.7015486
+shape = SubResource("RectangleShape2D_5poo4")
+disabled = true
+
+[node name="CollUpLeft" type="CollisionShape2D" parent="collOn"]
+position = Vector2(-12.999998, 1)
+rotation = -0.43743053
+shape = SubResource("RectangleShape2D_5poo4")
+disabled = true
+
+[node name="CollDownRight" type="CollisionShape2D" parent="collOn"]
+position = Vector2(14, 14.000002)
+rotation = -0.43743053
+shape = SubResource("RectangleShape2D_5poo4")
+disabled = true
+
+[node name="CollDownLeft" type="CollisionShape2D" parent="collOn"]
+position = Vector2(-13, 14)
+rotation = -2.7015486
+shape = SubResource("RectangleShape2D_5poo4")
+disabled = true
+
+[node name="collbelow" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(0, 16)
+
+[node name="CollUpRight" type="CollisionShape2D" parent="collbelow"]
+position = Vector2(13, 1.0000019)
+rotation = -2.7015486
+shape = SubResource("RectangleShape2D_5poo4")
+disabled = true
+
+[node name="CollUpLeft" type="CollisionShape2D" parent="collbelow"]
+position = Vector2(-12.999998, 1)
+rotation = -0.43743053
+shape = SubResource("RectangleShape2D_5poo4")
+disabled = true
+
+[node name="CollDownRight" type="CollisionShape2D" parent="collbelow"]
+position = Vector2(14, 14.000002)
+rotation = -0.43743053
+shape = SubResource("RectangleShape2D_5poo4")
+disabled = true
+
+[node name="CollDownLeft" type="CollisionShape2D" parent="collbelow"]
+position = Vector2(-13, 14)
+rotation = -2.7015486
+shape = SubResource("RectangleShape2D_5poo4")
+disabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -8, -30, 7, 0, 23, 30, 7)

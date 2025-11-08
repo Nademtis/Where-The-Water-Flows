@@ -1,6 +1,8 @@
-extends CharacterBody2D
+extends AnimatableBody2D
+#floating_platform.gd
 
 @export var placed_at_water_level : int = 1
+
 @onready var floatable_component: FloatableComponent = $FloatableComponent
 
 const TILESIZE : float = 16

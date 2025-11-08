@@ -58,6 +58,8 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
+platform_floor_layers = 4294967042
+platform_wall_layers = 4
 script = ExtResource("1_dovo2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
