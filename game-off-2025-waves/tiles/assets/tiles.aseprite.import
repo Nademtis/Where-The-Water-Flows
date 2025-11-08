@@ -3,12 +3,12 @@
 importer="aseprite_wizard.plugin.static-texture"
 type="PortableCompressedTexture2D"
 uid="uid://dkx113je8mbmk"
-path="res://.godot/imported/tiles.aseprite-a37f14a67af1432686b488615b0bc3dd.res"
+path="res://.godot/imported/tiles.aseprite-582b45e47df9c092ebffb38e38f5bf84.res"
 
 [deps]
 
-source_file="res://tiles/tiles.aseprite"
-dest_files=["res://.godot/imported/tiles.aseprite-a37f14a67af1432686b488615b0bc3dd.res"]
+source_file="res://tiles/assets/tiles.aseprite"
+dest_files=["res://.godot/imported/tiles.aseprite-582b45e47df9c092ebffb38e38f5bf84.res"]
 
 [params]
 

@@ -19,6 +19,17 @@ boot_splash/show_image=false
 
 Events="*res://scripts/globals/Events.gd"
 
+[debug]
+
+gdscript/warnings/unassigned_variable=2
+gdscript/warnings/unused_variable=2
+gdscript/warnings/unused_local_constant=2
+gdscript/warnings/unused_parameter=2
+gdscript/warnings/unused_signal=0
+gdscript/warnings/shadowed_variable=2
+gdscript/warnings/untyped_declaration=2
+gdscript/warnings/unsafe_cast=2
+
 [display]
 
 window/size/viewport_width=1980

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://brsjnr6lhytc5"]
+
+[ext_resource type="Script" uid="uid://c5cqw8htj2cl0" path="res://scripts/floatable_component.gd" id="1_g0unk"]
+
+[node name="FloatableComponent" type="Node2D"]
+script = ExtResource("1_g0unk")

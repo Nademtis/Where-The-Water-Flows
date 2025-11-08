@@ -3,12 +3,12 @@
 importer="aseprite_wizard.plugin.static-texture"
 type="PortableCompressedTexture2D"
 uid="uid://cwchf1wd062yh"
-path="res://.godot/imported/animatedWater.aseprite-2c4afb87d2316f83c8ce17229394cba5.res"
+path="res://.godot/imported/animatedWater.aseprite-ac291ad4ca97b4de1410d893f72773bb.res"
 
 [deps]
 
-source_file="res://tiles/animatedWater.aseprite"
-dest_files=["res://.godot/imported/animatedWater.aseprite-2c4afb87d2316f83c8ce17229394cba5.res"]
+source_file="res://tiles/assets/animatedWater.aseprite"
+dest_files=["res://.godot/imported/animatedWater.aseprite-ac291ad4ca97b4de1410d893f72773bb.res"]
 
 [params]
 

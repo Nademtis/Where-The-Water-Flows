@@ -3,12 +3,12 @@
 importer="aseprite_wizard.plugin.static-texture"
 type="PortableCompressedTexture2D"
 uid="uid://cpwacq8a0wc2a"
-path="res://.godot/imported/heightMap.aseprite-8616309dd3d4edc9462560ca67b5d83b.res"
+path="res://.godot/imported/heightMap.aseprite-66eb1a2280a280329144bd651d11b2c6.res"
 
 [deps]
 
-source_file="res://tiles/heightMap.aseprite"
-dest_files=["res://.godot/imported/heightMap.aseprite-8616309dd3d4edc9462560ca67b5d83b.res"]
+source_file="res://tiles/assets/heightMap.aseprite"
+dest_files=["res://.godot/imported/heightMap.aseprite-66eb1a2280a280329144bd651d11b2c6.res"]
 
 [params]
 

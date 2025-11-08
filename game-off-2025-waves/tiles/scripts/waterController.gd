@@ -42,7 +42,7 @@ const WATER_TILE_RIGHT_CORNER_ANIMATION : Vector2i = Vector2i(0, 5)
 
 func _ready() -> void:
 	var cells : Array[Vector2i] = height_map.get_used_cells()
-	cells.sort_custom(func(a, b): return a.y > b.y)
+	cells.sort_custom(func(a : Vector2i, b: Vector2i) -> bool:  return a.y > b.y)
 	sorted_cells = cells
 	
 	update_water_tiles()
@@ -56,9 +56,10 @@ func _update_water_level(going_up : bool) -> void:
 		water_level -= 1
 	
 	water_level = clamp(water_level, 1.0, 5.0) #TODO should probably not be max 5
+	Events.emit_signal("water_level_changed", water_level)
 	update_water_tiles()
 
-func update_water_tiles():
+func update_water_tiles() -> void:
 	var last_y : float = INF
 	var going_up : bool = water_level > previous_level
 	var count : int = sorted_cells.size()
