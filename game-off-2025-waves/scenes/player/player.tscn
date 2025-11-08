@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ekbuessnk5yy" path="res://scenes/player/player.gd" id="1_dovo2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8afob"]
-radius = 4.0
+radius = 3.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
 atlas = ExtResource("1_8afob")
@@ -61,7 +61,7 @@ motion_mode = 1
 script = ExtResource("1_dovo2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
+position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_8afob")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

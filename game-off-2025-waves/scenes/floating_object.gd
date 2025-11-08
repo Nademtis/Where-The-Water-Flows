@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-@export var placed_at_water_level : int
+@export var placed_at_water_level : int = 1
 @onready var floatable_component: FloatableComponent = $FloatableComponent
 
-const TILESIZE : float = 8
+const TILESIZE : float = 16
 
 func _ready() -> void:
 	if placed_at_water_level:

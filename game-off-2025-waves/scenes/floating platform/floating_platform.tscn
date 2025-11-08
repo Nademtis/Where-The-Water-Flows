@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnig1k05n75h7"]
+[gd_scene load_steps=7 format=3 uid="uid://cnig1k05n75h7"]
 
 [ext_resource type="Texture2D" uid="uid://dhv30mgd1ceih" path="res://scenes/floating platform/floating_platform_left_asset.png" id="1_vbbk8"]
 [ext_resource type="Script" uid="uid://cb80cyiu6mij2" path="res://scenes/floating_object.gd" id="1_y8mln"]
@@ -8,15 +8,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_q6fjv"]
 radius = 5.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5poo4"]
+size = Vector2(31.763416, 3.114214)
+
 [node name="FloatingPlatform" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_y8mln")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_vbbk8")
-offset = Vector2(0, 8)
-region_rect = Rect2(128, 0, 31.976, 32)
-region_filter_clip_enabled = true
 
 [node name="FloatableComponent" type="Node2D" parent="."]
 script = ExtResource("2_q6fjv")
@@ -26,7 +23,54 @@ metadata/_custom_type_script = "uid://c5cqw8htj2cl0"
 visible = false
 shape = SubResource("CircleShape2D_q6fjv")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vbbk8")
+offset = Vector2(0, 8)
+region_rect = Rect2(128, 0, 31.976, 32)
+region_filter_clip_enabled = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(16, 8)
+texture = ExtResource("1_vbbk8")
+offset = Vector2(0, 8)
+region_rect = Rect2(128, 0, 31.976, 32)
+region_filter_clip_enabled = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-16, 8)
+texture = ExtResource("1_vbbk8")
+offset = Vector2(0, 8)
+region_rect = Rect2(128, 0, 31.976, 32)
+region_filter_clip_enabled = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(0, 16)
+texture = ExtResource("1_vbbk8")
+offset = Vector2(0, 8)
+region_rect = Rect2(128, 0, 31.976, 32)
+region_filter_clip_enabled = true
+
 [node name="water" type="TileMapLayer" parent="."]
 modulate = Color(1, 1, 1, 0.8627451)
-tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 3, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 255, 255, 1, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0)
 tile_set = ExtResource("4_5poo4")
+
+[node name="CollUpRight" type="CollisionShape2D" parent="."]
+position = Vector2(13, 1.0000019)
+rotation = -2.7015486
+shape = SubResource("RectangleShape2D_5poo4")
+
+[node name="CollUpLeft" type="CollisionShape2D" parent="."]
+position = Vector2(-12.999998, 1)
+rotation = -0.43743053
+shape = SubResource("RectangleShape2D_5poo4")
+
+[node name="CollDownRight" type="CollisionShape2D" parent="."]
+position = Vector2(14, 14.000002)
+rotation = -0.43743053
+shape = SubResource("RectangleShape2D_5poo4")
+
+[node name="CollDownLeft" type="CollisionShape2D" parent="."]
+position = Vector2(-13, 14)
+rotation = -2.7015486
+shape = SubResource("RectangleShape2D_5poo4")
