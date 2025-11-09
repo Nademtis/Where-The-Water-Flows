@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	if input_dir != Vector2.ZERO:
 		var dir_name := _get_direction_name(input_dir)
 
-		match dir_name:
+		match dir_name: #uncomment below for the isometric movement
 			#"northeast":
 				#move_dir = Vector2(1, -0.5).normalized()
 			#"northwest":
@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 				#move_dir = Vector2(1, 0.5).normalized()
 			#"southwest":
 				#move_dir = Vector2(-1, 0.5).normalized()
-			_: # top-down directions
+			_:  #top-down directions
 				move_dir = input_dir
 
 		velocity = velocity.move_toward(move_dir * max_speed, acceleration * delta)

@@ -9,7 +9,7 @@ var player: CharacterBody2D = null
 
 func _ready() -> void:
 	if start_water_level and start_water_level != 1:
-		global_position.y += 16 * start_water_level
+		global_position.y += 16 * (start_water_level - 1)
 		floatable_component.target_y = global_position.y
 
 func _process(delta: float) -> void:
