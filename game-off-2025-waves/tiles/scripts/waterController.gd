@@ -4,7 +4,7 @@ extends TileMapLayer
 
 @export var water_level : float = 1.0 # should start as 1.0
 @export var min_water_level : float = 1.0
-@export var max_water_level : float = 6.0
+@export var max_water_level : float = 5.0
 
 #used for checking if between min and max
 var previous_level : float = 1.0

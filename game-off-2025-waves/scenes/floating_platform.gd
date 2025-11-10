@@ -31,8 +31,19 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		player = body
+		player = body # used for moveing player up and down
+		
+		#TODO check if player is at the same height	before doing this below
+		
+		print("player entered")
+		var parent: Node2D = get_parent()
+		#var old_global_pos := body.global_position
+		#body.reparent(parent, true)
+		body.call_deferred("reparent", parent, true)
+		body.z_index = 0
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body == player:
-		player = null
+		body.z_index = 1
+		player = null # used for moveing player up and down
+		print("player left")
