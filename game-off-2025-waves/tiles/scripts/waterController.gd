@@ -4,7 +4,7 @@ extends TileMapLayer
 
 @export var water_level : float = 1.0 # should start as 1.0
 @export var min_water_level : float = 1.0
-@export var max_water_level : float = 5.0
+@export var max_water_level : float = 6.0
 
 #used for checking if between min and max
 var previous_level : float = 1.0
@@ -37,6 +37,7 @@ const WATER_LOWER_TILE_RIGHT : Vector2i = Vector2i(7, 0)
 const WATER_LOWER_TILE_LEFT : Vector2i = Vector2i(8, 0)
 const WATER_LOWER_TILE_LEFT_CORNER : Vector2i = Vector2i(9, 0)
 const WATER_LOWER_TILE_RIGHT_CORNER : Vector2i = Vector2i(10, 0)
+const WATER_LOWER_TILE_MIDDLE : Vector2i = Vector2i(10, 1)
 
 
 #corner animation tiles
@@ -128,12 +129,13 @@ func _set_full_water_tile(cell : Vector2i, water_type : String) -> void:
 		"lower_left_corner": set_cell(cell, 0, WATER_LOWER_TILE_LEFT_CORNER)
 		"lower_right": set_cell(cell, 0, WATER_LOWER_TILE_RIGHT)
 		"lower_left": set_cell(cell, 0, WATER_LOWER_TILE_LEFT)
+		"lower_middle": set_cell(cell, 0, WATER_LOWER_TILE_MIDDLE)
 		_: printerr("water type not defined")
 		
 func _set_animation_corner_water_tile(cell : Vector2i, water_type : String) -> void:
 	match water_type:
 		"up": pass
-		"all": set_cell(cell, 0, WATER_TILE_ALL_ANIMATION)
+		"all", "lower_middle": set_cell(cell, 0, WATER_TILE_ALL_ANIMATION)
 		"stair": set_cell(cell, 0, WATER_TILE_ALL_ANIMATION)
 		"right", "lower_right": set_cell(cell, 0, WATER_TILE_RIGHT_ANIMATION)
 		"left", "lower_left": set_cell(cell, 0, WATER_TILE_LEFT_ANIMATION)
