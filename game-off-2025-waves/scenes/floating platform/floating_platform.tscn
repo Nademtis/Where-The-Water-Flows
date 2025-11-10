@@ -16,27 +16,28 @@ script = ExtResource("2_q6fjv")
 metadata/_custom_type_script = "uid://c5cqw8htj2cl0"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 8)
 texture = ExtResource("1_vbbk8")
 offset = Vector2(0, 8)
 region_rect = Rect2(128, 0, 31.976, 32)
 region_filter_clip_enabled = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(16, 8)
+position = Vector2(16, 16)
 texture = ExtResource("1_vbbk8")
 offset = Vector2(0, 8)
 region_rect = Rect2(128, 0, 31.976, 32)
 region_filter_clip_enabled = true
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(-16, 8)
+position = Vector2(-16, 16)
 texture = ExtResource("1_vbbk8")
 offset = Vector2(0, 8)
 region_rect = Rect2(128, 0, 31.976, 32)
 region_filter_clip_enabled = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
-position = Vector2(0, 16)
+position = Vector2(0, 24)
 texture = ExtResource("1_vbbk8")
 offset = Vector2(0, 8)
 region_rect = Rect2(128, 0, 31.976, 32)
@@ -44,12 +45,13 @@ region_filter_clip_enabled = true
 
 [node name="water" type="TileMapLayer" parent="."]
 modulate = Color(1, 1, 1, 0.8627451)
+position = Vector2(0, 8)
 tile_map_data = PackedByteArray(0, 0, 255, 255, 1, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0)
 tile_set = ExtResource("4_5poo4")
 
 [node name="collAbove" type="StaticBody2D" parent="."]
 visible = false
-position = Vector2(0, -16)
+position = Vector2(0, -32)
 
 [node name="CollUpRight" type="CollisionShape2D" parent="collAbove"]
 position = Vector2(13, 1.0000019)
@@ -77,6 +79,7 @@ disabled = true
 
 [node name="collOn" type="StaticBody2D" parent="."]
 visible = false
+position = Vector2(0, -8)
 
 [node name="CollUpRight" type="CollisionShape2D" parent="collOn"]
 position = Vector2(13, 1.0000019)
@@ -131,9 +134,9 @@ shape = SubResource("RectangleShape2D_5poo4")
 disabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 8)
 
 [node name="Polygon2D" type="CollisionPolygon2D" parent="Area2D"]
-visible = false
 position = Vector2(0, 2)
 rotation = 0.0042755473
 polygon = PackedVector2Array(-26.9741, 6.115385, 0.08123515, 18.999828, 27.025408, 5.8845057, -0.034204274, -7.999927)
