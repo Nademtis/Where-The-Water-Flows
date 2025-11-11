@@ -9,7 +9,7 @@ var player: CharacterBody2D = null
 
 func _ready() -> void:
 	if start_water_level and start_water_level != 1:
-		global_position.y += 16 * (start_water_level - 1)
+		global_position.y += 16 * (start_water_level - 1) # adjust the platform position to fix wrong placement in editor view
 		floatable_component.target_y = global_position.y
 
 func _process(delta: float) -> void:
@@ -20,12 +20,12 @@ func _process(delta: float) -> void:
 		global_position.y = target_y
 		diff_y = 0
 	else:
-		# Smoothly move a fraction of the remaining distance (ease-out)
+		# smoothly move a fraction of the remaining distance (ease-out)
 		var move_amount := diff_y * float_speed * delta
 		global_position.y += move_amount
 		diff_y = move_amount
 
-	# Move the player exactly by the same amount
+	#move the player same amount
 	if player:
 		player.global_position.y += diff_y
 
@@ -37,13 +37,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		
 		print("player entered")
 		var parent: Node2D = get_parent()
-		#var old_global_pos := body.global_position
-		#body.reparent(parent, true)
 		body.call_deferred("reparent", parent, true)
 		body.z_index = 0
+		body.is_on_platform = true
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body == player:
 		body.z_index = 1
+		body.is_on_platform = false
 		player = null # used for moveing player up and down
 		print("player left")
