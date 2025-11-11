@@ -3,7 +3,7 @@ class_name FloatingPlatform
 
 @onready var floatable_component: FloatableComponent = $FloatableComponent
 @export var float_speed: float = 3.5 # higher = faster
-@export var start_water_level : int
+@export var start_water_level : int # used to replace the platforms position to align with water_level
 
 var player: CharacterBody2D = null
 
@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 		global_position.y = target_y
 		diff_y = 0
 	else:
-		# smoothly move a fraction of the remaining distance (ease-out)
+		# smoothly move (ease-out)
 		var move_amount := diff_y * float_speed * delta
 		global_position.y += move_amount
 		diff_y = move_amount
@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		player = body # used for moveing player up and down
+		player = body # used for moving player up and down
 		
 		#TODO check if player is at the same height	before doing this below
 		
