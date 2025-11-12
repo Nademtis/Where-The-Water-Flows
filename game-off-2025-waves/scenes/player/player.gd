@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 const MOVESPEED : float = 65
 

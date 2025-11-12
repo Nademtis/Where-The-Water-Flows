@@ -2,48 +2,34 @@ extends Node2D
 class_name FloatingPlatform
 
 @onready var floatable_component: FloatableComponent = $FloatableComponent
-@export var float_speed: float = 3.5 # higher = faster
-@export var start_water_level : int # used to replace the platforms position to align with water_level
+@export var float_speed: float = 3.5 #higher  = faster
+@export var start_water_level: int = 1  #used to replace the platforms position to align with water_level
 
-var player: CharacterBody2D = null
+var last_y: float
+var player: Player = null
 
-func _ready() -> void:
-	if start_water_level and start_water_level != 1:
-		global_position.y += 16 * (start_water_level - 1) # adjust the platform position to fix wrong placement in editor view
-		floatable_component.target_y = global_position.y
+func _process(_delta: float) -> void:
+	var diff_y := global_position.y - last_y
+	last_y = global_position.y
 
-func _process(delta: float) -> void:
-	var target_y := floatable_component.target_y
-	var diff_y := target_y - global_position.y
-
-	if abs(diff_y) < 0.1:
-		global_position.y = target_y
-		diff_y = 0
-	else:
-		# smoothly move (ease-out)
-		var move_amount := diff_y * float_speed * delta
-		global_position.y += move_amount
-		diff_y = move_amount
-
-	#move the player same amount
 	if player:
 		player.global_position.y += diff_y
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		player = body # used for moving player up and down
-		
-		#TODO check if player is at the same height	before doing this below
-		
-		print("player entered")
-		var parent: Node2D = get_parent()
-		body.call_deferred("reparent", parent, true)
-		body.z_index = 0
-		body.is_on_platform = true
+		if abs(body.current_player_height - floatable_component.current_level) <= 0.5:
+			player = body
+			print("player entered")
+			var parent: Node2D = get_parent()
+			body.call_deferred("reparent", parent, true)
+			body.z_index = 0
+			body.is_on_platform = true
+		else:
+			print("not at same height")
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body == player:
 		body.z_index = 1
 		body.is_on_platform = false
-		player = null # used for moveing player up and down
+		player = null
 		print("player left")
