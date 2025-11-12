@@ -139,7 +139,7 @@ position = Vector2(0, 8)
 [node name="Polygon2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2(0, 2)
 rotation = 0.0042755473
-polygon = PackedVector2Array(-26.9741, 6.115385, 0.08123515, 18.999828, 27.025408, 5.8845057, -0.034204274, -7.999927)
+polygon = PackedVector2Array(-29.982624, 4.12823, -29.969799, 7.1282024, 0.094061755, 21.9998, 30.029655, 6.8716717, 30.01683, 3.8716974, -0.047030877, -10.999899)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

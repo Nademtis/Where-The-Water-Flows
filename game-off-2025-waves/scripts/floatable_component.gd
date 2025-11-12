@@ -7,7 +7,9 @@ var target_y: float
 var parent_body: Node2D
 var float_speed: float
 var start_water_level: int
-var current_level : int = 1
+var current_level : float = 1
+
+signal component_changed_level(new_level : float)
 
 func _ready() -> void:
 	parent_body = get_parent()
@@ -22,7 +24,6 @@ func _ready() -> void:
 		target_y = parent_body.global_position.y
 
 	Events.connect("confirmed_new_water_level_direction", _adjust_height)
-	#set_process(true) #TODO do i need?
 
 func _process(delta: float) -> void:
 	var diff_y := target_y - parent_body.global_position.y
@@ -41,4 +42,6 @@ func _adjust_height(water_go_up: bool) -> void:
 	else:
 		current_level -=1
 		target_y += tile_size
+	
+	emit_signal("component_changed_level", current_level)
 	
