@@ -1,0 +1,20 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="PortableCompressedTexture2D"
+uid="uid://6qwpemtr0wrt"
+path="res://.godot/imported/platform_collision_tileset.aseprite-83a3ff26f3b5c3dd4e6bb753964b5521.res"
+
+[deps]
+
+source_file="res://scenes/floating platform/platform_collision_tileset.aseprite"
+dest_files=["res://.godot/imported/platform_collision_tileset.aseprite-83a3ff26f3b5c3dd4e6bb753964b5521.res"]
+
+[params]
+
+layer/exclude_layers_pattern=""
+layer/only_visible_layers=false
+first_frame_only=true
+sheet/sheet_type="packed"
+sheet/sheet_columns=12
+sheet/scale=1

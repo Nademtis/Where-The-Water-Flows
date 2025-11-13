@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://c1sqbdboxw6ev"]
+[gd_scene load_steps=21 format=4 uid="uid://c1sqbdboxw6ev"]
 
 [ext_resource type="TileSet" uid="uid://1m52p7bovmw5" path="res://tiles/tilesets/tilemap.tres" id="1_1o32r"]
 [ext_resource type="Texture2D" uid="uid://dkx113je8mbmk" path="res://tiles/assets/tiles.aseprite" id="2_3eowg"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://be4fqy15lhpug" path="res://tiles/scripts/waterController.gd" id="5_maydr"]
 [ext_resource type="Texture2D" uid="uid://cpwacq8a0wc2a" path="res://tiles/assets/heightMap.aseprite" id="6_7n44s"]
 [ext_resource type="Script" uid="uid://dqvd13a0xhnxx" path="res://tiles/scripts/height_map.gd" id="7_eli58"]
+[ext_resource type="PackedScene" uid="uid://bjypj2f846va4" path="res://scenes/floating platform/platform_coll_tilemap.tscn" id="8_s27on"]
 [ext_resource type="PackedScene" uid="uid://opjx2dvm4ils" path="res://scenes/player/player.tscn" id="9_uk0w3"]
 [ext_resource type="Script" uid="uid://c2wp7ixg7r8vm" path="res://scenes/ui/fps_label.gd" id="10_s8rso"]
 [ext_resource type="Script" uid="uid://ocuxag5bwe8i" path="res://tiles/collision_map_container.gd" id="10_x2ftj"]
@@ -420,24 +421,6 @@ navigation_enabled = false
 script = ExtResource("3_x2ftj")
 metadata/_edit_lock_ = true
 
-[node name="ysortWrapper" type="Node2D" parent="walkable"]
-position = Vector2(400, 208)
-
-[node name="FloatingPlatform3" parent="walkable/ysortWrapper" instance=ExtResource("4_3eowg")]
-position = Vector2(223, 0)
-start_water_level = 2
-
-[node name="FloatingPlatform" parent="walkable/ysortWrapper" instance=ExtResource("4_3eowg")]
-position = Vector2(0, -16)
-start_water_level = 2
-
-[node name="ysort wrapper" type="Node2D" parent="walkable"]
-position = Vector2(480, 144)
-
-[node name="FloatingPlatform2" parent="walkable/ysort wrapper" instance=ExtResource("4_3eowg")]
-position = Vector2(0, 8)
-start_water_level = 3
-
 [node name="YSortTest" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -472,7 +455,13 @@ libraries = {
 [node name="wrapper" type="Node2D" parent="YSortTest/walkable"]
 position = Vector2(-368, 256)
 
-[node name="Platform" parent="YSortTest/walkable/wrapper" instance=ExtResource("4_3eowg")]
+[node name="Platform" parent="YSortTest/walkable/wrapper" node_paths=PackedStringArray("coll_map") instance=ExtResource("4_3eowg")]
+coll_map = NodePath("../platformCollTilemap")
+
+[node name="platformCollTilemap" parent="YSortTest/walkable/wrapper" instance=ExtResource("8_s27on")]
+position = Vector2(0, -8)
+tile_map_data = PackedByteArray("AAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAAAAAABAAAAAAD//wEAAAABAAAAAAD///3/AAACAAAAAAD///7/AAACAAAAAAD///v/AAADAAAAAAAAAPz/AAADAAAAAAA=")
+collision_visibility_mode = 1
 
 [node name="wrapper2" type="Node2D" parent="YSortTest/walkable"]
 position = Vector2(-272, 176)
@@ -510,11 +499,11 @@ tile_map_data = PackedByteArray("AADx/x8AAAAAAAAAAADx/yEAAAAAAAAAAADx/yMAAAAAAAA
 
 [node name="CollisionTileMap2" parent="CollisionMapContainer" instance=ExtResource("11_x2ftj")]
 modulate = Color(0.9843137, 0.22745098, 1, 0.41568628)
-tile_map_data = PackedByteArray("AAD2/x4AAAAAAAAAAAD2/x8AAAAAAAAAAAD3/x0AAAAAAAAAAAD3/x4AAAAAAAAAAAD5/xoAAAAAAAAAAAD4/xkAAAAAAAAAAAD4/xoAAAAAAAAAAAD5/xsAAAAAAAAAAAD6/xwAAAAAAAAAAAD6/x0AAAAAAAAAAAD6/x4AAAAAAAAAAAD5/x8AAAAAAAAAAAD5/yAAAAAAAAAAAAD4/yEAAAAAAAAAAAD4/yIAAAAAAAAAAAD3/yMAAAAAAAAAAAD3/yQAAAAAAAIAAAD0/yIAAAAAAAEAAAD0/yMAAAAAAAEAAAD1/yMAAAABAAMAAADz/yEAAAAAAAAAAADz/yAAAAAAAAAAAADz/x4AAAAAAAAAAADz/x0AAAAAAAAAAAD0/x0AAAAAAAAAAAD1/x4AAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD2/x4AAAAAAAAAAAD2/x8AAAAAAAAAAAD3/x0AAAAAAAAAAAD3/x4AAAAAAAAAAAD5/xoAAAAAAAAAAAD4/xkAAAAAAAAAAAD4/xoAAAAAAAAAAAD5/xsAAAAAAAAAAAD6/xwAAAAAAAAAAAD6/x0AAAAAAAAAAAD6/x4AAAAAAAAAAAD5/x8AAAAAAAAAAAD5/yAAAAAAAAAAAAD4/yEAAAAAAAAAAAD4/yIAAAAAAAAAAAD3/yMAAAAAAAAAAAD3/yQAAAAAAAIAAAD0/yIAAAAAAAAAAAD0/yMAAAAAAAAAAAD1/yMAAAABAAMAAADz/yEAAAAAAAAAAADz/yAAAAAAAAAAAADz/x4AAAAAAAAAAADz/x0AAAAAAAAAAAD0/x0AAAAAAAAAAAD1/x4AAAAAAAAAAADy/x8AAAAAAAAAAAD0/xwAAAAAAAAAAAA=")
 
 [node name="CollisionTileMap3" parent="CollisionMapContainer" instance=ExtResource("11_x2ftj")]
 modulate = Color(0.93333334, 0.52156866, 0.8666667, 0.40784314)
-tile_map_data = PackedByteArray("AADy/x0AAAAAAAAAAADy/xwAAAAAAAAAAADx/xsAAAAAAAAAAADx/xoAAAAAAAAAAADx/xcAAAAAAAAAAADx/xgAAAAAAAAAAADz/xkAAAAAAAAAAAD0/xoAAAAAAAAAAADz/xcAAAABAAIAAADy/xYAAAAAAAIAAADy/xUAAAABAAMAAAD0/xsAAAAAAAAAAAD1/xwAAAAAAAAAAADz/x4AAAAAAAAAAADz/x8AAAAAAAAAAAD0/yAAAAAAAAAAAAD0/x8AAAAAAAAAAAD1/x4AAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AADy/x0AAAAAAAAAAADy/xwAAAAAAAAAAADx/xsAAAAAAAAAAADx/xoAAAAAAAAAAADx/xcAAAAAAAAAAADx/xgAAAAAAAAAAADz/xkAAAAAAAAAAAD0/xoAAAAAAAAAAADz/xcAAAABAAIAAADy/xYAAAAAAAIAAADy/xUAAAABAAMAAAD0/xsAAAAAAAAAAAD1/xwAAAAAAAAAAADz/x4AAAAAAAAAAADz/x8AAAAAAAAAAAD0/yAAAAAAAAAAAAD0/x8AAAAAAAAAAAD1/x4AAAAAAAAAAAD1/x0AAAAAAAAAAAA=")
 
 [node name="CollisionTileMap4" parent="CollisionMapContainer" instance=ExtResource("11_x2ftj")]
 modulate = Color(0.2509804, 1, 1, 0.41960785)

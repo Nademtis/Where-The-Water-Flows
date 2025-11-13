@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnig1k05n75h7"]
+[gd_scene load_steps=5 format=3 uid="uid://cnig1k05n75h7"]
 
 [ext_resource type="Script" uid="uid://cb80cyiu6mij2" path="res://scenes/floating_platform.gd" id="1_y8mln"]
 [ext_resource type="Script" uid="uid://c5cqw8htj2cl0" path="res://scripts/floatable_component.gd" id="2_q6fjv"]
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="3_3tcsq"]
 [ext_resource type="TileSet" uid="uid://ve68r0xefsom" path="res://tiles/tilesets/special_water_tileset.tres" id="4_5poo4"]
-[ext_resource type="TileSet" uid="uid://c88a8eljp70ri" path="res://tiles/tilesets/collision_tileset.tres" id="5_bp550"]
 
 [node name="Platform" type="Node2D"]
 script = ExtResource("1_y8mln")
@@ -28,6 +27,7 @@ tile_map_data = PackedByteArray(0, 0, 255, 255, 1, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0,
 tile_set = ExtResource("4_5poo4")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 position = Vector2(0, 8)
 
 [node name="Polygon2D" type="CollisionPolygon2D" parent="Area2D"]
@@ -35,10 +35,7 @@ position = Vector2(0, 2)
 rotation = 0.0042755473
 polygon = PackedVector2Array(-29.982624, 4.12823, -29.969799, 7.1282024, 0.094061755, 21.9998, 30.029655, 6.8716717, 30.01683, 3.8716974, -0.047030877, -10.999899)
 
-[node name="collMap" type="TileMapLayer" parent="."]
-modulate = Color(0.20392157, 1, 1, 0.39215687)
-position = Vector2(0, -8)
-tile_set = ExtResource("5_bp550")
+[node name="Node2D" type="Node2D" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

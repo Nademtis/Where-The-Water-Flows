@@ -37,7 +37,6 @@ func _process(delta: float) -> void:
 func _adjust_height(water_go_up: bool) -> void:
 	if water_go_up:
 		current_level +=1
-		print("platform height: ", current_level)
 		target_y += -tile_size
 	else:
 		current_level -=1
