@@ -16,6 +16,7 @@ func _ready() -> void:
 				child.visible = false
 	
 	Events.connect("player_height_changed", enable_correct_coll_map)
+	enable_correct_coll_map(1.0)
 
 func enable_correct_coll_map(new_player_height : float) -> void:
 	var active_index: int = int(floor(new_player_height)) - 1 # minus one since we're going from height to an array index

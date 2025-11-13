@@ -12,7 +12,7 @@ var tile_to_place_index : Vector2i = Vector2i(0,0)
 var last_y: float
 var player: Player = null
 
-var current_player_height: float = 1
+var current_player_height: int = 1
 
 func _ready() -> void:
 	if not coll_map:
@@ -28,8 +28,12 @@ func _ready() -> void:
 	enable_correct_coll_tiles(1)
 	floatable_component.component_changed_level.connect(change_player_height)
 	Events.connect("player_height_changed", func(new_height: float) -> void:
-		current_player_height = new_height)
-
+		@warning_ignore("narrowing_conversion")
+		current_player_height = new_height
+		enable_correct_coll_tiles(current_player_height)
+		)
+		
+		
 func _process(_delta: float) -> void:
 	var diff_y := global_position.y - last_y
 	last_y = global_position.y
@@ -60,26 +64,15 @@ func change_player_height(new_height : float) -> void:
 		Events.emit_signal("player_height_changed", player.current_player_height)
 
 func enable_correct_coll_tiles(new_height: float) -> void:
-	var new_int_height: int = int(new_height)
-	#print("from platform, disable tiles with height:", new_int_height)
+	if player: # if player is standing on platform. don't change the coll tiles
+		return
+		
+	var _new_int_height: int = int(new_height)
 
 	if not coll_map:
 		return
-
-	# 1. Fill all tiles first
 	coll_map.clear()
+	
 	for cell: Vector2i in coll_map_position.keys():
-		coll_map.set_cell(cell, 0, tile_to_place_index)
-
-	# 2. Then remove tiles with the same height as the current level
-	var removed_tiles: Array[Vector2i] = []
-
-	for cell: Vector2i in coll_map_position.keys():
-		if coll_map_position[cell] == new_int_height && current_player_height == new_int_height:
-			coll_map.erase_cell(cell)
-			removed_tiles.append(cell)
-
-	#if removed_tiles.is_empty():
-		#print("No tiles removed for height:", new_int_height)
-	#else:
-		#print("Removed tiles for height %d: %s" % [new_int_height, str(removed_tiles)])
+		if coll_map_position[cell] == current_player_height and floatable_component.current_level != current_player_height:
+			coll_map.set_cell(cell, 0, tile_to_place_index)
