@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://ofg441wirseh"]
+
+[ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="1_vjvwn"]
+
+[node name="Elevator" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="innerBG" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -5)
+texture = ExtResource("1_vjvwn")
+region_enabled = true
+region_rect = Rect2(192, 80, 64, 80)
+metadata/_edit_lock_ = true
+
+[node name="mask" type="Sprite2D" parent="."]
+clip_children = 1
+texture_filter = 1
+position = Vector2(0, -5)
+texture = ExtResource("1_vjvwn")
+region_enabled = true
+region_rect = Rect2(256, 80, 64, 80)
+metadata/_edit_lock_ = true
+
+[node name="Door" type="Sprite2D" parent="mask"]
+texture_filter = 1
+texture = ExtResource("1_vjvwn")
+region_enabled = true
+region_rect = Rect2(256, 80, 64, 80)
+
+[node name="Frame" type="Sprite2D" parent="."]
+clip_children = 2
+texture_filter = 1
+texture = ExtResource("1_vjvwn")
+region_enabled = true
+region_rect = Rect2(192, 0, 64, 80)
+region_filter_clip_enabled = true
+metadata/_edit_lock_ = true
