@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=3 uid="uid://qnvk28xsjc0y"]
+
+[ext_resource type="Script" uid="uid://dhrh3kakqatdw" path="res://scenes/main.gd" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://c2wp7ixg7r8vm" path="res://scenes/ui/fps_label.gd" id="1_o5qli"]
+
+[sub_resource type="Animation" id="Animation_0wfyh"]
+resource_name = "fade_to_black"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 2.732081),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sugp2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jyhfs"]
+resource_name = "fade_out"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jyhfs"]
+_data = {
+&"RESET": SubResource("Animation_sugp2"),
+&"fade_out": SubResource("Animation_jyhfs"),
+&"fade_to_black": SubResource("Animation_0wfyh")
+}
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_0wfyh")
+
+[node name="AudioManager" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="fpsLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "FPS: 123"
+script = ExtResource("1_o5qli")
+
+[node name="SceneTransition" type="CanvasLayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SceneTransition"]
+libraries = {
+&"": SubResource("AnimationLibrary_jyhfs")
+}
+
+[node name="ColorRect" type="ColorRect" parent="SceneTransition/AnimationPlayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="levelContainer" type="Node2D" parent="."]
+
+[connection signal="animation_finished" from="SceneTransition/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

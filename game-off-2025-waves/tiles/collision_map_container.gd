@@ -10,7 +10,7 @@ func _ready() -> void:
 			
 			if debug_show_active_collmap:
 				child.self_modulate = Color(0.0, 0.0, 0.0, 0.0)
-				visible = true
+				child.visible = true
 			else:
 				pass
 				child.visible = false

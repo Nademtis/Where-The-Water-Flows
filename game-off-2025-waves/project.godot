@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GameOff2025-Waves"
-run/main_scene="uid://c1sqbdboxw6ev"
+run/main_scene="uid://qnvk28xsjc0y"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/show_image=false
 
