@@ -5,6 +5,22 @@
 [node name="Elevator" type="Node2D"]
 metadata/_edit_lock_ = true
 
+[node name="LampColorRect" type="ColorRect" parent="."]
+self_modulate = Color(0.29803923, 0.37254903, 0.4117647, 1)
+custom_minimum_size = Vector2(5, 5)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = -31.0
+offset_right = 18.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5019608, 0.5019608, 0.5019608, 1)
+
 [node name="innerBG" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -5)
@@ -34,5 +50,14 @@ texture_filter = 1
 texture = ExtResource("1_vjvwn")
 region_enabled = true
 region_rect = Rect2(192, 0, 64, 80)
+region_filter_clip_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="FrameTurnedOn" type="Sprite2D" parent="."]
+clip_children = 2
+texture_filter = 1
+texture = ExtResource("1_vjvwn")
+region_enabled = true
+region_rect = Rect2(320, 0, 64, 80)
 region_filter_clip_enabled = true
 metadata/_edit_lock_ = true
