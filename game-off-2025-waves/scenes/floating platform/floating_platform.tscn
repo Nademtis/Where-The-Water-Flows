@@ -1,12 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://cnig1k05n75h7"]
 
-[ext_resource type="Texture2D" uid="uid://dhv30mgd1ceih" path="res://scenes/floating platform/floating_platform_left_asset.png" id="1_vbbk8"]
 [ext_resource type="Script" uid="uid://cb80cyiu6mij2" path="res://scenes/floating_platform.gd" id="1_y8mln"]
 [ext_resource type="Script" uid="uid://c5cqw8htj2cl0" path="res://scripts/floatable_component.gd" id="2_q6fjv"]
+[ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="3_3tcsq"]
 [ext_resource type="TileSet" uid="uid://ve68r0xefsom" path="res://tiles/tilesets/special_water_tileset.tres" id="4_5poo4"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5poo4"]
-size = Vector2(31.763416, 3.114214)
+[ext_resource type="TileSet" uid="uid://c88a8eljp70ri" path="res://tiles/tilesets/collision_tileset.tres" id="5_bp550"]
 
 [node name="Platform" type="Node2D"]
 script = ExtResource("1_y8mln")
@@ -16,31 +14,11 @@ script = ExtResource("2_q6fjv")
 metadata/_custom_type_script = "uid://c5cqw8htj2cl0"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 8)
-texture = ExtResource("1_vbbk8")
+position = Vector2(0, 14)
+texture = ExtResource("3_3tcsq")
 offset = Vector2(0, 8)
-region_rect = Rect2(128, 0, 31.976, 32)
-region_filter_clip_enabled = true
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(16, 16)
-texture = ExtResource("1_vbbk8")
-offset = Vector2(0, 8)
-region_rect = Rect2(128, 0, 31.976, 32)
-region_filter_clip_enabled = true
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(-16, 16)
-texture = ExtResource("1_vbbk8")
-offset = Vector2(0, 8)
-region_rect = Rect2(128, 0, 31.976, 32)
-region_filter_clip_enabled = true
-
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-position = Vector2(0, 24)
-texture = ExtResource("1_vbbk8")
-offset = Vector2(0, 8)
-region_rect = Rect2(128, 0, 31.976, 32)
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 44)
 region_filter_clip_enabled = true
 
 [node name="water" type="TileMapLayer" parent="."]
@@ -49,90 +27,6 @@ position = Vector2(0, 8)
 tile_map_data = PackedByteArray(0, 0, 255, 255, 1, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0)
 tile_set = ExtResource("4_5poo4")
 
-[node name="collAbove" type="StaticBody2D" parent="."]
-visible = false
-position = Vector2(0, -32)
-
-[node name="CollUpRight" type="CollisionShape2D" parent="collAbove"]
-position = Vector2(13, 1.0000019)
-rotation = -2.7015486
-shape = SubResource("RectangleShape2D_5poo4")
-disabled = true
-
-[node name="CollUpLeft" type="CollisionShape2D" parent="collAbove"]
-position = Vector2(-12.999998, 1)
-rotation = -0.43743053
-shape = SubResource("RectangleShape2D_5poo4")
-disabled = true
-
-[node name="CollDownRight" type="CollisionShape2D" parent="collAbove"]
-position = Vector2(14, 14.000002)
-rotation = -0.43743053
-shape = SubResource("RectangleShape2D_5poo4")
-disabled = true
-
-[node name="CollDownLeft" type="CollisionShape2D" parent="collAbove"]
-position = Vector2(-13, 14)
-rotation = -2.7015486
-shape = SubResource("RectangleShape2D_5poo4")
-disabled = true
-
-[node name="collOn" type="StaticBody2D" parent="."]
-visible = false
-position = Vector2(0, -8)
-
-[node name="CollUpRight" type="CollisionShape2D" parent="collOn"]
-position = Vector2(13, 1.0000019)
-rotation = -2.7015486
-shape = SubResource("RectangleShape2D_5poo4")
-disabled = true
-
-[node name="CollUpLeft" type="CollisionShape2D" parent="collOn"]
-position = Vector2(-12.999998, 1)
-rotation = -0.43743053
-shape = SubResource("RectangleShape2D_5poo4")
-disabled = true
-
-[node name="CollDownRight" type="CollisionShape2D" parent="collOn"]
-position = Vector2(14, 14.000002)
-rotation = -0.43743053
-shape = SubResource("RectangleShape2D_5poo4")
-disabled = true
-
-[node name="CollDownLeft" type="CollisionShape2D" parent="collOn"]
-position = Vector2(-13, 14)
-rotation = -2.7015486
-shape = SubResource("RectangleShape2D_5poo4")
-disabled = true
-
-[node name="collbelow" type="StaticBody2D" parent="."]
-visible = false
-position = Vector2(0, 16)
-
-[node name="CollUpRight" type="CollisionShape2D" parent="collbelow"]
-position = Vector2(13, 1.0000019)
-rotation = -2.7015486
-shape = SubResource("RectangleShape2D_5poo4")
-disabled = true
-
-[node name="CollUpLeft" type="CollisionShape2D" parent="collbelow"]
-position = Vector2(-12.999998, 1)
-rotation = -0.43743053
-shape = SubResource("RectangleShape2D_5poo4")
-disabled = true
-
-[node name="CollDownRight" type="CollisionShape2D" parent="collbelow"]
-position = Vector2(14, 14.000002)
-rotation = -0.43743053
-shape = SubResource("RectangleShape2D_5poo4")
-disabled = true
-
-[node name="CollDownLeft" type="CollisionShape2D" parent="collbelow"]
-position = Vector2(-13, 14)
-rotation = -2.7015486
-shape = SubResource("RectangleShape2D_5poo4")
-disabled = true
-
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, 8)
 
@@ -140,6 +34,11 @@ position = Vector2(0, 8)
 position = Vector2(0, 2)
 rotation = 0.0042755473
 polygon = PackedVector2Array(-29.982624, 4.12823, -29.969799, 7.1282024, 0.094061755, 21.9998, 30.029655, 6.8716717, 30.01683, 3.8716974, -0.047030877, -10.999899)
+
+[node name="collMap" type="TileMapLayer" parent="."]
+modulate = Color(0.20392157, 1, 1, 0.39215687)
+position = Vector2(0, -8)
+tile_set = ExtResource("5_bp550")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

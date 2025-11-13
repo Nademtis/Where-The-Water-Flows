@@ -34,6 +34,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		player = null
 
 func change_player_height(new_height : float) -> void:
-	if player: # only change player height player on platform
+	if player: # only change player height if player on platform
 		player.current_player_height = new_height
+		await get_tree().create_timer(0.1).timeout
 		Events.emit_signal("player_height_changed", player.current_player_height)
