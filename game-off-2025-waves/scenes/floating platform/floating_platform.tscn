@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnig1k05n75h7"]
+[gd_scene load_steps=6 format=4 uid="uid://cnig1k05n75h7"]
 
 [ext_resource type="Script" uid="uid://cb80cyiu6mij2" path="res://scenes/floating_platform.gd" id="1_y8mln"]
 [ext_resource type="Script" uid="uid://c5cqw8htj2cl0" path="res://scripts/floatable_component.gd" id="2_q6fjv"]
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="3_3tcsq"]
 [ext_resource type="TileSet" uid="uid://ve68r0xefsom" path="res://tiles/tilesets/special_water_tileset.tres" id="4_5poo4"]
+[ext_resource type="PackedScene" uid="uid://b88evg1mvgox8" path="res://tiles/tilesets/collision_tile_map.tscn" id="5_3tcsq"]
 
 [node name="Platform" type="Node2D"]
 script = ExtResource("1_y8mln")
@@ -23,7 +24,7 @@ region_filter_clip_enabled = true
 [node name="water" type="TileMapLayer" parent="."]
 modulate = Color(1, 1, 1, 0.8627451)
 position = Vector2(0, 8)
-tile_map_data = PackedByteArray(0, 0, 255, 255, 1, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0)
+tile_map_data = PackedByteArray("AAD//wEAAAAAAAMAAAAAAAAAAAAAAAEAAAD//wAAAAAAAAIAAAA=")
 tile_set = ExtResource("4_5poo4")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -37,5 +38,12 @@ polygon = PackedVector2Array(-29.982624, 4.12823, -29.969799, 7.1282024, 0.09406
 
 [node name="Node2D" type="Node2D" parent="."]
 
+[node name="LocalCollisionTileMap" parent="." instance=ExtResource("5_3tcsq")]
+modulate = Color(0.42745098, 0, 0.42745098, 0.28235295)
+z_index = 3
+position = Vector2(0, 8)
+tile_map_data = PackedByteArray("AAD///7/AAAAAAAAAAD+////AAAAAAAAAAD+/wEAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAD///3/AAAAAAAAAAD+/wAAAAAAAAAAAAD//wMAAAAAAAAAAAABAAAAAAAAAAAAAAA=")
+
+[connection signal="component_changed_level" from="FloatableComponent" to="." method="_on_floatable_component_component_changed_level"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

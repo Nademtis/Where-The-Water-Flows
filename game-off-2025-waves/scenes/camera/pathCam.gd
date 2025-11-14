@@ -15,9 +15,6 @@ func _ready() -> void:
 	#if path_to_find:
 	#	phantom_camera_2d.follow_path = path_to_find
 
-func _process(_delta: float) -> void:
-	print("PathCam follow target: ", phantom_camera_2d.follow_target)
-
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		phantom_camera_2d.priority = 1

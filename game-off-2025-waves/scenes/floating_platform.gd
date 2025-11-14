@@ -9,12 +9,32 @@ class_name FloatingPlatform
 var coll_map_position : Dictionary = {}
 var tile_to_place_index : Vector2i = Vector2i(0,0)
 
+@onready var local_collision_tile_map: TileMapLayer = $LocalCollisionTileMap
+@export var where_to_remove_col : Array[HeightDirections] = []
+var local_coll_tile_to_place := Vector2i(0, 0)
+enum Direction { NW, NE, SE, SW }
+
+var NW_coll_index_1 := Vector2i(-1,-2)
+var NW_coll_index_2 := Vector2i(-2,-1)
+
+var NE_coll_index_1 := Vector2i(0,-2)
+var NE_coll_index_2 := Vector2i(0,-1)
+
+var SE_coll_index_1 := Vector2i(0, 1)
+var SE_coll_index_2 := Vector2i(0, 2)
+
+var SW_coll_index_1 := Vector2i(-1, 2)
+var SW_coll_index_2 := Vector2i(-2, 1)
+
 var last_y: float
 var player: Player = null
 
 var current_player_height: int = 1
 
 func _ready() -> void:
+	local_collision_tile_map.collision_enabled = false #set false since only visible when player is on
+	_update_local_collision(1)
+	
 	if not coll_map:
 		push_error("coll map not defined on platform")
 	else: #save the position of every tile correctly in the tilemap based on the int height as key and Vector2i for position
@@ -24,7 +44,6 @@ func _ready() -> void:
 			var height_value: int = coll_map.get_cell_tile_data(cell).get_custom_data("height")
 			coll_map_position[cell] = height_value
 
-		print(coll_map_position)
 	enable_correct_coll_tiles(1)
 	floatable_component.component_changed_level.connect(change_player_height)
 	Events.connect("player_height_changed", func(new_height: float) -> void:
@@ -45,28 +64,19 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		if abs(body.current_player_height - floatable_component.current_level) <= 0.5:
 			player = body
-			
-			
-			
+
 			var player_wrapper : Node2D = body.get_parent()
 			var old_player_pos : Vector2 = body.global_position
 			
-			
 			player_wrapper.global_position = get_parent().global_position
 			body.global_position = old_player_pos
-			
+		
 			#to be behind some walls
 			player_wrapper.z_index = 0
 			body.is_on_platform = true
+			
+			local_collision_tile_map.collision_enabled = true
 
-#func _deferred_reparent(body: Node2D, new_parent: Node2D) -> void:
-	#body.reparent(new_parent, true)
-#
-	#body.z_index = 0
-	#body.is_on_platform = true
-#
-	#_refresh_camera_target(body)
-	
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body == player:
 		var player_wrapper : Node2D = body.get_parent()
@@ -76,10 +86,10 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		body.global_position = old_player_pos
 		
 		body.is_on_platform = false
-		
+		local_collision_tile_map.collision_enabled = false
 		
 		player = null
-
+	
 func _refresh_camera_target(player_ref: Node2D) -> void:
 	var phantom_camera_host : PhantomCameraHost = PhantomCameraManager.get_phantom_camera_hosts()[0]
 	var pcam := phantom_camera_host._active_pcam_2d
@@ -91,19 +101,52 @@ func _refresh_camera_target(player_ref: Node2D) -> void:
 	pcam.follow_target = null
 	pcam.follow_target = player_ref
 
+func _update_local_collision(height: float) -> void:
+	var int_height := int(height)
+
+	var hd: HeightDirections = null
+	for entry in where_to_remove_col:
+		if entry.height == int_height:
+			hd = entry
+			break
+	if hd == null:
+		return
+
+	var remove_set := hd.directions
+	for d : Direction in Direction.values():
+		match d:
+			Direction.NW:
+				_handle_dir(remove_set, d, NW_coll_index_1, NW_coll_index_2)
+			Direction.NE:
+				_handle_dir(remove_set, d, NE_coll_index_1, NE_coll_index_2)
+			Direction.SE:
+				_handle_dir(remove_set, d, SE_coll_index_1, SE_coll_index_2)
+			Direction.SW:
+				_handle_dir(remove_set, d, SW_coll_index_1, SW_coll_index_2)
+
+func _handle_dir(remove_set : Array[int], dir : Direction, idx1: Vector2i, idx2: Vector2i) -> void:
+	if dir in remove_set:
+		local_collision_tile_map.set_cell(idx1, -1)
+		local_collision_tile_map.set_cell(idx2, -1)
+	else:
+		_repaint_if_missing(idx1)
+		_repaint_if_missing(idx2)
+
+func _repaint_if_missing(cell: Vector2i) -> void:
+	var existing := local_collision_tile_map.get_cell_source_id(cell)
+	if existing == -1:
+		local_collision_tile_map.set_cell(cell, 0, local_coll_tile_to_place) 
+
 func change_player_height(new_height : float) -> void:
 	enable_correct_coll_tiles(new_height)
 	if player: # only change player height if player on platform
 		player.current_player_height = new_height
-		await get_tree().create_timer(0.1).timeout
 		Events.emit_signal("player_height_changed", player.current_player_height)
 
-func enable_correct_coll_tiles(new_height: float) -> void:
-	if player: # if player is standing on platform. don't change the coll tiles
+func enable_correct_coll_tiles(_new_height: float) -> void:
+	if player:
 		return
 		
-	var _new_int_height: int = int(new_height)
-
 	if not coll_map:
 		return
 	coll_map.clear()
@@ -111,3 +154,7 @@ func enable_correct_coll_tiles(new_height: float) -> void:
 	for cell: Vector2i in coll_map_position.keys():
 		if coll_map_position[cell] == current_player_height and floatable_component.current_level != current_player_height:
 			coll_map.set_cell(cell, 0, tile_to_place_index)
+
+
+func _on_floatable_component_component_changed_level(new_level: float) -> void:
+	_update_local_collision(new_level)

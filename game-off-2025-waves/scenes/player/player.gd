@@ -23,8 +23,8 @@ var move_dir: Vector2
 #var player_pos_node_to_update : Vector2 #used for follow camera's since this object is reparented
 #@onready var player_position_node: Node2D
 
-#func _ready() -> void:
-	#player_position_node = %playerPosition
+func _ready() -> void:
+	get_parent().global_position = global_position #updates wrapper
 
 func _process(_delta: float) -> void:
 	#player_position_node.global_position = global_position
@@ -78,7 +78,7 @@ func _get_height_tile_under_player() -> void:
 		return
 	
 	# convert player global position to a cell coordinate
-	var player_pos_to_check: Vector2 = global_position + Vector2(0, -3) # 
+	var player_pos_to_check: Vector2 = global_position# + Vector2(0, -3)
 	var cell: Vector2i = height_map.local_to_map(height_map.to_local(player_pos_to_check))
 	
 	# Get the tile's TileData object
@@ -95,7 +95,7 @@ func _get_height_tile_under_player() -> void:
 	#var water_type : String = tile_data.get_custom_data("water_type")
 	
 	#used for debug draw
-	#debug_tile_world_pos = height_map.map_to_local(cell) #enable if need to se what tile under player is
+	debug_tile_world_pos = height_map.map_to_local(cell) #enable if need to se what tile under player is
 	#print("height: ", height_value, ", type: ", water_type)
 	
 
