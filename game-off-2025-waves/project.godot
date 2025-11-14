@@ -89,6 +89,10 @@ water_down={
 2d_physics/layer_2="Platforms"
 2d_physics/layer_3="Walls"
 
+[physics]
+
+common/physics_interpolation=true
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

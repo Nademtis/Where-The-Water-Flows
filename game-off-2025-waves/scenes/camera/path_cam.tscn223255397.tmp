@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://unfuer715j2s"]
+
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="1_sulto"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_b5h30"]
+[ext_resource type="Script" uid="uid://dp6lvnfhatpq4" path="res://scenes/camera/pathCam.gd" id="3_sulto"]
+
+[sub_resource type="Resource" id="Resource_sulto"]
+script = ExtResource("2_b5h30")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ovma"]
+size = Vector2(382, 200)
+
+[node name="PathCam" type="Node2D"]
+top_level = true
+script = ExtResource("1_sulto")
+tween_resource = SubResource("Resource_sulto")
+draw_limits = true
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_sulto")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_6ovma")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

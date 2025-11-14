@@ -46,15 +46,28 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if abs(body.current_player_height - floatable_component.current_level) <= 0.5:
 			player = body
 			var parent: Node2D = get_parent()
-			body.call_deferred("reparent", parent, true)
+			body.call_deferred("reparent", parent, true) #, true to get player transform
+			#body.reparent(parent, true)
 			body.z_index = 0
 			body.is_on_platform = true
+			call_deferred("_refresh_camera_target", body) #_refresh_camera_target(body)
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body == player:
 		body.z_index = 1
 		body.is_on_platform = false
 		player = null
+
+func _refresh_camera_target(player_ref: Node2D) -> void:
+	var phantom_camera_host : PhantomCameraHost = PhantomCameraManager.get_phantom_camera_hosts()[0]
+	var pcam := phantom_camera_host._active_pcam_2d
+	if pcam == null:
+		print("no active phantom camera found")
+		return
+
+	#reassign camera target since player is reparented in floating platform
+	pcam.follow_target = null
+	pcam.follow_target = player_ref
 
 func change_player_height(new_height : float) -> void:
 	enable_correct_coll_tiles(new_height)

@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://ym65vt1sl83d"]
+
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="1_hl1vm"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_0waxg"]
+[ext_resource type="Script" uid="uid://7uekyvau2p25" path="res://scenes/camera/fixed_cam.gd" id="3_0waxg"]
+
+[sub_resource type="Resource" id="Resource_wlun4"]
+script = ExtResource("2_0waxg")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ovma"]
+size = Vector2(382, 200)
+
+[node name="FixedCam" type="Node2D"]
+script = ExtResource("1_hl1vm")
+zoom = Vector2(5, 5)
+tween_resource = SubResource("Resource_wlun4")
+draw_limits = true
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_0waxg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_6ovma")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

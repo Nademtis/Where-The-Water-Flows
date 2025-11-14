@@ -20,7 +20,15 @@ var is_on_platform : bool = false
 var input_dir: Vector2
 var move_dir: Vector2
 
+#var player_pos_node_to_update : Vector2 #used for follow camera's since this object is reparented
+#@onready var player_position_node: Node2D
+
+#func _ready() -> void:
+	#player_position_node = %playerPosition
+
 func _process(_delta: float) -> void:
+	#player_position_node.global_position = global_position
+	
 	if Input.is_action_just_pressed("water_up"):
 		move_water(true)
 	elif Input.is_action_just_pressed("water_down"):
