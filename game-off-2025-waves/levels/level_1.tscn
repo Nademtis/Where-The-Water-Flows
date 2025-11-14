@@ -379,6 +379,7 @@ _data = {
 point_count = 2
 
 [node name="level" type="Node2D"]
+metadata/_edit_lock_ = true
 
 [node name="BGwater" type="TileMapLayer" parent="."]
 y_sort_enabled = true
@@ -425,14 +426,16 @@ collision_visibility_mode = 1
 position = Vector2(-272, 176)
 
 [node name="Platform" parent="YSortTest/walkable/wrapper2" instance=ExtResource("4_3eowg")]
-position = Vector2(0, -32)
-start_water_level = 5
+position = Vector2(0, -16)
+start_water_level = 4
 
-[node name="Player" parent="YSortTest/walkable" instance=ExtResource("9_uk0w3")]
-unique_name_in_owner = true
+[node name="playerWrapper" type="Node2D" parent="YSortTest/walkable"]
 z_index = 1
+position = Vector2(-395, 294)
+
+[node name="Player" parent="YSortTest/walkable/playerWrapper" instance=ExtResource("9_uk0w3")]
+unique_name_in_owner = true
 y_sort_enabled = true
-position = Vector2(-391, 300)
 debug_mark_tile_under_player = true
 
 [node name="heightMap" type="TileMapLayer" parent="."]
@@ -476,7 +479,7 @@ scale = Vector2(1, 0.9142857)
 curve = SubResource("Curve2D_aerfg")
 
 [node name="PathCam" parent="Path2D" node_paths=PackedStringArray("follow_target", "follow_path") instance=ExtResource("11_5ot28")]
+z_index = 2
 position = Vector2(-336, 252.33571)
-follow_target = NodePath("../../YSortTest/walkable/Player")
+follow_target = NodePath("../../YSortTest/walkable/playerWrapper/Player")
 follow_path = NodePath("..")
-limit_target = NodePath("../../BGwater")

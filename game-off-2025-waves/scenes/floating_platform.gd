@@ -45,23 +45,39 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		if abs(body.current_player_height - floatable_component.current_level) <= 0.5:
 			player = body
-			var parent := get_parent()
+			
+			
+			
+			var player_wrapper : Node2D = body.get_parent()
+			var old_player_pos : Vector2 = body.global_position
+			
+			
+			player_wrapper.global_position = get_parent().global_position
+			body.global_position = old_player_pos
+			
+			#to be behind some walls
+			player_wrapper.z_index = 0
+			body.is_on_platform = true
 
-			call_deferred("_deferred_reparent", body, parent)
-
-func _deferred_reparent(body: Node2D, new_parent: Node2D) -> void:
-	body.reparent(new_parent, true)
-
-	# restore z_index, flags, and reveal player
-	body.z_index = 0
-	body.is_on_platform = true
-
-	_refresh_camera_target(body)
+#func _deferred_reparent(body: Node2D, new_parent: Node2D) -> void:
+	#body.reparent(new_parent, true)
+#
+	#body.z_index = 0
+	#body.is_on_platform = true
+#
+	#_refresh_camera_target(body)
 	
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body == player:
-		body.z_index = 1
+		var player_wrapper : Node2D = body.get_parent()
+		var old_player_pos : Vector2 = body.global_position
+		player_wrapper.z_index = 1
+		player_wrapper.global_position = body.global_position
+		body.global_position = old_player_pos
+		
 		body.is_on_platform = false
+		
+		
 		player = null
 
 func _refresh_camera_target(player_ref: Node2D) -> void:

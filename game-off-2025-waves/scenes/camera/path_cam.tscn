@@ -16,13 +16,13 @@ script = ExtResource("1_sulto")
 follow_mode = 4
 zoom = Vector2(5, 5)
 tween_resource = SubResource("Resource_sulto")
-draw_limits = true
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("3_sulto")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_6ovma")
 
