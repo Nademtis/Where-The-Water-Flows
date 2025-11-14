@@ -50,7 +50,7 @@ _data = {
 &"water_idle": SubResource("Animation_8wm55")
 }
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ds5pa"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_08mmt"]
 texture = ExtResource("6_7n44s")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -369,7 +369,7 @@ custom_data_layer_0/name = "height"
 custom_data_layer_0/type = 3
 custom_data_layer_1/name = "water_type"
 custom_data_layer_1/type = 4
-sources/0 = SubResource("TileSetAtlasSource_ds5pa")
+sources/0 = SubResource("TileSetAtlasSource_08mmt")
 
 [node name="level" type="Node2D"]
 
@@ -432,13 +432,6 @@ position = Vector2(-272, 176)
 position = Vector2(0, -32)
 start_water_level = 5
 
-[node name="wrapper3" type="Node2D" parent="YSortTest/walkable"]
-position = Vector2(-432, 144)
-
-[node name="Platform" parent="YSortTest/walkable/wrapper3" instance=ExtResource("4_3eowg")]
-position = Vector2(0, -16)
-start_water_level = 5
-
 [node name="heightMap" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -470,5 +463,6 @@ modulate = Color(0.93333334, 0.52156866, 0.8666667, 0.40784314)
 tile_map_data = PackedByteArray("AADy/x0AAAAAAAAAAADy/xwAAAAAAAAAAADx/xsAAAAAAAAAAADx/xoAAAAAAAAAAADx/xcAAAAAAAAAAADx/xgAAAAAAAAAAADz/xkAAAAAAAAAAAD0/xoAAAAAAAAAAADz/xcAAAABAAIAAADy/xYAAAAAAAIAAADy/xUAAAABAAMAAAD0/xsAAAAAAAAAAAD1/xwAAAAAAAAAAADz/x4AAAAAAAAAAADz/x8AAAAAAAAAAAD0/yAAAAAAAAAAAAD0/x8AAAAAAAAAAAD1/x4AAAAAAAAAAAD1/x0AAAAAAAAAAAA=")
 
 [node name="CollisionTileMap4" parent="CollisionMapContainer" instance=ExtResource("11_x2ftj")]
+visible = false
 modulate = Color(0.2509804, 1, 1, 0.41960785)
 tile_map_data = PackedByteArray("AADy/xQAAAAAAAAAAADy/xUAAAAAAAIAAADx/xcAAAAAAAAAAADy/xYAAAAAAAAAAAD0/xAAAAAAAAIAAADz/xEAAAAAAAIAAAD0/xEAAAAAAAAAAAD1/xIAAAAAAAAAAAD1/xMAAAAAAAAAAAD2/xQAAAAAAAAAAAD3/xgAAAAAAAAAAAD2/xkAAAAAAAAAAAD2/xoAAAAAAAAAAAD1/xsAAAAAAAAAAAD0/xgAAAAAAAAAAADz/xcAAAAAAAAAAAD0/w8AAAAAAAIAAAD1/xwAAAAAAAAAAAD0/x0AAAAAAAAAAAD0/x4AAAAAAAAAAADz/x0AAAAAAAAAAADz/xwAAAAAAAAAAADy/xsAAAAAAAAAAADz/xoAAAAAAAAAAADz/xkAAAAAAAAAAAA=")

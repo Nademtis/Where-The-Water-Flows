@@ -5,8 +5,16 @@
 [node name="Elevator" type="Node2D"]
 metadata/_edit_lock_ = true
 
-[node name="LampColorRect" type="ColorRect" parent="."]
-self_modulate = Color(0.29803923, 0.37254903, 0.4117647, 1)
+[node name="wholemask" type="Sprite2D" parent="."]
+clip_children = 1
+texture = ExtResource("1_vjvwn")
+region_enabled = true
+region_rect = Rect2(256, 0, 64, 80)
+region_filter_clip_enabled = true
+
+[node name="DoorContainer" type="Node2D" parent="wholemask"]
+
+[node name="LampColorRect" type="ColorRect" parent="wholemask/DoorContainer"]
 custom_minimum_size = Vector2(5, 5)
 anchors_preset = 8
 anchor_left = 0.5
@@ -19,9 +27,10 @@ offset_right = 18.0
 offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.5019608, 0.5019608, 0.5019608, 1)
+color = Color(0.3254902, 0.40784314, 0.4509804, 1)
+metadata/_edit_use_anchors_ = true
 
-[node name="innerBG" type="Sprite2D" parent="."]
+[node name="innerBG" type="Sprite2D" parent="wholemask/DoorContainer"]
 texture_filter = 1
 position = Vector2(0, -5)
 texture = ExtResource("1_vjvwn")
@@ -29,23 +38,14 @@ region_enabled = true
 region_rect = Rect2(192, 80, 64, 80)
 metadata/_edit_lock_ = true
 
-[node name="mask" type="Sprite2D" parent="."]
-clip_children = 1
+[node name="Door2" type="Sprite2D" parent="wholemask/DoorContainer"]
 texture_filter = 1
 position = Vector2(0, -5)
 texture = ExtResource("1_vjvwn")
 region_enabled = true
 region_rect = Rect2(256, 80, 64, 80)
-metadata/_edit_lock_ = true
 
-[node name="Door" type="Sprite2D" parent="mask"]
-texture_filter = 1
-texture = ExtResource("1_vjvwn")
-region_enabled = true
-region_rect = Rect2(256, 80, 64, 80)
-
-[node name="Frame" type="Sprite2D" parent="."]
-clip_children = 2
+[node name="Frame" type="Sprite2D" parent="wholemask/DoorContainer"]
 texture_filter = 1
 texture = ExtResource("1_vjvwn")
 region_enabled = true
@@ -53,8 +53,8 @@ region_rect = Rect2(192, 0, 64, 80)
 region_filter_clip_enabled = true
 metadata/_edit_lock_ = true
 
-[node name="FrameTurnedOn" type="Sprite2D" parent="."]
-clip_children = 2
+[node name="FrameTurnedOn" type="Sprite2D" parent="wholemask/DoorContainer"]
+visible = false
 texture_filter = 1
 texture = ExtResource("1_vjvwn")
 region_enabled = true

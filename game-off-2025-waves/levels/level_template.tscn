@@ -1,0 +1,453 @@
+[gd_scene load_steps=16 format=4 uid="uid://do87h7uig68cw"]
+
+[ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_64qpc"]
+[ext_resource type="PackedScene" uid="uid://opjx2dvm4ils" path="res://scenes/player/player.tscn" id="2_2ip8h"]
+[ext_resource type="TileSet" uid="uid://ve68r0xefsom" path="res://tiles/tilesets/special_water_tileset.tres" id="3_unwjj"]
+[ext_resource type="Script" uid="uid://be4fqy15lhpug" path="res://tiles/scripts/waterController.gd" id="4_u3vgj"]
+[ext_resource type="PackedScene" uid="uid://cnig1k05n75h7" path="res://scenes/floating platform/floating_platform.tscn" id="5_u6tk6"]
+[ext_resource type="PackedScene" uid="uid://bjypj2f846va4" path="res://scenes/floating platform/platform_coll_tilemap.tscn" id="6_pqv4r"]
+[ext_resource type="Texture2D" uid="uid://cpwacq8a0wc2a" path="res://tiles/assets/heightMap.aseprite" id="7_3dbtp"]
+[ext_resource type="Script" uid="uid://dqvd13a0xhnxx" path="res://tiles/scripts/height_map.gd" id="8_j8l06"]
+[ext_resource type="Script" uid="uid://ocuxag5bwe8i" path="res://tiles/collision_map_container.gd" id="9_peaqv"]
+[ext_resource type="PackedScene" uid="uid://b88evg1mvgox8" path="res://tiles/tilesets/collision_tile_map.tscn" id="10_o53ap"]
+
+[sub_resource type="Animation" id="Animation_oiirk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8wm55"]
+resource_name = "water_idle"
+length = 2.0
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pnqx2"]
+_data = {
+&"RESET": SubResource("Animation_oiirk"),
+&"water_idle": SubResource("Animation_8wm55")
+}
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_phlur"]
+texture = ExtResource("7_3dbtp")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -8)
+0:0/0/z_index = 5
+0:0/0/custom_data_0 = 1.5
+0:0/0/custom_data_1 = "up"
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, -8)
+1:0/0/z_index = 5
+1:0/0/custom_data_0 = 2.5
+1:0/0/custom_data_1 = "up"
+1:1/0 = 0
+1:1/0/texture_origin = Vector2i(0, -8)
+1:1/0/z_index = 5
+1:1/0/custom_data_0 = 2.0
+1:1/0/custom_data_1 = "right"
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, -8)
+0:1/0/z_index = 5
+0:1/0/custom_data_0 = 1.0
+0:1/0/custom_data_1 = "right"
+1:2/0 = 0
+1:2/0/texture_origin = Vector2i(0, -8)
+1:2/0/z_index = 5
+1:2/0/custom_data_0 = 2.0
+1:2/0/custom_data_1 = "left"
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, -8)
+0:2/0/z_index = 5
+0:2/0/custom_data_0 = 1.0
+0:2/0/custom_data_1 = "left"
+0:3/0 = 0
+0:3/0/texture_origin = Vector2i(0, -8)
+0:3/0/z_index = 5
+0:3/0/custom_data_0 = 1.0
+0:3/0/custom_data_1 = "all"
+1:3/0 = 0
+1:3/0/texture_origin = Vector2i(0, -8)
+1:3/0/z_index = 5
+1:3/0/custom_data_0 = 2.0
+1:3/0/custom_data_1 = "all"
+1:4/0 = 0
+1:4/0/texture_origin = Vector2i(0, -8)
+1:4/0/z_index = 5
+1:4/0/custom_data_0 = 2.0
+1:4/0/custom_data_1 = "left_corner"
+0:4/0 = 0
+0:4/0/texture_origin = Vector2i(0, -8)
+0:4/0/z_index = 5
+0:4/0/custom_data_0 = 1.0
+0:4/0/custom_data_1 = "left_corner"
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, -8)
+2:0/0/z_index = 5
+2:0/0/custom_data_0 = 3.5
+2:0/0/custom_data_1 = "up"
+2:1/0 = 0
+2:1/0/texture_origin = Vector2i(0, -8)
+2:1/0/z_index = 5
+2:1/0/custom_data_0 = 3.0
+2:1/0/custom_data_1 = "right"
+2:2/0 = 0
+2:2/0/texture_origin = Vector2i(0, -8)
+2:2/0/z_index = 5
+2:2/0/custom_data_0 = 3.0
+2:2/0/custom_data_1 = "left"
+2:3/0 = 0
+2:3/0/texture_origin = Vector2i(0, -8)
+2:3/0/z_index = 5
+2:3/0/custom_data_0 = 3.0
+2:3/0/custom_data_1 = "all"
+2:4/0 = 0
+2:4/0/texture_origin = Vector2i(0, -8)
+2:4/0/z_index = 5
+2:4/0/custom_data_0 = 3.0
+2:4/0/custom_data_1 = "left_corner"
+0:5/0 = 0
+0:5/0/texture_origin = Vector2i(0, -8)
+0:5/0/z_index = 5
+0:5/0/custom_data_0 = 1.0
+0:5/0/custom_data_1 = "right_corner"
+1:5/0 = 0
+1:5/0/texture_origin = Vector2i(0, -8)
+1:5/0/z_index = 5
+1:5/0/custom_data_0 = 2.0
+1:5/0/custom_data_1 = "right_corner"
+2:5/0 = 0
+2:5/0/texture_origin = Vector2i(0, -8)
+2:5/0/z_index = 5
+2:5/0/custom_data_0 = 3.0
+2:5/0/custom_data_1 = "right_corner"
+0:6/0 = 0
+0:6/0/texture_origin = Vector2i(0, -8)
+0:6/0/z_index = 5
+0:6/0/custom_data_0 = 1.0
+0:6/0/custom_data_1 = "lower_right_corner"
+1:6/0 = 0
+1:6/0/texture_origin = Vector2i(0, -8)
+1:6/0/z_index = 5
+1:6/0/custom_data_0 = 2.0
+1:6/0/custom_data_1 = "lower_right_corner"
+2:6/0 = 0
+2:6/0/texture_origin = Vector2i(0, -8)
+2:6/0/z_index = 5
+2:6/0/custom_data_0 = 3.0
+2:6/0/custom_data_1 = "lower_right_corner"
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, -8)
+3:0/0/z_index = 5
+3:0/0/custom_data_0 = 4.5
+3:0/0/custom_data_1 = "up"
+3:1/0 = 0
+3:1/0/texture_origin = Vector2i(0, -8)
+3:1/0/z_index = 5
+3:1/0/custom_data_0 = 4.0
+3:1/0/custom_data_1 = "right"
+4:1/0 = 0
+4:1/0/texture_origin = Vector2i(0, -8)
+4:1/0/z_index = 5
+4:1/0/custom_data_0 = 5.0
+4:1/0/custom_data_1 = "right"
+4:2/0 = 0
+4:2/0/texture_origin = Vector2i(0, -8)
+4:2/0/z_index = 5
+4:2/0/custom_data_0 = 5.0
+4:2/0/custom_data_1 = "left"
+4:3/0 = 0
+4:3/0/texture_origin = Vector2i(0, -8)
+4:3/0/z_index = 5
+4:3/0/custom_data_0 = 5.0
+4:3/0/custom_data_1 = "all"
+4:4/0 = 0
+4:4/0/texture_origin = Vector2i(0, -8)
+4:4/0/z_index = 5
+4:4/0/custom_data_0 = 5.0
+4:4/0/custom_data_1 = "left_corner"
+4:5/0 = 0
+4:5/0/texture_origin = Vector2i(0, -8)
+4:5/0/z_index = 5
+4:5/0/custom_data_0 = 5.0
+4:5/0/custom_data_1 = "right_corner"
+5:5/0 = 0
+5:5/0/texture_origin = Vector2i(0, -8)
+5:5/0/z_index = 5
+4:6/0 = 0
+4:6/0/texture_origin = Vector2i(0, -8)
+4:6/0/z_index = 5
+4:6/0/custom_data_0 = 5.0
+4:6/0/custom_data_1 = "lower_right_corner"
+3:5/0 = 0
+3:5/0/texture_origin = Vector2i(0, -8)
+3:5/0/z_index = 5
+3:5/0/custom_data_0 = 4.0
+3:5/0/custom_data_1 = "right_corner"
+3:4/0 = 0
+3:4/0/texture_origin = Vector2i(0, -8)
+3:4/0/z_index = 5
+3:4/0/custom_data_0 = 4.0
+3:4/0/custom_data_1 = "left_corner"
+3:3/0 = 0
+3:3/0/texture_origin = Vector2i(0, -8)
+3:3/0/z_index = 5
+3:3/0/custom_data_0 = 4.0
+3:3/0/custom_data_1 = "all"
+3:2/0 = 0
+3:2/0/texture_origin = Vector2i(0, -8)
+3:2/0/z_index = 5
+3:2/0/custom_data_0 = 4.0
+3:2/0/custom_data_1 = "left"
+4:0/0 = 0
+4:0/0/texture_origin = Vector2i(0, -8)
+4:0/0/z_index = 5
+4:0/0/custom_data_0 = 5.5
+4:0/0/custom_data_1 = "up"
+5:0/0 = 0
+5:0/0/texture_origin = Vector2i(0, -8)
+5:0/0/z_index = 5
+5:1/0 = 0
+5:1/0/texture_origin = Vector2i(0, -8)
+5:1/0/z_index = 5
+5:2/0 = 0
+5:2/0/texture_origin = Vector2i(0, -8)
+5:2/0/z_index = 5
+5:3/0 = 0
+5:3/0/texture_origin = Vector2i(0, -8)
+5:3/0/z_index = 5
+5:4/0 = 0
+5:4/0/texture_origin = Vector2i(0, -8)
+5:4/0/z_index = 5
+5:6/0 = 0
+5:6/0/texture_origin = Vector2i(0, -8)
+5:6/0/z_index = 5
+3:6/0 = 0
+3:6/0/texture_origin = Vector2i(0, -8)
+3:6/0/z_index = 5
+3:6/0/custom_data_0 = 4.0
+3:6/0/custom_data_1 = "lower_right_corner"
+0:7/0 = 0
+0:7/0/texture_origin = Vector2i(0, -8)
+0:7/0/z_index = 5
+0:7/0/custom_data_0 = 1.0
+0:7/0/custom_data_1 = "lower_left_corner"
+1:7/0 = 0
+1:7/0/texture_origin = Vector2i(0, -8)
+1:7/0/z_index = 5
+1:7/0/custom_data_0 = 2.0
+1:7/0/custom_data_1 = "lower_left_corner"
+2:7/0 = 0
+2:7/0/texture_origin = Vector2i(0, -8)
+2:7/0/z_index = 5
+2:7/0/custom_data_0 = 3.0
+2:7/0/custom_data_1 = "lower_left_corner"
+3:7/0 = 0
+3:7/0/texture_origin = Vector2i(0, -8)
+3:7/0/z_index = 5
+3:7/0/custom_data_0 = 4.0
+3:7/0/custom_data_1 = "lower_left_corner"
+4:7/0 = 0
+4:7/0/texture_origin = Vector2i(0, -8)
+4:7/0/z_index = 5
+4:7/0/custom_data_0 = 5.0
+4:7/0/custom_data_1 = "lower_left_corner"
+5:7/0 = 0
+5:7/0/texture_origin = Vector2i(0, -8)
+5:7/0/z_index = 5
+0:8/0 = 0
+0:8/0/texture_origin = Vector2i(0, -8)
+0:8/0/z_index = 5
+0:8/0/custom_data_0 = 1.0
+0:8/0/custom_data_1 = "lower_right"
+1:8/0 = 0
+1:8/0/texture_origin = Vector2i(0, -8)
+1:8/0/z_index = 5
+1:8/0/custom_data_0 = 2.0
+1:8/0/custom_data_1 = "lower_right"
+2:8/0 = 0
+2:8/0/texture_origin = Vector2i(0, -8)
+2:8/0/z_index = 5
+2:8/0/custom_data_0 = 3.0
+2:8/0/custom_data_1 = "lower_right"
+3:8/0 = 0
+3:8/0/texture_origin = Vector2i(0, -8)
+3:8/0/z_index = 5
+3:8/0/custom_data_0 = 4.0
+3:8/0/custom_data_1 = "lower_right"
+4:8/0 = 0
+4:8/0/texture_origin = Vector2i(0, -8)
+4:8/0/z_index = 5
+4:8/0/custom_data_0 = 5.0
+4:8/0/custom_data_1 = "lower_right"
+5:8/0 = 0
+5:8/0/texture_origin = Vector2i(0, -8)
+5:8/0/z_index = 5
+0:9/0 = 0
+0:9/0/texture_origin = Vector2i(0, -8)
+0:9/0/z_index = 5
+0:9/0/custom_data_0 = 1.0
+0:9/0/custom_data_1 = "lower_left"
+1:9/0 = 0
+1:9/0/texture_origin = Vector2i(0, -8)
+1:9/0/z_index = 5
+1:9/0/custom_data_0 = 2.0
+1:9/0/custom_data_1 = "lower_left"
+2:9/0 = 0
+2:9/0/texture_origin = Vector2i(0, -8)
+2:9/0/z_index = 5
+2:9/0/custom_data_0 = 3.0
+2:9/0/custom_data_1 = "lower_left"
+3:9/0 = 0
+3:9/0/texture_origin = Vector2i(0, -8)
+3:9/0/z_index = 5
+3:9/0/custom_data_0 = 4.0
+3:9/0/custom_data_1 = "lower_left"
+4:9/0 = 0
+4:9/0/texture_origin = Vector2i(0, -8)
+4:9/0/z_index = 5
+4:9/0/custom_data_0 = 5.0
+4:9/0/custom_data_1 = "lower_left"
+5:9/0 = 0
+5:9/0/texture_origin = Vector2i(0, -8)
+5:9/0/z_index = 5
+0:10/0 = 0
+0:10/0/texture_origin = Vector2i(0, -8)
+0:10/0/z_index = 5
+0:10/0/custom_data_0 = 1.0
+0:10/0/custom_data_1 = "lower_middle"
+1:10/0 = 0
+1:10/0/texture_origin = Vector2i(0, -8)
+1:10/0/z_index = 5
+1:10/0/custom_data_0 = 2.0
+1:10/0/custom_data_1 = "lower_middle"
+2:10/0 = 0
+2:10/0/texture_origin = Vector2i(0, -8)
+2:10/0/z_index = 5
+2:10/0/custom_data_0 = 3.0
+2:10/0/custom_data_1 = "lower_middle"
+3:10/0 = 0
+3:10/0/texture_origin = Vector2i(0, -8)
+3:10/0/z_index = 5
+3:10/0/custom_data_0 = 4.0
+3:10/0/custom_data_1 = "lower_middle"
+4:10/0 = 0
+4:10/0/texture_origin = Vector2i(0, -8)
+4:10/0/z_index = 5
+4:10/0/custom_data_0 = 5.0
+4:10/0/custom_data_1 = "lower_middle"
+5:10/0 = 0
+5:10/0/texture_origin = Vector2i(0, -8)
+5:10/0/z_index = 5
+
+[sub_resource type="TileSet" id="TileSet_rcbig"]
+tile_shape = 1
+tile_size = Vector2i(32, 16)
+custom_data_layer_0/name = "height"
+custom_data_layer_0/type = 3
+custom_data_layer_1/name = "water_type"
+custom_data_layer_1/type = 4
+sources/0 = SubResource("TileSetAtlasSource_phlur")
+
+[node name="level" type="Node2D"]
+
+[node name="BGwater" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AADw/wgAAAASAAAAAADw/wkAAAASAAAAAADw/woAAAASAAAAAADw/wsAAAASAAAAAADw/wwAAAASAAAAAADw/w0AAAASAAAAAADw/w4AAAASAAAAAADw/w8AAAASAAAAAADw/xAAAAASAAAAAADw/xEAAAASAAAAAADw/xIAAAASAAAAAADw/xMAAAASAAAAAADw/xQAAAASAAAAAADw/xUAAAASAAAAAADw/xYAAAASAAAAAADw/xcAAAASAAAAAADw/xgAAAASAAAAAADw/xkAAAASAAAAAADw/xoAAAASAAAAAADw/xsAAAASAAAAAADw/xwAAAASAAAAAADw/x0AAAASAAAAAADw/x4AAAASAAAAAADw/x8AAAASAAAAAADw/yAAAAASAAAAAADw/yEAAAASAAAAAADw/yIAAAASAAAAAADw/yMAAAASAAAAAADw/yQAAAASAAAAAADw/yUAAAASAAAAAADw/yYAAAASAAAAAADx/wgAAAASAAAAAADx/wkAAAASAAAAAADx/woAAAASAAAAAADx/wsAAAASAAAAAADx/wwAAAASAAAAAADx/w0AAAASAAAAAADx/w4AAAASAAAAAADx/w8AAAASAAAAAADx/xAAAAASAAAAAADx/xEAAAASAAAAAADx/xIAAAASAAAAAADx/xMAAAASAAAAAADx/xQAAAASAAAAAADx/xUAAAASAAAAAADx/xYAAAASAAAAAADx/xcAAAASAAAAAADx/xgAAAASAAAAAADx/xkAAAASAAAAAADx/xoAAAASAAAAAADx/xsAAAASAAAAAADx/xwAAAASAAAAAADx/x0AAAASAAAAAADx/x4AAAASAAAAAADx/x8AAAASAAAAAADx/yAAAAASAAAAAADx/yEAAAASAAAAAADx/yIAAAASAAAAAADx/yMAAAASAAAAAADx/yQAAAASAAAAAADx/yUAAAASAAAAAADx/yYAAAASAAAAAADy/wgAAAASAAAAAADy/wkAAAASAAAAAADy/woAAAASAAAAAADy/wsAAAASAAAAAADy/wwAAAASAAAAAADy/w0AAAASAAAAAADy/w4AAAASAAAAAADy/w8AAAASAAAAAADy/xAAAAASAAAAAADy/xEAAAASAAAAAADy/xIAAAASAAAAAADy/xMAAAASAAAAAADy/xQAAAASAAAAAADy/xUAAAASAAAAAADy/xYAAAASAAAAAADy/xcAAAASAAAAAADy/xgAAAASAAAAAADy/xkAAAASAAAAAADy/xoAAAASAAAAAADy/xsAAAASAAAAAADy/xwAAAASAAAAAADy/x0AAAASAAAAAADy/x4AAAASAAAAAADy/x8AAAASAAAAAADy/yAAAAASAAAAAADy/yEAAAASAAAAAADy/yIAAAASAAAAAADy/yMAAAASAAAAAADy/yQAAAASAAAAAADy/yUAAAASAAAAAADy/yYAAAASAAAAAADz/wgAAAASAAAAAADz/wkAAAASAAAAAADz/woAAAASAAAAAADz/wsAAAASAAAAAADz/wwAAAASAAAAAADz/w0AAAASAAAAAADz/w4AAAASAAAAAADz/w8AAAASAAAAAADz/xAAAAASAAAAAADz/xEAAAASAAAAAADz/xIAAAASAAAAAADz/xMAAAASAAAAAADz/xQAAAASAAAAAADz/xUAAAASAAAAAADz/xYAAAASAAAAAADz/xcAAAASAAAAAADz/xgAAAASAAAAAADz/xkAAAASAAAAAADz/xoAAAASAAAAAADz/xsAAAASAAAAAADz/xwAAAASAAAAAADz/x0AAAASAAAAAADz/x4AAAASAAAAAADz/x8AAAASAAAAAADz/yAAAAASAAAAAADz/yEAAAASAAAAAADz/yIAAAASAAAAAADz/yMAAAASAAAAAADz/yQAAAASAAAAAADz/yUAAAASAAAAAADz/yYAAAASAAAAAAD0/wgAAAASAAAAAAD0/wkAAAASAAAAAAD0/woAAAASAAAAAAD0/wsAAAASAAAAAAD0/wwAAAASAAAAAAD0/w0AAAASAAAAAAD0/w4AAAASAAAAAAD0/w8AAAASAAAAAAD0/xAAAAASAAAAAAD0/xEAAAASAAAAAAD0/xIAAAASAAAAAAD0/xMAAAASAAAAAAD0/xQAAAASAAAAAAD0/xUAAAASAAAAAAD0/xYAAAASAAAAAAD0/xcAAAASAAAAAAD0/xgAAAASAAAAAAD0/xkAAAASAAAAAAD0/xoAAAASAAAAAAD0/xsAAAASAAAAAAD0/xwAAAASAAAAAAD0/x0AAAASAAAAAAD0/x4AAAASAAAAAAD0/x8AAAASAAAAAAD0/yAAAAASAAAAAAD0/yEAAAASAAAAAAD0/yIAAAASAAAAAAD0/yMAAAASAAAAAAD0/yQAAAASAAAAAAD0/yUAAAASAAAAAAD0/yYAAAASAAAAAAD1/wgAAAASAAAAAAD1/wkAAAASAAAAAAD1/woAAAASAAAAAAD1/wsAAAASAAAAAAD1/wwAAAASAAAAAAD1/w0AAAASAAAAAAD1/w4AAAASAAAAAAD1/w8AAAASAAAAAAD1/xAAAAASAAAAAAD1/xEAAAASAAAAAAD1/xIAAAASAAAAAAD1/xMAAAASAAAAAAD1/xQAAAASAAAAAAD1/xUAAAASAAAAAAD1/xYAAAASAAAAAAD1/xcAAAASAAAAAAD1/xgAAAASAAAAAAD1/xkAAAASAAAAAAD1/xoAAAASAAAAAAD1/xsAAAASAAAAAAD1/xwAAAASAAAAAAD1/x0AAAASAAAAAAD1/x4AAAASAAAAAAD1/x8AAAASAAAAAAD1/yAAAAASAAAAAAD1/yEAAAASAAAAAAD1/yIAAAASAAAAAAD1/yMAAAASAAAAAAD1/yQAAAASAAAAAAD1/yUAAAASAAAAAAD1/yYAAAASAAAAAAD2/wgAAAASAAAAAAD2/wkAAAASAAAAAAD2/woAAAASAAAAAAD2/wsAAAASAAAAAAD2/wwAAAASAAAAAAD2/w0AAAASAAAAAAD2/w4AAAASAAAAAAD2/w8AAAASAAAAAAD2/xAAAAASAAAAAAD2/xEAAAASAAAAAAD2/xIAAAASAAAAAAD2/xMAAAASAAAAAAD2/xQAAAASAAAAAAD2/xUAAAASAAAAAAD2/xYAAAASAAAAAAD2/xcAAAASAAAAAAD2/xgAAAASAAAAAAD2/xkAAAASAAAAAAD2/xoAAAASAAAAAAD2/xsAAAASAAAAAAD2/xwAAAASAAAAAAD2/x0AAAASAAAAAAD2/x4AAAASAAAAAAD2/x8AAAASAAAAAAD2/yAAAAASAAAAAAD2/yEAAAASAAAAAAD2/yIAAAASAAAAAAD2/yMAAAASAAAAAAD2/yQAAAASAAAAAAD2/yUAAAASAAAAAAD2/yYAAAASAAAAAAD3/wgAAAASAAAAAAD3/wkAAAASAAAAAAD3/woAAAASAAAAAAD3/wsAAAASAAAAAAD3/wwAAAASAAAAAAD3/w0AAAASAAAAAAD3/w4AAAASAAAAAAD3/w8AAAASAAAAAAD3/xAAAAASAAAAAAD3/xEAAAASAAAAAAD3/xIAAAASAAAAAAD3/xMAAAASAAAAAAD3/xQAAAASAAAAAAD3/xUAAAASAAAAAAD3/xYAAAASAAAAAAD3/xcAAAASAAAAAAD3/xgAAAASAAAAAAD3/xkAAAASAAAAAAD3/xoAAAASAAAAAAD3/xsAAAASAAAAAAD3/xwAAAASAAAAAAD3/x0AAAASAAAAAAD3/x4AAAASAAAAAAD3/x8AAAASAAAAAAD3/yAAAAASAAAAAAD3/yEAAAASAAAAAAD3/yIAAAASAAAAAAD3/yMAAAASAAAAAAD3/yQAAAASAAAAAAD3/yUAAAASAAAAAAD3/yYAAAASAAAAAAD4/wgAAAASAAAAAAD4/wkAAAASAAAAAAD4/woAAAASAAAAAAD4/wsAAAASAAAAAAD4/wwAAAASAAAAAAD4/w0AAAASAAAAAAD4/w4AAAASAAAAAAD4/w8AAAASAAAAAAD4/xAAAAASAAAAAAD4/xEAAAASAAAAAAD4/xIAAAASAAAAAAD4/xMAAAASAAAAAAD4/xQAAAASAAAAAAD4/xUAAAASAAAAAAD4/xYAAAASAAAAAAD4/xcAAAASAAAAAAD4/xgAAAASAAAAAAD4/xkAAAASAAAAAAD4/xoAAAASAAAAAAD4/xsAAAASAAAAAAD4/xwAAAASAAAAAAD4/x0AAAASAAAAAAD4/x4AAAASAAAAAAD4/x8AAAASAAAAAAD4/yAAAAASAAAAAAD4/yEAAAASAAAAAAD4/yIAAAASAAAAAAD4/yMAAAASAAAAAAD4/yQAAAASAAAAAAD4/yUAAAASAAAAAAD4/yYAAAASAAAAAAD5/wgAAAASAAAAAAD5/wkAAAASAAAAAAD5/woAAAASAAAAAAD5/wsAAAASAAAAAAD5/wwAAAASAAAAAAD5/w0AAAASAAAAAAD5/w4AAAASAAAAAAD5/w8AAAASAAAAAAD5/xAAAAASAAAAAAD5/xEAAAASAAAAAAD5/xIAAAASAAAAAAD5/xMAAAASAAAAAAD5/xQAAAASAAAAAAD5/xUAAAASAAAAAAD5/xYAAAASAAAAAAD5/xcAAAASAAAAAAD5/xgAAAASAAAAAAD5/xkAAAASAAAAAAD5/xoAAAASAAAAAAD5/xsAAAASAAAAAAD5/xwAAAASAAAAAAD5/x0AAAASAAAAAAD5/x4AAAASAAAAAAD5/x8AAAASAAAAAAD5/yAAAAASAAAAAAD5/yEAAAASAAAAAAD5/yIAAAASAAAAAAD5/yMAAAASAAAAAAD5/yQAAAASAAAAAAD5/yUAAAASAAAAAAD5/yYAAAASAAAAAAD6/wgAAAASAAAAAAD6/wkAAAASAAAAAAD6/woAAAASAAAAAAD6/wsAAAASAAAAAAD6/wwAAAASAAAAAAD6/w0AAAASAAAAAAD6/w4AAAASAAAAAAD6/w8AAAASAAAAAAD6/xAAAAASAAAAAAD6/xEAAAASAAAAAAD6/xIAAAASAAAAAAD6/xMAAAASAAAAAAD6/xQAAAASAAAAAAD6/xUAAAASAAAAAAD6/xYAAAASAAAAAAD6/xcAAAASAAAAAAD6/xgAAAASAAAAAAD6/xkAAAASAAAAAAD6/xoAAAASAAAAAAD6/xsAAAASAAAAAAD6/xwAAAASAAAAAAD6/x0AAAASAAAAAAD6/x4AAAASAAAAAAD6/x8AAAASAAAAAAD6/yAAAAASAAAAAAD6/yEAAAASAAAAAAD6/yIAAAASAAAAAAD6/yMAAAASAAAAAAD6/yQAAAASAAAAAAD6/yUAAAASAAAAAAD6/yYAAAASAAAAAAD7/wgAAAASAAAAAAD7/wkAAAASAAAAAAD7/woAAAASAAAAAAD7/wsAAAASAAAAAAD7/wwAAAASAAAAAAD7/w0AAAASAAAAAAD7/w4AAAASAAAAAAD7/w8AAAASAAAAAAD7/xAAAAASAAAAAAD7/xEAAAASAAAAAAD7/xIAAAASAAAAAAD7/xMAAAASAAAAAAD7/xQAAAASAAAAAAD7/xUAAAASAAAAAAD7/xYAAAASAAAAAAD7/xcAAAASAAAAAAD7/xgAAAASAAAAAAD7/xkAAAASAAAAAAD7/xoAAAASAAAAAAD7/xsAAAASAAAAAAD7/xwAAAASAAAAAAD7/x0AAAASAAAAAAD7/x4AAAASAAAAAAD7/x8AAAASAAAAAAD7/yAAAAASAAAAAAD7/yEAAAASAAAAAAD7/yIAAAASAAAAAAD7/yMAAAASAAAAAAD7/yQAAAASAAAAAAD7/yUAAAASAAAAAAD7/yYAAAASAAAAAAA=")
+tile_set = ExtResource("1_64qpc")
+metadata/_edit_lock_ = true
+
+[node name="YSortTest" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="walkable" type="TileMapLayer" parent="YSortTest"]
+z_index = 1
+y_sort_enabled = true
+tile_set = ExtResource("1_64qpc")
+navigation_enabled = false
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="YSortTest/walkable" instance=ExtResource("2_2ip8h")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-363, 166)
+debug_mark_tile_under_player = true
+
+[node name="Camera2D" type="Camera2D" parent="YSortTest/walkable/Player"]
+zoom = Vector2(5, 5)
+process_callback = 0
+position_smoothing_enabled = true
+
+[node name="WaterLevel" type="TileMapLayer" parent="YSortTest/walkable"]
+modulate = Color(1, 1, 1, 0.8627451)
+y_sort_enabled = true
+tile_set = ExtResource("3_unwjj")
+script = ExtResource("4_u3vgj")
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="YSortTest/walkable/WaterLevel"]
+libraries = {
+&"": SubResource("AnimationLibrary_pnqx2")
+}
+
+[node name="wrapper" type="Node2D" parent="YSortTest/walkable"]
+position = Vector2(-368, 256)
+
+[node name="Platform" parent="YSortTest/walkable/wrapper" node_paths=PackedStringArray("coll_map") instance=ExtResource("5_u6tk6")]
+position = Vector2(0, -48)
+coll_map = NodePath("../platformCollTilemap")
+
+[node name="platformCollTilemap" parent="YSortTest/walkable/wrapper" instance=ExtResource("6_pqv4r")]
+position = Vector2(0, -8)
+collision_visibility_mode = 1
+
+[node name="heightMap" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.47058824)
+tile_set = SubResource("TileSet_rcbig")
+navigation_enabled = false
+script = ExtResource("8_j8l06")
+metadata/_edit_lock_ = true
+
+[node name="CollisionMapContainer" type="Node2D" parent="."]
+z_index = 5
+script = ExtResource("9_peaqv")
+debug_show_active_collmap = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionTileMap1" parent="CollisionMapContainer" instance=ExtResource("10_o53ap")]
+modulate = Color(0.40784314, 1, 1, 0.38431373)
+
+[node name="CollisionTileMap2" parent="CollisionMapContainer" instance=ExtResource("10_o53ap")]
+modulate = Color(0.9843137, 0.22745098, 1, 0.41568628)
+
+[node name="CollisionTileMap3" parent="CollisionMapContainer" instance=ExtResource("10_o53ap")]
+modulate = Color(0.93333334, 0.52156866, 0.8666667, 0.40784314)
+
+[node name="CollisionTileMap4" parent="CollisionMapContainer" instance=ExtResource("10_o53ap")]
+modulate = Color(0.2509804, 1, 1, 0.41960785)
+
+[node name="CollisionTileMap5" parent="CollisionMapContainer" instance=ExtResource("10_o53ap")]
+modulate = Color(0.7856168, 0.96944946, 7.70092e-07, 0.41960785)

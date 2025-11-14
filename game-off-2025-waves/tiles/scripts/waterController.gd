@@ -13,7 +13,7 @@ var previous_level : float = 1.0
 @export var water_animation_wait_time : float = 0.001
 
 #@onready var height_map: TileMapLayer = $"../heightMap" # this defines the height on the tiles - tiles are drawn on top of the walkable tilemaplayer
-@onready var height_map: TileMapLayer = $"../../../heightMap"
+@onready var height_map: TileMapLayer = %heightMap
 
 
 # height and water_type is defines as a cumstom data layer in height_map
