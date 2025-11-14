@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://bjypj2f846va4" path="res://scenes/floating platform/platform_coll_tilemap.tscn" id="8_s27on"]
 [ext_resource type="PackedScene" uid="uid://opjx2dvm4ils" path="res://scenes/player/player.tscn" id="9_uk0w3"]
 [ext_resource type="Script" uid="uid://ocuxag5bwe8i" path="res://tiles/collision_map_container.gd" id="10_x2ftj"]
+[ext_resource type="PackedScene" uid="uid://unfuer715j2s" path="res://scenes/camera/path_cam.tscn" id="11_5ot28"]
 [ext_resource type="PackedScene" uid="uid://b88evg1mvgox8" path="res://tiles/tilesets/collision_tile_map.tscn" id="11_x2ftj"]
-[ext_resource type="PackedScene" uid="uid://ym65vt1sl83d" path="res://scenes/camera/cam.tscn" id="12_aerfg"]
 
 [sub_resource type="Animation" id="Animation_oiirk"]
 length = 0.001
@@ -457,7 +457,7 @@ start_water_level = 4
 
 [node name="playerWrapper" type="Node2D" parent="YSortTest/walkable"]
 z_index = 1
-position = Vector2(-338, 319)
+position = Vector2(-347, 307)
 
 [node name="Player" parent="YSortTest/walkable/playerWrapper" instance=ExtResource("9_uk0w3")]
 unique_name_in_owner = true
@@ -505,9 +505,4 @@ position = Vector2(0, 15.085709)
 scale = Vector2(1, 0.9142857)
 curve = SubResource("Curve2D_aerfg")
 
-[node name="Cam" parent="Path2D" node_paths=PackedStringArray("follow_target", "follow_path") instance=ExtResource("12_aerfg")]
-top_level = true
-position = Vector2(-336, 252.33571)
-follow_mode = 4
-follow_target = NodePath("../../YSortTest/walkable/playerWrapper/Player")
-follow_path = NodePath("..")
+[node name="PathCam" parent="Path2D" instance=ExtResource("11_5ot28")]

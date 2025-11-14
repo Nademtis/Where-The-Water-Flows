@@ -10,7 +10,7 @@ script = ExtResource("2_0waxg")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ovma"]
 size = Vector2(382, 200)
 
-[node name="FixedCam" type="Node2D"]
+[node name="Cam" type="Node2D"]
 script = ExtResource("1_hl1vm")
 zoom = Vector2(5, 5)
 tween_resource = SubResource("Resource_wlun4")
