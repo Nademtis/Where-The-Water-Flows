@@ -45,13 +45,24 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		if abs(body.current_player_height - floatable_component.current_level) <= 0.5:
 			player = body
-			var parent: Node2D = get_parent()
-			body.call_deferred("reparent", parent, true) #, true to get player transform
-			#body.reparent(parent, true)
-			body.z_index = 0
-			body.is_on_platform = true
-			call_deferred("_refresh_camera_target", body) #_refresh_camera_target(body)
+			var parent := get_parent()
 
+			body.visible = false
+			call_deferred("_deferred_reparent", body, parent)
+
+func _deferred_reparent(body: Node2D, new_parent: Node2D) -> void:
+	# reparent while keeping global transform to avoid teleport/flicker
+	body.reparent(new_parent, true)
+
+	# restore z_index, flags, and reveal player
+	body.z_index = 0
+	body.is_on_platform = true
+	body.visible = true
+
+	# refresh camera follow target
+	_refresh_camera_target(body)
+	
+	
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body == player:
 		body.z_index = 1

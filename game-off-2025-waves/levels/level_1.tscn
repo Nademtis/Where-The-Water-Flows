@@ -400,7 +400,7 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 z_index = 1
 y_sort_enabled = true
-position = Vector2(-336, 320)
+position = Vector2(-399, 294)
 debug_mark_tile_under_player = true
 
 [node name="WaterLevel" type="TileMapLayer" parent="YSortTest/walkable"]
@@ -419,11 +419,10 @@ libraries = {
 position = Vector2(-368, 256)
 
 [node name="Platform" parent="YSortTest/walkable/wrapper" node_paths=PackedStringArray("coll_map") instance=ExtResource("4_3eowg")]
-position = Vector2(0, -48)
-start_water_level = 4
 coll_map = NodePath("../platformCollTilemap")
 
 [node name="platformCollTilemap" parent="YSortTest/walkable/wrapper" instance=ExtResource("8_s27on")]
+visible = false
 position = Vector2(0, -8)
 tile_map_data = PackedByteArray("AAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAAAAAABAAAAAAD//wEAAAABAAAAAAD///3/AAACAAAAAAD///7/AAACAAAAAAD///v/AAADAAAAAAAAAPz/AAADAAAAAAA=")
 collision_visibility_mode = 1
@@ -479,5 +478,4 @@ curve = SubResource("Curve2D_aerfg")
 position = Vector2(-336, 252.33571)
 follow_target = NodePath("../../YSortTest/walkable/Player")
 follow_path = NodePath("..")
-draw_limits = true
 limit_target = NodePath("../../BGwater")
