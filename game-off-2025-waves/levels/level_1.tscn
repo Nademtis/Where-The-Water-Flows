@@ -396,13 +396,6 @@ tile_map_data = PackedByteArray("AAD0/yQAAQACAAAAAAD0/yUAAQACAAAAAAD0/yYAAQACAAA
 tile_set = ExtResource("1_1o32r")
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="YSortTest/walkable" instance=ExtResource("9_uk0w3")]
-unique_name_in_owner = true
-z_index = 1
-y_sort_enabled = true
-position = Vector2(-399, 294)
-debug_mark_tile_under_player = true
-
 [node name="WaterLevel" type="TileMapLayer" parent="YSortTest/walkable"]
 modulate = Color(1, 1, 1, 0.8627451)
 y_sort_enabled = true
@@ -419,6 +412,7 @@ libraries = {
 position = Vector2(-368, 256)
 
 [node name="Platform" parent="YSortTest/walkable/wrapper" node_paths=PackedStringArray("coll_map") instance=ExtResource("4_3eowg")]
+y_sort_enabled = true
 coll_map = NodePath("../platformCollTilemap")
 
 [node name="platformCollTilemap" parent="YSortTest/walkable/wrapper" instance=ExtResource("8_s27on")]
@@ -433,6 +427,13 @@ position = Vector2(-272, 176)
 [node name="Platform" parent="YSortTest/walkable/wrapper2" instance=ExtResource("4_3eowg")]
 position = Vector2(0, -32)
 start_water_level = 5
+
+[node name="Player" parent="YSortTest/walkable" instance=ExtResource("9_uk0w3")]
+unique_name_in_owner = true
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-391, 300)
+debug_mark_tile_under_player = true
 
 [node name="heightMap" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
