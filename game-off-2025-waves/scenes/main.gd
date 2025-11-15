@@ -3,7 +3,7 @@ extends Node2D
 @onready var level_container: Node2D = $levelContainer
 @onready var animation_player: AnimationPlayer = $SceneTransition/AnimationPlayer
 
-const FIRST_LEVEL_PATH: String = "res://levels/level_1.tscn"
+const FIRST_LEVEL_PATH: String = "res://levels/level_template.tscn"
 
 var next_level_path: String
 var current_level_path: String

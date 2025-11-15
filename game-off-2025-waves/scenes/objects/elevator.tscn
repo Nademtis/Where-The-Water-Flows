@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://ofg441wirseh"]
+[gd_scene load_steps=3 format=3 uid="uid://ofg441wirseh"]
 
+[ext_resource type="Script" uid="uid://bgtxnja1srjmr" path="res://scenes/objects/elevator.gd" id="1_v2isl"]
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="1_vjvwn"]
 
-[node name="Elevator" type="Node2D"]
-metadata/_edit_lock_ = true
+[node name="Elevator" type="Node2D" node_paths=PackedStringArray("required_switches")]
+script = ExtResource("1_v2isl")
+required_switches = [null]
 
 [node name="wholemask" type="Sprite2D" parent="."]
 clip_children = 1

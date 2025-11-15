@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://do87h7uig68cw"]
+[gd_scene load_steps=20 format=4 uid="uid://do87h7uig68cw"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_64qpc"]
 [ext_resource type="PackedScene" uid="uid://opjx2dvm4ils" path="res://scenes/player/player.tscn" id="2_2ip8h"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://ocuxag5bwe8i" path="res://tiles/collision_map_container.gd" id="9_peaqv"]
 [ext_resource type="PackedScene" uid="uid://b88evg1mvgox8" path="res://tiles/tilesets/collision_tile_map.tscn" id="10_o53ap"]
 [ext_resource type="PackedScene" uid="uid://ym65vt1sl83d" path="res://scenes/camera/cam.tscn" id="11_2ip8h"]
+[ext_resource type="PackedScene" uid="uid://ka8jajjqqorm" path="res://scenes/objects/pressure_plate.tscn" id="12_unwjj"]
+[ext_resource type="PackedScene" uid="uid://ofg441wirseh" path="res://scenes/objects/elevator.tscn" id="13_u3vgj"]
 
 [sub_resource type="Animation" id="Animation_oiirk"]
 length = 0.001
@@ -424,7 +426,7 @@ collision_visibility_mode = 1
 
 [node name="PlayerWrapper" type="Node2D" parent="YSort/walkable"]
 z_index = 1
-position = Vector2(-409, 153)
+position = Vector2(-418, 189)
 
 [node name="Player" parent="YSort/walkable/PlayerWrapper" instance=ExtResource("2_2ip8h")]
 y_sort_enabled = true
@@ -471,7 +473,16 @@ curve = SubResource("Curve2D_u3vgj")
 
 [node name="Cam" parent="CameraContainer/Path2D" node_paths=PackedStringArray("follow_target", "follow_path") instance=ExtResource("11_2ip8h")]
 top_level = true
-position = Vector2(-295, 169)
+position = Vector2(-295.32086, 190.81761)
 follow_mode = 4
 follow_target = NodePath("../../../YSort/walkable/PlayerWrapper/Player")
 follow_path = NodePath("..")
+
+[node name="objectsContainer" type="Node2D" parent="."]
+
+[node name="PressurePlate" parent="objectsContainer" instance=ExtResource("12_unwjj")]
+position = Vector2(-447, 149)
+
+[node name="Elevator" parent="objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("13_u3vgj")]
+position = Vector2(-382, 105)
+required_switches = [NodePath("../PressurePlate")]
