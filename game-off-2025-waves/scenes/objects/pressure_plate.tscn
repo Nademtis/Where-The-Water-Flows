@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="2_elfid"]
 
 [node name="PressurePlate" type="Node2D"]
+z_index = 1
+z_as_relative = false
 script = ExtResource("1_mayf5")
 
 [node name="notActiveSprite" type="Sprite2D" parent="."]

@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://bgtxnja1srjmr" path="res://scenes/objects/elevator.gd" id="1_v2isl"]
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="1_vjvwn"]
 
-[node name="Elevator" type="Node2D" node_paths=PackedStringArray("required_switches")]
+[node name="Elevator1" type="Node2D" node_paths=PackedStringArray("required_switches")]
+z_index = 1
+z_as_relative = false
 script = ExtResource("1_v2isl")
 required_switches = [null]
 

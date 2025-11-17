@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvxakbillx1n8"]
+
+[ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="1_ica2m"]
+[ext_resource type="Script" uid="uid://b2l3bjhc1kyai" path="res://scenes/objects/bridge.gd" id="1_wo0ln"]
+
+[node name="BridgeSE" type="Node2D" node_paths=PackedStringArray("required_switches")]
+z_index = 1
+z_as_relative = false
+script = ExtResource("1_wo0ln")
+required_switches = [null]
+
+[node name="mask" type="Sprite2D" parent="."]
+clip_children = 1
+texture = ExtResource("1_ica2m")
+region_enabled = true
+region_rect = Rect2(80, 256, 64, 34)
+
+[node name="bridgeSprite" type="Sprite2D" parent="mask"]
+position = Vector2(-26, -13)
+texture = ExtResource("1_ica2m")
+region_enabled = true
+region_rect = Rect2(144, 256, 64, 34)
