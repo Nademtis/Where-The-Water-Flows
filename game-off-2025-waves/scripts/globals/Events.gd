@@ -12,3 +12,5 @@ signal confirmed_new_water_level_direction(is_up : bool)
 signal player_height_changed(new_height : float)
 
 signal new_level_done_loading()
+
+signal player_use()

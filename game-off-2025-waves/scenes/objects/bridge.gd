@@ -2,7 +2,6 @@ class_name Bridge extends BaseInteractable
 
 @onready var bridge_sprite: Sprite2D = $mask/bridgeSprite
 
-#x -26.0, y -13.0
 var retract_post : Vector2 = Vector2(-26.0, -13.0)
 var active_pos : Vector2 = Vector2(0,0)
 

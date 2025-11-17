@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://do87h7uig68cw"]
+[gd_scene load_steps=23 format=4 uid="uid://do87h7uig68cw"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_64qpc"]
 [ext_resource type="PackedScene" uid="uid://opjx2dvm4ils" path="res://scenes/player/player.tscn" id="2_2ip8h"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ofg441wirseh" path="res://scenes/objects/elevator1.tscn" id="13_u3vgj"]
 [ext_resource type="PackedScene" uid="uid://bvxakbillx1n8" path="res://scenes/objects/bridge_se.tscn" id="14_u6tk6"]
 [ext_resource type="PackedScene" uid="uid://c7v878ho36jpc" path="res://scenes/objects/obelisk.tscn" id="15_3dbtp"]
+[ext_resource type="Script" uid="uid://btte8j4ymesff" path="res://scripts/base_switch.gd" id="16_3dbtp"]
 
 [sub_resource type="Animation" id="Animation_oiirk"]
 length = 0.001
@@ -419,7 +420,7 @@ libraries = {
 position = Vector2(-368, 256)
 
 [node name="Platform" parent="YSort/walkable/wrapper" node_paths=PackedStringArray("coll_map") instance=ExtResource("5_u6tk6")]
-position = Vector2(0, -48)
+position = Vector2(-81, -9)
 coll_map = NodePath("../platformCollTilemap")
 
 [node name="platformCollTilemap" parent="YSort/walkable/wrapper" instance=ExtResource("6_pqv4r")]
@@ -467,7 +468,7 @@ modulate = Color(0.7856168, 0.96944946, 7.70092e-07, 0.41960785)
 [node name="CameraContainer" type="Node" parent="."]
 
 [node name="Cam" parent="CameraContainer" instance=ExtResource("11_2ip8h")]
-position = Vector2(-485, 310)
+position = Vector2(2, 335)
 
 [node name="Path2D" type="Path2D" parent="CameraContainer"]
 position = Vector2(-103, 25)
@@ -484,21 +485,31 @@ follow_path = NodePath("..")
 
 [node name="Elevator" parent="objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("13_u3vgj")]
 position = Vector2(-391, 101)
-required_switches = [NodePath("PressurePlateElevator")]
-
-[node name="PressurePlateElevator" parent="objectsContainer/Elevator" instance=ExtResource("12_unwjj")]
-position = Vector2(-58, 35)
+required_switches = [NodePath("../obelisk/BaseSwitch1"), NodePath("../obelisk2/BaseSwitch2")]
 
 [node name="BridgeSE" parent="objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("14_u6tk6")]
 position = Vector2(-232, 237)
 required_switches = [NodePath("PressurePlate2")]
 
 [node name="PressurePlate2" parent="objectsContainer/BridgeSE" instance=ExtResource("12_unwjj")]
-position = Vector2(-175, -65)
+position = Vector2(-121, -7)
 
-[node name="obelisk" parent="objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("15_3dbtp")]
-position = Vector2(-310, 148)
+[node name="obelisk" parent="objectsContainer" node_paths=PackedStringArray("switch_to_activate", "required_switches") instance=ExtResource("15_3dbtp")]
+position = Vector2(-345, 141)
+switch_to_activate = NodePath("BaseSwitch1")
 required_switches = [NodePath("PressurePlate")]
 
 [node name="PressurePlate" parent="objectsContainer/obelisk" instance=ExtResource("12_unwjj")]
-position = Vector2(-47, 5)
+position = Vector2(-3, 33)
+
+[node name="BaseSwitch1" type="Node2D" parent="objectsContainer/obelisk"]
+script = ExtResource("16_3dbtp")
+metadata/_custom_type_script = "uid://btte8j4ymesff"
+
+[node name="obelisk2" parent="objectsContainer" node_paths=PackedStringArray("switch_to_activate") instance=ExtResource("15_3dbtp")]
+position = Vector2(-472, 177)
+switch_to_activate = NodePath("BaseSwitch2")
+
+[node name="BaseSwitch2" type="Node2D" parent="objectsContainer/obelisk2"]
+script = ExtResource("16_3dbtp")
+metadata/_custom_type_script = "uid://btte8j4ymesff"

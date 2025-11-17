@@ -26,6 +26,10 @@ var move_dir: Vector2
 func _ready() -> void:
 	get_parent().global_position = global_position #updates wrapper
 
+func _input(event : InputEvent) -> void:
+	if event.is_action_pressed("use"):
+		Events.player_use.emit()
+
 func _process(_delta: float) -> void:
 	#player_position_node.global_position = global_position
 	
@@ -33,7 +37,8 @@ func _process(_delta: float) -> void:
 		move_water(true)
 	elif Input.is_action_just_pressed("water_down"):
 		move_water(false)
-		
+	
+	
 	#draws the tile under player if export true
 	if debug_mark_tile_under_player:
 		queue_redraw()
