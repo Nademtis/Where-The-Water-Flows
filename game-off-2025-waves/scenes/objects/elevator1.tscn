@@ -54,6 +54,7 @@ region_rect = Rect2(208, 0, 48, 75)
 metadata/_edit_lock_ = true
 
 [node name="FrameTurnedOn" type="Sprite2D" parent="wholemask/DoorContainer"]
+visible = false
 texture_filter = 1
 texture = ExtResource("1_vjvwn")
 region_enabled = true
