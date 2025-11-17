@@ -13,8 +13,7 @@ required_switches = [null]
 clip_children = 1
 texture = ExtResource("1_vjvwn")
 region_enabled = true
-region_rect = Rect2(256, 0, 64, 80)
-region_filter_clip_enabled = true
+region_rect = Rect2(272, 0, 48, 75)
 
 [node name="DoorContainer" type="Node2D" parent="wholemask"]
 
@@ -25,10 +24,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 7.0
-offset_top = -31.0
-offset_right = 18.0
-offset_bottom = -22.0
+offset_left = -1.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.3254902, 0.40784314, 0.4509804, 1)
@@ -36,32 +35,27 @@ metadata/_edit_use_anchors_ = true
 
 [node name="innerBG" type="Sprite2D" parent="wholemask/DoorContainer"]
 texture_filter = 1
-position = Vector2(0, -5)
+position = Vector2(0, 3)
 texture = ExtResource("1_vjvwn")
 region_enabled = true
-region_rect = Rect2(192, 80, 64, 80)
-metadata/_edit_lock_ = true
+region_rect = Rect2(208, 80, 48, 80)
 
-[node name="Door2" type="Sprite2D" parent="wholemask/DoorContainer"]
-texture_filter = 1
-position = Vector2(0, -5)
-texture = ExtResource("1_vjvwn")
-region_enabled = true
-region_rect = Rect2(256, 80, 64, 80)
-
-[node name="Frame" type="Sprite2D" parent="wholemask/DoorContainer"]
+[node name="moveableDoor" type="Sprite2D" parent="wholemask/DoorContainer"]
 texture_filter = 1
 texture = ExtResource("1_vjvwn")
 region_enabled = true
-region_rect = Rect2(192, 0, 64, 80)
-region_filter_clip_enabled = true
+region_rect = Rect2(272, 80, 48, 80)
+
+[node name="DoorFrame" type="Sprite2D" parent="wholemask/DoorContainer"]
+texture_filter = 1
+texture = ExtResource("1_vjvwn")
+region_enabled = true
+region_rect = Rect2(208, 0, 48, 75)
 metadata/_edit_lock_ = true
 
 [node name="FrameTurnedOn" type="Sprite2D" parent="wholemask/DoorContainer"]
-visible = false
 texture_filter = 1
 texture = ExtResource("1_vjvwn")
 region_enabled = true
-region_rect = Rect2(320, 0, 64, 80)
-region_filter_clip_enabled = true
+region_rect = Rect2(336, 0, 48, 75)
 metadata/_edit_lock_ = true
