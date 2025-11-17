@@ -6,13 +6,16 @@ class_name Elevator extends BaseInteractable
 var door_closed_pos := Vector2 (0,0)
 var door_open_pos := Vector2 (0,50)
 
-const MOVE_TIME : float = 0.5
+@onready var door_container: Node2D = $wholemask/DoorContainer
+var elevator_hidden_pos := Vector2(0 , 70)
+var elevator_active_pos := Vector2(0 , 0)
+
+
+const MOVE_TIME : float = 0.8
 
 func _ready() -> void:
 	super._ready()
-	_apply_state()
-	#update door frame to match amount of required switches
-	
+	_apply_state() # correct colors and state
 
 func _apply_state() -> void:
 	if active:

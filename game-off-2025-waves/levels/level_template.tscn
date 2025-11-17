@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://do87h7uig68cw"]
+[gd_scene load_steps=26 format=4 uid="uid://do87h7uig68cw"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_64qpc"]
 [ext_resource type="PackedScene" uid="uid://opjx2dvm4ils" path="res://scenes/player/player.tscn" id="2_2ip8h"]
@@ -60,18 +60,12 @@ _data = {
 [sub_resource type="Resource" id="Resource_peaqv"]
 script = ExtResource("5_j8l06")
 height = 1
-directions = Array[int]([0, 1])
+directions = Array[int]([3])
 metadata/_custom_type_script = "uid://dslha34kwyajd"
 
 [sub_resource type="Resource" id="Resource_o53ap"]
 script = ExtResource("5_j8l06")
 height = 2
-directions = Array[int]([1, 1])
-metadata/_custom_type_script = "uid://dslha34kwyajd"
-
-[sub_resource type="Resource" id="Resource_phlur"]
-script = ExtResource("5_j8l06")
-height = 3
 directions = Array[int]([1])
 metadata/_custom_type_script = "uid://dslha34kwyajd"
 
@@ -399,7 +393,7 @@ sources/0 = SubResource("TileSetAtlasSource_phlur")
 [sub_resource type="Curve2D" id="Curve2D_u3vgj"]
 bake_interval = 0.01
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -192, 212, 0, 0, 0, 0, -192, 144)
+"points": PackedVector2Array(0, 0, 0, 0, -193, 191, 0, 0, 0, 0, -193, 143)
 }
 point_count = 2
 
@@ -418,7 +412,7 @@ y_sort_enabled = true
 [node name="walkable" type="TileMapLayer" parent="YSort"]
 z_index = 1
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD2/xIAAAAAAAAAAAD2/xEAAAAAAAAAAAD2/xAAAAAAAAAAAAD2/w8AAAAAAAAAAAD2/w4AAAAAAAAAAAD2/w0AAAAAAAAAAAD2/wwAAAAAAAAAAAD2/wsAAAAAAAAAAAD1/w8AAAAAAAAAAAD1/xEAAAAAAAAAAAD1/xMAAAAAAAAAAAD3/xIAAAAAAAAAAAD3/xAAAAAAAAAAAAD3/w4AAAAAAAAAAAD3/wwAAAAAAAAAAAD1/w0AAAAAAAAAAAD1/wsAAAAAAAAAAAD2/woAAAAAAAAAAAD2/xMAAAAAAAAAAAD2/xQAAAAAAAAAAAD2/xUAAAAAAAAAAAD2/xYAAAAAAAAAAAD2/xcAAAAAAAAAAAD2/xgAAAAAAAAAAAD2/xkAAAAAAAAAAAD2/xoAAAAAAAAAAAD2/xsAAAAAAAAAAAD3/xwAAAAAAAAAAAD3/xsAAAAAAAAAAAD3/xoAAAAAAAAAAAD3/xkAAAAAAAAAAAD3/xgAAAAAAAAAAAD3/xYAAAAAAAAAAAD3/xQAAAAAAAAAAAD4/xoAAAAAAAAAAAD4/xgAAAAAAAAAAAD3/xcAAAAAAAAAAAD4/xYAAAAAAAAAAAD3/xUAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD2/xIAAAAAAAAAAAD1/xEAAAAAAAEAAAD1/xMAAAADAAAAAAD2/xMAAAAAAAAAAAD2/xQAAAAHAAAAAAD2/xoAAAAHAAIAAAD2/xsAAAAAAAAAAAD3/xwAAAAAAAAAAAD3/xsAAAAAAAAAAAD3/xoAAAAJAAIAAAD3/xkAAAAJAAIAAAD3/xQAAAAJAAAAAAD4/xoAAAAAAAAAAAD4/xgAAAAAAAAAAAD3/xcAAAAJAAEAAAD4/xYAAAAAAAAAAAD3/xUAAAAJAAAAAAD1/xkAAAAHAAIAAAD1/xgAAAAHAAIAAAD0/xkAAAAEAAAAAAD0/xoAAAAAAAAAAAD0/xsAAAAAAAAAAAD0/xwAAAAAAAAAAAD1/xoAAAAAAAAAAAD0/x0AAAAAAAAAAAD1/xwAAAAAAAAAAAD1/xsAAAAAAAAAAAD1/xUAAAAAAAAAAAD1/xQAAAAAAAAAAAD0/xUAAAAAAAAAAAD1/xYAAAAAAAAAAAD0/xcAAAADAAEAAAD0/xgAAAAEAAAAAAD1/xIAAAACAAEAAAD0/xMAAAAAAAAAAAD0/xQAAAAAAAAAAADz/xUAAAAAAAEAAAD0/xYAAAADAAEAAAD0/w0AAAAAAAAAAAD0/w4AAAAAAAAAAADz/w8AAAAAAAAAAAD0/wwAAAAAAAAAAADz/w0AAAAAAAAAAADz/w4AAAAAAAAAAADz/xAAAAAAAAAAAADy/w8AAAAAAAAAAADy/xEAAAAAAAAAAADy/xAAAAAAAAAAAADy/xIAAAACAAAAAADx/xcAAAAAAAAAAADy/xgAAAADAAAAAADy/xcAAAACAAAAAADz/xYAAAAFAAEAAADx/xkAAAAAAAAAAADy/xoAAAAAAAAAAADy/xkAAAAEAAEAAADz/xgAAAAEAAAAAADz/xcAAAACAAAAAADy/xsAAAAAAAAAAADz/xwAAAAAAAAAAADz/xsAAAAAAAAAAADz/xkAAAAAAAAAAADz/xoAAAAAAAAAAAD2/xEAAAAAAAAAAAD3/xIAAAAAAAAAAAD3/xMAAAAAAAAAAAD4/xQAAAAAAAAAAAD3/w8AAAAAAAQAAAD4/xAAAAABAAUAAAD4/w4AAAAAAAAAAAD4/w8AAAAAAAAAAAD5/w4AAAACAAAAAAD4/w0AAAAAAAAAAAD5/w0AAAAEAAAAAAD5/wwAAAAAAAAAAAD2/xcAAAAIAAEAAAD2/xgAAAAIAAEAAAD3/xgAAAAIAAEAAAD3/xYAAAAIAAEAAAD2/xUAAAAIAAEAAAD2/xYAAAAHAAAAAAD1/xcAAAAHAAAAAAD2/xkAAAAIAAEAAAD6/w4AAAAAAAAAAAD5/w8AAAAAAAAAAAD6/xAAAAAAAAAAAAD6/w8AAAAAAAAAAAD0/w8AAAAFAAUAAAD0/xAAAAAGAAQAAADz/xEAAAAEAAQAAADz/xIAAAAFAAUAAAD4/xUAAAABAAAAAAA=")
 tile_set = ExtResource("1_64qpc")
 navigation_enabled = false
 metadata/_edit_lock_ = true
@@ -436,29 +430,33 @@ libraries = {
 }
 
 [node name="wrapper" type="Node2D" parent="YSort/walkable"]
-position = Vector2(-368, 256)
+position = Vector2(-209, 163)
 
 [node name="Platform" parent="YSort/walkable/wrapper" node_paths=PackedStringArray("coll_map") instance=ExtResource("5_u6tk6")]
-position = Vector2(-81, -9)
+position = Vector2(1, -19)
 coll_map = NodePath("../platformCollTilemap")
-where_to_remove_col = Array[ExtResource("5_j8l06")]([SubResource("Resource_peaqv"), SubResource("Resource_o53ap"), SubResource("Resource_phlur")])
+where_to_remove_col = Array[ExtResource("5_j8l06")]([SubResource("Resource_peaqv"), SubResource("Resource_o53ap")])
 
 [node name="platformCollTilemap" parent="YSort/walkable/wrapper" instance=ExtResource("6_pqv4r")]
-position = Vector2(0, -8)
+visible = false
+z_index = 5
+position = Vector2(1, -11)
+tile_map_data = PackedByteArray("AAD+/wEAAAAAAAAAAAAAAPz/AAABAAAAAAAAAP3/AAABAAAAAAA=")
 collision_visibility_mode = 1
 
 [node name="PlayerWrapper" type="Node2D" parent="YSort/walkable"]
 z_index = 1
-position = Vector2(-449, 185)
+position = Vector2(-379, 195)
 
 [node name="Player" parent="YSort/walkable/PlayerWrapper" instance=ExtResource("2_2ip8h")]
 y_sort_enabled = true
-debug_mark_tile_under_player = true
 metadata/_edit_lock_ = true
 
 [node name="heightMap" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
+visible = false
 modulate = Color(1, 1, 1, 0.47058824)
+tile_map_data = PackedByteArray("AADy/xcAAAAAAAAAAADy/xgAAAAAAAAAAADy/xkAAAAAAAAAAADz/xoAAAAAAAAAAADz/xsAAAAAAAAAAAD0/xoAAAAAAAAAAADz/xkAAAAAAAAAAADz/xgAAAAAAAAAAADz/xcAAAAAAAAAAADz/xYAAAAAAAAAAADz/xUAAAAAAAAAAAD0/xQAAAAAAAAAAAD0/xMAAAAAAAAAAAD1/xIAAAAAAAAAAAD1/xEAAAAAAAAAAAD2/xIAAAAAAAAAAAD2/xEAAAAAAAAAAAD3/xIAAAAAAAAAAAD3/xMAAAAAAAAAAAD4/xQAAAAAAAAAAAD3/xUAAAAAAAAAAAD3/xYAAAAAAAAAAAD2/xcAAAAAAAAAAAD2/xYAAAAAAAAAAAD2/xUAAAAAAAAAAAD3/xQAAAAAAAAAAAD2/xMAAAAAAAAAAAD2/xQAAAAAAAAAAAD1/xUAAAAAAAAAAAD1/xYAAAAAAAAAAAD1/xQAAAAAAAAAAAD1/xMAAAAAAAAAAAD0/xUAAAAAAAAAAAD0/xYAAAAAAAAAAAD0/xcAAAAAAAAAAAD0/xgAAAAAAAAAAAD1/xgAAAAAAAAAAAD0/xkAAAAAAAAAAAD0/xsAAAAAAAAAAAD1/xoAAAAAAAAAAAD1/xkAAAAAAAAAAAD2/xgAAAAAAAAAAAD1/xcAAAAAAAAAAAD2/xkAAAAAAAAAAAD3/xgAAAAAAAAAAAD3/xcAAAAAAAAAAAD3/xkAAAAAAAAAAAD3/xoAAAAAAAAAAAD4/xoAAAAAAAEAAAD3/xsAAAAAAAEAAAD1/xsAAAAAAAEAAAD1/xwAAAAAAAEAAADx/xkAAAAAAAIAAADy/xoAAAAAAAIAAADy/xsAAAAAAAIAAADz/xwAAAAAAAMAAAD0/x0AAAAAAAMAAAD3/xwAAAAAAAMAAAD0/xwAAAAAAAIAAAD2/xsAAAAAAAIAAAD2/xoAAAAAAAAAAAD4/xgAAAAAAAUAAAD4/xUAAAAAAAEAAAD4/xYAAAAAAAUAAADx/xcAAAAAAAQAAADy/xIAAAABAAMAAAD6/xAAAAABAAMAAAD6/w8AAAABAAEAAAD6/w4AAAABAAAAAAD5/w0AAAABAAAAAAD5/wwAAAABAAAAAAD4/w0AAAABAAAAAAD5/w4AAAABAAAAAAD0/w0AAAABAAEAAAD0/w4AAAABAAAAAADz/w8AAAABAAAAAADz/xAAAAABAAAAAADy/xEAAAABAAAAAAD0/wwAAAABAAAAAADz/w0AAAABAAAAAADz/w4AAAABAAAAAADy/w8AAAABAAAAAADy/xAAAAABAAQAAAD5/w8AAAABAAIAAAD4/w8AAAABAAEAAAD4/w4AAAABAAAAAAD4/xAAAAABAAMAAAD3/w8AAAABAAIAAADz/xIAAAABAAMAAADz/xEAAAABAAEAAAD0/xAAAAABAAEAAAD0/w8AAAABAAEAAAA=")
 tile_set = SubResource("TileSet_rcbig")
 navigation_enabled = false
 script = ExtResource("8_j8l06")
@@ -488,15 +486,16 @@ modulate = Color(0.7856168, 0.96944946, 7.70092e-07, 0.41960785)
 [node name="CameraContainer" type="Node" parent="."]
 
 [node name="Cam" parent="CameraContainer" instance=ExtResource("11_2ip8h")]
-position = Vector2(2, 335)
+position = Vector2(24, 328)
 
 [node name="Path2D" type="Path2D" parent="CameraContainer"]
-position = Vector2(-103, 25)
+position = Vector2(-104, -24)
 curve = SubResource("Curve2D_u3vgj")
 
 [node name="Cam" parent="CameraContainer/Path2D" node_paths=PackedStringArray("follow_target", "follow_path") instance=ExtResource("11_2ip8h")]
 top_level = true
-position = Vector2(-295, 185.02895)
+position = Vector2(-297, 167)
+priority = 1
 follow_mode = 4
 follow_target = NodePath("../../../YSort/walkable/PlayerWrapper/Player")
 follow_path = NodePath("..")
@@ -512,10 +511,10 @@ position = Vector2(-232, 237)
 required_switches = [NodePath("PressurePlate2")]
 
 [node name="PressurePlate2" parent="objectsContainer/BridgeSE" instance=ExtResource("12_unwjj")]
-position = Vector2(-121, -7)
+position = Vector2(-99, -17)
 
 [node name="obelisk" parent="objectsContainer" node_paths=PackedStringArray("switch_to_activate", "required_switches") instance=ExtResource("15_3dbtp")]
-position = Vector2(-345, 141)
+position = Vector2(-309, 143)
 switch_to_activate = NodePath("BaseSwitch1")
 required_switches = [NodePath("PressurePlate")]
 
@@ -527,7 +526,7 @@ script = ExtResource("16_3dbtp")
 metadata/_custom_type_script = "uid://btte8j4ymesff"
 
 [node name="obelisk2" parent="objectsContainer" node_paths=PackedStringArray("switch_to_activate") instance=ExtResource("15_3dbtp")]
-position = Vector2(-472, 177)
+position = Vector2(-425, 194)
 switch_to_activate = NodePath("BaseSwitch2")
 
 [node name="BaseSwitch2" type="Node2D" parent="objectsContainer/obelisk2"]

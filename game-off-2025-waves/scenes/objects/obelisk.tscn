@@ -37,6 +37,7 @@ metadata/_edit_lock_ = true
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_o0g6v")
 
