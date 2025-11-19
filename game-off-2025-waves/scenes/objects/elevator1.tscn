@@ -5,7 +5,7 @@
 
 [node name="Elevator1" type="Node2D" node_paths=PackedStringArray("required_switches")]
 z_index = 1
-z_as_relative = false
+y_sort_enabled = true
 script = ExtResource("1_v2isl")
 required_switches = [null]
 

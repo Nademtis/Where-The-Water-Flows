@@ -96,8 +96,8 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-297, 167)
 zoom = Vector2(5, 5)
-process_callback = 0
 editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]

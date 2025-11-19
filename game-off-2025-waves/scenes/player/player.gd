@@ -11,7 +11,10 @@ const MOVESPEED : float = 65
 @onready var walkable: TileMapLayer = %walkable
 
 @export var debug_mark_tile_under_player : bool = false
+@export var debug_wrapper : bool = false
 var debug_tile_world_pos: Vector2 = Vector2.ZERO
+var debug_points: Array[Vector2] = []
+
 
 var current_player_height : float = 1.0
 var old_player_height : float = 1.0
@@ -28,20 +31,22 @@ const SURFACE_TYPE_TILE_NAME : String = "surface_type"
 var footstep_cooldown := 0.0 # don't change - 
 var footstep_interval := 0.38 #the interval for howw often steps are played
 
+#playerWrapper
+@onready var player_wrapper: Node2D = $".."
+
 
 #var player_pos_node_to_update : Vector2 #used for follow camera's since this object is reparented
 #@onready var player_position_node: Node2D
 
 func _ready() -> void:
-	get_parent().global_position = global_position #updates wrapper
+	player_wrapper.global_position = global_position #updates wrapper
+	
 
 func _input(event : InputEvent) -> void:
 	if event.is_action_pressed("use"):
 		Events.player_use.emit()
 
 func _process(_delta: float) -> void:
-	#player_position_node.global_position = global_position
-	
 	if Input.is_action_just_pressed("water_up"):
 		move_water(true)
 	elif Input.is_action_just_pressed("water_down"):
@@ -51,8 +56,8 @@ func _process(_delta: float) -> void:
 	#draws the tile under player if export true
 	if debug_mark_tile_under_player:
 		queue_redraw()
-	
-	#print("height: ", current_player_height)
+	if debug_wrapper:
+		debug_point(player_wrapper.global_position)
 
 func _physics_process(delta: float) -> void:
 	_movement(delta)
@@ -163,7 +168,17 @@ func _get_direction_name(v: Vector2) -> String:
 	else:
 		return "idle"
 
+func debug_point(pos_global: Vector2) -> void:
+	debug_points.append(to_local(pos_global))
+	queue_redraw()
+
 func _draw() -> void:
+	
+	for p in debug_points:
+		draw_circle(p, 3, Color.RED)
+	debug_points.clear()
+	
+	
 	#debug draw tile under player
 	if not debug_mark_tile_under_player:
 		return

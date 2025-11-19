@@ -1,10 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ka8jajjqqorm"]
+[gd_scene load_steps=4 format=3 uid="uid://ka8jajjqqorm"]
 
 [ext_resource type="Script" uid="uid://c6icsbsa6nid2" path="res://scenes/objects/pressure_plate.gd" id="1_mayf5"]
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="2_elfid"]
+[ext_resource type="Script" uid="uid://c1sgyfqknkj8i" path="res://scripts/ysortHelper.gd" id="3_vaf0c"]
 
 [node name="PressurePlate" type="Node2D"]
-z_index = 1
+z_index = 2
 z_as_relative = false
 script = ExtResource("1_mayf5")
 
@@ -23,6 +24,15 @@ region_rect = Rect2(144, 208, 48, 27)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(0, -12, -19, -2, 0, 7, 19, -2)
+
+[node name="YsortHelper" type="Area2D" parent="."]
+position = Vector2(0, 14)
+script = ExtResource("3_vaf0c")
+metadata/_custom_type_script = "uid://c1sgyfqknkj8i"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YsortHelper"]
+position = Vector2(0, -14)
+polygon = PackedVector2Array(0, -15, -18, -7, -26, -1, -24, 2, 0, 16, 24, 3, 27, -2)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

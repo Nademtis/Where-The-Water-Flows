@@ -1,22 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7v878ho36jpc"]
+[gd_scene load_steps=8 format=3 uid="uid://c7v878ho36jpc"]
 
 [ext_resource type="Script" uid="uid://tnsiq3ilkpnu" path="res://scenes/objects/obelisk.gd" id="1_o0g6v"]
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="2_rtbaw"]
+[ext_resource type="Script" uid="uid://c1sgyfqknkj8i" path="res://scripts/ysortHelper.gd" id="3_rtbaw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o0g6v"]
 radius = 37.054016
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11tqd"]
+size = Vector2(20, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rtbaw"]
+size = Vector2(20, 28)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rtbaw"]
+radius = 7.0
+
 [node name="obelisk" type="Node2D"]
-z_index = 1
-z_as_relative = false
+y_sort_enabled = true
 script = ExtResource("1_o0g6v")
 
 [node name="mask" type="Sprite2D" parent="."]
 clip_children = 1
+position = Vector2(0, -6)
 texture = ExtResource("2_rtbaw")
 region_enabled = true
 region_rect = Rect2(8, 177, 16, 28)
-metadata/_edit_lock_ = true
 
 [node name="obelisk" type="Node2D" parent="mask"]
 
@@ -24,22 +33,48 @@ metadata/_edit_lock_ = true
 texture = ExtResource("2_rtbaw")
 region_enabled = true
 region_rect = Rect2(8, 177, 16, 28)
-metadata/_edit_lock_ = true
 
 [node name="activeSprite" type="Sprite2D" parent="mask/obelisk"]
 visible = false
 texture = ExtResource("2_rtbaw")
 region_enabled = true
 region_rect = Rect2(40, 177, 16, 28)
-metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -6)
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 visible = false
 position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_o0g6v")
+
+[node name="YsortHelper" type="Area2D" parent="."]
+visible = false
+script = ExtResource("3_rtbaw")
+metadata/_custom_type_script = "uid://c1sgyfqknkj8i"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YsortHelper"]
+position = Vector2(0, -20.5)
+shape = SubResource("RectangleShape2D_11tqd")
+
+[node name="YsortHelper2" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, 14)
+script = ExtResource("3_rtbaw")
+metadata/_custom_type_script = "uid://c1sgyfqknkj8i"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YsortHelper2"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_rtbaw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_rtbaw")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

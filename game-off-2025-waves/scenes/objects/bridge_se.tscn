@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvxakbillx1n8"]
+[gd_scene load_steps=4 format=3 uid="uid://bvxakbillx1n8"]
 
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="1_ica2m"]
 [ext_resource type="Script" uid="uid://b2l3bjhc1kyai" path="res://scenes/objects/bridge.gd" id="1_wo0ln"]
+[ext_resource type="Script" uid="uid://c1sgyfqknkj8i" path="res://scripts/ysortHelper.gd" id="3_xns4n"]
 
 [node name="BridgeSE" type="Node2D" node_paths=PackedStringArray("required_switches")]
 z_index = 1
@@ -16,7 +17,15 @@ region_enabled = true
 region_rect = Rect2(80, 256, 64, 34)
 
 [node name="bridgeSprite" type="Sprite2D" parent="mask"]
-position = Vector2(-26, -13)
 texture = ExtResource("1_ica2m")
 region_enabled = true
 region_rect = Rect2(144, 256, 64, 34)
+
+[node name="YsortHelper" type="Area2D" parent="."]
+position = Vector2(0, 16)
+script = ExtResource("3_xns4n")
+metadata/_custom_type_script = "uid://c1sgyfqknkj8i"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YsortHelper"]
+position = Vector2(0, -32)
+polygon = PackedVector2Array(0, 0, -31, 15, 0, 32, 32, 15)

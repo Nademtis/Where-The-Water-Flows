@@ -63,7 +63,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = true
 		print("player is in range")
-	
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
