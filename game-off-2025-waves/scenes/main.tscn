@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://qnvk28xsjc0y"]
+[gd_scene load_steps=9 format=3 uid="uid://qnvk28xsjc0y"]
 
 [ext_resource type="Script" uid="uid://dhrh3kakqatdw" path="res://scenes/main.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://c2wp7ixg7r8vm" path="res://scenes/ui/fps_label.gd" id="1_o5qli"]
+[ext_resource type="AudioStream" uid="uid://dklikrngv00ef" path="res://audio/ambience/GameOff_Ambience_Loop.ogg" id="2_jyhfs"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_sugp2"]
 
 [sub_resource type="Animation" id="Animation_sugp2"]
@@ -63,6 +64,11 @@ _data = {
 script = ExtResource("1_0wfyh")
 
 [node name="AudioManager" type="Node" parent="."]
+
+[node name="Audio_Ambience" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("2_jyhfs")
+autoplay = true
+bus = &"Ambience"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -1,7 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://opjx2dvm4ils"]
+[gd_scene load_steps=20 format=3 uid="uid://opjx2dvm4ils"]
 
 [ext_resource type="Texture2D" uid="uid://u21wsnlgv2ao" path="res://scenes/player/OLD_idle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://ekbuessnk5yy" path="res://scenes/player/player.gd" id="1_dovo2"]
+[ext_resource type="AudioStream" uid="uid://d1hfbljq1rkak" path="res://audio/sfx/player/footsteps/GameOff_Character_Footstep_Stone_1.ogg" id="3_h17s1"]
+[ext_resource type="AudioStream" uid="uid://bbul5dbwjkut2" path="res://audio/sfx/player/footsteps/GameOff_Character_Footstep_Stone_2.ogg" id="4_je7p5"]
+[ext_resource type="AudioStream" uid="uid://d1rn8mky4ke2a" path="res://audio/sfx/player/footsteps/GameOff_Character_Footstep_Stone_3.ogg" id="5_fm80t"]
+[ext_resource type="AudioStream" uid="uid://c71eqrcbpsd3x" path="res://audio/sfx/player/footsteps/GameOff_Character_Footstep_Stone_4.ogg" id="6_gx1jg"]
+[ext_resource type="AudioStream" uid="uid://c7ujoow1fqfwn" path="res://audio/sfx/player/footsteps/GameOff_Character_Footstep_Stone_5.ogg" id="7_ugbui"]
+[ext_resource type="AudioStream" uid="uid://bthb0c8yv3een" path="res://audio/sfx/player/footsteps/GameOff_Character_Footstep_Stone_6.ogg" id="8_fcs02"]
+[ext_resource type="AudioStream" uid="uid://cncsnxvpuk2tq" path="res://audio/sfx/player/footsteps/GameOff_Character_Footstep_Stone_7.ogg" id="9_myrg7"]
+[ext_resource type="AudioStream" uid="uid://c5gh1b8ljq4qe" path="res://audio/sfx/player/footsteps/GameOff_Character_Footstep_Stone_8.ogg" id="10_kvlxm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
 atlas = ExtResource("1_8afob")
@@ -56,6 +64,18 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_8afob"]
 radius = 2.0
 
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_uf5tr"]
+shuffle = true
+stream_count = 8
+stream_0 = ExtResource("3_h17s1")
+stream_1 = ExtResource("4_je7p5")
+stream_2 = ExtResource("5_fm80t")
+stream_3 = ExtResource("6_gx1jg")
+stream_4 = ExtResource("7_ugbui")
+stream_5 = ExtResource("8_fcs02")
+stream_6 = ExtResource("9_myrg7")
+stream_7 = ExtResource("10_kvlxm")
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 6
 motion_mode = 1
@@ -69,3 +89,13 @@ offset = Vector2(0, -9)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_8afob")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[node name="sfx_footstep_grass" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamPlaylist_uf5tr")
+bus = &"Sfx"
+
+[node name="sfx_footstep_stone" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamPlaylist_uf5tr")
+bus = &"Sfx"
