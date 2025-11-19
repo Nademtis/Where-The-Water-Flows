@@ -68,6 +68,7 @@ script = ExtResource("1_0wfyh")
 [node name="Audio_Ambience" type="AudioStreamPlayer" parent="AudioManager"]
 stream = ExtResource("2_jyhfs")
 autoplay = true
+bus = &"Ambience"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
