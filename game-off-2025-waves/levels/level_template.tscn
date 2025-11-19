@@ -482,17 +482,14 @@ required_switches = [NodePath("../obelisk/BaseSwitch1"), NodePath("../obelisk2/B
 position = Vector2(-223, 234)
 required_switches = [NodePath("../obelisk3/BaseSwitch2")]
 
-[node name="PressurePlate2" parent="YSort/walkable/objectsContainer/BridgeSE" instance=ExtResource("12_unwjj")]
-position = Vector2(-128, -1)
-
 [node name="obelisk" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("switch_to_activate", "required_switches") instance=ExtResource("15_3dbtp")]
-y_sort_enabled = false
 position = Vector2(-285, 167)
 switch_to_activate = NodePath("BaseSwitch1")
 required_switches = [NodePath("PressurePlate")]
 
 [node name="PressurePlate" parent="YSort/walkable/objectsContainer/obelisk" instance=ExtResource("12_unwjj")]
-position = Vector2(-35, -1)
+position = Vector2(-36, 10)
+placed_at_water_level = 1
 
 [node name="BaseSwitch1" type="Node2D" parent="YSort/walkable/objectsContainer/obelisk"]
 script = ExtResource("16_3dbtp")

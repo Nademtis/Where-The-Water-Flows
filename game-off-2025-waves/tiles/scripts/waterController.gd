@@ -73,6 +73,7 @@ func _update_water_level(going_up: bool) -> void:
 	if new_level != water_level:
 		water_level = new_level
 		Events.emit_signal("confirmed_new_water_level_direction", going_up)
+		Events.emit_signal("water_level_changed", new_level as int)
 		update_water_tiles()
 
 func update_water_tiles() -> void:
