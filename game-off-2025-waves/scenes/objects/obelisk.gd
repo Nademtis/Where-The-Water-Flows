@@ -3,6 +3,7 @@ class_name Obelisk extends BaseInteractable
 @onready var obelisk: Node2D = $mask/obelisk
 @onready var active_sprite: Sprite2D = $mask/obelisk/activeSprite
 
+@export var placed_at_water_level : int
 @export var switch_to_activate : BaseSwitch
 
 var player_in_range := false
@@ -16,6 +17,10 @@ const MOVE_TIME := 0.5
 func _ready() -> void:
 	super._ready()
 	Events.connect("player_use", _on_player_use)
+	
+	if !placed_at_water_level:
+		push_error("water level not defined")
+	Events.connect("water_level_changed", anim_water)
 	
 	#set correct pos
 	obelisk.position = active_pos if active else retracted_pos
@@ -68,4 +73,14 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = false
 		print("player is NOT range")
-		
+
+func anim_water(new_height : int) -> void:
+	var target_color: Color
+	if new_height > placed_at_water_level:
+		# underwater → fade to translucent white (ffffff14)
+		target_color = Color("5e939449")
+	else:
+		# above water → fade to full white
+		target_color = Color.WHITE
+	var t := create_tween()
+	t.tween_property(self, "modulate", target_color, 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)

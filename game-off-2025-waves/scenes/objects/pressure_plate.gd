@@ -5,10 +5,9 @@ class_name PressurePlate extends BaseSwitch
 
 
 func _ready() -> void:
-	pass
-	#if !placed_at_water_level:
-	#	push_error("water level not defined")
-	#Events.connect("water_level_changed", anim_water)
+	if !placed_at_water_level:
+		push_error("water level not defined")
+	Events.connect("water_level_changed", anim_water)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -22,5 +21,13 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		active_sprite.visible = false
 
 
-		
-	
+func anim_water(new_height : int) -> void:
+	var target_color: Color
+	if new_height > placed_at_water_level:
+		# underwater → fade to translucent white (ffffff14)
+		target_color = Color("5e939449")
+	else:
+		# above water → fade to full white
+		target_color = Color.WHITE
+	var t := create_tween()
+	t.tween_property(self, "modulate", target_color, 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
