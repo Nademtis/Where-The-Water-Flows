@@ -1,8 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://ka8jajjqqorm"]
+[gd_scene load_steps=8 format=3 uid="uid://ka8jajjqqorm"]
 
 [ext_resource type="Script" uid="uid://c6icsbsa6nid2" path="res://scenes/objects/pressure_plate.gd" id="1_mayf5"]
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="2_elfid"]
 [ext_resource type="Script" uid="uid://c1sgyfqknkj8i" path="res://scripts/ysortHelper.gd" id="3_vaf0c"]
+[ext_resource type="AudioStream" uid="uid://dboksfdr7mja6" path="res://audio/sfx/GameOff_PressurePlate_On.ogg" id="4_ef2lj"]
+[ext_resource type="AudioStream" uid="uid://2yflytyjkfs2" path="res://audio/sfx/GameOff_PressurePlate_Off.ogg" id="5_6j1l4"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_f7tvr"]
+streams_count = 1
+stream_0/stream = ExtResource("4_ef2lj")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_m6rlx"]
+streams_count = 1
+stream_0/stream = ExtResource("5_6j1l4")
 
 [node name="PressurePlate" type="Node2D"]
 z_index = 2
@@ -39,6 +49,16 @@ metadata/_custom_type_script = "uid://c1sgyfqknkj8i"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YsortHelper"]
 polygon = PackedVector2Array(0, -15, -18, -7, -26, -1, -24, 2, 0, 16, 24, 3, 27, -2)
+
+[node name="activeSFX" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_f7tvr")
+max_distance = 100.0
+bus = &"Sfx"
+
+[node name="notActiveSFX" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_m6rlx")
+max_distance = 100.0
+bus = &"Sfx"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

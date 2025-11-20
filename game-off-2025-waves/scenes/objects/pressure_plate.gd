@@ -5,6 +5,10 @@ class_name PressurePlate extends BaseSwitch
 
 var item_is_on := false
 
+#sfx
+@onready var active_sfx: AudioStreamPlayer2D = $activeSFX
+@onready var not_active_sfx: AudioStreamPlayer2D = $notActiveSFX
+
 func _ready() -> void:
 	if !placed_at_water_level:
 		push_error("water level not defined")
@@ -15,6 +19,14 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		set_active(true)
 		active_sprite.visible = true
 
+func set_active(state: bool) -> void:
+	var previous_active := active
+	super(state)
+	if previous_active != active:
+		if active:
+			active_sfx.play()
+		else:
+			not_active_sfx.play()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):

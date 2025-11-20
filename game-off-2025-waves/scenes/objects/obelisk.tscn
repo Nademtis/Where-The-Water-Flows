@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://b8q3py6lwghn2" path="res://audio/sfx/GameOff_Obelisk_Disable.ogg" id="5_4yrox"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o0g6v"]
-radius = 37.054016
+radius = 27.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11tqd"]
 size = Vector2(20, 33)
@@ -54,12 +54,11 @@ texture = ExtResource("2_rtbaw")
 region_enabled = true
 region_rect = Rect2(40, 177, 16, 28)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="playerInRangeToActivate" type="Area2D" parent="."]
 position = Vector2(0, -6)
 collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerInRangeToActivate"]
 position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_o0g6v")
 
@@ -93,6 +92,7 @@ shape = SubResource("CircleShape2D_rtbaw")
 [node name="activeSFX" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_775fd")
 max_distance = 200.0
+attenuation = 2.2191393
 bus = &"Sfx"
 
 [node name="notActiveSFX" type="AudioStreamPlayer2D" parent="."]
@@ -102,15 +102,16 @@ bus = &"Sfx"
 
 [node name="riseSFX" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_dweql")
-volume_db = -4.0
+volume_db = -10.0
 max_distance = 400.0
 bus = &"Sfx"
 
 [node name="goDownSFX" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_dweql")
-volume_db = -4.0
+volume_db = -10.0
 max_distance = 400.0
+attenuation = 2.143547
 bus = &"Sfx"
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="playerInRangeToActivate" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="playerInRangeToActivate" to="." method="_on_area_2d_body_exited"]

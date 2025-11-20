@@ -147,6 +147,7 @@ visible = false
 shape = SubResource("CircleShape2D_8afob")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
 
 [node name="sfxFootStep" type="Node2D" parent="."]
 
