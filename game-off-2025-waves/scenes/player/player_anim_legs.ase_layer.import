@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.spriteframes-split-layer"
+type="SpriteFrames"
+uid="uid://bgg6net842nwq"
+path="res://.godot/imported/player_anim_legs.ase_layer-237e36dc8d890e4352dcdece0d7b70e9.res"
+
+[deps]
+
+files=["res://.godot/imported/player_anim_legs.ase_layer-237e36dc8d890e4352dcdece0d7b70e9.legs.texture.res"]
+
+source_file="res://scenes/player/player_anim_legs.ase_layer"
+dest_files=["res://.godot/imported/player_anim_legs.ase_layer-237e36dc8d890e4352dcdece0d7b70e9.res", "res://.godot/imported/player_anim_legs.ase_layer-237e36dc8d890e4352dcdece0d7b70e9.legs.texture.res"]
+
+[params]
+

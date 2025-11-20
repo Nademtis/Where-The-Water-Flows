@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.spriteframes-split-layer"
+type="SpriteFrames"
+uid="uid://4bd0ocol3l15"
+path="res://.godot/imported/player_anim_head.ase_layer-211033c1cc9516bc9eb6f8248e1fba14.res"
+
+[deps]
+
+files=["res://.godot/imported/player_anim_head.ase_layer-211033c1cc9516bc9eb6f8248e1fba14.head.texture.res"]
+
+source_file="res://scenes/player/player_anim_head.ase_layer"
+dest_files=["res://.godot/imported/player_anim_head.ase_layer-211033c1cc9516bc9eb6f8248e1fba14.res", "res://.godot/imported/player_anim_head.ase_layer-211033c1cc9516bc9eb6f8248e1fba14.head.texture.res"]
+
+[params]
+

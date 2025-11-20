@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.spriteframes-split-layer"
+type="SpriteFrames"
+uid="uid://yqmseeobyp1k"
+path="res://.godot/imported/player_anim_cape.ase_layer-7d9298fc605c38d8b33925951a74137b.res"
+
+[deps]
+
+files=["res://.godot/imported/player_anim_cape.ase_layer-7d9298fc605c38d8b33925951a74137b.cape.texture.res"]
+
+source_file="res://scenes/player/player_anim_cape.ase_layer"
+dest_files=["res://.godot/imported/player_anim_cape.ase_layer-7d9298fc605c38d8b33925951a74137b.res", "res://.godot/imported/player_anim_cape.ase_layer-7d9298fc605c38d8b33925951a74137b.cape.texture.res"]
+
+[params]
+

@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.spriteframes-split-layer"
+type="SpriteFrames"
+uid="uid://cxasf4mx3yt01"
+path="res://.godot/imported/player_anim_upperCape.ase_layer-1c7d2d90106713603bda1b2ba006b5e6.res"
+
+[deps]
+
+files=["res://.godot/imported/player_anim_upperCape.ase_layer-1c7d2d90106713603bda1b2ba006b5e6.upperCape.texture.res"]
+
+source_file="res://scenes/player/player_anim_upperCape.ase_layer"
+dest_files=["res://.godot/imported/player_anim_upperCape.ase_layer-1c7d2d90106713603bda1b2ba006b5e6.res", "res://.godot/imported/player_anim_upperCape.ase_layer-1c7d2d90106713603bda1b2ba006b5e6.upperCape.texture.res"]
+
+[params]
+
