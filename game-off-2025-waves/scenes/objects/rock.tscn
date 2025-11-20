@@ -7,7 +7,7 @@
 radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7c88i"]
-radius = 3.0
+radius = 6.0
 
 [node name="rock" type="Node2D" groups=["item"]]
 z_index = 1
@@ -23,7 +23,7 @@ region_rect = Rect2(211, 183, 10, 9)
 visible = false
 collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]
+[node name="hitBoxColl" type="CollisionShape2D" parent="hit_box"]
 shape = SubResource("CircleShape2D_xnkle")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

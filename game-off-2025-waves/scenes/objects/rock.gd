@@ -1,25 +1,28 @@
 extends Node2D
 class_name Item
 
-@onready var hit_box: Area2D = $hit_box
+@onready var hit_box_coll: CollisionShape2D = $hit_box/hitBoxColl
 @onready var static_body_coll: CollisionShape2D = $StaticBody2D/staticBodyColl
 
-var player_in_range := false
 
 
 
-func _ready() -> void:
-	pass
-	#Events.connect("player_use", _on_player_use)
-	
-	
-func pick_up(new_pos : Vector2) -> void:
-	global_position = new_pos
+func pick_up(new_pos: Vector2) -> void:
 	static_body_coll.set_deferred("disabled", true)
-	#static_body_coll.disabled = true
-	
-func drop(new_pos : Vector2) -> void:
-	global_position = new_pos
+	hit_box_coll.set_deferred("disabled", true)
+
+	var tween := get_tree().create_tween()
+	tween.tween_property(self, "global_position", new_pos, 0.3)\
+		.set_trans(Tween.TRANS_SINE)\
+		.set_ease(Tween.EASE_OUT)
+
+func drop(new_pos: Vector2) -> void:
+	var tween := get_tree().create_tween()
+	tween.tween_property(self, "global_position", new_pos, 0.3)\
+		.set_trans(Tween.TRANS_SINE)\
+		.set_ease(Tween.EASE_OUT)
+	tween.tween_callback(_enable_collisions.bind())
+
+func _enable_collisions() -> void:
 	static_body_coll.set_deferred("disabled", false)
-	
-	
+	hit_box_coll.set_deferred("disabled", false)
