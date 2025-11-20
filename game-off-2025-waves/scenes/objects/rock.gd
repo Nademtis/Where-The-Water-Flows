@@ -7,12 +7,12 @@ class_name Item
 
 
 
-func pick_up(new_pos: Vector2) -> void:
+func pick_up(local_target: Vector2) -> void:
 	static_body_coll.set_deferred("disabled", true)
 	hit_box_coll.set_deferred("disabled", true)
 
 	var tween := get_tree().create_tween()
-	tween.tween_property(self, "global_position", new_pos, 0.3)\
+	tween.tween_property(self, "position", local_target, 0.25)\
 		.set_trans(Tween.TRANS_SINE)\
 		.set_ease(Tween.EASE_OUT)
 

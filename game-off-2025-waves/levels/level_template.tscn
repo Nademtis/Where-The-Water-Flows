@@ -500,8 +500,7 @@ script = ExtResource("16_3dbtp")
 metadata/_custom_type_script = "uid://btte8j4ymesff"
 
 [node name="obelisk2" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("switch_to_activate") instance=ExtResource("15_3dbtp")]
-y_sort_enabled = false
-position = Vector2(-409, 210)
+position = Vector2(-400, 204)
 placed_at_water_level = 1
 switch_to_activate = NodePath("BaseSwitch2")
 
@@ -510,7 +509,6 @@ script = ExtResource("16_3dbtp")
 metadata/_custom_type_script = "uid://btte8j4ymesff"
 
 [node name="obelisk3" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("switch_to_activate") instance=ExtResource("15_3dbtp")]
-y_sort_enabled = false
 position = Vector2(-278, 203)
 placed_at_water_level = 1
 switch_to_activate = NodePath("BaseSwitch2")
@@ -521,7 +519,7 @@ metadata/_custom_type_script = "uid://btte8j4ymesff"
 
 [node name="rock" parent="YSort/walkable" instance=ExtResource("13_peaqv")]
 z_index = 2
-position = Vector2(-323, 181)
+position = Vector2(-356, 200)
 
 [node name="heightMap" type="TileMapLayer" parent="."]
 unique_name_in_owner = true

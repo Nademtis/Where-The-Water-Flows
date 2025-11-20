@@ -4,6 +4,10 @@ class_name Bridge extends BaseInteractable
 
 @export var placed_at_water_level : int
 
+#SFX
+@onready var extend_sfx: AudioStreamPlayer2D = $extendSFX
+@onready var retract_sfx: AudioStreamPlayer2D = $retractSFX
+
 
 var retract_post : Vector2 = Vector2(-26.0, -13.0)
 var active_pos : Vector2 = Vector2(0,0)
@@ -19,7 +23,13 @@ func _ready() -> void:
 	Events.connect("water_level_changed", anim_water)
 
 func _apply_state() -> void:
-	var target := active_pos if active else retract_post
+	var target := retract_post
+	if active:
+		target = active_pos
+		extend_sfx.play()
+	else:
+		target = retract_post
+		retract_sfx.play()
 	_move_to(target)
 
 

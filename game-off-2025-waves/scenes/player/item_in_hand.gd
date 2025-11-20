@@ -4,6 +4,9 @@ class_name ItemInHand
 @onready var item_float_pos: Node2D = $itemFloatPos
 @onready var item_deposit_pos: Node2D = $itemDepositPos
 
+@onready var item_pickup_sfx: AudioStreamPlayer2D = $itemPickupSFX
+@onready var item_drop_sfx: AudioStreamPlayer2D = $itemDropSFX
+
 var item_in_hand : Item
 var potential_item_to_pickup : Item
 
@@ -13,7 +16,8 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	if item_in_hand:
-		item_in_hand.global_position = item_float_pos.global_position
+		pass
+		#item_in_hand.global_position = item_float_pos.global_position
 
 func _on_area_entered(area: Area2D) -> void:
 	var potential_item : Node = area.get_parent()
@@ -26,13 +30,22 @@ func _on_area_entered(area: Area2D) -> void:
 func maybe_pickup_item() -> void:
 	if potential_item_to_pickup:
 		item_in_hand = potential_item_to_pickup
-		item_in_hand.pick_up(item_float_pos.global_position)
 		
-		#potential_item_to_pickup = null
+		# reparent to player (ItemInHand node is already a child of player)
+		item_in_hand.reparent(self)
+		
+		# tween local_position towards the float anchor
+		item_in_hand.pick_up(item_float_pos.position)
+		item_pickup_sfx.play()
 
 func maybe_drop_item() -> void:
 	if item_in_hand:
-		item_in_hand.drop(item_deposit_pos.global_position)
+		# detach from player before tweening
+		var item := item_in_hand
+		item.reparent(get_tree().current_scene)
+		item_drop_sfx.play()
+
+		item.drop(item_deposit_pos.global_position)
 		item_in_hand = null
 
 func _on_area_exited(area: Area2D) -> void:
