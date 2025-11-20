@@ -15,6 +15,7 @@ const MOVESPEED : float = 65
 var debug_tile_world_pos: Vector2 = Vector2.ZERO
 var debug_points: Array[Vector2] = []
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var current_player_height : float = 1.0
 var old_player_height : float = 1.0
@@ -95,10 +96,10 @@ func _play_footstep() -> void:
 
 func _movement(delta : float) -> void:
 	input_dir = Input.get_vector("left", "right", "up", "down")
-
+	_update_animation(input_dir)
+	
 	if input_dir != Vector2.ZERO:
 		var dir_name := _get_direction_name(input_dir)
-
 		match dir_name: #uncomment below for the isometric movement
 			"northeast":
 				move_dir = Vector2(1, -0.5).normalized()
@@ -116,6 +117,20 @@ func _movement(delta : float) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
 
 	move_and_slide()
+
+func _update_animation(dir : Vector2) -> void:
+	if dir == Vector2.ZERO:
+		animated_sprite_2d.animation = "idle"
+	else:
+		if abs(dir.x) > abs(dir.y):
+			# Horizontal movement dominates
+			animated_sprite_2d.animation = "E_walk"
+			animated_sprite_2d.flip_h = dir.x < 0
+		else:
+			if dir.y < 0:
+				animated_sprite_2d.animation = "N_walk"
+			else:
+				animated_sprite_2d.animation = "S_walk"
 
 func _get_height_tile_under_player() -> void:
 	if not height_map:

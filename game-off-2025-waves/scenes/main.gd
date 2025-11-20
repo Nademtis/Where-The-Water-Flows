@@ -1,7 +1,3 @@
-
-
-
-
 extends Node2D
 
 @onready var level_container: Node2D = $levelContainer

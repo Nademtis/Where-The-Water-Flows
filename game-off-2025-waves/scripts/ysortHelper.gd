@@ -7,7 +7,6 @@ func _ready() -> void:
 	
 
 func _on_body_entered(body: Node2D) -> void:
-	print("changed wrapper pos")
 	var player_wrapper : Node2D = body.get_parent()
 	var old_player_pos : Vector2 = body.global_position
 	
@@ -16,7 +15,6 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_body_exited(body: Node2D) -> void:
-	print("reset wrapper pos")
 	
 	var player_wrapper : Node2D = body.get_parent()
 	var old_player_pos : Vector2 = body.global_position

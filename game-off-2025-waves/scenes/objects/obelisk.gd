@@ -62,17 +62,14 @@ func _on_player_use() -> void:
 		return
 	if active and switch_to_activate:
 		update_active_logic(!switch_to_activate.active) # to flip the on and off
-		print("Player used")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = true
-		print("player is in range")
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = false
-		print("player is NOT range")
 
 func anim_water(new_height : int) -> void:
 	var target_color: Color

@@ -421,6 +421,7 @@ metadata/_edit_lock_ = true
 [node name="WaterLevel" type="TileMapLayer" parent="YSort/walkable"]
 modulate = Color(1, 1, 1, 0.8627451)
 y_sort_enabled = true
+tile_map_data = PackedByteArray("AAD1/xoAAAAAAAAAAAD0/xkAAAAAAAAAAAD0/xsAAAAAAAAAAAD1/xsAAAAAAAAAAAA=")
 tile_set = ExtResource("3_unwjj")
 script = ExtResource("4_u3vgj")
 metadata/_edit_lock_ = true
@@ -462,7 +463,7 @@ collision_visibility_mode = 1
 
 [node name="PlayerWrapper" type="Node2D" parent="YSort/walkable"]
 z_index = 1
-position = Vector2(-326, 212)
+position = Vector2(-325, 214)
 
 [node name="Player" parent="YSort/walkable/PlayerWrapper" instance=ExtResource("2_2ip8h")]
 y_sort_enabled = true
