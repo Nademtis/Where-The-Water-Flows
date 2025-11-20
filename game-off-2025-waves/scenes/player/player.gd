@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 const MOVESPEED : float = 65
+@onready var item_in_hand: ItemInHand = $itemInHand
 
 @export var max_speed: float = 65.0
 @export var acceleration: float = 500.0
@@ -46,6 +47,9 @@ func _ready() -> void:
 func _input(event : InputEvent) -> void:
 	if event.is_action_pressed("use"):
 		Events.player_use.emit()
+	if event.is_action_pressed("drop"):
+		Events.player_drop.emit()
+		
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("water_up"):

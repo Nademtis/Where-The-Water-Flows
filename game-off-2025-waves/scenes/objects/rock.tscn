@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://o7m6u6mncvb3"]
+
+[ext_resource type="Script" uid="uid://5krtiqnw1xu7" path="res://scenes/objects/rock.gd" id="1_7c88i"]
+[ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="2_6jkjv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xnkle"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7c88i"]
+radius = 3.0
+
+[node name="rock" type="Node2D" groups=["item"]]
+z_index = 1
+z_as_relative = false
+script = ExtResource("1_7c88i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6jkjv")
+region_enabled = true
+region_rect = Rect2(211, 183, 10, 9)
+
+[node name="hit_box" type="Area2D" parent="." groups=["item"]]
+visible = false
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]
+shape = SubResource("CircleShape2D_xnkle")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="staticBodyColl" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_7c88i")

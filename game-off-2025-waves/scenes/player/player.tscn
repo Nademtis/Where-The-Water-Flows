@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://opjx2dvm4ils"]
+[gd_scene load_steps=28 format=4 uid="uid://opjx2dvm4ils"]
 
 [ext_resource type="Script" uid="uid://ekbuessnk5yy" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="AudioStream" uid="uid://d1hfbljq1rkak" path="res://audio/sfx/player/footsteps/GameOff_Character_Footstep_Stone_1.ogg" id="3_h17s1"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://dimu468gv8o5g" path="res://audio/sfx/player/footsteps/GameOff_Character_Footstep_Grass_6.ogg" id="9_yj68g"]
 [ext_resource type="AudioStream" uid="uid://d0dpvlqrdrowt" path="res://audio/sfx/player/footsteps/GameOff_Character_Footstep_Grass_8.ogg" id="10_ioxgp"]
 [ext_resource type="AudioStream" uid="uid://c5gh1b8ljq4qe" path="res://audio/sfx/player/footsteps/GameOff_Character_Footstep_Stone_8.ogg" id="10_kvlxm"]
+[ext_resource type="Script" uid="uid://bkwcv838kl2f8" path="res://scenes/player/item_in_hand.gd" id="18_uf5tr"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_kvlxm"]
 _data = PackedByteArray("AAADAAUAAAABAAAAYAAAAIAAAABGAQAAUklGRj4BAABXRUJQVlA4TDIBAAAvX8AfEGegppEU6ErKtz0NBA2YwiYaMKUmAJCGzQuOBrN/D6NYwEtpABCSLok20LR/YUOJ0sWbYP4DANglw2j7kltXVYOtDzkkBpq//p27D+BI2784+cVdzpDJAXA4wFqJ/Xr036P/lFv+tsOlS8lshdsegdwK++aH60T0fwLoJ/NGUduhvBYRanw3yGI2oiJmxhjmHCiYhjAbdhyIiZgZww5mfNGw4yDoOOlVCcnMjpOFdOOkArq4q5Im6sa3FUwYJwVdItZiwiNQeK8AEekUVIUiHQsKll+NNsppLesKcEF7GUJjTmuJoOKg+jLNFIYGmylt9F/CjaK2Q3nlxneDrKoZY5hzmpgNO44udnTRcdKrkupunFR0hWILr5uItarCe4XPDLpHqvvEppRlmsp+6wQ=")
@@ -94,8 +95,11 @@ stream_5/stream = ExtResource("8_fcs02")
 stream_6/stream = ExtResource("9_myrg7")
 stream_7/stream = ExtResource("10_kvlxm")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_uf5tr"]
+radius = 17.029387
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-collision_mask = 6
+collision_mask = 14
 motion_mode = 1
 script = ExtResource("1_dovo2")
 
@@ -144,3 +148,20 @@ stream = SubResource("AudioStreamRandomizer_8ydkj")
 bus = &"Sfx"
 
 [node name="footStepSFXcooldown" type="Timer" parent="sfxFootStep"]
+
+[node name="itemInHand" type="Area2D" parent="."]
+collision_mask = 8
+script = ExtResource("18_uf5tr")
+
+[node name="itemFloatPos" type="Node2D" parent="itemInHand"]
+position = Vector2(0, -30)
+
+[node name="itemDepositPos" type="Node2D" parent="itemInHand"]
+position = Vector2(0, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="itemInHand"]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_uf5tr")
+
+[connection signal="area_entered" from="itemInHand" to="itemInHand" method="_on_area_entered"]
+[connection signal="area_exited" from="itemInHand" to="itemInHand" method="_on_area_exited"]

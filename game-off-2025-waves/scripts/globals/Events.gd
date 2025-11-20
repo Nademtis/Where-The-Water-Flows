@@ -14,3 +14,4 @@ signal player_height_changed(new_height : float)
 signal new_level_done_loading()
 
 signal player_use()
+signal player_drop()

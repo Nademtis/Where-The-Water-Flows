@@ -19,12 +19,12 @@ func _ready() -> void:
 
 func _apply_state() -> void:
 	if active:
-		print("elevator active")
+		#print("elevator active")
 		frame_turned_on.visible = true
 		_manage_door(true)
 
 	else:
-		print("elevator not active")
+		#print("elevator not active")
 		frame_turned_on.visible = false
 		_manage_door(false)
 		#TODO close door / fully go down in ground?

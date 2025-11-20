@@ -17,7 +17,6 @@ size = Vector2(20, 28)
 radius = 7.0
 
 [node name="obelisk" type="Node2D"]
-y_sort_enabled = true
 script = ExtResource("1_o0g6v")
 
 [node name="mask" type="Sprite2D" parent="."]
