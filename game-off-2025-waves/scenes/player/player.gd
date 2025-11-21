@@ -123,18 +123,36 @@ func _movement(delta : float) -> void:
 	move_and_slide()
 
 func _update_animation(dir : Vector2) -> void:
-	if dir == Vector2.ZERO:
-		animated_sprite_2d.animation = "idle"
-	else:
+	#if dir == Vector2.ZERO:
+		#animated_sprite_2d.play("idle")
+	#else:
+		#if abs(dir.x) > abs(dir.y):
+			## Horizontal movement dominates
+			#animated_sprite_2d.play("E_walk") 
+			#animated_sprite_2d.flip_h = dir.x < 0
+		#else:
+			#if dir.y < 0:
+				#animated_sprite_2d.play("N_walk")
+			#else:
+				#animated_sprite_2d.play("S_walk")
+	
+	if dir != Vector2.ZERO:
 		if abs(dir.x) > abs(dir.y):
-			# Horizontal movement dominates
-			animated_sprite_2d.animation = "E_walk"
-			animated_sprite_2d.flip_h = dir.x < 0
-		else:
-			if dir.y < 0:
-				animated_sprite_2d.animation = "N_walk"
+			if dir.x > 0:
+				animated_sprite_2d.flip_h = dir.x < 0
+				animated_sprite_2d.play("E_walk")
 			else:
-				animated_sprite_2d.animation = "S_walk"
+				animated_sprite_2d.flip_h = dir.x < 0
+				animated_sprite_2d.play("E_walk")
+		else:
+			if dir.y > 0:
+				animated_sprite_2d.play("S_walk")
+			else:
+				animated_sprite_2d.play("N_walk")
+	else:
+		animated_sprite_2d.play("idle")
+
+	
 
 func _get_height_tile_under_player() -> void:
 	if not height_map:

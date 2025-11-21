@@ -51,13 +51,15 @@ metadata/_custom_type_script = "uid://c1sgyfqknkj8i"
 polygon = PackedVector2Array(0, -15, -18, -7, -26, -1, -24, 2, 0, 16, 24, 3, 27, -2)
 
 [node name="activeSFX" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 7)
 stream = SubResource("AudioStreamRandomizer_f7tvr")
-max_distance = 100.0
+max_distance = 400.0
 bus = &"Sfx"
 
 [node name="notActiveSFX" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 7)
 stream = SubResource("AudioStreamRandomizer_m6rlx")
-max_distance = 100.0
+max_distance = 400.0
 bus = &"Sfx"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
