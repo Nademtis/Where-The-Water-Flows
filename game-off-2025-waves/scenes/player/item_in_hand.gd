@@ -6,6 +6,7 @@ class_name ItemInHand
 
 @onready var item_pickup_sfx: AudioStreamPlayer2D = $itemPickupSFX
 @onready var item_drop_sfx: AudioStreamPlayer2D = $itemDropSFX
+@onready var item_drop_pos_visuals: Sprite2D = $itemDropPosVisuals
 
 var item_in_hand : Item
 var potential_item_to_pickup : Item
@@ -13,19 +14,13 @@ var potential_item_to_pickup : Item
 func _ready() -> void:
 	Events.connect("player_use", maybe_pickup_item)
 	Events.connect("player_drop", maybe_drop_item)
+	item_drop_pos_visuals.visible = false
 	
-func _process(_delta: float) -> void:
-	if item_in_hand:
-		pass
-		#item_in_hand.global_position = item_float_pos.global_position
-
 func _on_area_entered(area: Area2D) -> void:
 	var potential_item : Node = area.get_parent()
 	if potential_item.is_in_group("item"):
 		var item : Item = potential_item
 		potential_item_to_pickup = item
-
-
 
 func maybe_pickup_item() -> void:
 	if potential_item_to_pickup:
@@ -33,6 +28,8 @@ func maybe_pickup_item() -> void:
 		
 		# reparent to player (ItemInHand node is already a child of player)
 		item_in_hand.reparent(self)
+		
+		item_drop_pos_visuals.visible = true
 		
 		# tween local_position towards the float anchor
 		item_in_hand.pick_up(item_float_pos.position)
@@ -46,6 +43,8 @@ func maybe_drop_item() -> void:
 		item_drop_sfx.play()
 
 		item.drop(item_deposit_pos.global_position)
+		item_drop_pos_visuals.visible = false
+		
 		item_in_hand = null
 
 func _on_area_exited(area: Area2D) -> void:

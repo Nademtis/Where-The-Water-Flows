@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://opjx2dvm4ils"]
+[gd_scene load_steps=52 format=4 uid="uid://opjx2dvm4ils"]
 
 [ext_resource type="Script" uid="uid://ekbuessnk5yy" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="AudioStream" uid="uid://d1hfbljq1rkak" path="res://audio/sfx/player/footsteps/GameOff_Character_Footstep_Stone_1.ogg" id="3_h17s1"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://bkwcv838kl2f8" path="res://scenes/player/item_in_hand.gd" id="18_uf5tr"]
 [ext_resource type="AudioStream" uid="uid://djqlqrtg6ghkg" path="res://audio/sfx/player/GameOff_Character_Grab_Item.ogg" id="19_8ydkj"]
 [ext_resource type="AudioStream" uid="uid://vy166vc7kw15" path="res://audio/sfx/player/GameOff_Character_UseORDrop_Item.ogg" id="20_3j4b4"]
+[ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="21_3j4b4"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_8ydkj"]
 _data = PackedByteArray("AAADAAUAAAABAAAA8AAAAEABAACMAwAAUklGRoQDAABXRUJQVlA4THgDAAAv78BPEGegppEU6ErKtz0NBA2YwiYaMKUmAJCGzQuOBrN/D6NYwEtpABCSLok20LR/YUOJ0sWbYP4DANglw2j7kltXVYOtDzkkBpq//p27D+Rq2+w20cjhkcmGS9DjCyBDzxQqSdNvVL0mHUqVx93m0LnkUbU56RLwVYkt/jM7IoeI/jNy2zaS2pm5MrM9gu7jWS87dfV/8rgf9+j78Wrq2XyXtmrpf5RlIm3cD3tM+EUyYcb9uEffjyXMjPpDPBb89LkcTZKuX9iGn4ZFOUGwP8Cj74erpycvyriefu+dAz1F6fC5wLyLVZ35WTHuwe+PuiegenrSPdxjv7p6OME9ZkL9KSd7uMfE/SHcs85Jn3CP6n04c2LNb8CeZjci3KN7f5rdPuqnFwRn3UO1XQ/+d3Pcyw7use7/5HGPvv+c9Gy+S1u4x7T/UZaJtHGPZb9IJsy4x7JfRBj32PbT53I0SbjHsp+GRTmBe/T956MnL8oY99j2e+8c7jHtz8+KcY++/3LjSfdq60m0Y9yjPhdre9LKQ9r+PSha56SPeub6BFV5ItSTYE5a30A9881upOvpEO7U9xC80OgseMFz1XY9+N/tlQa4x7r/5aCDe+z44dJd3GPbnw1EBPdY9m8+z4QZ91j2iwhzC/dY9ov8OJ0k3GPZT8Pi7wTu0fefj578BPdY93t/HOMe0/68yuEeff+54vHeH8D1cI96PbQU9qf69fTbwwrz4OFOMO4lqAeO1e8D/4fmCAIFefZgzyJ4H5a6EeZZb9Is1hKhHpqdb2J1o4qKDgCuSo+ugIjgarse/O/mvpcd3KPdQH2uTx73KPtfDgLmsuOBS3d123yXtnCPbtlARDT9j7JMpI17NP2bzzNh1vSLoE4Rfb8wt3TnEg7x6Pp/nE6Spp8+l6NJQj3K/mHxdyLADzrLCdgT4oezMVfuXazsPPkb4Lft8f5Y2xnicarlVU7Vn4d5YtivG+zP9T0h9erbXi3zVYl+ZKNUOTJT7rm3SBgoLOX7APJplmgJa947B3ti2BOB9wH2EF6TCPbAqxsFeGq7HvzvpriXHdxjvU8e91xQbb5LW7jHdI+yTKSNeywnkgkz7rGdMJqw7ehzOZoM8JhuWJQTuOdiKvcuxj3mc1i+8tjOV8XQbfjHY/p6aY7qHV2o5d5FAf+NWq557+ge8kU=")
@@ -317,6 +318,13 @@ bus = &"Sfx"
 [node name="itemDropSFX" type="AudioStreamPlayer2D" parent="itemInHand"]
 stream = SubResource("AudioStreamRandomizer_ioxgp")
 bus = &"Sfx"
+
+[node name="itemDropPosVisuals" type="Sprite2D" parent="itemInHand"]
+modulate = Color(1, 1, 1, 0.49411765)
+position = Vector2(0, 6)
+texture = ExtResource("21_3j4b4")
+region_enabled = true
+region_rect = Rect2(276, 180, 8, 8)
 
 [connection signal="area_entered" from="itemInHand" to="itemInHand" method="_on_area_entered"]
 [connection signal="area_exited" from="itemInHand" to="itemInHand" method="_on_area_exited"]
