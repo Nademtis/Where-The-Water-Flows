@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://c7v878ho36jpc"]
 
-[ext_resource type="Script" uid="uid://tnsiq3ilkpnu" path="res://scenes/objects/obelisk.gd" id="1_o0g6v"]
+[ext_resource type="Script" uid="uid://tnsiq3ilkpnu" path="res://scenes/objects/scripts/obelisk.gd" id="1_o0g6v"]
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="2_rtbaw"]
 [ext_resource type="Script" uid="uid://c1sgyfqknkj8i" path="res://scripts/ysortHelper.gd" id="3_rtbaw"]
 [ext_resource type="AudioStream" uid="uid://dstsovo76oeh6" path="res://audio/sfx/GameOff_Obelisk_Rise.ogg" id="4_11tqd"]

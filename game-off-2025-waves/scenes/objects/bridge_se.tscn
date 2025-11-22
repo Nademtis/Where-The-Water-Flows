@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bvxakbillx1n8"]
 
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="1_ica2m"]
-[ext_resource type="Script" uid="uid://b2l3bjhc1kyai" path="res://scenes/objects/bridge.gd" id="1_wo0ln"]
+[ext_resource type="Script" uid="uid://b2l3bjhc1kyai" path="res://scenes/objects/scripts/bridge.gd" id="1_wo0ln"]
 [ext_resource type="Script" uid="uid://c1sgyfqknkj8i" path="res://scripts/ysortHelper.gd" id="3_xns4n"]
 [ext_resource type="AudioStream" uid="uid://dvywf2gnhvlb" path="res://audio/sfx/GameOff_Bridge_Extend.ogg" id="4_156ma"]
 [ext_resource type="AudioStream" uid="uid://ba4j1vrfwumf1" path="res://audio/sfx/GameOff_Bridge_Retract.ogg" id="5_dmek5"]

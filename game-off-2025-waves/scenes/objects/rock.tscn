@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://o7m6u6mncvb3"]
 
-[ext_resource type="Script" uid="uid://5krtiqnw1xu7" path="res://scenes/objects/rock.gd" id="1_7c88i"]
+[ext_resource type="Script" uid="uid://5krtiqnw1xu7" path="res://scenes/objects/scripts/rock.gd" id="1_7c88i"]
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="2_6jkjv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xnkle"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ka8jajjqqorm"]
 
-[ext_resource type="Script" uid="uid://c6icsbsa6nid2" path="res://scenes/objects/pressure_plate.gd" id="1_mayf5"]
+[ext_resource type="Script" uid="uid://c6icsbsa6nid2" path="res://scenes/objects/scripts/pressure_plate.gd" id="1_mayf5"]
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="2_elfid"]
 [ext_resource type="Script" uid="uid://c1sgyfqknkj8i" path="res://scripts/ysortHelper.gd" id="3_vaf0c"]
 [ext_resource type="AudioStream" uid="uid://dboksfdr7mja6" path="res://audio/sfx/GameOff_PressurePlate_On.ogg" id="4_ef2lj"]

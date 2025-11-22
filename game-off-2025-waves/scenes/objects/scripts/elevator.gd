@@ -29,14 +29,25 @@ const DOOR_MOVE_SLOW : float = 2.5
 const DOOR_MOVE_FAST : float = 1
 var door_tween: Tween
 
+const REQUIRED_SWITCHES := {
+	"Elevator-One": 1,
+	"Elevator-Two": 2,
+	"Elevator-Three": 3,
+}
+
 func _ready() -> void:
+	_validate_switch_count()
 	super._ready()
 	lamps_array.append_array(lamp_container.get_children())
 	_apply_state() # correct colors and state
 	level_swapper_collision_shape_2d.disabled = true
 
-func _apply_state() -> void:
+func _evaluate() -> void:
+	super._evaluate()
+	print("check lamp")
 	_update_lamp()
+
+func _apply_state() -> void:
 	if active:
 		frame_turned_on.visible = true
 		_manage_door(true)
@@ -102,3 +113,21 @@ func _close_door_and_swap_level(body: Node2D) -> void:
 func animate_whole_elevator(target: Vector2, move_time : float) -> void:
 	var tween := get_tree().create_tween()
 	tween.tween_property(door_container, "position", target, move_time)
+	
+
+func _validate_switch_count() -> void:
+	var scene_name := get_name()
+
+	for prefix : String in REQUIRED_SWITCHES.keys():
+		if scene_name.begins_with(prefix):
+			var required : int = REQUIRED_SWITCHES[prefix]
+			if required_switches.size() != required:
+				push_error(
+					"%s expects %d switches, but %d were assigned." % [
+						scene_name,
+						required,
+						required_switches.size()
+					]
+				)
+			return
+	push_error("Elevator scene name must start with Elevator-One, Elevator-Two, or Elevator-Three.")

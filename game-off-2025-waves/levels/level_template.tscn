@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://do87h7uig68cw"]
+[gd_scene load_steps=29 format=4 uid="uid://do87h7uig68cw"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_64qpc"]
 [ext_resource type="PackedScene" uid="uid://opjx2dvm4ils" path="res://scenes/player/player.tscn" id="2_2ip8h"]
@@ -14,7 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://ym65vt1sl83d" path="res://scenes/camera/cam.tscn" id="11_2ip8h"]
 [ext_resource type="PackedScene" uid="uid://ka8jajjqqorm" path="res://scenes/objects/pressure_plate.tscn" id="12_unwjj"]
 [ext_resource type="PackedScene" uid="uid://o7m6u6mncvb3" path="res://scenes/objects/rock.tscn" id="13_peaqv"]
+[ext_resource type="PackedScene" uid="uid://4lm142cs42m3" path="res://scenes/objects/elevator2.tscn" id="13_phlur"]
 [ext_resource type="PackedScene" uid="uid://ofg441wirseh" path="res://scenes/objects/elevator1.tscn" id="13_u3vgj"]
+[ext_resource type="PackedScene" uid="uid://dxd880hyw6tp0" path="res://scenes/objects/elevator3.tscn" id="14_rcbig"]
 [ext_resource type="PackedScene" uid="uid://bvxakbillx1n8" path="res://scenes/objects/bridge_se.tscn" id="14_u6tk6"]
 [ext_resource type="PackedScene" uid="uid://c7v878ho36jpc" path="res://scenes/objects/obelisk.tscn" id="15_3dbtp"]
 [ext_resource type="Script" uid="uid://btte8j4ymesff" path="res://scripts/base_switch.gd" id="16_3dbtp"]
@@ -476,9 +478,9 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(-1, -1)
 
-[node name="Elevator" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("13_u3vgj")]
-position = Vector2(-391, 126)
-required_switches = [NodePath("../obelisk2/BaseSwitch2"), NodePath("../obelisk/BaseSwitch1")]
+[node name="Elevator-One" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("13_u3vgj")]
+position = Vector2(-450, 158)
+required_switches = [NodePath("../obelisk2/BaseSwitch2")]
 
 [node name="BridgeSE" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("14_u6tk6")]
 position = Vector2(-223, 234)
@@ -516,6 +518,14 @@ switch_to_activate = NodePath("BaseSwitch2")
 [node name="BaseSwitch2" type="Node2D" parent="YSort/walkable/objectsContainer/obelisk3"]
 script = ExtResource("16_3dbtp")
 metadata/_custom_type_script = "uid://btte8j4ymesff"
+
+[node name="Elevator-Two" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("13_phlur")]
+position = Vector2(-394, 125)
+required_switches = [NodePath("../obelisk2/BaseSwitch2"), NodePath("../obelisk/BaseSwitch1")]
+
+[node name="Elevator-Three" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("14_rcbig")]
+position = Vector2(-339, 96)
+required_switches = [NodePath("../obelisk3/BaseSwitch2"), NodePath("../obelisk2/BaseSwitch2"), NodePath("../obelisk/BaseSwitch1")]
 
 [node name="rock" parent="YSort/walkable" instance=ExtResource("13_peaqv")]
 z_index = 2
