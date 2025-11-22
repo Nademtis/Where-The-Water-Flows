@@ -38,7 +38,9 @@ region_rect = Rect2(272, 0, 48, 75)
 
 [node name="DoorContainer" type="Node2D" parent="wholemask"]
 
-[node name="LampColorRect" type="ColorRect" parent="wholemask/DoorContainer"]
+[node name="LampContainer" type="Node2D" parent="wholemask/DoorContainer"]
+
+[node name="LampColorRect" type="ColorRect" parent="wholemask/DoorContainer/LampContainer"]
 custom_minimum_size = Vector2(5, 5)
 anchors_preset = 8
 anchor_left = 0.5
@@ -85,6 +87,7 @@ region_rect = Rect2(336, 0, 48, 75)
 metadata/_edit_lock_ = true
 
 [node name="elevatorCollLogic" type="Node2D" parent="."]
+visible = false
 z_index = 1
 
 [node name="DoorStaticBody2D" type="StaticBody2D" parent="elevatorCollLogic"]

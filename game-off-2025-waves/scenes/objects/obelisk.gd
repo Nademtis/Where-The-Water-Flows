@@ -19,8 +19,6 @@ const MOVE_TIME := 0.5
 @onready var rise_sfx: AudioStreamPlayer2D = $riseSFX
 @onready var go_down_sfx: AudioStreamPlayer2D = $goDownSFX
 
-
-
 func _ready() -> void:
 	super._ready()
 	Events.connect("player_use", _on_player_use)
@@ -32,9 +30,6 @@ func _ready() -> void:
 	#set correct pos
 	obelisk.position = active_pos if active else retracted_pos
 	
-	if required_switches.is_empty():
-		print("this obelisk has no switches, so is shown")
-	
 	if switch_to_activate:
 		update_active_logic(switch_to_activate.active)
 	
@@ -43,9 +38,9 @@ func _apply_state() -> void:
 	var target:Vector2
 	if active:
 		target = active_pos
-		rise_sfx.play()
+		SFX.play_sfx(rise_sfx)
 	else:
-		go_down_sfx.play()
+		SFX.play_sfx(go_down_sfx)
 		target = retracted_pos
 		update_active_logic(false)
 		
@@ -61,12 +56,10 @@ func update_active_logic(state : bool) -> void:
 	if state:
 		switch_to_activate.set_active(true)
 		active_sprite.visible = true
-		print("obelisk play active sound")
-		active_sfx.play()
+		SFX.play_sfx(active_sfx)
 		
 	else:
 		if switch_to_activate and switch_to_activate.active:
-			print("obelisk play NOT active sound")
 			not_active_sfx.play()
 		switch_to_activate.set_active(false)
 		active_sprite.visible = false

@@ -17,12 +17,13 @@ func _ready() -> void:
 func start_new_level(path: String) -> void: # should be called by elevator object
 	next_level_path = path
 	animation_player.play("fade_to_black")
-
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_to_black":
 		_setup_new_level()
 		
 func _setup_new_level() -> void:
+	GameStats.SFX_allowed = false
+	
 	for child in level_container.get_children():
 		child.queue_free()
 		
@@ -39,6 +40,13 @@ func _setup_new_level() -> void:
 	Events.emit_signal("new_level_done_loading")
 	animation_player.play("fade_out")
 	
+	_unmute_sfx_temporarily()
 	
 	#var tree : String = get_tree_string_pretty()
 	#print(tree)
+
+func _unmute_sfx_temporarily() -> void:
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await get_tree().process_frame
+	GameStats.SFX_allowed = true

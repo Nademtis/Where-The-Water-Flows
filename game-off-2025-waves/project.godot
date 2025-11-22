@@ -20,6 +20,7 @@ boot_splash/show_image=false
 Events="*res://scripts/globals/Events.gd"
 GameStats="*res://scripts/globals/GameStats.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+SFX="*res://scripts/sfx_util.gd"
 
 [debug]
 

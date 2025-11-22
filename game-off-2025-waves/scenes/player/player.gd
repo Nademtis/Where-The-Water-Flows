@@ -30,15 +30,12 @@ var move_dir: Vector2
 @onready var sfx_footstep_grass: AudioStreamPlayer2D = $sfxFootStep/sfx_footstep_grass
 @onready var sfx_footstep_stone: AudioStreamPlayer2D = $sfxFootStep/sfx_footstep_stone
 const SURFACE_TYPE_TILE_NAME : String = "surface_type"
-var footstep_cooldown := 0.0 # don't change - 
-var footstep_interval := 0.38 #the interval for howw often steps are played
+var footstep_cooldown := 0.0 # don't change - used for when to play footstep
+var footstep_interval := 0.38 # the interval for howw often steps are played
 
 #playerWrapper
 @onready var player_wrapper: Node2D = $".."
 var can_move : bool = true
-
-#var player_pos_node_to_update : Vector2 #used for follow camera's since this object is reparented
-#@onready var player_position_node: Node2D
 
 func _ready() -> void:
 	player_wrapper.global_position = global_position #updates wrapper
@@ -203,15 +200,11 @@ func _draw() -> void:
 		draw_circle(p, 3, Color.RED)
 	debug_points.clear()
 	
-	
-	#debug draw tile under player
 	if not debug_mark_tile_under_player:
 		return
 
-	# Convert world position to player's local space
 	var local_pos : Vector2 = to_local(debug_tile_world_pos)
 
-	# Draw isometric diamond (32×16) centered on the tile under the player
 	var half_w := 16.0
 	var half_h := 8.0
 	var points := [
@@ -236,6 +229,6 @@ func set_cannot_move() -> void:
 		self,
 		"modulate",
 		Color(1, 1, 1, 0),
-		0.3
+		0.4
 	)
 	
