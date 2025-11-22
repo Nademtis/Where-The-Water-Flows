@@ -27,7 +27,6 @@ func set_active(state: bool) -> void:
 	_apply_state()
 
 func get_active_switch_count() -> int:
-	print("get_active_switch_count")
 	var count := 0
 	for sw: BaseSwitch in required_switches:
 		if sw.active:

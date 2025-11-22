@@ -1,26 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://ofg441wirseh"]
+[gd_scene load_steps=7 format=3 uid="uid://ofg441wirseh"]
 
 [ext_resource type="Script" uid="uid://bgtxnja1srjmr" path="res://scenes/objects/scripts/elevator.gd" id="1_v2isl"]
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="1_vjvwn"]
 [ext_resource type="Script" uid="uid://c1sgyfqknkj8i" path="res://scripts/ysortHelper.gd" id="3_huxp4"]
-[ext_resource type="AudioStream" uid="uid://ba12f5m65wtup" path="res://audio/sfx/GameOff_Stone_Door_Slide_1.ogg" id="4_jadvq"]
-[ext_resource type="AudioStream" uid="uid://critllrepn262" path="res://audio/sfx/GameOff_Door_Enable.ogg" id="5_jadvq"]
-[ext_resource type="AudioStream" uid="uid://clgho33oh2fpo" path="res://audio/sfx/GameOff_Stone_Door_Slide_2.ogg" id="5_je1uo"]
+[ext_resource type="PackedScene" uid="uid://gku0jqaed1t0" path="res://scenes/objects/sfxScenes/door_sfx.tscn" id="4_78y2h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjimn"]
 size = Vector2(31.347534, 4.163194)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_huxp4"]
 size = Vector2(28.191675, 7.355747)
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_je1uo"]
-streams_count = 2
-stream_0/stream = ExtResource("4_jadvq")
-stream_1/stream = ExtResource("5_je1uo")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wfpg6"]
-streams_count = 1
-stream_0/stream = ExtResource("5_jadvq")
 
 [node name="Elevator-One" type="Node2D" node_paths=PackedStringArray("required_switches")]
 z_index = 1
@@ -121,16 +110,7 @@ position = Vector2(4.598885, -1.3221779)
 rotation = -0.45828557
 shape = SubResource("RectangleShape2D_huxp4")
 
-[node name="doorSlidingSFX" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_je1uo")
-volume_db = -10.576
-max_distance = 400.0
-bus = &"Sfx"
-
-[node name="DoorEnabledSFX" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_wfpg6")
-volume_db = -9.989
-max_distance = 400.0
-bus = &"Sfx"
+[node name="doorSfx" parent="." instance=ExtResource("4_78y2h")]
+position = Vector2(7, -12)
 
 [connection signal="body_entered" from="elevatorCollLogic/levelSwapperArea" to="." method="_on_level_swapper_area_body_entered"]

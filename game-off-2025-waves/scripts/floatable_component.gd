@@ -11,9 +11,9 @@ var current_level : float = 1
 
 signal component_changed_level(new_level : float)
 
+
 func _ready() -> void:
 	parent_body = get_parent()
-
 	float_speed = parent_body.get("float_speed")
 	start_water_level = parent_body.get("start_water_level")
 

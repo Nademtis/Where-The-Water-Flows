@@ -292,11 +292,12 @@ bus = &"Sfx"
 
 [node name="sfx_footstep_stone" type="AudioStreamPlayer2D" parent="sfxFootStep"]
 stream = SubResource("AudioStreamRandomizer_8ydkj")
+volume_db = 3.525
 bus = &"Sfx"
 
 [node name="footStepSFXcooldown" type="Timer" parent="sfxFootStep"]
 
-[node name="itemInHand" type="Area2D" parent="."]
+[node name="itemInHand" type="Area2D" parent="." groups=["player"]]
 collision_mask = 8
 script = ExtResource("18_uf5tr")
 

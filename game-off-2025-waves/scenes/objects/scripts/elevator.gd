@@ -22,12 +22,14 @@ var elevator_active_pos := Vector2(0 , 0)
 @export var next_level_path: String
 
 #sfx
-@onready var door_sliding_sfx: AudioStreamPlayer2D = $doorSlidingSFX
-@onready var door_enabled_sfx: AudioStreamPlayer2D = $DoorEnabledSFX
+@onready var door_sliding_sfx: AudioStreamPlayer2D = $doorSfx/doorSlidingSFX
+@onready var door_enabled_sfx: AudioStreamPlayer2D = $doorSfx/DoorEnabledSFX
+@onready var elevator_rise_or_down: AudioStreamPlayer2D = $doorSfx/elevatorRiseOrDown
 
 const DOOR_MOVE_SLOW : float = 2.5
 const DOOR_MOVE_FAST : float = 1
 var door_tween: Tween
+var whole_elevator_tween : Tween
 
 const REQUIRED_SWITCHES := {
 	"Elevator-One": 1,
@@ -41,11 +43,23 @@ func _ready() -> void:
 	lamps_array.append_array(lamp_container.get_children())
 	_apply_state() # correct colors and state
 	level_swapper_collision_shape_2d.disabled = true
+	
+	if required_switches.size() == 1:
+		door_container.position = elevator_active_pos
+	elif required_switches.size() > 0:
+		door_container.position = elevator_hidden_pos
 
 func _evaluate() -> void:
 	super._evaluate()
-	print("check lamp")
 	_update_lamp()
+	
+	#animate the whole elevator pos and play sound
+	if door_container.position != elevator_active_pos:
+		if required_switches.size() == 1: #door with 1 switch should just
+			door_container.position = elevator_active_pos
+		elif get_active_switch_count() > 0:
+			animate_whole_elevator(elevator_active_pos, DOOR_MOVE_SLOW)
+			SFX.play_sfx(elevator_rise_or_down)
 
 func _apply_state() -> void:
 	if active:
@@ -90,7 +104,6 @@ func _on_level_swapper_area_body_entered(body: Node2D) -> void:
 		
 
 func _update_lamp() -> void:
-	print("should update lamp")
 	var active_count : int = get_active_switch_count()
 	var lamp_total : int = lamps_array.size()
 	
@@ -111,8 +124,11 @@ func _close_door_and_swap_level(body: Node2D) -> void:
 	
 
 func animate_whole_elevator(target: Vector2, move_time : float) -> void:
-	var tween := get_tree().create_tween()
-	tween.tween_property(door_container, "position", target, move_time)
+	if whole_elevator_tween and whole_elevator_tween.is_running():
+		whole_elevator_tween.kill()
+		
+	whole_elevator_tween = get_tree().create_tween()
+	whole_elevator_tween.tween_property(door_container, "position", target, move_time)
 	
 
 func _validate_switch_count() -> void:

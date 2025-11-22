@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://do87h7uig68cw"]
+[gd_scene load_steps=30 format=4 uid="uid://do87h7uig68cw"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_64qpc"]
 [ext_resource type="PackedScene" uid="uid://opjx2dvm4ils" path="res://scenes/player/player.tscn" id="2_2ip8h"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bvxakbillx1n8" path="res://scenes/objects/bridge_se.tscn" id="14_u6tk6"]
 [ext_resource type="PackedScene" uid="uid://c7v878ho36jpc" path="res://scenes/objects/obelisk.tscn" id="15_3dbtp"]
 [ext_resource type="Script" uid="uid://btte8j4ymesff" path="res://scripts/base_switch.gd" id="16_3dbtp"]
+[ext_resource type="PackedScene" uid="uid://d1q3p0e3cp3ix" path="res://scenes/objects/log.tscn" id="16_rcbig"]
 
 [sub_resource type="Animation" id="Animation_oiirk"]
 length = 0.001
@@ -479,7 +480,7 @@ y_sort_enabled = true
 position = Vector2(-1, -1)
 
 [node name="Elevator-One" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("13_u3vgj")]
-position = Vector2(-450, 158)
+position = Vector2(-427, 144)
 required_switches = [NodePath("../obelisk2/BaseSwitch2")]
 
 [node name="BridgeSE" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("14_u6tk6")]
@@ -520,16 +521,19 @@ script = ExtResource("16_3dbtp")
 metadata/_custom_type_script = "uid://btte8j4ymesff"
 
 [node name="Elevator-Two" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("13_phlur")]
-position = Vector2(-394, 125)
-required_switches = [NodePath("../obelisk2/BaseSwitch2"), NodePath("../obelisk/BaseSwitch1")]
+position = Vector2(-375, 114)
+required_switches = [NodePath("../obelisk/BaseSwitch1"), NodePath("../obelisk2/BaseSwitch2")]
 
 [node name="Elevator-Three" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("14_rcbig")]
-position = Vector2(-339, 96)
-required_switches = [NodePath("../obelisk3/BaseSwitch2"), NodePath("../obelisk2/BaseSwitch2"), NodePath("../obelisk/BaseSwitch1")]
+position = Vector2(-321, 83)
+required_switches = [NodePath("../obelisk/BaseSwitch1"), NodePath("../obelisk2/BaseSwitch2"), NodePath("../obelisk3/BaseSwitch2")]
 
 [node name="rock" parent="YSort/walkable" instance=ExtResource("13_peaqv")]
-z_index = 2
 position = Vector2(-356, 200)
+
+[node name="log" parent="YSort/walkable" instance=ExtResource("16_rcbig")]
+position = Vector2(-228, 121)
+start_height_level = 2
 
 [node name="heightMap" type="TileMapLayer" parent="."]
 unique_name_in_owner = true

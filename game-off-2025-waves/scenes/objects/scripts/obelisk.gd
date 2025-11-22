@@ -6,12 +6,14 @@ class_name Obelisk extends BaseInteractable
 @export var placed_at_water_level : int
 @export var switch_to_activate : BaseSwitch
 
+@onready var collision_shape_2d: CollisionShape2D = $StaticBody2D/CollisionShape2D
+
 var player_in_range := false
 
 var retracted_pos : Vector2 = Vector2(0, 28)
 var active_pos : Vector2 = Vector2(0, 0)
 
-const MOVE_TIME := 0.5
+const MOVE_TIME := 0.8
 
 #SFX
 @onready var active_sfx: AudioStreamPlayer2D = $activeSFX
@@ -27,8 +29,11 @@ func _ready() -> void:
 		push_error("water level not defined")
 	Events.connect("water_level_changed", anim_water)
 	
-	#set correct pos
-	obelisk.position = active_pos if active else retracted_pos
+	if active:
+		obelisk.position = active_pos
+	else:
+		obelisk.position = retracted_pos
+		collision_shape_2d.set_deferred("disabled", true)
 	
 	if switch_to_activate:
 		update_active_logic(switch_to_activate.active)
@@ -39,14 +44,14 @@ func _apply_state() -> void:
 	if active:
 		target = active_pos
 		SFX.play_sfx(rise_sfx)
+		collision_shape_2d.set_deferred("disabled", false)
+		
 	else:
 		SFX.play_sfx(go_down_sfx)
 		target = retracted_pos
+		collision_shape_2d.set_deferred("disabled", true)
 		update_active_logic(false)
-		
 	_move_to(target)
-
-
 
 func _move_to(target: Vector2) -> void:
 	var tween := get_tree().create_tween()

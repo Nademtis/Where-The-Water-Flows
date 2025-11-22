@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1q3p0e3cp3ix"]
+
+[ext_resource type="Script" uid="uid://ll5p8tkptrjl" path="res://scenes/objects/floatableItem.gd" id="1_2aixv"]
+[ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="1_yqxoi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2aixv"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qbesu"]
+radius = 6.0
+
+[node name="log" type="Node2D" groups=["item"]]
+z_index = 2
+z_as_relative = false
+script = ExtResource("1_2aixv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yqxoi")
+region_enabled = true
+region_rect = Rect2(243, 180, 12, 10)
+
+[node name="water" type="Sprite2D" parent="."]
+texture = ExtResource("1_yqxoi")
+region_enabled = true
+region_rect = Rect2(259, 180, 12, 10)
+
+[node name="hit_box" type="Area2D" parent="." groups=["item"]]
+collision_layer = 8
+
+[node name="hitBoxColl" type="CollisionShape2D" parent="hit_box"]
+visible = false
+shape = SubResource("CircleShape2D_2aixv")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="staticBodyColl" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_qbesu")
