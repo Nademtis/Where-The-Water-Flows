@@ -464,12 +464,12 @@ collision_visibility_mode = 1
 
 [node name="PlayerWrapper" type="Node2D" parent="YSort/walkable"]
 z_index = 1
-position = Vector2(-325, 214)
+position = Vector2(-351, 164)
 
 [node name="Player" parent="YSort/walkable/PlayerWrapper" instance=ExtResource("2_2ip8h")]
 y_sort_enabled = true
-position = Vector2(3, 7)
 debug_wrapper = true
+metadata/_edit_lock_ = true
 
 [node name="objectsContainer" type="Node2D" parent="YSort/walkable"]
 z_index = 1
@@ -477,7 +477,7 @@ y_sort_enabled = true
 position = Vector2(-1, -1)
 
 [node name="Elevator" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("13_u3vgj")]
-position = Vector2(-393, 108)
+position = Vector2(-392, 128)
 required_switches = [NodePath("../obelisk/BaseSwitch1"), NodePath("../obelisk2/BaseSwitch2")]
 
 [node name="BridgeSE" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("14_u6tk6")]
@@ -563,7 +563,7 @@ curve = SubResource("Curve2D_u3vgj")
 
 [node name="Cam" parent="CameraContainer/Path2D" node_paths=PackedStringArray("follow_target", "follow_path") instance=ExtResource("11_2ip8h")]
 top_level = true
-position = Vector2(-297, 167)
+position = Vector2(-297, 163.97736)
 priority = 1
 follow_mode = 4
 follow_target = NodePath("../../../YSort/walkable/PlayerWrapper/Player")

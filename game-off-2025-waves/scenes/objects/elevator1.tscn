@@ -1,16 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://ofg441wirseh"]
+[gd_scene load_steps=6 format=3 uid="uid://ofg441wirseh"]
 
 [ext_resource type="Script" uid="uid://bgtxnja1srjmr" path="res://scenes/objects/elevator.gd" id="1_v2isl"]
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="1_vjvwn"]
+[ext_resource type="Script" uid="uid://c1sgyfqknkj8i" path="res://scripts/ysortHelper.gd" id="3_huxp4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjimn"]
+size = Vector2(31.347534, 4.163194)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_huxp4"]
+size = Vector2(20.606777, 7.355747)
 
 [node name="Elevator1" type="Node2D" node_paths=PackedStringArray("required_switches")]
-z_index = 1
-y_sort_enabled = true
+z_index = 2
+z_as_relative = false
 script = ExtResource("1_v2isl")
 required_switches = [null]
 
 [node name="wholemask" type="Sprite2D" parent="."]
 clip_children = 1
+position = Vector2(0, -22)
 texture = ExtResource("1_vjvwn")
 region_enabled = true
 region_rect = Rect2(272, 0, 48, 75)
@@ -60,3 +68,35 @@ texture = ExtResource("1_vjvwn")
 region_enabled = true
 region_rect = Rect2(336, 0, 48, 75)
 metadata/_edit_lock_ = true
+
+[node name="DoorStaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -21)
+collision_layer = 4
+
+[node name="DoorCollisionShape2D" type="CollisionShape2D" parent="DoorStaticBody2D"]
+position = Vector2(8.000001, 26)
+rotation = -0.4537856
+shape = SubResource("RectangleShape2D_cjimn")
+
+[node name="wallStaticBody" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wallStaticBody"]
+polygon = PackedVector2Array(-7, 14, -7, 12, -21, 6, 7, -14, 21, -10, 22, -1, 23, -1, 23, -11, 6, -16, -23, 5, -23, 8)
+
+[node name="YsortHelper" type="Area2D" parent="."]
+script = ExtResource("3_huxp4")
+metadata/_custom_type_script = "uid://c1sgyfqknkj8i"
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="YsortHelper"]
+polygon = PackedVector2Array(22, 0, 26, 0, 26, -61, -26, -61, -26, 8, -21, 8, -21, -1, 22, -13)
+
+[node name="levelSwapperArea" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="LevelSwapperCollisionShape2D" type="CollisionShape2D" parent="levelSwapperArea"]
+position = Vector2(5, -2)
+rotation = -0.45828557
+shape = SubResource("RectangleShape2D_huxp4")
+
+[connection signal="body_entered" from="levelSwapperArea" to="." method="_on_level_swapper_area_body_entered"]

@@ -35,7 +35,7 @@ var footstep_interval := 0.38 #the interval for howw often steps are played
 
 #playerWrapper
 @onready var player_wrapper: Node2D = $".."
-
+var can_move : bool = true
 
 #var player_pos_node_to_update : Vector2 #used for follow camera's since this object is reparented
 #@onready var player_position_node: Node2D
@@ -65,7 +65,8 @@ func _process(_delta: float) -> void:
 		debug_point(player_wrapper.global_position)
 
 func _physics_process(delta: float) -> void:
-	_movement(delta)
+	if can_move:
+		_movement(delta)
 	_handle_footsteps(delta)
 	
 	if not is_on_platform: #platform change this bool

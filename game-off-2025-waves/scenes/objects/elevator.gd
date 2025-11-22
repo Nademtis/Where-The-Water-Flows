@@ -10,12 +10,16 @@ var door_open_pos := Vector2 (0,50)
 var elevator_hidden_pos := Vector2(0 , 70)
 var elevator_active_pos := Vector2(0 , 0)
 
+@onready var level_swapper_collision_shape_2d: CollisionShape2D = $levelSwapperArea/LevelSwapperCollisionShape2D
+@onready var door_collision_shape_2d: CollisionShape2D = $DoorStaticBody2D/DoorCollisionShape2D
+@export var next_level_path: String
 
 const MOVE_TIME : float = 0.8
 
 func _ready() -> void:
 	super._ready()
 	_apply_state() # correct colors and state
+	level_swapper_collision_shape_2d.disabled = true
 
 func _apply_state() -> void:
 	if active:
@@ -32,10 +36,21 @@ func _apply_state() -> void:
 func _manage_door(is_active : bool) -> void:
 	if is_active:
 		_move_to(door_open_pos)
+		level_swapper_collision_shape_2d.disabled = false
+		door_collision_shape_2d.disabled = true
 		
 	else:
 		_move_to(door_closed_pos)
+		level_swapper_collision_shape_2d.disabled = true
+		door_collision_shape_2d.disabled = false
+		
 		
 func _move_to(target: Vector2) -> void:
 	var tween := get_tree().create_tween()
 	tween.tween_property(moveable_door, "position", target, MOVE_TIME)
+
+
+func _on_level_swapper_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		#body.can_move = false
+		print("swap levels")

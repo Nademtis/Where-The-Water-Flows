@@ -321,7 +321,7 @@ bus = &"Sfx"
 
 [node name="itemDropPosVisuals" type="Sprite2D" parent="itemInHand"]
 modulate = Color(1, 1, 1, 0.49411765)
-position = Vector2(0, 6)
+position = Vector2(0, 8)
 texture = ExtResource("21_3j4b4")
 region_enabled = true
 region_rect = Rect2(276, 180, 8, 8)
