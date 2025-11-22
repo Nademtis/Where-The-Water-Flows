@@ -478,7 +478,7 @@ position = Vector2(-1, -1)
 
 [node name="Elevator" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("13_u3vgj")]
 position = Vector2(-392, 128)
-required_switches = [NodePath("../obelisk/BaseSwitch1"), NodePath("../obelisk2/BaseSwitch2")]
+required_switches = [NodePath("../obelisk2/BaseSwitch2")]
 
 [node name="BridgeSE" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("14_u6tk6")]
 position = Vector2(-223, 234)

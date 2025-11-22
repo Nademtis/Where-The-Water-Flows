@@ -124,19 +124,6 @@ func _movement(delta : float) -> void:
 	move_and_slide()
 
 func _update_animation(dir : Vector2) -> void:
-	#if dir == Vector2.ZERO:
-		#animated_sprite_2d.play("idle")
-	#else:
-		#if abs(dir.x) > abs(dir.y):
-			## Horizontal movement dominates
-			#animated_sprite_2d.play("E_walk") 
-			#animated_sprite_2d.flip_h = dir.x < 0
-		#else:
-			#if dir.y < 0:
-				#animated_sprite_2d.play("N_walk")
-			#else:
-				#animated_sprite_2d.play("S_walk")
-	
 	if dir != Vector2.ZERO:
 		if abs(dir.x) > abs(dir.y):
 			if dir.x > 0:
@@ -235,3 +222,20 @@ func _draw() -> void:
 	]
 
 	draw_polyline(points + [points[0]], Color(1.0, 0.067, 1.0, 0.486), 2.0)
+
+func set_cannot_move() -> void:
+	var old_player_pos : Vector2 = global_position
+	player_wrapper.global_position = global_position
+	global_position = old_player_pos
+	
+	can_move = false
+	velocity = Vector2.ZERO
+	animated_sprite_2d.play("idle")
+	var tween := get_tree().create_tween()
+	tween.tween_property(
+		self,
+		"modulate",
+		Color(1, 1, 1, 0),
+		0.3
+	)
+	

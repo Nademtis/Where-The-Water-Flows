@@ -1,23 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://ofg441wirseh"]
+[gd_scene load_steps=11 format=3 uid="uid://ofg441wirseh"]
 
 [ext_resource type="Script" uid="uid://bgtxnja1srjmr" path="res://scenes/objects/elevator.gd" id="1_v2isl"]
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="1_vjvwn"]
 [ext_resource type="Script" uid="uid://c1sgyfqknkj8i" path="res://scripts/ysortHelper.gd" id="3_huxp4"]
+[ext_resource type="AudioStream" uid="uid://ba12f5m65wtup" path="res://audio/sfx/GameOff_Stone_Door_Slide_1.ogg" id="4_jadvq"]
+[ext_resource type="AudioStream" uid="uid://critllrepn262" path="res://audio/sfx/GameOff_Door_Enable.ogg" id="5_jadvq"]
+[ext_resource type="AudioStream" uid="uid://clgho33oh2fpo" path="res://audio/sfx/GameOff_Stone_Door_Slide_2.ogg" id="5_je1uo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjimn"]
 size = Vector2(31.347534, 4.163194)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_huxp4"]
-size = Vector2(20.606777, 7.355747)
+size = Vector2(28.191675, 7.355747)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_je1uo"]
+streams_count = 2
+stream_0/stream = ExtResource("4_jadvq")
+stream_1/stream = ExtResource("5_je1uo")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wfpg6"]
+streams_count = 1
+stream_0/stream = ExtResource("5_jadvq")
 
 [node name="Elevator1" type="Node2D" node_paths=PackedStringArray("required_switches")]
-z_index = 2
+z_index = 1
 z_as_relative = false
 script = ExtResource("1_v2isl")
 required_switches = [null]
 
 [node name="wholemask" type="Sprite2D" parent="."]
 clip_children = 1
+z_index = 1
 position = Vector2(0, -22)
 texture = ExtResource("1_vjvwn")
 region_enabled = true
@@ -50,7 +63,9 @@ region_rect = Rect2(208, 80, 48, 80)
 
 [node name="moveableDoor" type="Sprite2D" parent="wholemask/DoorContainer"]
 texture_filter = 1
+position = Vector2(0, -10)
 texture = ExtResource("1_vjvwn")
+offset = Vector2(0, 10)
 region_enabled = true
 region_rect = Rect2(272, 80, 48, 80)
 
@@ -69,34 +84,49 @@ region_enabled = true
 region_rect = Rect2(336, 0, 48, 75)
 metadata/_edit_lock_ = true
 
-[node name="DoorStaticBody2D" type="StaticBody2D" parent="."]
+[node name="elevatorCollLogic" type="Node2D" parent="."]
+visible = false
+
+[node name="DoorStaticBody2D" type="StaticBody2D" parent="elevatorCollLogic"]
 position = Vector2(0, -21)
 collision_layer = 4
 
-[node name="DoorCollisionShape2D" type="CollisionShape2D" parent="DoorStaticBody2D"]
+[node name="DoorCollisionShape2D" type="CollisionShape2D" parent="elevatorCollLogic/DoorStaticBody2D"]
 position = Vector2(8.000001, 26)
 rotation = -0.4537856
 shape = SubResource("RectangleShape2D_cjimn")
 
-[node name="wallStaticBody" type="StaticBody2D" parent="."]
+[node name="wallStaticBody" type="StaticBody2D" parent="elevatorCollLogic"]
 collision_layer = 4
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wallStaticBody"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="elevatorCollLogic/wallStaticBody"]
 polygon = PackedVector2Array(-7, 14, -7, 12, -21, 6, 7, -14, 21, -10, 22, -1, 23, -1, 23, -11, 6, -16, -23, 5, -23, 8)
 
-[node name="YsortHelper" type="Area2D" parent="."]
+[node name="YsortHelper" type="Area2D" parent="elevatorCollLogic"]
 script = ExtResource("3_huxp4")
 metadata/_custom_type_script = "uid://c1sgyfqknkj8i"
 
-[node name="Polygon2D" type="CollisionPolygon2D" parent="YsortHelper"]
+[node name="Polygon2D" type="CollisionPolygon2D" parent="elevatorCollLogic/YsortHelper"]
 polygon = PackedVector2Array(22, 0, 26, 0, 26, -61, -26, -61, -26, 8, -21, 8, -21, -1, 22, -13)
 
-[node name="levelSwapperArea" type="Area2D" parent="."]
+[node name="levelSwapperArea" type="Area2D" parent="elevatorCollLogic"]
 collision_layer = 8
 
-[node name="LevelSwapperCollisionShape2D" type="CollisionShape2D" parent="levelSwapperArea"]
-position = Vector2(5, -2)
+[node name="LevelSwapperCollisionShape2D" type="CollisionShape2D" parent="elevatorCollLogic/levelSwapperArea"]
+position = Vector2(4.598885, -1.3221779)
 rotation = -0.45828557
 shape = SubResource("RectangleShape2D_huxp4")
 
-[connection signal="body_entered" from="levelSwapperArea" to="." method="_on_level_swapper_area_body_entered"]
+[node name="doorSlidingSFX" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_je1uo")
+volume_db = -10.576
+max_distance = 400.0
+bus = &"Sfx"
+
+[node name="DoorEnabledSFX" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_wfpg6")
+volume_db = -9.989
+max_distance = 400.0
+bus = &"Sfx"
+
+[connection signal="body_entered" from="elevatorCollLogic/levelSwapperArea" to="." method="_on_level_swapper_area_body_entered"]
