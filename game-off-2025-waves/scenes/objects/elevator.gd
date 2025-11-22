@@ -41,23 +41,30 @@ func _apply_state() -> void:
 
 func _manage_door(is_active : bool) -> void:
 	if is_active:
-		_move_to(door_open_pos, DOOR_MOVE_SLOW)
-		level_swapper_collision_shape_2d.disabled = false
-		door_collision_shape_2d.disabled = true
+		_move_to(door_open_pos, DOOR_MOVE_SLOW, false)
+		#level_swapper_collision_shape_2d.disabled = false
+		#door_collision_shape_2d.disabled = true
 		
 	else:
-		_move_to(door_closed_pos, DOOR_MOVE_SLOW)
+		_move_to(door_closed_pos, DOOR_MOVE_SLOW, true)
 		level_swapper_collision_shape_2d.disabled = true
 		door_collision_shape_2d.disabled = false
 	
 	door_sliding_sfx.play(2.7)
 	door_enabled_sfx.play()
 		
-func _move_to(target: Vector2, move_time : float) -> void:
+func _move_to(target: Vector2, move_time : float, door_is_closed : bool) -> void:
 	var tween := get_tree().create_tween()
 	tween.tween_property(moveable_door, "position", target, move_time)
-	#tween.tween_callback(door_sliding_sfx.stop)
+	tween.tween_callback(_door_collisions.bind(door_is_closed))
 
+func _door_collisions(door_is_closed : bool) -> void:
+	if door_is_closed:
+		level_swapper_collision_shape_2d.disabled = true
+		door_collision_shape_2d.disabled = false
+	else:
+		level_swapper_collision_shape_2d.disabled = false
+		door_collision_shape_2d.disabled = true
 
 func _on_level_swapper_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -65,10 +72,10 @@ func _on_level_swapper_area_body_entered(body: Node2D) -> void:
 		
 
 func _close_door_and_swap_level(body: Node2D) -> void:
-	_move_to(door_closed_pos, DOOR_MOVE_FAST)
+	_move_to(door_closed_pos, DOOR_MOVE_FAST, true)
 	body.set_cannot_move()
 	await get_tree().create_timer(DOOR_MOVE_FAST).timeout
-	animate_whole_elevator(elevator_hidden_pos, 1)
+	animate_whole_elevator(elevator_hidden_pos, DOOR_MOVE_FAST)
 	await get_tree().create_timer(DOOR_MOVE_FAST).timeout
 	print("swap levels")
 	

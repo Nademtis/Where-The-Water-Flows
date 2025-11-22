@@ -85,7 +85,7 @@ region_rect = Rect2(336, 0, 48, 75)
 metadata/_edit_lock_ = true
 
 [node name="elevatorCollLogic" type="Node2D" parent="."]
-visible = false
+z_index = 1
 
 [node name="DoorStaticBody2D" type="StaticBody2D" parent="elevatorCollLogic"]
 position = Vector2(0, -21)
@@ -103,6 +103,7 @@ collision_layer = 4
 polygon = PackedVector2Array(-7, 14, -7, 12, -21, 6, 7, -14, 21, -10, 22, -1, 23, -1, 23, -11, 6, -16, -23, 5, -23, 8)
 
 [node name="YsortHelper" type="Area2D" parent="elevatorCollLogic"]
+visible = false
 script = ExtResource("3_huxp4")
 metadata/_custom_type_script = "uid://c1sgyfqknkj8i"
 
