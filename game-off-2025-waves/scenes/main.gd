@@ -12,7 +12,7 @@ var current_level_path: String
 func _ready() -> void:
 	next_level_path = FIRST_LEVEL_PATH
 	_setup_new_level() # skip the start_new_level since we don't want to fade to black. it's already black
-	#print(get_tree_string_pretty())
+	print(get_tree_string_pretty())
 
 func start_new_level(path: String) -> void: # should be called by elevator object
 	next_level_path = path
