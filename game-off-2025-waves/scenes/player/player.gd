@@ -167,7 +167,8 @@ func _get_height_tile_under_player() -> void:
 	
 
 func move_water(is_up : bool) -> void:
-	Events.emit_signal("requested_water_level_direction", is_up)
+	if GameStats.water_control_unlocked:
+		Events.emit_signal("requested_water_level_direction", is_up)
 	
 func _get_direction_name(v: Vector2) -> String:
 	# 8-direction classification

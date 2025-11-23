@@ -11,7 +11,7 @@ size = Vector2(31.347534, 4.163194)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_huxp4"]
 size = Vector2(28.191675, 7.355747)
 
-[node name="Elevator-Two" type="Node2D" node_paths=PackedStringArray("required_switches")]
+[node name="Elevator-Two Right" type="Node2D" node_paths=PackedStringArray("required_switches")]
 z_index = 1
 z_as_relative = false
 script = ExtResource("1_e3g5u")

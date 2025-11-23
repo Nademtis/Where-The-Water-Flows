@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvxakbillx1n8"]
+[gd_scene load_steps=9 format=3 uid="uid://bvxakbillx1n8"]
 
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="1_ica2m"]
 [ext_resource type="Script" uid="uid://b2l3bjhc1kyai" path="res://scenes/objects/scripts/bridge.gd" id="1_wo0ln"]
 [ext_resource type="Script" uid="uid://c1sgyfqknkj8i" path="res://scripts/ysortHelper.gd" id="3_xns4n"]
 [ext_resource type="AudioStream" uid="uid://dvywf2gnhvlb" path="res://audio/sfx/GameOff_Bridge_Extend.ogg" id="4_156ma"]
 [ext_resource type="AudioStream" uid="uid://ba4j1vrfwumf1" path="res://audio/sfx/GameOff_Bridge_Retract.ogg" id="5_dmek5"]
+[ext_resource type="PackedScene" uid="uid://b88evg1mvgox8" path="res://tiles/tilesets/collision_tile_map.tscn" id="6_dmek5"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mqb0x"]
 streams_count = 1
@@ -52,3 +53,15 @@ stream = SubResource("AudioStreamRandomizer_4glrl")
 max_distance = 400.0
 panning_strength = 1.5
 bus = &"Sfx"
+
+[node name="CollisionTileMap" parent="." instance=ExtResource("6_dmek5")]
+visible = false
+modulate = Color(1, 1, 1, 0.4509804)
+position = Vector2(0, -9)
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="StaticCollisionTileMap2" parent="." instance=ExtResource("6_dmek5")]
+visible = false
+modulate = Color(1, 1, 1, 0.4509804)
+position = Vector2(0, -9)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0)

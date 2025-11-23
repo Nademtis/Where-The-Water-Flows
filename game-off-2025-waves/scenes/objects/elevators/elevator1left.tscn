@@ -1,0 +1,116 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4f8s0ixfxsu8"]
+
+[ext_resource type="Script" uid="uid://bgtxnja1srjmr" path="res://scenes/objects/scripts/elevator.gd" id="1_7kvxk"]
+[ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="2_820ow"]
+[ext_resource type="Script" uid="uid://c1sgyfqknkj8i" path="res://scripts/ysortHelper.gd" id="3_35wnt"]
+[ext_resource type="PackedScene" uid="uid://gku0jqaed1t0" path="res://scenes/objects/sfxScenes/door_sfx.tscn" id="4_oxudi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjimn"]
+size = Vector2(31.347534, 4.163194)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_huxp4"]
+size = Vector2(28.191675, 7.355747)
+
+[node name="Elevator-One Left" type="Node2D" node_paths=PackedStringArray("required_switches")]
+z_index = 1
+z_as_relative = false
+script = ExtResource("1_7kvxk")
+required_switches = [null]
+
+[node name="wholemask" type="Sprite2D" parent="."]
+clip_children = 1
+z_index = 1
+position = Vector2(0, -22)
+texture = ExtResource("2_820ow")
+region_enabled = true
+region_rect = Rect2(272, 208, 48, 75)
+
+[node name="DoorContainer" type="Node2D" parent="wholemask"]
+
+[node name="LampContainer" type="Node2D" parent="wholemask/DoorContainer"]
+
+[node name="LampColorRect" type="ColorRect" parent="wholemask/DoorContainer/LampContainer"]
+custom_minimum_size = Vector2(5, 5)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -29.0
+offset_right = 2.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3254902, 0.40784314, 0.4509804, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="innerBG" type="Sprite2D" parent="wholemask/DoorContainer"]
+texture_filter = 1
+position = Vector2(-4, 7)
+texture = ExtResource("2_820ow")
+region_enabled = true
+region_rect = Rect2(206, 296, 44, 72)
+
+[node name="moveableDoor" type="Sprite2D" parent="wholemask/DoorContainer"]
+texture_filter = 1
+position = Vector2(0, -10)
+texture = ExtResource("2_820ow")
+offset = Vector2(0, 10)
+region_enabled = true
+region_rect = Rect2(272, 288, 48, 79)
+
+[node name="DoorFrame" type="Sprite2D" parent="wholemask/DoorContainer"]
+texture_filter = 1
+texture = ExtResource("2_820ow")
+region_enabled = true
+region_rect = Rect2(208, 208, 48, 75)
+metadata/_edit_lock_ = true
+
+[node name="FrameTurnedOn" type="Sprite2D" parent="wholemask/DoorContainer"]
+visible = false
+texture_filter = 1
+texture = ExtResource("2_820ow")
+region_enabled = true
+region_rect = Rect2(336, 208, 48, 75)
+metadata/_edit_lock_ = true
+
+[node name="elevatorCollLogic" type="Node2D" parent="."]
+visible = false
+z_index = 1
+scale = Vector2(-1, 1)
+
+[node name="DoorStaticBody2D" type="StaticBody2D" parent="elevatorCollLogic"]
+position = Vector2(0, -21)
+collision_layer = 4
+
+[node name="DoorCollisionShape2D" type="CollisionShape2D" parent="elevatorCollLogic/DoorStaticBody2D"]
+position = Vector2(8.000001, 26)
+rotation = -0.4537856
+shape = SubResource("RectangleShape2D_cjimn")
+
+[node name="wallStaticBody" type="StaticBody2D" parent="elevatorCollLogic"]
+collision_layer = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="elevatorCollLogic/wallStaticBody"]
+polygon = PackedVector2Array(-7, 14, -7, 12, -21, 6, 7, -14, 21, -10, 22, -1, 23, -1, 23, -11, 6, -16, -23, 5, -23, 8)
+
+[node name="YsortHelper" type="Area2D" parent="elevatorCollLogic"]
+script = ExtResource("3_35wnt")
+metadata/_custom_type_script = "uid://c1sgyfqknkj8i"
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="elevatorCollLogic/YsortHelper"]
+polygon = PackedVector2Array(22, 0, 26, 0, 26, -61, -26, -61, -26, 8, -21, 8, -21, -1, 22, -13)
+
+[node name="levelSwapperArea" type="Area2D" parent="elevatorCollLogic"]
+collision_layer = 8
+
+[node name="LevelSwapperCollisionShape2D" type="CollisionShape2D" parent="elevatorCollLogic/levelSwapperArea"]
+position = Vector2(4.598885, -1.3221779)
+rotation = -0.45828557
+shape = SubResource("RectangleShape2D_huxp4")
+
+[node name="doorSfx" parent="." instance=ExtResource("4_oxudi")]
+position = Vector2(-8, -14)
+
+[connection signal="body_entered" from="elevatorCollLogic/levelSwapperArea" to="." method="_on_level_swapper_area_body_entered"]

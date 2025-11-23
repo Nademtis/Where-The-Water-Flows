@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://do87h7uig68cw"]
+[gd_scene load_steps=33 format=4 uid="uid://do87h7uig68cw"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_64qpc"]
 [ext_resource type="PackedScene" uid="uid://opjx2dvm4ils" path="res://scenes/player/player.tscn" id="2_2ip8h"]
@@ -14,13 +14,16 @@
 [ext_resource type="PackedScene" uid="uid://ym65vt1sl83d" path="res://scenes/camera/cam.tscn" id="11_2ip8h"]
 [ext_resource type="PackedScene" uid="uid://ka8jajjqqorm" path="res://scenes/objects/pressure_plate.tscn" id="12_unwjj"]
 [ext_resource type="PackedScene" uid="uid://o7m6u6mncvb3" path="res://scenes/objects/rock.tscn" id="13_peaqv"]
-[ext_resource type="PackedScene" uid="uid://4lm142cs42m3" path="res://scenes/objects/elevator2.tscn" id="13_phlur"]
-[ext_resource type="PackedScene" uid="uid://ofg441wirseh" path="res://scenes/objects/elevator1.tscn" id="13_u3vgj"]
-[ext_resource type="PackedScene" uid="uid://dxd880hyw6tp0" path="res://scenes/objects/elevator3.tscn" id="14_rcbig"]
+[ext_resource type="PackedScene" uid="uid://4lm142cs42m3" path="res://scenes/objects/elevators/elevator2right.tscn" id="13_phlur"]
+[ext_resource type="PackedScene" uid="uid://ofg441wirseh" path="res://scenes/objects/elevators/elevator1right.tscn" id="13_u3vgj"]
+[ext_resource type="PackedScene" uid="uid://dxd880hyw6tp0" path="res://scenes/objects/elevators/elevator3right.tscn" id="14_rcbig"]
 [ext_resource type="PackedScene" uid="uid://bvxakbillx1n8" path="res://scenes/objects/bridge_se.tscn" id="14_u6tk6"]
 [ext_resource type="PackedScene" uid="uid://c7v878ho36jpc" path="res://scenes/objects/obelisk.tscn" id="15_3dbtp"]
+[ext_resource type="PackedScene" uid="uid://bkcykyi4o630c" path="res://scenes/objects/elevators/elevator2left.tscn" id="16_0buo8"]
 [ext_resource type="Script" uid="uid://btte8j4ymesff" path="res://scripts/base_switch.gd" id="16_3dbtp"]
 [ext_resource type="PackedScene" uid="uid://d1q3p0e3cp3ix" path="res://scenes/objects/log.tscn" id="16_rcbig"]
+[ext_resource type="PackedScene" uid="uid://cfbccvhjmo0ak" path="res://scenes/objects/elevators/elevator3left.tscn" id="17_h4x42"]
+[ext_resource type="PackedScene" uid="uid://b4f8s0ixfxsu8" path="res://scenes/objects/elevators/elevator1left.tscn" id="17_ohm4n"]
 
 [sub_resource type="Animation" id="Animation_oiirk"]
 length = 0.001
@@ -417,7 +420,7 @@ y_sort_enabled = true
 unique_name_in_owner = true
 z_index = 1
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD2/xIAAAAAAAAAAAD1/xEAAAAAAAEAAAD1/xMAAAADAAAAAAD2/xMAAAAAAAAAAAD2/xQAAAAHAAAAAAD2/xoAAAAHAAIAAAD2/xsAAAAAAAAAAAD3/xwAAAAAAAAAAAD3/xsAAAAAAAAAAAD3/xoAAAAJAAIAAAD3/xkAAAAJAAIAAAD3/xQAAAAJAAAAAAD4/xoAAAAAAAAAAAD4/xgAAAAAAAAAAAD3/xcAAAAJAAEAAAD4/xYAAAAAAAAAAAD3/xUAAAAJAAAAAAD1/xkAAAAHAAIAAAD1/xgAAAAHAAIAAAD0/xkAAAAEAAAAAAD0/xoAAAAAAAAAAAD0/xsAAAAAAAAAAAD0/xwAAAAAAAAAAAD1/xoAAAAAAAAAAAD0/x0AAAAAAAAAAAD1/xwAAAAAAAAAAAD1/xsAAAAAAAAAAAD1/xUAAAAAAAAAAAD1/xQAAAAAAAAAAAD0/xUAAAAAAAAAAAD1/xYAAAAAAAAAAAD0/xcAAAADAAEAAAD0/xgAAAAEAAAAAAD1/xIAAAACAAEAAAD0/xMAAAAAAAAAAAD0/xQAAAAAAAAAAADz/xUAAAAAAAEAAAD0/xYAAAADAAEAAAD0/w0AAAAAAAAAAAD0/w4AAAAAAAAAAADz/w8AAAAAAAAAAAD0/wwAAAAAAAAAAADz/w0AAAAAAAAAAADz/w4AAAAAAAAAAADz/xAAAAAAAAAAAADy/w8AAAAAAAAAAADy/xEAAAAAAAAAAADy/xAAAAAAAAAAAADy/xIAAAACAAAAAADx/xcAAAAAAAAAAADy/xgAAAADAAAAAADy/xcAAAACAAAAAADz/xYAAAAFAAEAAADx/xkAAAAAAAAAAADy/xoAAAAAAAAAAADy/xkAAAAEAAEAAADz/xgAAAAEAAAAAADz/xcAAAACAAAAAADy/xsAAAAAAAAAAADz/xwAAAAAAAAAAADz/xsAAAAAAAAAAADz/xkAAAAAAAAAAADz/xoAAAAAAAAAAAD2/xEAAAAAAAAAAAD3/xIAAAAAAAAAAAD3/xMAAAAAAAAAAAD4/xQAAAAAAAAAAAD3/w8AAAAAAAQAAAD4/xAAAAABAAUAAAD4/w4AAAAAAAAAAAD4/w8AAAAAAAAAAAD5/w4AAAACAAAAAAD4/w0AAAAAAAAAAAD5/w0AAAAEAAAAAAD5/wwAAAAAAAAAAAD2/xcAAAAIAAEAAAD2/xgAAAAIAAEAAAD3/xgAAAAIAAEAAAD3/xYAAAAIAAEAAAD2/xUAAAAIAAEAAAD2/xYAAAAHAAAAAAD1/xcAAAAHAAAAAAD2/xkAAAAIAAEAAAD6/w4AAAAAAAAAAAD5/w8AAAAAAAAAAAD6/xAAAAAAAAAAAAD6/w8AAAAAAAAAAAD0/w8AAAAFAAUAAAD0/xAAAAAGAAQAAADz/xEAAAAEAAQAAADz/xIAAAAFAAUAAAD4/xUAAAABAAAAAAD5/x4AAAAAAAAAAAD4/x8AAAAAAAAAAAD5/x0AAAAAAAAAAAD4/yAAAAAAAAAAAAD5/x8AAAAAAAAAAAD5/yAAAAAAAAAAAAD6/xEAAAAJAAwAAAD6/xIAAAAJAAwAAAA=")
+tile_map_data = PackedByteArray("AAD2/xIAAAAAAAAAAAD1/xEAAAAAAAEAAAD1/xMAAAADAAAAAAD2/xMAAAAAAAAAAAD2/xQAAAAHAAAAAAD2/xoAAAAHAAIAAAD2/xsAAAAAAAAAAAD3/xwAAAAAAAAAAAD3/xsAAAAAAAAAAAD3/xoAAAAJAAIAAAD3/xkAAAAJAAIAAAD3/xQAAAAJAAAAAAD4/xoAAAAAAAAAAAD4/xgAAAAAAAAAAAD3/xcAAAAJAAEAAAD4/xYAAAAAAAAAAAD3/xUAAAAJAAAAAAD1/xkAAAAHAAIAAAD1/xgAAAAHAAIAAAD0/xkAAAAEAAAAAAD0/xoAAAAAAAAAAAD0/xsAAAAAAAAAAAD0/xwAAAAAAAAAAAD1/xoAAAAAAAAAAAD0/x0AAAAAAAAAAAD1/xwAAAAAAAAAAAD1/xsAAAAAAAAAAAD1/xUAAAAAAAAAAAD1/xQAAAAAAAAAAAD0/xUAAAAAAAAAAAD1/xYAAAAAAAAAAAD0/xcAAAADAAEAAAD0/xgAAAAEAAAAAAD1/xIAAAACAAEAAAD0/xMAAAAAAAAAAAD0/xQAAAAAAAAAAADz/xUAAAAAAAEAAAD0/xYAAAADAAEAAAD0/w0AAAAAAAAAAAD0/w4AAAAAAAAAAADz/w8AAAAAAAAAAAD0/wwAAAAAAAAAAADz/w0AAAAAAAAAAADz/w4AAAAAAAAAAADz/xAAAAAAAAAAAADy/w8AAAAAAAAAAADy/xEAAAAAAAAAAADy/xAAAAAAAAAAAADy/xIAAAACAAAAAADx/xcAAAAAAAAAAADy/xgAAAADAAAAAADy/xcAAAACAAAAAADz/xYAAAAFAAEAAADx/xkAAAAAAAAAAADy/xoAAAAAAAAAAADy/xkAAAAEAAEAAADz/xgAAAAEAAAAAADz/xcAAAACAAAAAADy/xsAAAAAAAAAAADz/xwAAAAAAAAAAADz/xsAAAAAAAAAAADz/xkAAAAAAAAAAADz/xoAAAAAAAAAAAD2/xEAAAAAAAAAAAD3/xIAAAAAAAAAAAD3/xMAAAAAAAAAAAD4/xQAAAAAAAAAAAD3/w8AAAAAAAQAAAD4/xAAAAABAAUAAAD4/w4AAAAAAAAAAAD4/w8AAAAAAAAAAAD5/w4AAAACAAAAAAD4/w0AAAAAAAAAAAD5/w0AAAAEAAAAAAD5/wwAAAAAAAAAAAD2/xcAAAAIAAEAAAD2/xgAAAAIAAEAAAD3/xgAAAAIAAEAAAD3/xYAAAAIAAEAAAD2/xUAAAAIAAEAAAD2/xYAAAAHAAAAAAD1/xcAAAAHAAAAAAD2/xkAAAAIAAEAAAD6/w4AAAAAAAAAAAD5/w8AAAAAAAAAAAD6/xAAAAAAAAAAAAD6/w8AAAAAAAAAAAD0/w8AAAAFAAUAAAD0/xAAAAAGAAQAAADz/xEAAAAEAAQAAADz/xIAAAAFAAUAAAD4/xUAAAABAAAAAAD5/x4AAAAAAAAAAAD4/x8AAAAAAAAAAAD5/x0AAAAAAAAAAAD4/yAAAAAAAAAAAAD5/x8AAAAAAAAAAAD5/yAAAAAAAAAAAAD6/xEAAAAJAAwAAAD6/xIAAAAJAAwAAAD5/woAAAAAAAAAAAD4/wsAAAAAAAAAAAD4/wwAAAAAAAAAAAD3/wsAAAAAAAAAAAD4/woAAAAAAAAAAAD3/wkAAAAAAAAAAAD4/wgAAAAAAAAAAAD4/wkAAAAAAAAAAAD5/wsAAAAAAAAAAAD6/woAAAAAAAAAAAD5/wkAAAAAAAAAAAD6/wgAAAAAAAAAAAD5/wcAAAAAAAAAAAD5/wgAAAAAAAAAAAD4/wcAAAAAAAAAAAD5/wYAAAAAAAAAAAD3/wgAAAAAAAAAAAD3/wcAAAAAAAAAAAD4/wYAAAAAAAAAAAD4/wUAAAAAAAAAAAD3/woAAAAAAAAAAAA=")
 tile_set = ExtResource("1_64qpc")
 navigation_enabled = false
 metadata/_edit_lock_ = true
@@ -460,9 +463,10 @@ coll_map = NodePath("../platformCollTilemap")
 where_to_remove_col = Array[ExtResource("5_j8l06")]([SubResource("Resource_peaqv"), SubResource("Resource_o53ap")])
 
 [node name="platformCollTilemap" parent="YSort/walkable/wrapper2" instance=ExtResource("6_pqv4r")]
+visible = false
 z_index = 5
 position = Vector2(1, -11)
-tile_map_data = PackedByteArray("AAD+/wEAAAABAAAAAAD//wIAAAABAAAAAAA=")
+tile_map_data = PackedByteArray("AAD+/wEAAAABAAAAAAD//wIAAAABAAAAAAAAAAAAAAAAAAAAAAA=")
 collision_visibility_mode = 1
 
 [node name="PlayerWrapper" type="Node2D" parent="YSort/walkable"]
@@ -526,6 +530,18 @@ required_switches = [NodePath("../obelisk/BaseSwitch1"), NodePath("../obelisk2/B
 
 [node name="Elevator-Three" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("14_rcbig")]
 position = Vector2(-321, 83)
+required_switches = [NodePath("../obelisk/BaseSwitch1"), NodePath("../obelisk2/BaseSwitch2"), NodePath("../obelisk3/BaseSwitch2")]
+
+[node name="Elevator-One Left" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("17_ohm4n")]
+position = Vector2(-243, 82)
+required_switches = [NodePath("../obelisk/BaseSwitch1")]
+
+[node name="Elevator-Two Left" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("16_0buo8")]
+position = Vector2(-148, 223)
+required_switches = [NodePath("../obelisk/BaseSwitch1"), NodePath("../obelisk2/BaseSwitch2")]
+
+[node name="Elevator-Three Left" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("17_h4x42")]
+position = Vector2(-194, 171)
 required_switches = [NodePath("../obelisk/BaseSwitch1"), NodePath("../obelisk2/BaseSwitch2"), NodePath("../obelisk3/BaseSwitch2")]
 
 [node name="rock" parent="YSort/walkable" instance=ExtResource("13_peaqv")]

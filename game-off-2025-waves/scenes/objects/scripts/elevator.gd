@@ -76,8 +76,12 @@ func _manage_door(is_active : bool) -> void:
 		
 	else:
 		_move_to(door_closed_pos, DOOR_MOVE_SLOW, true)
-		level_swapper_collision_shape_2d.disabled = true
-		door_collision_shape_2d.disabled = false
+		#level_swapper_collision_shape_2d.disabled = true
+		#door_collision_shape_2d.disabled = false
+		level_swapper_collision_shape_2d.set_deferred("disabled", true)
+		door_collision_shape_2d.set_deferred("disabled", false)
+		
+	
 	
 	SFX.play_sfx(door_sliding_sfx, 2.7)
 	SFX.play_sfx(door_enabled_sfx)
