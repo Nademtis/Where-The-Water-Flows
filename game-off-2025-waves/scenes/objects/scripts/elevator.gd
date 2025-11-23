@@ -96,11 +96,19 @@ func _move_to(target: Vector2, move_time : float, door_is_closed : bool) -> void
 
 func _door_collisions(door_is_closed : bool) -> void:
 	if door_is_closed:
-		level_swapper_collision_shape_2d.disabled = true
-		door_collision_shape_2d.disabled = false
+		#level_swapper_collision_shape_2d.disabled = true
+		level_swapper_collision_shape_2d.set_deferred("disabled", true)
+		
+		#door_collision_shape_2d.disabled = false
+		door_collision_shape_2d.set_deferred("disabled", false)
+		
 	else:
-		level_swapper_collision_shape_2d.disabled = false
-		door_collision_shape_2d.disabled = true
+		#level_swapper_collision_shape_2d.disabled = false
+		level_swapper_collision_shape_2d.set_deferred("disabled", false)
+		
+		#door_collision_shape_2d.disabled = true
+		door_collision_shape_2d.set_deferred("disabled", true)
+		
 
 func _on_level_swapper_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

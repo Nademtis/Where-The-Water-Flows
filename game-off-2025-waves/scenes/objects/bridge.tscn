@@ -16,7 +16,7 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("5_dmek5")
 
-[node name="BridgeSE" type="Node2D" node_paths=PackedStringArray("required_switches")]
+[node name="Bridge" type="Node2D" node_paths=PackedStringArray("required_switches")]
 z_index = 1
 z_as_relative = false
 script = ExtResource("1_wo0ln")
@@ -34,6 +34,7 @@ region_enabled = true
 region_rect = Rect2(144, 256, 64, 34)
 
 [node name="YsortHelper" type="Area2D" parent="."]
+visible = false
 position = Vector2(0, 16)
 script = ExtResource("3_xns4n")
 metadata/_custom_type_script = "uid://c1sgyfqknkj8i"
@@ -58,10 +59,16 @@ bus = &"Sfx"
 visible = false
 modulate = Color(1, 1, 1, 0.4509804)
 position = Vector2(0, -9)
-tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
-[node name="StaticCollisionTileMap2" parent="." instance=ExtResource("6_dmek5")]
+[node name="StaticColl_Down_left" parent="." instance=ExtResource("6_dmek5")]
 visible = false
-modulate = Color(1, 1, 1, 0.4509804)
+modulate = Color(1, 1, 0.65882355, 0.42352942)
+position = Vector2(0, -9)
+tile_map_data = PackedByteArray(0, 0, 255, 255, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="StaticColl_Down_Right" parent="." instance=ExtResource("6_dmek5")]
+visible = false
+modulate = Color(1, 0.21568628, 1, 0.23529412)
 position = Vector2(0, -9)
 tile_map_data = PackedByteArray(0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0)

@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://4lm142cs42m3" path="res://scenes/objects/elevators/elevator2right.tscn" id="13_phlur"]
 [ext_resource type="PackedScene" uid="uid://ofg441wirseh" path="res://scenes/objects/elevators/elevator1right.tscn" id="13_u3vgj"]
 [ext_resource type="PackedScene" uid="uid://dxd880hyw6tp0" path="res://scenes/objects/elevators/elevator3right.tscn" id="14_rcbig"]
-[ext_resource type="PackedScene" uid="uid://bvxakbillx1n8" path="res://scenes/objects/bridge_se.tscn" id="14_u6tk6"]
+[ext_resource type="PackedScene" uid="uid://bvxakbillx1n8" path="res://scenes/objects/bridge.tscn" id="14_u6tk6"]
 [ext_resource type="PackedScene" uid="uid://c7v878ho36jpc" path="res://scenes/objects/obelisk.tscn" id="15_3dbtp"]
 [ext_resource type="PackedScene" uid="uid://bkcykyi4o630c" path="res://scenes/objects/elevators/elevator2left.tscn" id="16_0buo8"]
 [ext_resource type="Script" uid="uid://btte8j4ymesff" path="res://scripts/base_switch.gd" id="16_3dbtp"]
@@ -487,7 +487,7 @@ position = Vector2(-1, -1)
 position = Vector2(-427, 144)
 required_switches = [NodePath("../obelisk2/BaseSwitch2")]
 
-[node name="BridgeSE" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("14_u6tk6")]
+[node name="Bridge" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("14_u6tk6")]
 position = Vector2(-223, 234)
 placed_at_water_level = 1
 required_switches = [NodePath("../obelisk3/BaseSwitch2")]
@@ -543,6 +543,17 @@ required_switches = [NodePath("../obelisk/BaseSwitch1"), NodePath("../obelisk2/B
 [node name="Elevator-Three Left" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("17_h4x42")]
 position = Vector2(-194, 171)
 required_switches = [NodePath("../obelisk/BaseSwitch1"), NodePath("../obelisk2/BaseSwitch2"), NodePath("../obelisk3/BaseSwitch2")]
+
+[node name="BridgeSE" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("14_u6tk6")]
+position = Vector2(-431, 242)
+placed_at_water_level = 1
+bridge_go_down_left = true
+required_switches = [NodePath("PressurePlate")]
+
+[node name="PressurePlate" parent="YSort/walkable/objectsContainer/BridgeSE" instance=ExtResource("12_unwjj")]
+z_index = 1
+position = Vector2(90, -31)
+placed_at_water_level = 1
 
 [node name="rock" parent="YSort/walkable" instance=ExtResource("13_peaqv")]
 position = Vector2(-356, 200)

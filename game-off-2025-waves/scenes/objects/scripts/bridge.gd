@@ -9,10 +9,10 @@ class_name Bridge extends BaseInteractable
 @onready var retract_sfx: AudioStreamPlayer2D = $retractSFX
 
 @onready var collision_tile_map: TileMapLayer = $CollisionTileMap
-#const COLL_1_UPPER : Vector2i = Vector2i(-1, -1)
-#const COLL_2_UPPER : Vector2i = Vector2i(-1, 0)
-#const COLL_1_LOWER : Vector2i = Vector2i(0, 0)
-#const COLL_2_LOWER : Vector2i = Vector2i(-1, 1)
+@onready var static_coll_down_left: TileMapLayer = $StaticColl_Down_left
+@onready var static_coll_down_right: TileMapLayer = $StaticColl_Down_Right
+
+@export var bridge_go_down_left : bool = false
 
 var retract_pos : Vector2 = Vector2(-26.0, -13.0)
 var active_pos : Vector2 = Vector2(0,0)
@@ -21,6 +21,14 @@ const MOVE_TIME := 0.5
 
 func _ready() -> void:
 	super._ready()
+	
+	#set retract_pos and active_pos based on export bool
+	if bridge_go_down_left:
+		retract_pos = Vector2(26.0, -13.0)
+		static_coll_down_right.queue_free()
+	else:
+		static_coll_down_left.queue_free()
+		
 	bridge_sprite.position = active_pos if active else retract_pos
 
 	if !placed_at_water_level:
