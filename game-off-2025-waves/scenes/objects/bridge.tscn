@@ -45,14 +45,14 @@ polygon = PackedVector2Array(0, 0, -31, 15, 0, 32, 32, 15)
 
 [node name="extendSFX" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_mqb0x")
+volume_db = -5.0
 max_distance = 400.0
-panning_strength = 1.5
 bus = &"Sfx"
 
 [node name="retractSFX" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_4glrl")
+volume_db = -5.0
 max_distance = 400.0
-panning_strength = 1.5
 bus = &"Sfx"
 
 [node name="CollisionTileMap" parent="." instance=ExtResource("6_dmek5")]

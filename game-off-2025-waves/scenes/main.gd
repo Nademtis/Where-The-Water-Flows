@@ -6,7 +6,7 @@ extends Node2D
 #const FIRST_LEVEL_PATH: String = "res://levels/level_playground.tscn"
 #const FIRST_LEVEL_PATH: String = "res://levels/level_template.tscn"
 
-const FIRST_LEVEL_PATH: String = "res://levels/level_7.tscn"
+const FIRST_LEVEL_PATH: String = "res://levels/level_9.tscn"
 
 
 var next_level_path: String
