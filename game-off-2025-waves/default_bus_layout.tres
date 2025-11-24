@@ -18,5 +18,5 @@ bus/3/name = &"Ambience"
 bus/3/solo = false
 bus/3/mute = false
 bus/3/bypass_fx = false
-bus/3/volume_db = -12.978527
+bus/3/volume_db = -10.074136
 bus/3/send = &"Master"

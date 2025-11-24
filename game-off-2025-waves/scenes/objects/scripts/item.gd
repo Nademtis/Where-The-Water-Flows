@@ -3,6 +3,10 @@ class_name Item
 
 @onready var hit_box_coll: CollisionShape2D = $hit_box/hitBoxColl
 @onready var static_body_coll: CollisionShape2D = $StaticBody2D/staticBodyColl
+var original_parent : Node
+
+func _ready() -> void:
+	original_parent = get_parent()
 
 func pick_up(local_target: Vector2) -> void:
 	static_body_coll.set_deferred("disabled", true)

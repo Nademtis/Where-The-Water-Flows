@@ -38,8 +38,10 @@ func maybe_pickup_item() -> void:
 func maybe_drop_item() -> void:
 	if item_in_hand:
 		# detach from player before tweening
-		var item := item_in_hand
-		item.reparent(get_tree().current_scene)
+		var item : Item= item_in_hand
+		
+		#item.reparent(get_tree().current_scene)
+		item.reparent(item.original_parent)
 		item_drop_sfx.play()
 
 		item.drop(item_deposit_pos.global_position)
