@@ -388,6 +388,7 @@ y_sort_enabled = true
 material = SubResource("ShaderMaterial_08nls")
 tile_set = ExtResource("4_yewj5")
 script = ExtResource("5_gstqd")
+max_water_level = 2.0
 metadata/_edit_lock_ = true
 
 [node name="wrapper" type="Node2D" parent="YSort/walkable"]
