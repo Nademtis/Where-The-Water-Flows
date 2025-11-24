@@ -412,7 +412,6 @@ position = Vector2(-302, 219)
 
 [node name="Player" parent="YSort/walkable/PlayerWrapper" instance=ExtResource("2_2ip8h")]
 y_sort_enabled = true
-debug_wrapper = true
 metadata/_edit_lock_ = true
 
 [node name="objectsContainer" type="Node2D" parent="YSort/walkable"]

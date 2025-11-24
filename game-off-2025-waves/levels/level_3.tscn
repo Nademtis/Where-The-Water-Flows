@@ -413,7 +413,6 @@ position = Vector2(-79, 203)
 
 [node name="Player" parent="YSort/walkable/PlayerWrapper" instance=ExtResource("8_67vg4")]
 y_sort_enabled = true
-debug_wrapper = true
 metadata/_edit_lock_ = true
 
 [node name="objectsContainer" type="Node2D" parent="YSort/walkable"]
@@ -423,6 +422,7 @@ position = Vector2(-1, -1)
 
 [node name="Elevator-One" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("9_mqvtj")]
 position = Vector2(-589, 183)
+next_level_path = "res://levels/level_4.tscn"
 required_switches = [NodePath("BaseSwitch")]
 
 [node name="BaseSwitch" type="Node2D" parent="YSort/walkable/objectsContainer/Elevator-One"]
