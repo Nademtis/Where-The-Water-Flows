@@ -38,6 +38,7 @@ func _ready() -> void:
 	if not coll_map:
 		push_error("coll map not defined on platform")
 	else: #save the position of every tile correctly in the tilemap based on the int height as key and Vector2i for position
+		coll_map.visible = false
 		coll_map_position.clear()
 		var used_cells: Array[Vector2i] = coll_map.get_used_cells()
 		for cell in used_cells:
