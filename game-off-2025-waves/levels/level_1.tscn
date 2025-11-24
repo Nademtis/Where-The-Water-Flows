@@ -378,6 +378,7 @@ y_sort_enabled = true
 material = SubResource("ShaderMaterial_08nls")
 tile_set = ExtResource("4_s27on")
 script = ExtResource("5_maydr")
+max_water_level = 1.0
 metadata/_edit_lock_ = true
 
 [node name="PlayerWrapper" type="Node2D" parent="YSort/walkable"]
@@ -407,6 +408,7 @@ metadata/_custom_type_script = "uid://btte8j4ymesff"
 [node name="heightMap" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.47058824)
+tile_map_data = PackedByteArray("AAD9/xcAAAAAAAEAAAD9/xgAAAAAAAEAAAD8/xkAAAAAAAEAAAD8/xoAAAAAAAEAAAD7/xsAAAAAAAEAAAD7/xwAAAAAAAEAAAD6/x0AAAAAAAEAAAD6/x4AAAAAAAMAAAD3/yEAAAAAAAMAAAD2/yAAAAAAAAMAAADz/yMAAAAAAAMAAADx/yUAAAAAAAMAAADx/xkAAAAAAAMAAADy/xkAAAAAAAMAAAD5/x4AAAAAAAEAAAD4/x8AAAAAAAEAAAD4/yAAAAAAAAEAAAD1/yAAAAAAAAEAAAD0/yEAAAAAAAEAAAD0/yIAAAAAAAEAAADy/yMAAAAAAAEAAADy/yQAAAAAAAEAAADw/xkAAAAAAAEAAADz/xgAAAAAAAEAAADx/yQAAAAAAAIAAADw/yMAAAAAAAIAAADw/yIAAAAAAAIAAADv/yEAAAAAAAIAAADv/x4AAAAAAAIAAADu/x0AAAAAAAIAAADu/xwAAAAAAAIAAADt/xsAAAAAAAIAAAD3/yAAAAAAAAIAAADv/x8AAAAAAAQAAADw/xoAAAAAAAUAAADz/xYAAAAAAAUAAADz/xQAAAAAAAUAAADx/xgAAAAAAAAAAADy/xgAAAAAAAAAAADw/yAAAAAAAAAAAADw/yEAAAAAAAAAAADx/yIAAAAAAAAAAADx/yMAAAAAAAAAAADy/yIAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_rcbig")
 navigation_enabled = false
 script = ExtResource("7_eli58")
