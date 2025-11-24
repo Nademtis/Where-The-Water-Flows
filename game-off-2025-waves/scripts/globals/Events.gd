@@ -15,3 +15,5 @@ signal new_level_done_loading()
 
 signal player_use()
 signal player_drop()
+
+signal load_new_level(new_level_path : String)

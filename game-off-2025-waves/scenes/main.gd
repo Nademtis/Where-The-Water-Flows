@@ -3,7 +3,9 @@ extends Node2D
 @onready var level_container: Node2D = $levelContainer
 @onready var animation_player: AnimationPlayer = $SceneTransition/AnimationPlayer
 
-const FIRST_LEVEL_PATH: String = "res://levels/level_template.tscn"
+#const FIRST_LEVEL_PATH: String = "res://levels/level_playground.tscn"
+const FIRST_LEVEL_PATH: String = "res://levels/level_2.tscn"
+
 
 var next_level_path: String
 var current_level_path: String
@@ -11,8 +13,10 @@ var current_level_path: String
 
 func _ready() -> void:
 	next_level_path = FIRST_LEVEL_PATH
+	Events.connect("load_new_level", start_new_level)
+	
 	_setup_new_level() # skip the start_new_level since we don't want to fade to black. it's already black
-	print(get_tree_string_pretty())
+	#print(get_tree_string_pretty())
 
 func start_new_level(path: String) -> void: # should be called by elevator object
 	next_level_path = path

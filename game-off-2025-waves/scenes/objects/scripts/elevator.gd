@@ -133,6 +133,7 @@ func _close_door_and_swap_level(body: Node2D) -> void:
 	animate_whole_elevator(elevator_hidden_pos, DOOR_MOVE_FAST)
 	await get_tree().create_timer(DOOR_MOVE_FAST).timeout
 	print("swap levels")
+	Events.emit_signal("load_new_level", next_level_path)
 	
 
 func animate_whole_elevator(target: Vector2, move_time : float) -> void:

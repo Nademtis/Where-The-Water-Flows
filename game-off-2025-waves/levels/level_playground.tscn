@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://cqqn3dr60lr2f"]
+[gd_scene load_steps=33 format=4 uid="uid://do87h7uig68cw"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_64qpc"]
 [ext_resource type="PackedScene" uid="uid://opjx2dvm4ils" path="res://scenes/player/player.tscn" id="2_2ip8h"]
@@ -13,8 +13,18 @@
 [ext_resource type="Script" uid="uid://ocuxag5bwe8i" path="res://tiles/collision_map_container.gd" id="9_peaqv"]
 [ext_resource type="PackedScene" uid="uid://b88evg1mvgox8" path="res://tiles/tilesets/collision_tile_map.tscn" id="10_o53ap"]
 [ext_resource type="PackedScene" uid="uid://ym65vt1sl83d" path="res://scenes/camera/cam.tscn" id="11_2ip8h"]
+[ext_resource type="PackedScene" uid="uid://ka8jajjqqorm" path="res://scenes/objects/pressure_plate.tscn" id="12_unwjj"]
+[ext_resource type="PackedScene" uid="uid://o7m6u6mncvb3" path="res://scenes/objects/rock.tscn" id="13_peaqv"]
+[ext_resource type="PackedScene" uid="uid://4lm142cs42m3" path="res://scenes/objects/elevators/elevator2right.tscn" id="13_phlur"]
 [ext_resource type="PackedScene" uid="uid://ofg441wirseh" path="res://scenes/objects/elevators/elevator1right.tscn" id="13_u3vgj"]
+[ext_resource type="PackedScene" uid="uid://dxd880hyw6tp0" path="res://scenes/objects/elevators/elevator3right.tscn" id="14_rcbig"]
+[ext_resource type="PackedScene" uid="uid://bvxakbillx1n8" path="res://scenes/objects/bridge.tscn" id="14_u6tk6"]
+[ext_resource type="PackedScene" uid="uid://c7v878ho36jpc" path="res://scenes/objects/obelisk.tscn" id="15_3dbtp"]
+[ext_resource type="PackedScene" uid="uid://bkcykyi4o630c" path="res://scenes/objects/elevators/elevator2left.tscn" id="16_0buo8"]
 [ext_resource type="Script" uid="uid://btte8j4ymesff" path="res://scripts/base_switch.gd" id="16_3dbtp"]
+[ext_resource type="PackedScene" uid="uid://d1q3p0e3cp3ix" path="res://scenes/objects/log.tscn" id="16_rcbig"]
+[ext_resource type="PackedScene" uid="uid://cfbccvhjmo0ak" path="res://scenes/objects/elevators/elevator3left.tscn" id="17_h4x42"]
+[ext_resource type="PackedScene" uid="uid://b4f8s0ixfxsu8" path="res://scenes/objects/elevators/elevator1left.tscn" id="17_ohm4n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h4x42"]
 
@@ -378,7 +388,7 @@ y_sort_enabled = true
 unique_name_in_owner = true
 z_index = 1
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD2/xoAAAAAAAAAAAD2/xsAAAAAAAAAAAD3/xwAAAAAAAAAAAD3/xoAAAAAAAAAAAD1/xkAAAAAAAAAAAD1/xgAAAAAAAAAAAD0/xsAAAAAAAAAAAD1/xoAAAAAAAAAAAD1/xwAAAAAAAAAAAD1/xsAAAAAAAAAAAD2/xgAAAAAAAAAAAD1/xcAAAAAAAAAAAD2/xkAAAAAAAAAAAD2/xwAAAAAAAAAAAD1/x0AAAAAAAAAAAD2/x0AAAAAAAAAAAD3/xsAAAAAAAAAAAD0/xkAAAAAAAAAAAD2/xcAAAAAAAAAAAD3/xgAAAAAAAAAAAD3/xkAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD2/xIAAAAAAAAAAAD1/xEAAAAAAAEAAAD1/xMAAAADAAAAAAD2/xMAAAAAAAAAAAD2/xQAAAAHAAAAAAD2/xoAAAAHAAIAAAD2/xsAAAAAAAAAAAD3/xwAAAAAAAAAAAD3/xsAAAAAAAAAAAD3/xoAAAAJAAIAAAD3/xkAAAAJAAIAAAD3/xQAAAAJAAAAAAD4/xoAAAAAAAAAAAD4/xgAAAAAAAAAAAD3/xcAAAAJAAEAAAD4/xYAAAAAAAAAAAD3/xUAAAAJAAAAAAD1/xkAAAAHAAIAAAD1/xgAAAAHAAIAAAD0/xkAAAAEAAAAAAD0/xoAAAAAAAAAAAD0/xsAAAAAAAAAAAD0/xwAAAAAAAAAAAD1/xoAAAAAAAAAAAD0/x0AAAAAAAAAAAD1/xwAAAAAAAAAAAD1/xsAAAAAAAAAAAD1/xUAAAAAAAAAAAD1/xQAAAAAAAAAAAD0/xUAAAAAAAAAAAD1/xYAAAAAAAAAAAD0/xcAAAADAAEAAAD0/xgAAAAEAAAAAAD1/xIAAAACAAEAAAD0/xMAAAAAAAAAAAD0/xQAAAAAAAAAAADz/xUAAAAAAAEAAAD0/xYAAAADAAEAAAD0/w0AAAAAAAAAAAD0/w4AAAAAAAAAAADz/w8AAAAAAAAAAAD0/wwAAAAAAAAAAADz/w0AAAAAAAAAAADz/w4AAAAAAAAAAADz/xAAAAAAAAAAAADy/w8AAAAAAAAAAADy/xEAAAAAAAAAAADy/xAAAAAAAAAAAADy/xIAAAACAAAAAADx/xcAAAAAAAAAAADy/xgAAAADAAAAAADy/xcAAAACAAAAAADz/xYAAAAFAAEAAADx/xkAAAAAAAAAAADy/xoAAAAAAAAAAADy/xkAAAAEAAEAAADz/xgAAAAEAAAAAADz/xcAAAACAAAAAADy/xsAAAAAAAAAAADz/xwAAAAAAAAAAADz/xsAAAAAAAAAAADz/xkAAAAAAAAAAADz/xoAAAAAAAAAAAD2/xEAAAAAAAAAAAD3/xIAAAAAAAAAAAD3/xMAAAAAAAAAAAD4/xQAAAAAAAAAAAD3/w8AAAAAAAQAAAD4/xAAAAABAAUAAAD4/w4AAAAAAAAAAAD4/w8AAAAAAAAAAAD5/w4AAAACAAAAAAD4/w0AAAAAAAAAAAD5/w0AAAAEAAAAAAD5/wwAAAAAAAAAAAD2/xcAAAAIAAEAAAD2/xgAAAAIAAEAAAD3/xgAAAAIAAEAAAD3/xYAAAAIAAEAAAD2/xUAAAAIAAEAAAD2/xYAAAAHAAAAAAD1/xcAAAAHAAAAAAD2/xkAAAAIAAEAAAD6/w4AAAAAAAAAAAD5/w8AAAAAAAAAAAD6/xAAAAAAAAAAAAD6/w8AAAAAAAAAAAD0/w8AAAAFAAUAAAD0/xAAAAAGAAQAAADz/xEAAAAEAAQAAADz/xIAAAAFAAUAAAD4/xUAAAABAAAAAAD5/x4AAAAAAAAAAAD4/x8AAAAAAAAAAAD5/x0AAAAAAAAAAAD4/yAAAAAAAAAAAAD5/x8AAAAAAAAAAAD5/yAAAAAAAAAAAAD6/xEAAAAJAAwAAAD6/xIAAAAJAAwAAAD5/woAAAAAAAAAAAD4/wsAAAAAAAAAAAD4/wwAAAAAAAAAAAD3/wsAAAAAAAAAAAD4/woAAAAAAAAAAAD3/wkAAAAAAAAAAAD4/wgAAAAAAAAAAAD4/wkAAAAAAAAAAAD5/wsAAAAAAAAAAAD6/woAAAAAAAAAAAD5/wkAAAAAAAAAAAD6/wgAAAAAAAAAAAD5/wcAAAAAAAAAAAD5/wgAAAAAAAAAAAD4/wcAAAAAAAAAAAD5/wYAAAAAAAAAAAD3/wgAAAAAAAAAAAD3/wcAAAAAAAAAAAD4/wYAAAAAAAAAAAD4/wUAAAAAAAAAAAD3/woAAAAAAAAAAAA=")
 tile_set = ExtResource("1_64qpc")
 navigation_enabled = false
 metadata/_edit_lock_ = true
@@ -400,12 +410,31 @@ coll_map = NodePath("../platformCollTilemap")
 where_to_remove_col = Array[ExtResource("5_j8l06")]([SubResource("Resource_peaqv"), SubResource("Resource_o53ap")])
 
 [node name="platformCollTilemap" parent="YSort/walkable/wrapper" instance=ExtResource("6_pqv4r")]
+visible = false
 z_index = 5
 position = Vector2(1, -11)
+tile_map_data = PackedByteArray("AAD+/wEAAAAAAAAAAAAAAPz/AAABAAAAAAAAAP3/AAABAAAAAAA=")
+collision_visibility_mode = 1
+
+[node name="wrapper2" type="Node2D" parent="YSort/walkable"]
+position = Vector2(-145, 115)
+
+[node name="Platform" parent="YSort/walkable/wrapper2" node_paths=PackedStringArray("coll_map") instance=ExtResource("5_u6tk6")]
+position = Vector2(1, -19)
+start_water_level = 2
+coll_map = NodePath("../platformCollTilemap")
+where_to_remove_col = Array[ExtResource("5_j8l06")]([SubResource("Resource_peaqv"), SubResource("Resource_o53ap")])
+
+[node name="platformCollTilemap" parent="YSort/walkable/wrapper2" instance=ExtResource("6_pqv4r")]
+visible = false
+z_index = 5
+position = Vector2(1, -11)
+tile_map_data = PackedByteArray("AAD+/wEAAAABAAAAAAD//wIAAAABAAAAAAAAAAAAAAAAAAAAAAA=")
+collision_visibility_mode = 1
 
 [node name="PlayerWrapper" type="Node2D" parent="YSort/walkable"]
 z_index = 1
-position = Vector2(-302, 219)
+position = Vector2(-351, 164)
 
 [node name="Player" parent="YSort/walkable/PlayerWrapper" instance=ExtResource("2_2ip8h")]
 y_sort_enabled = true
@@ -418,17 +447,89 @@ y_sort_enabled = true
 position = Vector2(-1, -1)
 
 [node name="Elevator-One" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("13_u3vgj")]
-position = Vector2(-393, 130)
-required_switches = [NodePath("BaseSwitch")]
+position = Vector2(-427, 144)
+required_switches = [NodePath("../obelisk2/BaseSwitch2")]
 
-[node name="BaseSwitch" type="Node2D" parent="YSort/walkable/objectsContainer/Elevator-One"]
+[node name="Bridge" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("14_u6tk6")]
+position = Vector2(-223, 234)
+placed_at_water_level = 1
+required_switches = [NodePath("../obelisk3/BaseSwitch2")]
+
+[node name="obelisk" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("switch_to_activate", "required_switches") instance=ExtResource("15_3dbtp")]
+position = Vector2(-285, 167)
+placed_at_water_level = 1
+switch_to_activate = NodePath("BaseSwitch1")
+required_switches = [NodePath("PressurePlate")]
+
+[node name="PressurePlate" parent="YSort/walkable/objectsContainer/obelisk" instance=ExtResource("12_unwjj")]
+position = Vector2(-36, 10)
+placed_at_water_level = 1
+
+[node name="BaseSwitch1" type="Node2D" parent="YSort/walkable/objectsContainer/obelisk"]
 script = ExtResource("16_3dbtp")
-override_active = true
 metadata/_custom_type_script = "uid://btte8j4ymesff"
+
+[node name="obelisk2" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("switch_to_activate") instance=ExtResource("15_3dbtp")]
+position = Vector2(-400, 204)
+placed_at_water_level = 1
+switch_to_activate = NodePath("BaseSwitch2")
+
+[node name="BaseSwitch2" type="Node2D" parent="YSort/walkable/objectsContainer/obelisk2"]
+script = ExtResource("16_3dbtp")
+metadata/_custom_type_script = "uid://btte8j4ymesff"
+
+[node name="obelisk3" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("switch_to_activate") instance=ExtResource("15_3dbtp")]
+position = Vector2(-278, 203)
+placed_at_water_level = 1
+switch_to_activate = NodePath("BaseSwitch2")
+
+[node name="BaseSwitch2" type="Node2D" parent="YSort/walkable/objectsContainer/obelisk3"]
+script = ExtResource("16_3dbtp")
+metadata/_custom_type_script = "uid://btte8j4ymesff"
+
+[node name="Elevator-Two" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("13_phlur")]
+position = Vector2(-375, 114)
+required_switches = [NodePath("../obelisk/BaseSwitch1"), NodePath("../obelisk2/BaseSwitch2")]
+
+[node name="Elevator-Three" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("14_rcbig")]
+position = Vector2(-321, 83)
+required_switches = [NodePath("../obelisk/BaseSwitch1"), NodePath("../obelisk2/BaseSwitch2"), NodePath("../obelisk3/BaseSwitch2")]
+
+[node name="Elevator-One Left" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("17_ohm4n")]
+position = Vector2(-243, 82)
+required_switches = [NodePath("../obelisk/BaseSwitch1")]
+
+[node name="Elevator-Two Left" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("16_0buo8")]
+position = Vector2(-148, 223)
+required_switches = [NodePath("../obelisk/BaseSwitch1"), NodePath("../obelisk2/BaseSwitch2")]
+
+[node name="Elevator-Three Left" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("17_h4x42")]
+position = Vector2(-194, 171)
+required_switches = [NodePath("../obelisk/BaseSwitch1"), NodePath("../obelisk2/BaseSwitch2"), NodePath("../obelisk3/BaseSwitch2")]
+
+[node name="BridgeSE" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("14_u6tk6")]
+position = Vector2(-431, 242)
+placed_at_water_level = 1
+bridge_go_down_left = true
+required_switches = [NodePath("PressurePlate")]
+
+[node name="PressurePlate" parent="YSort/walkable/objectsContainer/BridgeSE" instance=ExtResource("12_unwjj")]
+z_index = 1
+position = Vector2(90, -31)
+placed_at_water_level = 1
+
+[node name="rock" parent="YSort/walkable" instance=ExtResource("13_peaqv")]
+position = Vector2(-356, 200)
+
+[node name="log" parent="YSort/walkable" instance=ExtResource("16_rcbig")]
+position = Vector2(-228, 121)
+start_height_level = 2
 
 [node name="heightMap" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
+visible = false
 modulate = Color(1, 1, 1, 0.47058824)
+tile_map_data = PackedByteArray("AADy/xcAAAAAAAAAAADy/xgAAAAAAAAAAADy/xkAAAAAAAAAAADz/xoAAAAAAAAAAADz/xsAAAAAAAAAAAD0/xoAAAAAAAAAAADz/xkAAAAAAAAAAADz/xgAAAAAAAAAAADz/xcAAAAAAAAAAADz/xYAAAAAAAAAAADz/xUAAAAAAAAAAAD0/xQAAAAAAAAAAAD0/xMAAAAAAAAAAAD1/xIAAAAAAAAAAAD1/xEAAAAAAAAAAAD2/xIAAAAAAAAAAAD2/xEAAAAAAAAAAAD3/xIAAAAAAAAAAAD3/xMAAAAAAAAAAAD4/xQAAAAAAAAAAAD3/xUAAAAAAAAAAAD3/xYAAAAAAAAAAAD2/xcAAAAAAAAAAAD2/xYAAAAAAAAAAAD2/xUAAAAAAAAAAAD3/xQAAAAAAAAAAAD2/xMAAAAAAAAAAAD2/xQAAAAAAAAAAAD1/xUAAAAAAAAAAAD1/xYAAAAAAAAAAAD1/xQAAAAAAAAAAAD1/xMAAAAAAAAAAAD0/xUAAAAAAAAAAAD0/xYAAAAAAAAAAAD0/xcAAAAAAAAAAAD0/xgAAAAAAAAAAAD1/xgAAAAAAAAAAAD0/xkAAAAAAAAAAAD0/xsAAAAAAAAAAAD1/xoAAAAAAAAAAAD1/xkAAAAAAAAAAAD2/xgAAAAAAAAAAAD1/xcAAAAAAAAAAAD2/xkAAAAAAAAAAAD3/xgAAAAAAAAAAAD3/xcAAAAAAAAAAAD3/xkAAAAAAAAAAAD3/xoAAAAAAAAAAAD4/xoAAAAAAAEAAAD3/xsAAAAAAAEAAAD1/xsAAAAAAAEAAAD1/xwAAAAAAAEAAADx/xkAAAAAAAIAAADy/xoAAAAAAAIAAADy/xsAAAAAAAIAAADz/xwAAAAAAAMAAAD0/x0AAAAAAAMAAAD3/xwAAAAAAAMAAAD0/xwAAAAAAAIAAAD2/xsAAAAAAAIAAAD2/xoAAAAAAAAAAAD4/xgAAAAAAAUAAAD4/xUAAAAAAAEAAAD4/xYAAAAAAAUAAADx/xcAAAAAAAQAAADy/xIAAAABAAMAAAD6/xAAAAABAAMAAAD6/w8AAAABAAEAAAD6/w4AAAABAAAAAAD5/w0AAAABAAAAAAD5/wwAAAABAAAAAAD4/w0AAAABAAAAAAD5/w4AAAABAAAAAAD0/w0AAAABAAEAAAD0/w4AAAABAAAAAADz/w8AAAABAAAAAADz/xAAAAABAAAAAADy/xEAAAABAAAAAAD0/wwAAAABAAAAAADz/w0AAAABAAAAAADz/w4AAAABAAAAAADy/w8AAAABAAAAAADy/xAAAAABAAQAAAD5/w8AAAABAAIAAAD4/w8AAAABAAEAAAD4/w4AAAABAAAAAAD4/xAAAAABAAMAAAD3/w8AAAABAAIAAADz/xIAAAABAAMAAADz/xEAAAABAAEAAAD0/xAAAAABAAEAAAD0/w8AAAABAAEAAAD6/xEAAAAAAAgAAAD6/xIAAAAAAAgAAAA=")
 tile_set = SubResource("TileSet_rcbig")
 navigation_enabled = false
 script = ExtResource("8_j8l06")
@@ -461,13 +562,12 @@ modulate = Color(0.7856168, 0.96944946, 7.70092e-07, 0.41960785)
 position = Vector2(24, 328)
 
 [node name="Path2D" type="Path2D" parent="CameraContainer"]
-z_index = 5
-position = Vector2(-110, 16)
+position = Vector2(-104, -24)
 curve = SubResource("Curve2D_u3vgj")
 
 [node name="Cam" parent="CameraContainer/Path2D" node_paths=PackedStringArray("follow_target", "follow_path") instance=ExtResource("11_2ip8h")]
 top_level = true
-position = Vector2(-303, 207)
+position = Vector2(-297, 163.97736)
 priority = 1
 follow_mode = 4
 follow_target = NodePath("../../../YSort/walkable/PlayerWrapper/Player")

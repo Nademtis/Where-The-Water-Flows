@@ -142,6 +142,17 @@ position = Vector2(4.598885, -1.3221779)
 rotation = -0.45828557
 shape = SubResource("RectangleShape2D_huxp4")
 
+[node name="YsortHelperLower" type="Area2D" parent="elevatorCollLogic"]
+position = Vector2(0, 17)
+rotation = 3.1415927
+scale = Vector2(1, -1)
+script = ExtResource("3_pp3kq")
+metadata/_custom_type_script = "uid://c1sgyfqknkj8i"
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="elevatorCollLogic/YsortHelperLower"]
+position = Vector2(1.4861872e-06, -17)
+polygon = PackedVector2Array(-25.000002, 19.999998, 0.999997, 34, 27.999998, 22.000002, 27, 4, 5, 15, -25, -1)
+
 [node name="doorSfx" parent="." instance=ExtResource("4_cqxlu")]
 position = Vector2(8, -13)
 
