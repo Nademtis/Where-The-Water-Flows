@@ -476,6 +476,7 @@ position = Vector2(-1, -1)
 
 [node name="Elevator-One" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("10_b36k0")]
 position = Vector2(-623, 201)
+next_level_path = "res://levels/level_6.tscn"
 required_switches = [NodePath("BaseSwitch")]
 
 [node name="BaseSwitch" type="Node2D" parent="YSort/walkable/objectsContainer/Elevator-One"]
