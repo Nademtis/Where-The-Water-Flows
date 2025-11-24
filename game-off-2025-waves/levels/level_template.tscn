@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=4 uid="uid://cqqn3dr60lr2f"]
+[gd_scene load_steps=24 format=4 uid="uid://cqqn3dr60lr2f"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_64qpc"]
 [ext_resource type="PackedScene" uid="uid://opjx2dvm4ils" path="res://scenes/player/player.tscn" id="2_2ip8h"]
 [ext_resource type="Shader" uid="uid://ck3gjomhka1to" path="res://shaders/water.gdshader" id="2_h4x42"]
 [ext_resource type="TileSet" uid="uid://ve68r0xefsom" path="res://tiles/tilesets/special_water_tileset.tres" id="3_unwjj"]
 [ext_resource type="Script" uid="uid://be4fqy15lhpug" path="res://tiles/scripts/waterController.gd" id="4_u3vgj"]
+[ext_resource type="PackedScene" uid="uid://dviyuacx5uaa4" path="res://tiles/tilesets/decal.tscn" id="5_3dbtp"]
 [ext_resource type="Script" uid="uid://dslha34kwyajd" path="res://scripts/HeightDirection.gd" id="5_j8l06"]
 [ext_resource type="PackedScene" uid="uid://cnig1k05n75h7" path="res://scenes/floating platform/floating_platform.tscn" id="5_u6tk6"]
 [ext_resource type="PackedScene" uid="uid://bjypj2f846va4" path="res://scenes/floating platform/platform_coll_tilemap.tscn" id="6_pqv4r"]
@@ -382,6 +383,8 @@ tile_map_data = PackedByteArray("AAD2/xoAAAAAAAAAAAD2/xsAAAAAAAAAAAD3/xwAAAAAAAA
 tile_set = ExtResource("1_64qpc")
 navigation_enabled = false
 metadata/_edit_lock_ = true
+
+[node name="decal" parent="YSort/walkable" instance=ExtResource("5_3dbtp")]
 
 [node name="WaterLevel" type="TileMapLayer" parent="YSort/walkable"]
 modulate = Color(1, 1, 1, 0.78431374)

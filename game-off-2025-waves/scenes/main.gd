@@ -4,7 +4,9 @@ extends Node2D
 @onready var animation_player: AnimationPlayer = $SceneTransition/AnimationPlayer
 
 #const FIRST_LEVEL_PATH: String = "res://levels/level_playground.tscn"
-const FIRST_LEVEL_PATH: String = "res://levels/level_2.tscn"
+#const FIRST_LEVEL_PATH: String = "res://levels/level_template.tscn"
+
+const FIRST_LEVEL_PATH: String = "res://levels/level_1.tscn"
 
 
 var next_level_path: String

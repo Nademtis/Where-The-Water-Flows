@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dviyuacx5uaa4"]
+
+[ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_5p326"]
+
+[node name="decal" type="TileMapLayer"]
+y_sort_enabled = true
+tile_set = ExtResource("1_5p326")
