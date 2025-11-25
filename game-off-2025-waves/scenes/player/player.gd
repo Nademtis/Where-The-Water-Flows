@@ -29,6 +29,7 @@ var move_dir: Vector2
 #sfx
 @onready var sfx_footstep_grass: AudioStreamPlayer2D = $sfxFootStep/sfx_footstep_grass
 @onready var sfx_footstep_stone: AudioStreamPlayer2D = $sfxFootStep/sfx_footstep_stone
+
 const SURFACE_TYPE_TILE_NAME : String = "surface_type"
 var footstep_cooldown := 0.0 # don't change - used for when to play footstep
 var footstep_interval := 0.38 # the interval for howw often steps are played

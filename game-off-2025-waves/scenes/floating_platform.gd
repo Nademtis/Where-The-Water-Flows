@@ -31,6 +31,9 @@ var player: Player = null
 
 var current_player_height: int = 1
 
+#sfx
+@onready var player_floating_platform_adjust_height_sfx: AudioStreamPlayer = $playerFloatingPlatformAdjustHeightSFX
+
 func _ready() -> void:
 	local_collision_tile_map.collision_enabled = false #set false since only visible when player is on
 	local_collision_tile_map.modulate = Color("ffffff00")
@@ -52,6 +55,7 @@ func _ready() -> void:
 		@warning_ignore("narrowing_conversion")
 		current_player_height = new_height
 		enable_correct_coll_tiles(current_player_height)
+		
 		)
 		
 		
@@ -143,6 +147,7 @@ func change_player_height(new_height : float) -> void:
 	enable_correct_coll_tiles(new_height)
 	if player: # only change player height if player on platform
 		player.current_player_height = new_height
+		player_floating_platform_adjust_height_sfx.play(0.3)
 		Events.emit_signal("player_height_changed", player.current_player_height)
 
 func enable_correct_coll_tiles(_new_height: float) -> void:
