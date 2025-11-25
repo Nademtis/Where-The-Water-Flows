@@ -59,7 +59,7 @@ func _evaluate() -> void:
 			door_container.position = elevator_active_pos
 		elif get_active_switch_count() > 0:
 			animate_whole_elevator(elevator_active_pos, DOOR_MOVE_SLOW)
-			SFX.play_sfx(elevator_rise_or_down)
+			SFX.play_sfx(elevator_rise_or_down, 0.6)
 
 func _apply_state() -> void:
 	if active:
