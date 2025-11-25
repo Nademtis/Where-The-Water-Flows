@@ -39,7 +39,7 @@ polygon = PackedVector2Array(-29.982624, 4.12823, -29.969799, 7.1282024, 0.09406
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="LocalCollisionTileMap" parent="." instance=ExtResource("5_3tcsq")]
-modulate = Color(0.42745098, 0, 0.42745098, 0)
+modulate = Color(0.42745098, 0, 0.42745098, 0.2509804)
 z_index = 3
 position = Vector2(0, 8)
 tile_map_data = PackedByteArray("AAD///7/AAAAAAAAAAD+////AAAAAAAAAAD+/wEAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAD///3/AAAAAAAAAAD+/wAAAAAAAAAAAAD//wMAAAAAAAAAAAABAAAAAAAAAAAAAAA=")
