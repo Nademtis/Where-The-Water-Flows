@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://wrksr0rg7akq"]
+[gd_scene load_steps=31 format=4 uid="uid://wrksr0rg7akq"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_s88sk"]
 [ext_resource type="PackedScene" uid="uid://dviyuacx5uaa4" path="res://tiles/tilesets/decal.tscn" id="2_aoyam"]
@@ -31,6 +31,16 @@ shader = ExtResource("3_5r2q3")
 script = ExtResource("7_y2q43")
 height = 1
 directions = Array[int]([2])
+metadata/_custom_type_script = "uid://dslha34kwyajd"
+
+[sub_resource type="Resource" id="Resource_aqkyu"]
+script = ExtResource("7_y2q43")
+height = 2
+metadata/_custom_type_script = "uid://dslha34kwyajd"
+
+[sub_resource type="Resource" id="Resource_y2q43"]
+script = ExtResource("7_y2q43")
+height = 3
 metadata/_custom_type_script = "uid://dslha34kwyajd"
 
 [sub_resource type="Resource" id="Resource_qplds"]
@@ -406,7 +416,7 @@ position = Vector2(-337, 243)
 [node name="Platform" parent="YSort/walkable/wrapper" node_paths=PackedStringArray("coll_map") instance=ExtResource("6_aqkyu")]
 position = Vector2(1, -19)
 coll_map = NodePath("../platformCollTilemap")
-where_to_remove_col = Array[ExtResource("7_y2q43")]([SubResource("Resource_yj50u"), SubResource("Resource_qplds")])
+where_to_remove_col = Array[ExtResource("7_y2q43")]([SubResource("Resource_yj50u"), SubResource("Resource_aqkyu"), SubResource("Resource_y2q43"), SubResource("Resource_qplds")])
 
 [node name="platformCollTilemap" parent="YSort/walkable/wrapper" instance=ExtResource("8_r113n")]
 visible = false

@@ -18,6 +18,7 @@ var bounce_tween: Tween
 var tween : Tween
 
 func _ready() -> void:
+	super._ready()
 	Events.connect("confirmed_new_water_level_direction", check_for_floating)
 	current_height_level = start_height_level
 	current_water_level = 1 #might be a problem if some levels start with higher water level
@@ -68,6 +69,7 @@ func _move_item(new_pos : Vector2, go_up: bool) -> void:
 		
 	
 func _start_bounce() -> void:
+	return
 	# cancel old tween
 	if bounce_tween and bounce_tween.is_running():
 		bounce_tween.kill()

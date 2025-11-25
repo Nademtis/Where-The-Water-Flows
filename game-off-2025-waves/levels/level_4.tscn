@@ -431,7 +431,7 @@ where_to_remove_col = Array[ExtResource("7_cmohj")]([SubResource("Resource_8mt0c
 visible = false
 z_index = 5
 position = Vector2(1, -11)
-tile_map_data = PackedByteArray("AAD+/wEAAAAAAAAAAAD//wIAAAAAAAAAAAAAAPz/AAABAAAAAAAAAP3/AAABAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAP7/AAABAAAAAAD///3/AAABAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAA=")
 
 [node name="wrapper2" type="Node2D" parent="YSort/walkable"]
 position = Vector2(-169, 263)
@@ -446,7 +446,7 @@ where_to_remove_col = Array[ExtResource("7_cmohj")]([SubResource("Resource_a7qdg
 visible = false
 z_index = 5
 position = Vector2(-7, 17)
-tile_map_data = PackedByteArray("AAD///j/AAABAAAAAAD+//n/AAABAAAAAAAAAPb/AAACAAAAAAAAAPf/AAACAAAAAAA=")
+tile_map_data = PackedByteArray("AAD///n/AAABAAAAAAD///r/AAABAAAAAAD///f/AAACAAAAAAAAAPj/AAACAAAAAAA=")
 
 [node name="wrapper3" type="Node2D" parent="YSort/walkable"]
 position = Vector2(-26, 271)
@@ -458,10 +458,9 @@ coll_map = NodePath("../platformCollTilemap")
 where_to_remove_col = Array[ExtResource("7_cmohj")]([SubResource("Resource_52a3b"), SubResource("Resource_3ff1r")])
 
 [node name="platformCollTilemap" parent="YSort/walkable/wrapper3" instance=ExtResource("8_bv8dl")]
-visible = false
 z_index = 5
 position = Vector2(-6, -31)
-tile_map_data = PackedByteArray("AAAAAPr/AAADAAAAAAAAAPv/AAADAAAAAAD///z/AAACAAAAAAD+//3/AAACAAAAAAA=")
+tile_map_data = PackedByteArray("AAD///v/AAADAAAAAAAAAPz/AAADAAAAAAD///3/AAACAAAAAAD///7/AAACAAAAAAA=")
 
 [node name="PlayerWrapper" type="Node2D" parent="YSort/walkable"]
 z_index = 1

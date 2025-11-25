@@ -7,6 +7,7 @@ var original_parent : Node
 
 func _ready() -> void:
 	original_parent = get_parent()
+	print(original_parent)
 
 func pick_up(local_target: Vector2) -> void:
 	static_body_coll.set_deferred("disabled", true)

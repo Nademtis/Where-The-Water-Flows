@@ -33,6 +33,7 @@ var current_player_height: int = 1
 
 func _ready() -> void:
 	local_collision_tile_map.collision_enabled = false #set false since only visible when player is on
+	#local_collision_tile_map.visible = false
 	_update_local_collision(1)
 	
 	if not coll_map:
@@ -149,6 +150,7 @@ func enable_correct_coll_tiles(_new_height: float) -> void:
 		return
 		
 	if not coll_map:
+		push_error("coll map not defined")
 		return
 	coll_map.clear()
 	
