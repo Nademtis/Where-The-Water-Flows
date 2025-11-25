@@ -33,7 +33,7 @@ var current_player_height: int = 1
 
 func _ready() -> void:
 	local_collision_tile_map.collision_enabled = false #set false since only visible when player is on
-	#local_collision_tile_map.visible = false
+	local_collision_tile_map.modulate = Color("ffffff00")
 	_update_local_collision(1)
 	
 	if not coll_map:
