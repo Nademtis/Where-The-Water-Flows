@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://c7v878ho36jpc"]
+[gd_scene load_steps=13 format=3 uid="uid://c7v878ho36jpc"]
 
 [ext_resource type="Script" uid="uid://tnsiq3ilkpnu" path="res://scenes/objects/scripts/obelisk.gd" id="1_o0g6v"]
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="2_rtbaw"]
 [ext_resource type="Script" uid="uid://c1sgyfqknkj8i" path="res://scripts/ysortHelper.gd" id="3_rtbaw"]
 [ext_resource type="AudioStream" uid="uid://dstsovo76oeh6" path="res://audio/sfx/GameOff_Obelisk_Rise.ogg" id="4_11tqd"]
-[ext_resource type="AudioStream" uid="uid://4kic0rhqpkgy" path="res://audio/sfx/GameOff_Obelisk_Enable.ogg" id="4_r5cto"]
-[ext_resource type="AudioStream" uid="uid://b8q3py6lwghn2" path="res://audio/sfx/GameOff_Obelisk_Disable.ogg" id="5_4yrox"]
+[ext_resource type="AudioStream" uid="uid://dha7iftm00nrb" path="res://audio/sfx/GameOff_Obelisk_Switch_ogg.ogg" id="4_dweql"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o0g6v"]
 radius = 27.0
@@ -20,12 +19,14 @@ size = Vector2(20, 28)
 radius = 7.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_775fd"]
+random_pitch = 1.05
 streams_count = 1
-stream_0/stream = ExtResource("4_r5cto")
+stream_0/stream = ExtResource("4_dweql")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_y6ndc"]
+random_pitch = 1.05
 streams_count = 1
-stream_0/stream = ExtResource("5_4yrox")
+stream_0/stream = ExtResource("4_dweql")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dweql"]
 streams_count = 1
@@ -91,12 +92,15 @@ shape = SubResource("CircleShape2D_rtbaw")
 
 [node name="activeSFX" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_775fd")
+volume_db = 6.5
 max_distance = 200.0
 attenuation = 2.2191393
 bus = &"Sfx"
 
 [node name="notActiveSFX" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_y6ndc")
+volume_db = 6.5
+pitch_scale = 0.95
 max_distance = 200.0
 bus = &"Sfx"
 
