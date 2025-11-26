@@ -451,7 +451,7 @@ tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD///3/AAABAAA
 
 [node name="PlayerWrapper" type="Node2D" parent="YSort/walkable"]
 z_index = 1
-position = Vector2(-385, 130)
+position = Vector2(-385, 235)
 
 [node name="Player" parent="YSort/walkable/PlayerWrapper" instance=ExtResource("9_x1ala")]
 y_sort_enabled = true
@@ -531,7 +531,7 @@ curve = SubResource("Curve2D_u3vgj")
 
 [node name="Cam" parent="CameraContainer/Path2D" node_paths=PackedStringArray("follow_target", "follow_path") instance=ExtResource("16_ptf1h")]
 top_level = true
-position = Vector2(-320, 136)
+position = Vector2(-319, 190)
 priority = 1
 follow_mode = 4
 follow_target = NodePath("../../../YSort/walkable/PlayerWrapper/Player")
