@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="3_3tcsq"]
 [ext_resource type="TileSet" uid="uid://ve68r0xefsom" path="res://tiles/tilesets/special_water_tileset.tres" id="4_5poo4"]
 [ext_resource type="PackedScene" uid="uid://b88evg1mvgox8" path="res://tiles/tilesets/collision_tile_map.tscn" id="5_3tcsq"]
-[ext_resource type="AudioStream" uid="uid://doj74cstxp4d8" path="res://audio/sfx/player/footsteps/GameOff_Footstep_Platform_1.ogg" id="6_2ayf3"]
-[ext_resource type="AudioStream" uid="uid://jgsfkeypesun" path="res://audio/sfx/player/footsteps/GameOff_Footstep_Platform_2.ogg" id="7_aor7p"]
-[ext_resource type="AudioStream" uid="uid://cywxmpadik00g" path="res://audio/sfx/player/footsteps/GameOff_Footstep_Platform_3.ogg" id="8_nahhg"]
-[ext_resource type="AudioStream" uid="uid://o6xa737xq2nq" path="res://audio/sfx/player/footsteps/GameOff_Footstep_Platform_4.ogg" id="9_dtp73"]
-[ext_resource type="AudioStream" uid="uid://c8qvih67a4ydk" path="res://audio/sfx/player/footsteps/GameOff_Footstep_Platform_5.ogg" id="10_skul1"]
+[ext_resource type="AudioStream" uid="uid://d08cjuvo58dy2" path="res://audio/sfx/GameOff_Platform_Wave_1.ogg" id="6_2ayf3"]
+[ext_resource type="AudioStream" uid="uid://dkdfrk7f3cdxl" path="res://audio/sfx/GameOff_Platform_Wave_2.ogg" id="7_aor7p"]
+[ext_resource type="AudioStream" uid="uid://d3mg035pdrkt4" path="res://audio/sfx/GameOff_Platform_Wave_3.ogg" id="8_nahhg"]
+[ext_resource type="AudioStream" uid="uid://dd43dsxs3hplo" path="res://audio/sfx/GameOff_Platform_Wave_4.ogg" id="9_dtp73"]
+[ext_resource type="AudioStream" uid="uid://gvwil2suyu5n" path="res://audio/sfx/GameOff_Platform_Wave_5.ogg" id="10_skul1"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2ayf3"]
 streams_count = 5
