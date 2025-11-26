@@ -419,10 +419,9 @@ coll_map = NodePath("../platformCollTilemap")
 where_to_remove_col = Array[ExtResource("7_y2q43")]([SubResource("Resource_yj50u"), SubResource("Resource_aqkyu"), SubResource("Resource_y2q43"), SubResource("Resource_qplds")])
 
 [node name="platformCollTilemap" parent="YSort/walkable/wrapper" instance=ExtResource("8_r113n")]
-visible = false
 z_index = 5
 position = Vector2(1, -11)
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAD//wEAAAAAAAAAAAD///j/AAADAAAAAAD+//n/AAADAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAD//wEAAAAAAAAAAAD///n/AAADAAAAAAD///r/AAADAAAAAAA=")
 
 [node name="PlayerWrapper" type="Node2D" parent="YSort/walkable"]
 z_index = 1
