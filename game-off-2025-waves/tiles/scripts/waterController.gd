@@ -77,6 +77,8 @@ func _update_water_level(going_up: bool) -> void:
 		Events.emit_signal("confirmed_new_water_level_direction", going_up)
 		Events.emit_signal("water_level_changed", new_level as int)
 		update_water_tiles()
+		Events.emit_signal("play_new_waves_sfx")
+		
 
 func update_water_tiles() -> void:
 	#print("water started moving")
