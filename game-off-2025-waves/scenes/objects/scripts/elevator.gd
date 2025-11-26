@@ -59,7 +59,9 @@ func _evaluate() -> void:
 			door_container.position = elevator_active_pos
 		elif get_active_switch_count() > 0:
 			animate_whole_elevator(elevator_active_pos, DOOR_MOVE_SLOW)
-			SFX.play_sfx(elevator_rise_or_down, 0.6)
+			if !elevator_rise_or_down.playing: # only play this if not allready playing
+				SFX.play_sfx(elevator_rise_or_down, 0.6)
+			
 
 func _apply_state() -> void:
 	if active:
@@ -138,8 +140,9 @@ func _close_door_and_swap_level(body: Node2D) -> void:
 
 func animate_whole_elevator(target: Vector2, move_time : float) -> void:
 	if whole_elevator_tween and whole_elevator_tween.is_running():
-		whole_elevator_tween.kill()
-		
+		return
+		#whole_elevator_tween.kill()
+	
 	whole_elevator_tween = get_tree().create_tween()
 	whole_elevator_tween.tween_property(door_container, "position", target, move_time)
 	

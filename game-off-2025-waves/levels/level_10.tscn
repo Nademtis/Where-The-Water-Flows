@@ -482,7 +482,7 @@ switch_to_activate = NodePath("../Elevator-Two Right/BaseSwitch2")
 position = Vector2(-243, 112)
 
 [node name="log" parent="YSort/walkable/objectsContainer" instance=ExtResource("16_4tj2f")]
-position = Vector2(-485, 243)
+position = Vector2(-448, 257)
 start_height_level = 1
 bounce_height = 1.0
 bounce_speed = 1.0
