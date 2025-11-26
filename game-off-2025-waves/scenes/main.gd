@@ -7,6 +7,7 @@ extends Node2D
 #const FIRST_LEVEL_PATH: String = "res://levels/level_template.tscn"
 
 const FIRST_LEVEL_PATH: String = "res://levels/level_1.tscn"
+@onready var level_indicator: Label = $CanvasLayer/levelIndicator
 
 
 var next_level_path: String
