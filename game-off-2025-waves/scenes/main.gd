@@ -46,7 +46,7 @@ func _setup_new_level() -> void:
 
 	Events.emit_signal("new_level_done_loading")
 	animation_player.play("fade_out")
-	
+	level_indicator.text = next_level_path
 	_unmute_sfx_temporarily()
 	
 	#var tree : String = get_tree_string_pretty()
