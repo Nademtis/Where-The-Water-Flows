@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cr061jxpdaw0"]
+[gd_scene load_steps=0 format=3 uid="uid://cr061jxpdaw0"]
 
 [node name="levelEnd" type="Node2D"]
 
