@@ -15,6 +15,7 @@ var previous_level : float = 1.0
 #@onready var height_map: TileMapLayer = $"../heightMap" # this defines the height on the tiles - tiles are drawn on top of the walkable tilemaplayer
 @onready var height_map: TileMapLayer = %heightMap
 
+var water_is_moving : bool = false
 
 # height and water_type is defines as a cumstom data layer in height_map
 
@@ -59,8 +60,9 @@ func _ready() -> void:
 	Events.connect("requested_water_level_direction", _update_water_level)
 
 func _update_water_level(going_up: bool) -> void:
+	if water_is_moving: # so we can't spam water
+			return
 	previous_level = water_level
-
 	var new_level : float= water_level
 	if going_up:
 		new_level += 1.0
@@ -77,10 +79,13 @@ func _update_water_level(going_up: bool) -> void:
 		update_water_tiles()
 
 func update_water_tiles() -> void:
+	#print("water started moving")
+	water_is_moving = true
+	
 	var last_y : float = INF
 	var going_up : bool = water_level > previous_level
 	var count : int = sorted_cells.size()
-
+	
 	if going_up:
 		for i in range(count):  # iterate bottom -> top (water going up)
 			var cell : Vector2i = sorted_cells[i]
@@ -89,6 +94,8 @@ func update_water_tiles() -> void:
 		for i in range(count - 1, -1, -1): # iterate top -> bottom (water going down)
 			var cell : Vector2i = sorted_cells[i]
 			await _process_cell(cell, last_y, going_up)
+	#print("water stopped moving")
+	water_is_moving = false
 
 func _process_cell(cell: Vector2i, last_y: float, going_up: bool) -> void:
 	var data : TileData = height_map.get_cell_tile_data(cell)
@@ -142,7 +149,3 @@ func _set_animation_corner_water_tile(cell : Vector2i, water_type : String) -> v
 		"left_corner", "lower_left_corner": set_cell(cell, 0, WATER_TILE_LEFT_CORNER_ANIMATION)
 		"right_corner", "lower_right_corner": set_cell(cell, 0, WATER_TILE_RIGHT_CORNER_ANIMATION)
 		_: printerr("water type not defined")
-
-func _on_v_slider_value_changed(value: float) -> void:
-	water_level = value
-	update_water_tiles()

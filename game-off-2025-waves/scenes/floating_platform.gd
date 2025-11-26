@@ -109,13 +109,14 @@ func _refresh_camera_target(player_ref: Node2D) -> void:
 
 func _update_local_collision(height: float) -> void:
 	var int_height := int(height)
-
+	print("floating platform handle local coll")
 	var hd: HeightDirections = null
 	for entry in where_to_remove_col:
 		if entry.height == int_height:
 			hd = entry
 			break
 	if hd == null:
+		_paint_local_coll_tiles()
 		return
 
 	var remove_set := hd.directions
@@ -142,6 +143,20 @@ func _repaint_if_missing(cell: Vector2i) -> void:
 	var existing := local_collision_tile_map.get_cell_source_id(cell)
 	if existing == -1:
 		local_collision_tile_map.set_cell(cell, 0, local_coll_tile_to_place) 
+
+func _paint_local_coll_tiles() -> void:
+	for d : Direction in Direction.values():
+		match d:
+			Direction.NW:
+				_handle_dir([], d, NW_coll_index_1, NW_coll_index_2)
+			Direction.NE:
+				_handle_dir([], d, NE_coll_index_1, NE_coll_index_2)
+			Direction.SE:
+				_handle_dir([], d, SE_coll_index_1, SE_coll_index_2)
+			Direction.SW:
+				_handle_dir([], d, SW_coll_index_1, SW_coll_index_2)
+
+
 
 func change_player_height(new_height : float) -> void:
 	enable_correct_coll_tiles(new_height)
