@@ -483,6 +483,7 @@ position = Vector2(-242, 112)
 
 [node name="log" parent="YSort/walkable/objectsContainer" instance=ExtResource("16_4tj2f")]
 position = Vector2(-448, 254)
+start_height_level = 1
 
 [node name="heightMap" type="TileMapLayer" parent="."]
 unique_name_in_owner = true

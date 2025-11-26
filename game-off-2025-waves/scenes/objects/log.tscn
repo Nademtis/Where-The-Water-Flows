@@ -13,13 +13,16 @@ radius = 6.0
 z_index = 2
 z_as_relative = false
 script = ExtResource("1_2aixv")
+bounce_height = 2.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="logContainer" type="Node2D" parent="."]
+
+[node name="logSprite" type="Sprite2D" parent="logContainer"]
 texture = ExtResource("1_yqxoi")
 region_enabled = true
 region_rect = Rect2(243, 180, 12, 10)
 
-[node name="water" type="Sprite2D" parent="."]
+[node name="waterSprite" type="Sprite2D" parent="logContainer"]
 texture = ExtResource("1_yqxoi")
 region_enabled = true
 region_rect = Rect2(259, 180, 12, 10)
@@ -35,6 +38,5 @@ shape = SubResource("CircleShape2D_2aixv")
 collision_layer = 4
 
 [node name="staticBodyColl" type="CollisionShape2D" parent="StaticBody2D"]
-visible = false
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_qbesu")

@@ -6,7 +6,7 @@ extends Node2D
 #const FIRST_LEVEL_PATH: String = "res://levels/level_playground.tscn"
 #const FIRST_LEVEL_PATH: String = "res://levels/level_template.tscn"
 
-const FIRST_LEVEL_PATH: String = "res://levels/level_4.tscn"
+const FIRST_LEVEL_PATH: String = "res://levels/level_10.tscn"
 
 
 var next_level_path: String
@@ -23,6 +23,7 @@ func _ready() -> void:
 func start_new_level(path: String) -> void: # should be called by elevator object
 	next_level_path = path
 	animation_player.play("fade_to_black")
+
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_to_black":
 		_setup_new_level()
