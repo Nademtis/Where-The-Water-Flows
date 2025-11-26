@@ -15,18 +15,20 @@ z_as_relative = false
 script = ExtResource("1_7c88i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4.5)
 texture = ExtResource("2_6jkjv")
 region_enabled = true
 region_rect = Rect2(211, 183, 10, 9)
 
 [node name="hit_box" type="Area2D" parent="." groups=["item"]]
-visible = false
+position = Vector2(0, -5)
 collision_layer = 8
 
 [node name="hitBoxColl" type="CollisionShape2D" parent="hit_box"]
 shape = SubResource("CircleShape2D_xnkle")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -4.5)
 collision_layer = 4
 
 [node name="staticBodyColl" type="CollisionShape2D" parent="StaticBody2D"]

@@ -109,7 +109,6 @@ func _refresh_camera_target(player_ref: Node2D) -> void:
 
 func _update_local_collision(height: float) -> void:
 	var int_height := int(height)
-	print("floating platform handle local coll")
 	var hd: HeightDirections = null
 	for entry in where_to_remove_col:
 		if entry.height == int_height:

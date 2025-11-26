@@ -71,10 +71,11 @@ func _move_item(go_up: bool) -> void:
 	else:
 		# item landed on ground
 		if current_water_level == start_height_level:
-			_disable_collisions(false)
-			_stop_bounce()
-			water_sprite.visible = false
-		
+			tween.finished.connect(func()-> void: 
+				_disable_collisions(false)
+				_stop_bounce()
+				water_sprite.visible = false
+			)
 	
 func _start_bounce() -> void:
 	# cancel old tween
@@ -97,6 +98,7 @@ func _start_bounce() -> void:
 		.set_ease(Tween.EASE_IN_OUT)
 	
 func _stop_bounce() -> void:
+	log_container.position = Vector2(0, -5)
 	if bounce_tween and bounce_tween.is_running():
 		bounce_tween.kill()
 

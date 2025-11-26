@@ -455,7 +455,7 @@ placed_at_water_level = 4
 required_switches = [NodePath("../PressurePlate2")]
 
 [node name="PressurePlate2" parent="YSort/walkable/objectsContainer" instance=ExtResource("13_r113n")]
-position = Vector2(-492, 243)
+position = Vector2(-485, 239)
 placed_at_water_level = 1
 
 [node name="Bridge2" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("12_y2q43")]
@@ -479,11 +479,14 @@ placed_at_water_level = 4
 switch_to_activate = NodePath("../Elevator-Two Right/BaseSwitch2")
 
 [node name="rock" parent="YSort/walkable/objectsContainer" instance=ExtResource("15_eh384")]
-position = Vector2(-242, 112)
+position = Vector2(-243, 112)
 
 [node name="log" parent="YSort/walkable/objectsContainer" instance=ExtResource("16_4tj2f")]
-position = Vector2(-448, 254)
+position = Vector2(-485, 243)
 start_height_level = 1
+bounce_height = 1.0
+bounce_speed = 1.0
+float_duration = 0.5
 
 [node name="heightMap" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
