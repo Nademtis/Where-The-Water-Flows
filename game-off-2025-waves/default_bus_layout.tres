@@ -4,7 +4,7 @@
 bus/0/volume_db = -1.9147635
 bus/1/name = &"Music"
 bus/1/solo = false
-bus/1/mute = false
+bus/1/mute = true
 bus/1/bypass_fx = false
 bus/1/volume_db = -10.523644
 bus/1/send = &"Master"
@@ -16,7 +16,7 @@ bus/2/volume_db = -4.2500257
 bus/2/send = &"Master"
 bus/3/name = &"Ambience"
 bus/3/solo = false
-bus/3/mute = false
+bus/3/mute = true
 bus/3/bypass_fx = false
 bus/3/volume_db = -13.516163
 bus/3/send = &"Master"

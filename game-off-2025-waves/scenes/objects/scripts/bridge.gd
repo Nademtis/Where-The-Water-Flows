@@ -4,6 +4,8 @@ class_name Bridge extends BaseInteractable
 
 @export var placed_at_water_level : int
 
+@onready var mask: Sprite2D = $mask
+
 #SFX
 @onready var extend_sfx: AudioStreamPlayer2D = $extendSFX
 @onready var retract_sfx: AudioStreamPlayer2D = $retractSFX
@@ -21,6 +23,10 @@ const MOVE_TIME := 0.5
 
 func _ready() -> void:
 	super._ready()
+	if !bridge_go_down_left:
+		#swap the mask from 80, 256, 64, 34 # this is for SW
+		mask.region_rect = Rect2(144,256,64,34) # this is for SE
+	
 	
 	#set retract_pos and active_pos based on export bool
 	if bridge_go_down_left:

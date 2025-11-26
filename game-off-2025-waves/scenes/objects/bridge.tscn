@@ -16,8 +16,8 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("5_dmek5")
 
-[node name="Bridge" type="Node2D" node_paths=PackedStringArray("required_switches")]
-z_index = 1
+[node name="BridgeSW" type="Node2D" node_paths=PackedStringArray("required_switches")]
+z_index = 2
 z_as_relative = false
 script = ExtResource("1_wo0ln")
 required_switches = [null]
@@ -31,7 +31,7 @@ region_rect = Rect2(80, 256, 64, 34)
 [node name="bridgeSprite" type="Sprite2D" parent="mask"]
 texture = ExtResource("1_ica2m")
 region_enabled = true
-region_rect = Rect2(144, 256, 64, 34)
+region_rect = Rect2(80, 304, 64, 34)
 
 [node name="YsortHelper" type="Area2D" parent="."]
 visible = false
