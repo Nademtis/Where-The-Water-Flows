@@ -7,6 +7,7 @@ extends Node2D
 #const FIRST_LEVEL_PATH: String = "res://levels/level_template.tscn"
 
 const FIRST_LEVEL_PATH: String = "res://levels/level_1.tscn"
+@onready var level_indicator: Label = $CanvasLayer/levelIndicator
 
 
 var next_level_path: String
@@ -46,7 +47,7 @@ func _setup_new_level() -> void:
 
 	Events.emit_signal("new_level_done_loading")
 	animation_player.play("fade_out")
-	
+	level_indicator.text = next_level_path
 	_unmute_sfx_temporarily()
 	
 	#var tree : String = get_tree_string_pretty()

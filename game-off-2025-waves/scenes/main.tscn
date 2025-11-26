@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://qnvk28xsjc0y"]
+[gd_scene load_steps=19 format=3 uid="uid://qnvk28xsjc0y"]
 
 [ext_resource type="Script" uid="uid://dhrh3kakqatdw" path="res://scenes/main.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://c2wp7ixg7r8vm" path="res://scenes/ui/fps_label.gd" id="1_o5qli"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://d3mg035pdrkt4" path="res://audio/sfx/GameOff_Platform_Wave_3.ogg" id="8_a8y0u"]
 [ext_resource type="AudioStream" uid="uid://dd43dsxs3hplo" path="res://audio/sfx/GameOff_Platform_Wave_4.ogg" id="9_jkv2x"]
 [ext_resource type="AudioStream" uid="uid://gvwil2suyu5n" path="res://audio/sfx/GameOff_Platform_Wave_5.ogg" id="10_jbj1t"]
+[ext_resource type="Script" uid="uid://0htwj5fpcwad" path="res://scripts/debugInfo.gd" id="11_trceg"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_muem4"]
 streams_count = 5
@@ -101,6 +102,7 @@ max_polyphony = 3
 bus = &"Sfx"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("11_trceg")
 
 [node name="fpsLabel" type="Label" parent="CanvasLayer"]
 offset_right = 40.0
@@ -109,6 +111,15 @@ size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 30
 text = "FPS: 123"
 script = ExtResource("1_o5qli")
+
+[node name="levelIndicator" type="Label" parent="CanvasLayer"]
+offset_left = 1.0
+offset_top = 39.0
+offset_right = 119.0
+offset_bottom = 81.0
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "level"
 
 [node name="SceneTransition" type="CanvasLayer" parent="."]
 
