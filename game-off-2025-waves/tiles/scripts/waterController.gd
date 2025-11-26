@@ -62,6 +62,7 @@ func _ready() -> void:
 func _update_water_level(going_up: bool) -> void:
 	if water_is_moving: # so we can't spam water
 			return
+	Events.emit_signal("play_new_waves_sfx")
 	previous_level = water_level
 	var new_level : float= water_level
 	if going_up:
