@@ -287,12 +287,12 @@ current = true
 
 [node name="sfx_footstep_grass" type="AudioStreamPlayer2D" parent="sfxFootStep"]
 stream = SubResource("AudioStreamRandomizer_lgqa7")
-volume_db = -6.0
+volume_db = -4.0
 bus = &"Sfx"
 
 [node name="sfx_footstep_stone" type="AudioStreamPlayer2D" parent="sfxFootStep"]
 stream = SubResource("AudioStreamRandomizer_8ydkj")
-volume_db = 3.525
+volume_db = 3.0
 bus = &"Sfx"
 
 [node name="footStepSFXcooldown" type="Timer" parent="sfxFootStep"]

@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://gku0jqaed1t0"]
+[gd_scene load_steps=12 format=3 uid="uid://gku0jqaed1t0"]
 
 [ext_resource type="AudioStream" uid="uid://t3ood4xnsc5y" path="res://audio/sfx/GameOff_Door_Slide_Open_1.ogg" id="1_hgsvu"]
 [ext_resource type="AudioStream" uid="uid://dxvj6vqwlysu2" path="res://audio/sfx/GameOff_Door_Slide_Open_2.ogg" id="2_k6pyh"]
 [ext_resource type="AudioStream" uid="uid://cfmmiavjuagmj" path="res://audio/sfx/GameOff_Door_Enabled.ogg" id="3_hgsvu"]
 [ext_resource type="AudioStream" uid="uid://bhl00sj4wopcx" path="res://audio/sfx/GameOff_Door_Rise.ogg" id="4_hgsvu"]
+[ext_resource type="AudioStream" uid="uid://c2koqwxvuw22y" path="res://audio/sfx/GameOff_Door_Retract_Short.ogg" id="5_uwvvr"]
+[ext_resource type="AudioStream" uid="uid://cg8tpd1hyw2wc" path="res://audio/sfx/GameOff_Door_Slide_Open_Short_1.ogg" id="6_lrokt"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_je1uo"]
 streams_count = 2
@@ -17,6 +19,14 @@ stream_0/stream = ExtResource("3_hgsvu")
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k6pyh"]
 streams_count = 1
 stream_0/stream = ExtResource("4_hgsvu")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qgise"]
+streams_count = 1
+stream_0/stream = ExtResource("5_uwvvr")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jijjv"]
+streams_count = 1
+stream_0/stream = ExtResource("6_lrokt")
 
 [node name="doorSfx" type="Node2D"]
 
@@ -36,4 +46,14 @@ bus = &"Sfx"
 stream = SubResource("AudioStreamRandomizer_k6pyh")
 max_distance = 1000.0
 attenuation = 1.3195081
+bus = &"Sfx"
+
+[node name="elevatorSlideShortSFX" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_qgise")
+volume_db = -10.0
+bus = &"Sfx"
+
+[node name="DoorSlideShortSFX" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_jijjv")
+volume_db = -10.0
 bus = &"Sfx"

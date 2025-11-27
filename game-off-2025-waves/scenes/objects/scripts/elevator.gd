@@ -25,9 +25,13 @@ var elevator_active_pos := Vector2(0 , 0)
 @onready var door_sliding_sfx: AudioStreamPlayer2D = $doorSfx/doorSlidingSFX
 @onready var door_enabled_sfx: AudioStreamPlayer2D = $doorSfx/DoorEnabledSFX
 @onready var elevator_rise_or_down: AudioStreamPlayer2D = $doorSfx/elevatorRiseOrDown
+@onready var elevator_slide_short_sfx: AudioStreamPlayer2D = $doorSfx/elevatorSlideShortSFX
+@onready var door_slide_short_sfx: AudioStreamPlayer2D = $doorSfx/DoorSlideShortSFX
+
+
 
 const DOOR_MOVE_SLOW : float = 2.5
-const DOOR_MOVE_FAST : float = 1
+const DOOR_MOVE_FAST : float = 1.4
 var door_tween: Tween
 var whole_elevator_tween : Tween
 
@@ -60,7 +64,7 @@ func _evaluate() -> void:
 		elif get_active_switch_count() > 0:
 			animate_whole_elevator(elevator_active_pos, DOOR_MOVE_SLOW)
 			if !elevator_rise_or_down.playing: # only play this if not allready playing
-				SFX.play_sfx(elevator_rise_or_down, 0.6)
+				SFX.play_sfx(elevator_rise_or_down, 0.29)
 			
 
 func _apply_state() -> void:
@@ -129,12 +133,13 @@ func _update_lamp() -> void:
 			lamp.color = LAMP_DISNABLED_COLOR
 
 func _close_door_and_swap_level(body: Node2D) -> void:
+	door_slide_short_sfx.play()
 	_move_to(door_closed_pos, DOOR_MOVE_FAST, true)
 	body.set_cannot_move()
 	await get_tree().create_timer(DOOR_MOVE_FAST).timeout
 	animate_whole_elevator(elevator_hidden_pos, DOOR_MOVE_FAST)
+	elevator_slide_short_sfx.play()
 	await get_tree().create_timer(DOOR_MOVE_FAST).timeout
-	print("swap levels")
 	Events.emit_signal("load_new_level", next_level_path)
 	
 

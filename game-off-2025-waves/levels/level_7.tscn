@@ -413,7 +413,7 @@ tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAAAAAAAAAAAAAAAAAD///3/AAABAAA
 
 [node name="PlayerWrapper" type="Node2D" parent="YSort/walkable"]
 z_index = 1
-position = Vector2(-312, 232)
+position = Vector2(-304, 241)
 
 [node name="Player" parent="YSort/walkable/PlayerWrapper" instance=ExtResource("9_utfij")]
 y_sort_enabled = true

@@ -20,6 +20,7 @@ const MOVE_TIME := 0.8
 @onready var not_active_sfx: AudioStreamPlayer2D = $notActiveSFX
 @onready var rise_sfx: AudioStreamPlayer2D = $riseSFX
 @onready var go_down_sfx: AudioStreamPlayer2D = $goDownSFX
+@onready var interact_indicator: InteractIndicator = $interactIndicator
 
 func _ready() -> void:
 	super._ready()
@@ -80,10 +81,17 @@ func _on_player_use() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = true
+		
+		if active:
+			interact_indicator.show_indicator()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = false
+		
+		if active:
+			interact_indicator.hide_indicator()
+		
 
 func anim_water(new_height : int) -> void:
 	var target_color: Color

@@ -6,14 +6,19 @@ class_name Item
 var original_parent : Node
 var item_is_moving : bool = false
 
+@onready var interact_indicator_spawn_pos: Marker2D = $interactIndicatorSpawnPos
+const INTERACT_INDICATOR = preload("uid://ck42nani505kg")
+var interact_indicator : InteractIndicator
+
 func _ready() -> void:
 	original_parent = get_parent()
-	print(original_parent)
+	init_interact_indicator()
+	print("item _Ready")
 
 func pick_up(local_target: Vector2) -> void:
-	_begin_move()
 	static_body_coll.set_deferred("disabled", true)
 	hit_box_coll.set_deferred("disabled", true)
+	_begin_move()
 
 	var tween := get_tree().create_tween()
 	tween.tween_property(self, "position", local_target, 0.25)\
@@ -40,3 +45,8 @@ func _begin_move() -> void:
 
 func _end_move() -> void:
 	item_is_moving = false
+
+func init_interact_indicator () -> void:
+	interact_indicator = INTERACT_INDICATOR.instantiate()
+	interact_indicator.position = interact_indicator_spawn_pos.position
+	add_child(interact_indicator)

@@ -422,7 +422,7 @@ tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD///v/AAACAAA
 
 [node name="PlayerWrapper" type="Node2D" parent="YSort/walkable"]
 z_index = 1
-position = Vector2(-304, 277)
+position = Vector2(-346, 159)
 
 [node name="Player" parent="YSort/walkable/PlayerWrapper" instance=ExtResource("9_hblnf")]
 y_sort_enabled = true
@@ -460,7 +460,7 @@ script = ExtResource("11_jjsmp")
 metadata/_custom_type_script = "uid://btte8j4ymesff"
 
 [node name="log" parent="YSort/walkable/objectsContainer" instance=ExtResource("14_j62rw")]
-position = Vector2(-402, 115)
+position = Vector2(-406, 117)
 start_height_level = 3
 
 [node name="obelisk" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("switch_to_activate") instance=ExtResource("15_v6gi3")]
@@ -483,7 +483,7 @@ position = Vector2(-364, 252)
 placed_at_water_level = 1
 
 [node name="rock" parent="YSort/walkable/objectsContainer" instance=ExtResource("16_v6gi3")]
-position = Vector2(-417, 227)
+position = Vector2(-414, 225)
 
 [node name="obelisk3" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("switch_to_activate", "required_switches") instance=ExtResource("15_v6gi3")]
 position = Vector2(-157, 199)
@@ -554,7 +554,7 @@ curve = SubResource("Curve2D_u3vgj")
 
 [node name="Cam" parent="CameraContainer/Path2D" node_paths=PackedStringArray("follow_target", "follow_path") instance=ExtResource("16_a0xac")]
 top_level = true
-position = Vector2(-288, 216)
+position = Vector2(-288, 159)
 priority = 1
 follow_mode = 4
 follow_target = NodePath("../../../YSort/walkable/PlayerWrapper/Player")
