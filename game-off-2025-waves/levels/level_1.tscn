@@ -383,7 +383,7 @@ metadata/_edit_lock_ = true
 
 [node name="PlayerWrapper" type="Node2D" parent="YSort/walkable"]
 z_index = 1
-position = Vector2(-440, 176)
+position = Vector2(-433, 172)
 
 [node name="Player" parent="YSort/walkable/PlayerWrapper" instance=ExtResource("9_uk0w3")]
 y_sort_enabled = true

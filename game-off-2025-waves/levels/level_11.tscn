@@ -460,7 +460,7 @@ script = ExtResource("11_jjsmp")
 metadata/_custom_type_script = "uid://btte8j4ymesff"
 
 [node name="log" parent="YSort/walkable/objectsContainer" instance=ExtResource("14_j62rw")]
-position = Vector2(-402, 115)
+position = Vector2(-406, 117)
 start_height_level = 3
 
 [node name="obelisk" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("switch_to_activate") instance=ExtResource("15_v6gi3")]
@@ -483,7 +483,7 @@ position = Vector2(-364, 252)
 placed_at_water_level = 1
 
 [node name="rock" parent="YSort/walkable/objectsContainer" instance=ExtResource("16_v6gi3")]
-position = Vector2(-417, 227)
+position = Vector2(-414, 225)
 
 [node name="obelisk3" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("switch_to_activate", "required_switches") instance=ExtResource("15_v6gi3")]
 position = Vector2(-157, 199)

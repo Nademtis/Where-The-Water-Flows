@@ -25,11 +25,14 @@ func _on_area_entered(area: Area2D) -> void:
 		
 		if item_in_hand == null:
 			item.interact_indicator.show_indicator()
-			print(" item area entered")
 		
 
 		
 func maybe_pickup_item() -> void:
+	if item_in_hand:
+		print("allready has item returning")
+		return
+	
 	if potential_item_to_pickup:
 		item_in_hand = potential_item_to_pickup
 		
@@ -61,9 +64,7 @@ func maybe_drop_item() -> void:
 func _on_area_exited(area: Area2D) -> void:
 	if area.is_in_group("item"):
 		#var potential_item : Node = area.get_parent()
-		if potential_item_to_pickup:
+		if potential_item_to_pickup and !item_in_hand:
 			potential_item_to_pickup.interact_indicator.hide_indicator()
 		
 		potential_item_to_pickup = null
-		
-		print("cannot pickup item")

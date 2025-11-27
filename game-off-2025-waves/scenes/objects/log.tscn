@@ -45,4 +45,4 @@ position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_qbesu")
 
 [node name="interactIndicatorSpawnPos" type="Marker2D" parent="."]
-position = Vector2(0, -19)
+position = Vector2(0, -15)

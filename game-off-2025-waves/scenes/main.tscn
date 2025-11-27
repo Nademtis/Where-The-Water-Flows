@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://d3mg035pdrkt4" path="res://audio/sfx/GameOff_Platform_Wave_3.ogg" id="8_a8y0u"]
 [ext_resource type="AudioStream" uid="uid://dd43dsxs3hplo" path="res://audio/sfx/GameOff_Platform_Wave_4.ogg" id="9_jkv2x"]
 [ext_resource type="AudioStream" uid="uid://gvwil2suyu5n" path="res://audio/sfx/GameOff_Platform_Wave_5.ogg" id="10_jbj1t"]
-[ext_resource type="Script" uid="uid://0htwj5fpcwad" path="res://scripts/debugInfo.gd" id="11_trceg"]
+[ext_resource type="Script" path="res://scripts/debugInfo.gd" id="11_trceg"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_muem4"]
 streams_count = 5
