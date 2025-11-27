@@ -451,7 +451,7 @@ tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD///3/AAABAAA
 
 [node name="PlayerWrapper" type="Node2D" parent="YSort/walkable"]
 z_index = 1
-position = Vector2(-383, 230)
+position = Vector2(-384, 231)
 
 [node name="Player" parent="YSort/walkable/PlayerWrapper" instance=ExtResource("9_762m2")]
 y_sort_enabled = true
@@ -520,9 +520,6 @@ modulate = Color(0.2509804, 1, 1, 0.41960785)
 modulate = Color(0.7856168, 0.96944946, 7.70092e-07, 0.41960785)
 
 [node name="CameraContainer" type="Node" parent="."]
-
-[node name="Cam" parent="CameraContainer" instance=ExtResource("17_l5k8t")]
-position = Vector2(24, 328)
 
 [node name="Path2D" type="Path2D" parent="CameraContainer"]
 z_index = 5

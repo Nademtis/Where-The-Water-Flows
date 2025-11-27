@@ -410,7 +410,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAD//wEAAAAAAAAAAAD///3/AAABAAA
 
 [node name="PlayerWrapper" type="Node2D" parent="YSort/walkable"]
 z_index = 1
-position = Vector2(-79, 203)
+position = Vector2(-73, 203)
 
 [node name="Player" parent="YSort/walkable/PlayerWrapper" instance=ExtResource("8_67vg4")]
 y_sort_enabled = true
@@ -442,6 +442,7 @@ script = ExtResource("12_6anhs")
 metadata/_edit_lock_ = true
 
 [node name="CollisionMapContainer" type="Node2D" parent="."]
+visible = false
 z_index = 5
 script = ExtResource("13_e28pm")
 debug_show_active_collmap = true

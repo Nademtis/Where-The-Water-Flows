@@ -14,6 +14,7 @@ size = Vector2(382, 200)
 script = ExtResource("1_hl1vm")
 zoom = Vector2(5, 5)
 tween_resource = SubResource("Resource_wlun4")
+tween_on_load = false
 draw_limits = true
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 

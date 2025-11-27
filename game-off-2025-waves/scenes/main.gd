@@ -24,6 +24,7 @@ func _ready() -> void:
 func start_new_level(path: String) -> void: # should be called by elevator object
 	next_level_path = path
 	animation_player.play("fade_to_black")
+	remove_active_cam()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_to_black":
@@ -58,3 +59,9 @@ func _unmute_sfx_temporarily() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	GameStats.SFX_allowed = true
+
+func remove_active_cam() -> void:
+	var list := PhantomCameraManager.get_phantom_camera_2ds()
+	if list:
+		for cam in list:
+			cam.priority = 0
