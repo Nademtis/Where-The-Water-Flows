@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck42nani505kg"]
+
+[ext_resource type="Script" uid="uid://c2a5bhbjtutlk" path="res://audio/interact_indicator.gd" id="1_fic6o"]
+[ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="1_hubv0"]
+[ext_resource type="AudioStream" uid="uid://3q1apk18w517" path="res://audio/sfx/GameOff_UI_Interactables.ogg" id="2_fic6o"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ra8w2"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("2_fic6o")
+
+[node name="interactIndicator" type="Node2D"]
+script = ExtResource("1_fic6o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hubv0")
+region_enabled = true
+region_rect = Rect2(294, 182, 5, 5)
+
+[node name="AudioStreamPlayer2DEntered" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_ra8w2")
+volume_db = -15.0
+bus = &"Sfx"
+
+[node name="AudioStreamPlayer2DExited" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_ra8w2")
+volume_db = -12.0
+pitch_scale = 0.7
+bus = &"Sfx"

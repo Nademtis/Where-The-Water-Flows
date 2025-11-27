@@ -33,3 +33,6 @@ collision_layer = 4
 
 [node name="staticBodyColl" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("CircleShape2D_7c88i")
+
+[node name="interactIndicatorSpawnPos" type="Marker2D" parent="."]
+position = Vector2(0, -19)

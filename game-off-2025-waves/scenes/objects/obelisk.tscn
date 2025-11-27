@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7v878ho36jpc"]
+[gd_scene load_steps=14 format=3 uid="uid://c7v878ho36jpc"]
 
 [ext_resource type="Script" uid="uid://tnsiq3ilkpnu" path="res://scenes/objects/scripts/obelisk.gd" id="1_o0g6v"]
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="2_rtbaw"]
 [ext_resource type="Script" uid="uid://c1sgyfqknkj8i" path="res://scripts/ysortHelper.gd" id="3_rtbaw"]
 [ext_resource type="AudioStream" uid="uid://dstsovo76oeh6" path="res://audio/sfx/GameOff_Obelisk_Rise.ogg" id="4_11tqd"]
 [ext_resource type="AudioStream" uid="uid://dha7iftm00nrb" path="res://audio/sfx/GameOff_Obelisk_Switch_ogg.ogg" id="4_dweql"]
+[ext_resource type="PackedScene" uid="uid://ck42nani505kg" path="res://audio/interact_indicator.tscn" id="6_r5cto"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o0g6v"]
 radius = 27.0
@@ -116,6 +117,9 @@ volume_db = -10.0
 max_distance = 400.0
 attenuation = 2.143547
 bus = &"Sfx"
+
+[node name="interactIndicator" parent="." instance=ExtResource("6_r5cto")]
+position = Vector2(0, -27)
 
 [connection signal="body_entered" from="playerInRangeToActivate" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="playerInRangeToActivate" to="." method="_on_area_2d_body_exited"]
