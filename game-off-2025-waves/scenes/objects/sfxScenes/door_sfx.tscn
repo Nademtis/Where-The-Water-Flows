@@ -1,14 +1,14 @@
 [gd_scene load_steps=8 format=3 uid="uid://gku0jqaed1t0"]
 
-[ext_resource type="AudioStream" uid="uid://ba12f5m65wtup" path="res://audio/sfx/GameOff_Stone_Door_Slide_1.ogg" id="1_n4qy7"]
-[ext_resource type="AudioStream" uid="uid://clgho33oh2fpo" path="res://audio/sfx/GameOff_Stone_Door_Slide_2.ogg" id="2_hgsvu"]
+[ext_resource type="AudioStream" uid="uid://t3ood4xnsc5y" path="res://audio/sfx/GameOff_Door_Slide_Open_1.ogg" id="1_hgsvu"]
+[ext_resource type="AudioStream" uid="uid://dxvj6vqwlysu2" path="res://audio/sfx/GameOff_Door_Slide_Open_2.ogg" id="2_k6pyh"]
 [ext_resource type="AudioStream" uid="uid://cfmmiavjuagmj" path="res://audio/sfx/GameOff_Door_Enabled.ogg" id="3_hgsvu"]
 [ext_resource type="AudioStream" uid="uid://bhl00sj4wopcx" path="res://audio/sfx/GameOff_Door_Rise.ogg" id="4_hgsvu"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_je1uo"]
 streams_count = 2
-stream_0/stream = ExtResource("1_n4qy7")
-stream_1/stream = ExtResource("2_hgsvu")
+stream_0/stream = ExtResource("1_hgsvu")
+stream_1/stream = ExtResource("2_k6pyh")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wfpg6"]
 streams_count = 1

@@ -19,7 +19,7 @@ class_name Bridge extends BaseInteractable
 var retract_pos : Vector2 = Vector2(-26.0, -13.0)
 var active_pos : Vector2 = Vector2(0,0)
 
-const MOVE_TIME := 0.5
+const MOVE_TIME := 1.7
 
 func _ready() -> void:
 	super._ready()
