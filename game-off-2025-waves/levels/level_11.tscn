@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://mocry4kggqpq"]
+[gd_scene load_steps=30 format=4 uid="uid://cjeotktc8jlq6"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_g3m3p"]
 [ext_resource type="PackedScene" uid="uid://dviyuacx5uaa4" path="res://tiles/tilesets/decal.tscn" id="2_46gci"]
@@ -444,7 +444,7 @@ placed_at_water_level = 3
 
 [node name="Elevator-Three Left" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("11_46gci")]
 position = Vector2(-344, 60)
-next_level_path = "res://levels/level_end.tsqcn"
+next_level_path = "res://levels/level_end.tscn"
 required_switches = [NodePath("BaseSwitch"), NodePath("BaseSwitch2"), NodePath("BaseSwitch3")]
 
 [node name="BaseSwitch" type="Node2D" parent="YSort/walkable/objectsContainer/Elevator-Three Left"]
