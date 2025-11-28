@@ -1,6 +1,7 @@
-[gd_scene load_steps=52 format=4 uid="uid://opjx2dvm4ils"]
+[gd_scene load_steps=53 format=4 uid="uid://opjx2dvm4ils"]
 
 [ext_resource type="Script" uid="uid://ekbuessnk5yy" path="res://scenes/player/player.gd" id="1_dovo2"]
+[ext_resource type="TileSet" uid="uid://ve68r0xefsom" path="res://tiles/tilesets/special_water_tileset.tres" id="2_yj68g"]
 [ext_resource type="AudioStream" uid="uid://d1hfbljq1rkak" path="res://audio/sfx/player/footsteps/GameOff_Character_Footstep_Stone_1.ogg" id="3_h17s1"]
 [ext_resource type="AudioStream" uid="uid://hnj24cxvgqfx" path="res://audio/sfx/player/footsteps/GameOff_Character_Footstep_Grass_1.ogg" id="3_kvlxm"]
 [ext_resource type="AudioStream" uid="uid://bbul5dbwjkut2" path="res://audio/sfx/player/footsteps/GameOff_Character_Footstep_Stone_2.ogg" id="4_je7p5"]
@@ -250,6 +251,7 @@ motion_mode = 1
 script = ExtResource("1_dovo2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+clip_children = 2
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_niom3")
 animation = &"idle"
@@ -275,6 +277,12 @@ metadata/_aseprite_wizard_config_ = {
 "source_uid": 2935680269670607224
 }
 metadata/_aseprite_wizard_source_file_hash_ = "b0c75214c477a9bc49cb4ad66475e30e"
+
+[node name="WaterTileMapLayer" type="TileMapLayer" parent="AnimatedSprite2D"]
+self_modulate = Color(1, 1, 1, 0.6862745)
+position = Vector2(0, 15)
+tile_map_data = PackedByteArray("AAD///v/AAAAAAgAAAA=")
+tile_set = ExtResource("2_yj68g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
