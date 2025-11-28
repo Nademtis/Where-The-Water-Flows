@@ -115,6 +115,6 @@ func _set_height_under_item(new_pos: Vector2) -> void:
 		return
 
 	var height_value : float = tile_data.get_custom_data("height")
-	print("new item height is: ", height_value as int)
+	#print("new item height is: ", height_value as int)
 	current_height_level = height_value as int
 	start_height_level = height_value as int
