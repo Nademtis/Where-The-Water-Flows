@@ -73,3 +73,16 @@ func anim_water(new_height : int) -> void:
 		target_color = Color.WHITE
 	var t := create_tween()
 	t.tween_property(self, "modulate", target_color, 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+
+func _on_player_is_on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		print("player entered  bridge")
+		body.is_on_bridge = true
+
+
+func _on_player_is_on_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		print("player exit  bridge")
+		body.is_on_bridge = false
+		

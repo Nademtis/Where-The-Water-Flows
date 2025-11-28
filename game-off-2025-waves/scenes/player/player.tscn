@@ -335,5 +335,10 @@ texture = ExtResource("21_3j4b4")
 region_enabled = true
 region_rect = Rect2(276, 180, 8, 8)
 
+[node name="SwimGraceTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="area_entered" from="itemInHand" to="itemInHand" method="_on_area_entered"]
 [connection signal="area_exited" from="itemInHand" to="itemInHand" method="_on_area_exited"]
+[connection signal="timeout" from="SwimGraceTimer" to="." method="_on_swim_grace_timer_timeout"]

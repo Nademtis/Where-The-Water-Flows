@@ -72,3 +72,12 @@ visible = false
 modulate = Color(1, 0.21568628, 1, 0.23529412)
 position = Vector2(0, -9)
 tile_map_data = PackedByteArray(0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="playerIsOn" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="playerIsOn"]
+rotation = 0.0046517593
+polygon = PackedVector2Array(-0.09303486, -19.999786, -36.018223, -3.8324943, -35.994965, 1.167452, 0.0976866, 20.999775, 35.00893, 1.8371675, 34.990322, -2.1627896)
+
+[connection signal="body_entered" from="playerIsOn" to="." method="_on_player_is_on_body_entered"]
+[connection signal="body_exited" from="playerIsOn" to="." method="_on_player_is_on_body_exited"]
