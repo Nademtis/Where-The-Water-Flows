@@ -9,6 +9,8 @@ extends Node2D
 const FIRST_LEVEL_PATH: String = "res://levels/level_1.tscn"
 @onready var level_indicator: Label = $CanvasLayer/levelIndicator
 
+@onready var focus_menu: CanvasLayer = $AudioManager/focusMenu
+
 
 var next_level_path: String
 var current_level_path: String
@@ -20,6 +22,9 @@ func _ready() -> void:
 	
 	_setup_new_level() # skip the start_new_level since we don't want to fade to black. it's already black
 	#print(get_tree_string_pretty())
+	
+	get_window().focus_entered.connect(_on_window_focus_entered)
+	get_window().focus_exited.connect(_on_window_focus_exited)
 
 func start_new_level(path: String) -> void: # should be called by elevator object
 	next_level_path = path
@@ -65,3 +70,9 @@ func remove_active_cam() -> void:
 	if list:
 		for cam in list:
 			cam.priority = 0
+
+func _on_window_focus_entered() -> void:
+	focus_menu.visible = false
+
+func _on_window_focus_exited() -> void:
+	focus_menu.visible = true
