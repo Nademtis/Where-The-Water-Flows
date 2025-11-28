@@ -22,7 +22,6 @@ func _ready() -> void:
 	
 	_setup_new_level() # skip the start_new_level since we don't want to fade to black. it's already black
 	#print(get_tree_string_pretty())
-	
 	get_window().focus_entered.connect(_on_window_focus_entered)
 	get_window().focus_exited.connect(_on_window_focus_exited)
 

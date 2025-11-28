@@ -103,6 +103,7 @@ max_polyphony = 3
 bus = &"Sfx"
 
 [node name="focusMenu" type="CanvasLayer" parent="AudioManager"]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="AudioManager/focusMenu"]
 anchors_preset = 15
