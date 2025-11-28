@@ -5,6 +5,7 @@ const MOVESPEED : float = 65
 @onready var item_in_hand: ItemInHand = $itemInHand
 
 @export var max_speed: float = 65.0
+var current_speed : float
 @export var acceleration: float = 500.0
 @export var deceleration: float = 1000
 
@@ -21,6 +22,9 @@ var debug_points: Array[Vector2] = []
 var current_player_height : float = 1.0
 var old_player_height : float = 1.0
 var is_on_platform : bool = false
+var is_swimming : bool = false
+@onready var water_tile_map_layer: TileMapLayer = $AnimatedSprite2D/WaterTileMapLayer
+var current_water_level : int
 
 # 2D input direction before isometric transform
 var input_dir: Vector2
@@ -40,7 +44,8 @@ var can_move : bool = true
 
 func _ready() -> void:
 	player_wrapper.global_position = global_position #updates wrapper
-	
+	Events.connect("water_level_changed", check_swimming)
+	water_tile_map_layer.visible = false
 
 func _input(event : InputEvent) -> void:
 	if event.is_action_pressed("use"):
@@ -63,13 +68,30 @@ func _process(_delta: float) -> void:
 		debug_point(player_wrapper.global_position)
 
 func _physics_process(delta: float) -> void:
-	if can_move:
+	if can_move and not is_swimming:
 		_movement(delta)
 	_handle_footsteps(delta)
 	
 	if not is_on_platform: #platform change this bool
 		#if player is on platform. height should not be changed by player itself
 		_get_height_tile_under_player()
+	
+func check_swimming(new_height : int) -> void:
+	current_water_level = new_height
+	if current_player_height < current_water_level:
+		await get_tree().create_timer(0.2).timeout
+		print("swimming")
+		is_swimming = true
+		velocity = Vector2.ZERO
+		animated_sprite_2d.play("idle")
+		water_tile_map_layer.visible = true
+		
+		
+	else:
+		print("not swimming")
+		is_swimming = false
+		water_tile_map_layer.visible = false
+		
 	
 
 func _handle_footsteps(delta: float) -> void:
@@ -160,6 +182,7 @@ func _get_height_tile_under_player() -> void:
 	if current_player_height != old_player_height:
 		old_player_height = current_player_height
 		Events.emit_signal("player_height_changed", current_player_height)
+		check_swimming(current_water_level)
 	#var water_type : String = tile_data.get_custom_data("water_type")
 	
 	#used for debug draw
