@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://hj2nrd2aex4g"]
+[gd_scene load_steps=20 format=4 uid="uid://hj2nrd2aex4g"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_vjtdm"]
 [ext_resource type="Shader" uid="uid://ck3gjomhka1to" path="res://shaders/water.gdshader" id="2_bgw3c"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://ocuxag5bwe8i" path="res://tiles/collision_map_container.gd" id="10_x2ftj"]
 [ext_resource type="PackedScene" uid="uid://b88evg1mvgox8" path="res://tiles/tilesets/collision_tile_map.tscn" id="11_x2ftj"]
 [ext_resource type="PackedScene" uid="uid://ym65vt1sl83d" path="res://scenes/camera/cam.tscn" id="12_aerfg"]
+[ext_resource type="PackedScene" uid="uid://4nqvueb1mhma" path="res://scenes/Text.tscn" id="14_betor"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h4x42"]
 
@@ -451,3 +452,11 @@ priority = 1
 follow_mode = 4
 follow_target = NodePath("../../../YSort/walkable/PlayerWrapper/Player")
 follow_path = NodePath("..")
+
+[node name="Text" parent="." instance=ExtResource("14_betor")]
+offset_left = -600.0
+offset_top = 131.0
+offset_right = -475.0
+offset_bottom = 171.0
+text = "Move around with
+WASD"

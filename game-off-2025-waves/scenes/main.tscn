@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://qnvk28xsjc0y"]
+[gd_scene load_steps=20 format=3 uid="uid://qnvk28xsjc0y"]
 
 [ext_resource type="Script" uid="uid://dhrh3kakqatdw" path="res://scenes/main.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://c2wp7ixg7r8vm" path="res://scenes/ui/fps_label.gd" id="1_o5qli"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://d3mg035pdrkt4" path="res://audio/sfx/GameOff_Platform_Wave_3.ogg" id="8_a8y0u"]
 [ext_resource type="AudioStream" uid="uid://dd43dsxs3hplo" path="res://audio/sfx/GameOff_Platform_Wave_4.ogg" id="9_jkv2x"]
 [ext_resource type="AudioStream" uid="uid://gvwil2suyu5n" path="res://audio/sfx/GameOff_Platform_Wave_5.ogg" id="10_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://4nqvueb1mhma" path="res://scenes/Text.tscn" id="11_a8y0u"]
 [ext_resource type="Script" path="res://scripts/debugInfo.gd" id="11_trceg"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_muem4"]
@@ -100,6 +101,28 @@ bus = &"Music"
 stream = SubResource("AudioStreamRandomizer_muem4")
 max_polyphony = 3
 bus = &"Sfx"
+
+[node name="focusMenu" type="CanvasLayer" parent="AudioManager"]
+
+[node name="ColorRect" type="ColorRect" parent="AudioManager/focusMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.43137255)
+
+[node name="RichTextLabel" parent="AudioManager/focusMenu" instance=ExtResource("11_a8y0u")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 112
+text = "Press Anywhere to Continue"
+vertical_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("11_trceg")

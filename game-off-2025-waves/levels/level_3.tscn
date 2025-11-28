@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://darag1463657v"]
+[gd_scene load_steps=25 format=4 uid="uid://darag1463657v"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_s3q8p"]
 [ext_resource type="PackedScene" uid="uid://dviyuacx5uaa4" path="res://tiles/tilesets/decal.tscn" id="2_svivd"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://ocuxag5bwe8i" path="res://tiles/collision_map_container.gd" id="13_e28pm"]
 [ext_resource type="PackedScene" uid="uid://b88evg1mvgox8" path="res://tiles/tilesets/collision_tile_map.tscn" id="14_tv8m3"]
 [ext_resource type="PackedScene" uid="uid://ym65vt1sl83d" path="res://scenes/camera/cam.tscn" id="15_8nkwk"]
+[ext_resource type="PackedScene" uid="uid://4nqvueb1mhma" path="res://scenes/Text.tscn" id="17_svivd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h4x42"]
 
@@ -479,3 +480,13 @@ priority = 1
 follow_mode = 4
 follow_target = NodePath("../../../YSort/walkable/PlayerWrapper/Player")
 follow_path = NodePath("..")
+
+[node name="Text" parent="." instance=ExtResource("17_svivd")]
+offset_left = -526.0
+offset_top = 106.0
+offset_right = -401.0
+offset_bottom = 170.0
+text = "Press Arrow Up
+Control the waves
+
+"
