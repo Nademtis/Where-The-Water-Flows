@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://crx6v71q4aac3"]
+[gd_scene load_steps=20 format=4 uid="uid://crx6v71q4aac3"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_hbb88"]
 [ext_resource type="Shader" uid="uid://ck3gjomhka1to" path="res://shaders/water.gdshader" id="2_wcjpl"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://ocuxag5bwe8i" path="res://tiles/collision_map_container.gd" id="10_dpc8t"]
 [ext_resource type="PackedScene" uid="uid://b88evg1mvgox8" path="res://tiles/tilesets/collision_tile_map.tscn" id="11_ngvhw"]
 [ext_resource type="PackedScene" uid="uid://ym65vt1sl83d" path="res://scenes/camera/cam.tscn" id="12_itbe0"]
+[ext_resource type="PackedScene" uid="uid://4nqvueb1mhma" path="res://scenes/Text.tscn" id="14_5orea"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h4x42"]
 
@@ -451,3 +452,11 @@ priority = 1
 follow_mode = 4
 follow_target = NodePath("../../../YSort/walkable/PlayerWrapper/Player")
 follow_path = NodePath("..")
+
+[node name="Text" parent="." instance=ExtResource("14_5orea")]
+offset_left = -432.0
+offset_top = 204.0
+offset_right = -307.0
+offset_bottom = 244.0
+text = "Press TAB
+to open menu"
