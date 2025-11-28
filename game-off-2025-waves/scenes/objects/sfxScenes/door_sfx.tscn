@@ -44,6 +44,7 @@ bus = &"Sfx"
 
 [node name="elevatorRiseOrDown" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_k6pyh")
+volume_db = -2.0
 max_distance = 1000.0
 attenuation = 1.3195081
 bus = &"Sfx"
