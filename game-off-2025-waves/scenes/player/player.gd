@@ -25,8 +25,11 @@ var is_on_platform : bool = false
 var is_swimming : bool = false
 @onready var water_tile_map_layer: TileMapLayer = $AnimatedSprite2D/WaterTileMapLayer
 var current_water_level : int
+var pending_water_check : bool = false
+@onready var swim_grace_timer: Timer = $SwimGraceTimer
+var is_on_bridge : bool = false
 
-# 2D input direction before isometric transform
+#used for movement
 var input_dir: Vector2
 var move_dir: Vector2
 
@@ -76,19 +79,26 @@ func _physics_process(delta: float) -> void:
 		#if player is on platform. height should not be changed by player itself
 		_get_height_tile_under_player()
 	
-func check_swimming(new_height : int) -> void:
+func check_swimming(new_height: int) -> void:
 	current_water_level = new_height
+
+	if is_on_bridge and current_water_level == current_player_height:
+		print("fuck that water check, we on bridge and same height")
+		return
+
+	# cancel previous water checks
+	pending_water_check = false
+	swim_grace_timer.stop()
+
+	# start grace time only if entering water
 	if current_player_height < current_water_level:
-		await get_tree().create_timer(0.2).timeout
-		print("swimming")
-		is_swimming = true
-		velocity = Vector2.ZERO
-		animated_sprite_2d.play("idle")
-		water_tile_map_layer.visible = true
-		
-		
+		pending_water_check = true
+		swim_grace_timer.start()
+		print("water entered...")
 	else:
-		print("not swimming")
+		# Instant exit
+		if is_swimming:
+			print("not swimming")
 		is_swimming = false
 		water_tile_map_layer.visible = false
 		
@@ -179,7 +189,7 @@ func _get_height_tile_under_player() -> void:
 
 	var height_value : float = tile_data.get_custom_data("height")
 	current_player_height = height_value
-	if current_player_height != old_player_height:
+	if current_player_height != old_player_height and not is_on_bridge:
 		old_player_height = current_player_height
 		Events.emit_signal("player_height_changed", current_player_height)
 		check_swimming(current_water_level)
@@ -257,3 +267,19 @@ func set_cannot_move() -> void:
 		0.4
 	)
 	
+
+
+func _on_swim_grace_timer_timeout() -> void:
+	# If another check happened during the grace period, ignore
+	if not pending_water_check:
+		return
+
+	# check again
+	if current_player_height < current_water_level:
+		print("swimming")
+		is_swimming = true
+		velocity = Vector2.ZERO
+		animated_sprite_2d.play("idle")
+		water_tile_map_layer.visible = true
+
+	pending_water_check = false
