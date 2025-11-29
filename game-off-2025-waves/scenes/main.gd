@@ -60,8 +60,9 @@ func _setup_new_level() -> void:
 	
 	current_level_path = next_level_path
 	
-	#var tree : String = get_tree_string_pretty()
-	#print(tree)
+	#menu stuff
+	menu_canvas_layer.visible = false
+	showing_menu = false
 
 func restart_level() -> void:
 	start_new_level(current_level_path)

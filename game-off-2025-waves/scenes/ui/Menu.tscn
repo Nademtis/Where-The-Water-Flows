@@ -7,7 +7,7 @@
 [sub_resource type="Theme" id="Theme_vhthp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sh3q5"]
-bg_color = Color(0, 0, 0, 0.38039216)
+bg_color = Color(0, 0, 0, 0.41960785)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
