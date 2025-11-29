@@ -428,7 +428,6 @@ y_sort_enabled = true
 position = Vector2(-1, -1)
 
 [node name="Elevator-Two Right" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("particle", "required_switches") instance=ExtResource("10_3r06l")]
-visible = false
 position = Vector2(-391, 90)
 next_level_path = "res://levels/level_8.tscn"
 particle = NodePath("../elevatorParticles")

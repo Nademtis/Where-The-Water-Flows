@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dhrh3kakqatdw" path="res://scenes/main.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://c2wp7ixg7r8vm" path="res://scenes/ui/fps_label.gd" id="1_o5qli"]
-[ext_resource type="AudioStream" uid="uid://dklikrngv00ef" path="res://audio/ambience/GameOff_Ambience_Loop.ogg" id="2_jyhfs"]
+[ext_resource type="AudioStream" uid="uid://xoqhcp4ptix7" path="res://audio/ambience/GameOff_Ambience_Loop.ogg" id="2_jyhfs"]
 [ext_resource type="Script" uid="uid://biy2vis3qlhdy" path="res://audio/audio_manager.gd" id="2_o6xl0"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_sugp2"]
 [ext_resource type="AudioStream" uid="uid://bsqmrhxcpmpy6" path="res://audio/music/GameOff_Music_Ascension_Intro.ogg" id="4_tipki"]
