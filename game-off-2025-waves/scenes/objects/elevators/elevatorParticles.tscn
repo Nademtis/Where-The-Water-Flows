@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://d318qoprihx86"]
+
+[ext_resource type="Script" uid="uid://bk5omluitofpv" path="res://scenes/objects/elevators/elevator_particles.gd" id="1_qgimw"]
+
+[sub_resource type="Gradient" id="Gradient_7kvxk"]
+offsets = PackedFloat32Array(0.0023923444, 1)
+colors = PackedColorArray(0.47058824, 0.58431375, 0.64705884, 1, 1, 1, 1, 1)
+
+[node name="elevatorParticles" type="Node2D"]
+z_index = 1
+z_as_relative = false
+script = ExtResource("1_qgimw")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2(-17.999998, -22.999998)
+rotation = -1.1179632
+scale = Vector2(0.99999994, 0.99999994)
+amount = 40
+preprocess = 1.98
+emission_shape = 3
+emission_rect_extents = Vector2(13.275, 26.54)
+gravity = Vector2(0, 0)
+tangential_accel_min = -5.0
+tangential_accel_max = 5.0
+scale_amount_max = 3.0
+color = Color(0.3254902, 0.41960785, 0.3372549, 1)
+color_ramp = SubResource("Gradient_7kvxk")

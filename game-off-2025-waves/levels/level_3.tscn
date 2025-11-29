@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://darag1463657v"]
+[gd_scene load_steps=27 format=4 uid="uid://darag1463657v"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_s3q8p"]
 [ext_resource type="PackedScene" uid="uid://dviyuacx5uaa4" path="res://tiles/tilesets/decal.tscn" id="2_svivd"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://btte8j4ymesff" path="res://scripts/base_switch.gd" id="10_8swdu"]
 [ext_resource type="Texture2D" uid="uid://cpwacq8a0wc2a" path="res://tiles/assets/heightMap.aseprite" id="11_xe1ru"]
 [ext_resource type="Script" uid="uid://dqvd13a0xhnxx" path="res://tiles/scripts/height_map.gd" id="12_6anhs"]
+[ext_resource type="PackedScene" uid="uid://d318qoprihx86" path="res://scenes/objects/elevators/elevatorParticles.tscn" id="12_46211"]
 [ext_resource type="Script" uid="uid://ocuxag5bwe8i" path="res://tiles/collision_map_container.gd" id="13_e28pm"]
 [ext_resource type="PackedScene" uid="uid://b88evg1mvgox8" path="res://tiles/tilesets/collision_tile_map.tscn" id="14_tv8m3"]
 [ext_resource type="PackedScene" uid="uid://ym65vt1sl83d" path="res://scenes/camera/cam.tscn" id="15_8nkwk"]
@@ -424,15 +425,20 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(-1, -1)
 
-[node name="Elevator-One" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("9_mqvtj")]
+[node name="Elevator-One" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("particle", "required_switches") instance=ExtResource("9_mqvtj")]
 position = Vector2(-589, 183)
 next_level_path = "res://levels/level_4.tscn"
+particle = NodePath("../elevatorParticles")
 required_switches = [NodePath("BaseSwitch")]
 
 [node name="BaseSwitch" type="Node2D" parent="YSort/walkable/objectsContainer/Elevator-One"]
 script = ExtResource("10_8swdu")
 override_active = true
 metadata/_custom_type_script = "uid://btte8j4ymesff"
+
+[node name="elevatorParticles" parent="YSort/walkable/objectsContainer" instance=ExtResource("12_46211")]
+position = Vector2(-602, 210)
+scale = Vector2(-1, 1)
 
 [node name="heightMap" type="TileMapLayer" parent="."]
 unique_name_in_owner = true

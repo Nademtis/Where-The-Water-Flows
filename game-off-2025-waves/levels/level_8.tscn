@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://c2ln1ox3noaue"]
+[gd_scene load_steps=29 format=4 uid="uid://c2ln1ox3noaue"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_0t64d"]
 [ext_resource type="PackedScene" uid="uid://dviyuacx5uaa4" path="res://tiles/tilesets/decal.tscn" id="2_lll2d"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://4lm142cs42m3" path="res://scenes/objects/elevators/elevator2right.tscn" id="11_wdr0v"]
 [ext_resource type="Script" uid="uid://btte8j4ymesff" path="res://scripts/base_switch.gd" id="12_in845"]
 [ext_resource type="Texture2D" uid="uid://cpwacq8a0wc2a" path="res://tiles/assets/heightMap.aseprite" id="13_mi7yy"]
+[ext_resource type="PackedScene" uid="uid://d318qoprihx86" path="res://scenes/objects/elevators/elevatorParticles.tscn" id="13_ody6k"]
 [ext_resource type="Script" uid="uid://dqvd13a0xhnxx" path="res://tiles/scripts/height_map.gd" id="14_l1nic"]
 [ext_resource type="Script" uid="uid://ocuxag5bwe8i" path="res://tiles/collision_map_container.gd" id="15_h6v60"]
 [ext_resource type="PackedScene" uid="uid://b88evg1mvgox8" path="res://tiles/tilesets/collision_tile_map.tscn" id="16_ia78i"]
@@ -474,9 +475,10 @@ position = Vector2(-156, 120)
 placed_at_water_level = 2
 switch_to_activate = NodePath("../../Elevator-Two Right/BaseSwitch2")
 
-[node name="Elevator-Two Right" parent="YSort/walkable" node_paths=PackedStringArray("required_switches") instance=ExtResource("11_wdr0v")]
+[node name="Elevator-Two Right" parent="YSort/walkable" node_paths=PackedStringArray("particle", "required_switches") instance=ExtResource("11_wdr0v")]
 position = Vector2(-455, 169)
 next_level_path = "res://levels/level_9.tscn"
+particle = NodePath("../../elevatorParticles")
 required_switches = [NodePath("BaseSwitch"), NodePath("BaseSwitch2")]
 
 [node name="BaseSwitch" type="Node2D" parent="YSort/walkable/Elevator-Two Right"]
@@ -486,6 +488,10 @@ metadata/_custom_type_script = "uid://btte8j4ymesff"
 [node name="BaseSwitch2" type="Node2D" parent="YSort/walkable/Elevator-Two Right"]
 script = ExtResource("12_in845")
 metadata/_custom_type_script = "uid://btte8j4ymesff"
+
+[node name="elevatorParticles" parent="YSort" instance=ExtResource("13_ody6k")]
+position = Vector2(-470, 195)
+scale = Vector2(-1, 1)
 
 [node name="heightMap" type="TileMapLayer" parent="."]
 unique_name_in_owner = true

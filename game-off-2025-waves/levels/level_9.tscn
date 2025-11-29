@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://b145te5yyx64v"]
+[gd_scene load_steps=29 format=4 uid="uid://b145te5yyx64v"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_rqr00"]
 [ext_resource type="PackedScene" uid="uid://dviyuacx5uaa4" path="res://tiles/tilesets/decal.tscn" id="2_5ejc1"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://o7m6u6mncvb3" path="res://scenes/objects/rock.tscn" id="13_yewj5"]
 [ext_resource type="Script" uid="uid://ocuxag5bwe8i" path="res://tiles/collision_map_container.gd" id="14_63xbn"]
 [ext_resource type="PackedScene" uid="uid://c7v878ho36jpc" path="res://scenes/objects/obelisk.tscn" id="14_gstqd"]
+[ext_resource type="PackedScene" uid="uid://d318qoprihx86" path="res://scenes/objects/elevators/elevatorParticles.tscn" id="15_5i6xy"]
 [ext_resource type="PackedScene" uid="uid://b88evg1mvgox8" path="res://tiles/tilesets/collision_tile_map.tscn" id="15_44cd6"]
 [ext_resource type="PackedScene" uid="uid://ym65vt1sl83d" path="res://scenes/camera/cam.tscn" id="16_ts7xl"]
 [ext_resource type="PackedScene" uid="uid://4nqvueb1mhma" path="res://scenes/Text.tscn" id="20_gstqd"]
@@ -421,9 +422,10 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(-1, -1)
 
-[node name="Elevator-Two Right" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("10_yewj5")]
-position = Vector2(-467, 148)
+[node name="Elevator-Two Right" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("particle", "required_switches") instance=ExtResource("10_yewj5")]
+position = Vector2(-458, 136)
 next_level_path = "res://levels/level_10.tscn"
+particle = NodePath("../elevatorParticles")
 required_switches = [NodePath("BaseSwitch"), NodePath("../obelisk/BaseSwitch")]
 
 [node name="BaseSwitch" type="Node2D" parent="YSort/walkable/objectsContainer/Elevator-Two Right"]
@@ -451,6 +453,10 @@ metadata/_custom_type_script = "uid://btte8j4ymesff"
 position = Vector2(-158, 230)
 placed_at_water_level = 1
 switch_to_activate = NodePath("../obelisk/BaseSwitch")
+
+[node name="elevatorParticles" parent="YSort/walkable/objectsContainer" instance=ExtResource("15_5i6xy")]
+position = Vector2(-473, 160)
+scale = Vector2(-1, 1)
 
 [node name="heightMap" type="TileMapLayer" parent="."]
 unique_name_in_owner = true

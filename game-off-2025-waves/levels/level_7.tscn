@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://cbaltk72vx37q"]
+[gd_scene load_steps=28 format=4 uid="uid://cbaltk72vx37q"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_uug43"]
 [ext_resource type="PackedScene" uid="uid://dviyuacx5uaa4" path="res://tiles/tilesets/decal.tscn" id="2_c3xcq"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c7v878ho36jpc" path="res://scenes/objects/obelisk.tscn" id="12_3wtfr"]
 [ext_resource type="PackedScene" uid="uid://bvxakbillx1n8" path="res://scenes/objects/bridge.tscn" id="13_jj4s0"]
 [ext_resource type="Texture2D" uid="uid://cpwacq8a0wc2a" path="res://tiles/assets/heightMap.aseprite" id="14_aujkb"]
+[ext_resource type="PackedScene" uid="uid://d318qoprihx86" path="res://scenes/objects/elevators/elevatorParticles.tscn" id="14_nwhq7"]
 [ext_resource type="Script" uid="uid://dqvd13a0xhnxx" path="res://tiles/scripts/height_map.gd" id="15_bq8ug"]
 [ext_resource type="Script" uid="uid://ocuxag5bwe8i" path="res://tiles/collision_map_container.gd" id="16_fqcrq"]
 [ext_resource type="PackedScene" uid="uid://b88evg1mvgox8" path="res://tiles/tilesets/collision_tile_map.tscn" id="17_vtw0y"]
@@ -415,7 +416,7 @@ tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAAAAAAAAAAAAAAAAAD///3/AAABAAA
 
 [node name="PlayerWrapper" type="Node2D" parent="YSort/walkable"]
 z_index = 1
-position = Vector2(-304, 241)
+position = Vector2(-300, 102)
 
 [node name="Player" parent="YSort/walkable/PlayerWrapper" instance=ExtResource("9_utfij")]
 y_sort_enabled = true
@@ -426,9 +427,10 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(-1, -1)
 
-[node name="Elevator-Two Right" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("10_3r06l")]
+[node name="Elevator-Two Right" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("particle", "required_switches") instance=ExtResource("10_3r06l")]
 position = Vector2(-391, 90)
 next_level_path = "res://levels/level_8.tscn"
+particle = NodePath("../elevatorParticles")
 required_switches = [NodePath("BaseSwitch"), NodePath("BaseSwitch2")]
 
 [node name="BaseSwitch" type="Node2D" parent="YSort/walkable/objectsContainer/Elevator-Two Right"]
@@ -478,6 +480,10 @@ position = Vector2(-449, 196)
 placed_at_water_level = 2
 switch_to_activate = NodePath("../Bridge/BaseSwitch")
 
+[node name="elevatorParticles" parent="YSort/walkable/objectsContainer" instance=ExtResource("14_nwhq7")]
+position = Vector2(-405, 117)
+scale = Vector2(-1, 1)
+
 [node name="heightMap" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -520,7 +526,7 @@ curve = SubResource("Curve2D_u3vgj")
 
 [node name="Cam" parent="CameraContainer/Path2D" node_paths=PackedStringArray("follow_target", "follow_path") instance=ExtResource("18_stsy2")]
 top_level = true
-position = Vector2(-320, 192)
+position = Vector2(-320, 128)
 priority = 1
 follow_mode = 4
 follow_target = NodePath("../../../YSort/walkable/PlayerWrapper/Player")

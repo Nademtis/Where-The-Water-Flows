@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://cjeotktc8jlq6"]
+[gd_scene load_steps=32 format=4 uid="uid://cjeotktc8jlq6"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_g3m3p"]
 [ext_resource type="PackedScene" uid="uid://dviyuacx5uaa4" path="res://tiles/tilesets/decal.tscn" id="2_46gci"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://c7v878ho36jpc" path="res://scenes/objects/obelisk.tscn" id="15_v6gi3"]
 [ext_resource type="PackedScene" uid="uid://ym65vt1sl83d" path="res://scenes/camera/cam.tscn" id="16_a0xac"]
 [ext_resource type="PackedScene" uid="uid://o7m6u6mncvb3" path="res://scenes/objects/rock.tscn" id="16_v6gi3"]
+[ext_resource type="PackedScene" uid="uid://d318qoprihx86" path="res://scenes/objects/elevators/elevatorParticles.tscn" id="17_o4lgy"]
 [ext_resource type="PackedScene" uid="uid://7k8g1itafiax" path="res://misc/overallParticles.tscn" id="22_rjodl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h4x42"]
@@ -443,9 +444,10 @@ required_switches = [NodePath("PressurePlate")]
 position = Vector2(176, 98)
 placed_at_water_level = 3
 
-[node name="Elevator-Three Left" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("required_switches") instance=ExtResource("11_46gci")]
+[node name="Elevator-Three Left" parent="YSort/walkable/objectsContainer" node_paths=PackedStringArray("particle", "required_switches") instance=ExtResource("11_46gci")]
 position = Vector2(-344, 60)
 next_level_path = "res://levels/level_end.tscn"
+particle = NodePath("../elevatorParticles")
 required_switches = [NodePath("BaseSwitch"), NodePath("BaseSwitch2"), NodePath("BaseSwitch3")]
 
 [node name="BaseSwitch" type="Node2D" parent="YSort/walkable/objectsContainer/Elevator-Three Left"]
@@ -506,6 +508,9 @@ switch_to_activate = NodePath("../Elevator-Three Left/BaseSwitch3")
 [node name="PressurePlate2" parent="YSort/walkable/objectsContainer" instance=ExtResource("11_p8hxd")]
 position = Vector2(-400, 26)
 placed_at_water_level = 4
+
+[node name="elevatorParticles" parent="YSort/walkable/objectsContainer" instance=ExtResource("17_o4lgy")]
+position = Vector2(-329, 86)
 
 [node name="heightMap" type="TileMapLayer" parent="."]
 unique_name_in_owner = true

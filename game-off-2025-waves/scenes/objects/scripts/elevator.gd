@@ -28,7 +28,8 @@ var elevator_active_pos := Vector2(0 , 0)
 @onready var elevator_slide_short_sfx: AudioStreamPlayer2D = $doorSfx/elevatorSlideShortSFX
 @onready var door_slide_short_sfx: AudioStreamPlayer2D = $doorSfx/DoorSlideShortSFX
 
-
+@export var particle : ElevatorParticles = null
+var whole_elevator_tween_shake : Tween
 
 const DOOR_MOVE_SLOW : float = 2.5
 const DOOR_MOVE_FAST : float = 1.4
@@ -65,6 +66,8 @@ func _evaluate() -> void:
 			animate_whole_elevator(elevator_active_pos, DOOR_MOVE_SLOW)
 			if !elevator_rise_or_down.playing: # only play this if not allready playing
 				SFX.play_sfx(elevator_rise_or_down, 0.29)
+				if particle:
+					particle.start_emit()
 			
 
 func _apply_state() -> void:
@@ -138,6 +141,9 @@ func _close_door_and_swap_level(body: Node2D) -> void:
 	body.set_cannot_move()
 	await get_tree().create_timer(DOOR_MOVE_FAST).timeout
 	animate_whole_elevator(elevator_hidden_pos, DOOR_MOVE_FAST)
+	if particle:
+		particle.start_emit()
+	
 	elevator_slide_short_sfx.play()
 	await get_tree().create_timer(DOOR_MOVE_FAST).timeout
 	Events.emit_signal("load_new_level", next_level_path)
@@ -147,10 +153,25 @@ func animate_whole_elevator(target: Vector2, move_time : float) -> void:
 	if whole_elevator_tween and whole_elevator_tween.is_running():
 		return
 		#whole_elevator_tween.kill()
-	
+	shake_anim_whole_elevator(DOOR_MOVE_SLOW)
 	whole_elevator_tween = get_tree().create_tween()
 	whole_elevator_tween.tween_property(door_container, "position", target, move_time)
+	if particle:
+		whole_elevator_tween.finished.connect(particle.stop_emit)
+
+func shake_anim_whole_elevator(move_time: float) -> void:
+	var original_pos: Vector2 = global_position
+	var amplitude := 0.4
+	var steps := 20
+
+	whole_elevator_tween_shake = get_tree().create_tween()
 	
+	for i in range(steps):
+		var offset := amplitude if i % 2 == 0 else -amplitude
+		whole_elevator_tween_shake.tween_property(self, "global_position:x", original_pos.x + offset, move_time / steps).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	
+	# Return to original position at the end
+	whole_elevator_tween_shake.tween_property(self, "global_position:x", original_pos.x, move_time / steps).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 func _validate_switch_count() -> void:
 	var scene_name := get_name()
