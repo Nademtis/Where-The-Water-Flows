@@ -10,15 +10,18 @@ const FIRST_LEVEL_PATH: String = "res://levels/level_1.tscn"
 @onready var level_indicator: Label = $CanvasLayer/levelIndicator
 
 @onready var focus_menu: CanvasLayer = $AudioManager/focusMenu
+@onready var menu_canvas_layer: CanvasLayer = $Node/menuCanvasLayer
 
 
 var next_level_path: String
 var current_level_path: String
 
+var showing_menu : bool = false
 
 func _ready() -> void:
 	next_level_path = FIRST_LEVEL_PATH
 	Events.connect("load_new_level", start_new_level)
+	Events.connect("restart_current_level" , restart_level)
 	
 	_setup_new_level() # skip the start_new_level since we don't want to fade to black. it's already black
 	#print(get_tree_string_pretty())
@@ -55,8 +58,13 @@ func _setup_new_level() -> void:
 	level_indicator.text = next_level_path
 	_unmute_sfx_temporarily()
 	
+	current_level_path = next_level_path
+	
 	#var tree : String = get_tree_string_pretty()
 	#print(tree)
+
+func restart_level() -> void:
+	start_new_level(current_level_path)
 
 func _unmute_sfx_temporarily() -> void:
 	await get_tree().process_frame
@@ -70,6 +78,19 @@ func remove_active_cam() -> void:
 		for cam in list:
 			cam.priority = 0
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("menu"):
+		menu()
+
+func menu() ->  void:
+	showing_menu = !showing_menu
+	
+	if showing_menu:
+		menu_canvas_layer.visible = true
+	else:
+		menu_canvas_layer.visible = false
+		
+	
 func _on_window_focus_entered() -> void:
 	focus_menu.visible = false
 

@@ -1,0 +1,133 @@
+[gd_scene load_steps=6 format=3 uid="uid://ncmcfv787cej"]
+
+[ext_resource type="Script" uid="uid://btlaigwhq0fr3" path="res://scenes/ui/menu.gd" id="1_0dynd"]
+[ext_resource type="PackedScene" uid="uid://4nqvueb1mhma" path="res://scenes/Text.tscn" id="2_vhthp"]
+[ext_resource type="FontFile" uid="uid://c61txj1ps70wd" path="res://misc/BoldPixels.ttf" id="3_sh3q5"]
+
+[sub_resource type="Theme" id="Theme_vhthp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sh3q5"]
+bg_color = Color(0, 0, 0, 0.23137255)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_vhthp")
+script = ExtResource("1_0dynd")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(673.4, 737.225)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sh3q5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="RichTextLabel" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_vhthp")]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 80
+text = "VOLUME"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="masterText" parent="CenterContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_vhthp")]
+custom_minimum_size = Vector2(166.21, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 48
+text = "Master"
+
+[node name="MasterVolumeSlider" type="HSlider" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 2.0
+step = 0.001
+value = 1.0
+
+[node name="Padding" type="Container" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="MusicText" parent="CenterContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_vhthp")]
+custom_minimum_size = Vector2(166.21, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 48
+text = "Music
+"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="Padding2" type="Container" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="SoundEffectsText" parent="CenterContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_vhthp")]
+custom_minimum_size = Vector2(166.21, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 48
+text = "Sound Effects
+"
+
+[node name="SFXVolumeSlider" type="HSlider" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="Padding3" type="Container" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="AmbienceText" parent="CenterContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_vhthp")]
+custom_minimum_size = Vector2(166.21, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 48
+text = "Ambience
+"
+
+[node name="AmbienceSlider" type="HSlider" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="Padding4" type="Container" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="RestartlevelButton" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_sh3q5")
+theme_override_font_sizes/font_size = 48
+text = "Restart Level
+"
+
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/VBoxContainer/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/VBoxContainer/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/VBoxContainer/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/VBoxContainer/AmbienceSlider" to="." method="_on_ambience_slider_value_changed"]
+[connection signal="button_down" from="CenterContainer/VBoxContainer/VBoxContainer/RestartlevelButton" to="." method="_on_restartlevel_button_button_down"]

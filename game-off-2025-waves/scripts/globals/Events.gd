@@ -17,5 +17,6 @@ signal player_use()
 signal player_drop()
 
 signal load_new_level(new_level_path : String)
+signal restart_current_level()
 
 signal play_new_waves_sfx()
