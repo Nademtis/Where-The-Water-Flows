@@ -18,7 +18,6 @@ func _ready() -> void:
 	#set_sliders()
 	
 func _on_restartlevel_button_button_down() -> void:
-	print("should restart level")
 	Events.emit_signal("restart_current_level")
 	pass # Replace with function body.
 
@@ -26,11 +25,7 @@ func _on_restartlevel_button_button_down() -> void:
 
 
 func _on_master_volume_slider_value_changed(value: float) -> void:
-	print("old master: ", master_volume_slider.value)
-	print(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(master_bus_name)))
-	
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(master_bus_name), linear_to_db(value))
-	print(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(master_bus_name)))
 	
 
 func _on_music_volume_slider_value_changed(value: float) -> void:
@@ -44,9 +39,7 @@ func _on_sfx_volume_slider_value_changed(value: float) -> void:
 
 
 func _on_ambience_slider_value_changed(value: float) -> void:
-	print("old ambience: ", ambience_slider.value)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(Ambience_bus_name), linear_to_db(value))
-	print("new ambience: ", ambience_slider.value)
 
 
 func set_sliders() ->  void:

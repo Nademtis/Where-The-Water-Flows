@@ -83,7 +83,7 @@ func check_swimming(new_height: int) -> void:
 	current_water_level = new_height
 
 	if is_on_bridge and current_water_level == current_player_height:
-		print("fuck that water check, we on bridge and same height")
+		#print("fuck that water check, we on bridge and same height")
 		return
 
 	# cancel previous water checks
@@ -94,9 +94,8 @@ func check_swimming(new_height: int) -> void:
 	if current_player_height < current_water_level:
 		pending_water_check = true
 		swim_grace_timer.start()
-		print("water entered...")
+		#print("water entered...")
 	else:
-		# Instant exit
 		if is_swimming:
 			print("not swimming")
 		is_swimming = false
