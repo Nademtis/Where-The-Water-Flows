@@ -20,3 +20,4 @@ signal load_new_level(new_level_path : String)
 signal restart_current_level()
 
 signal play_new_waves_sfx()
+signal player_freeze(player_can_move : bool)

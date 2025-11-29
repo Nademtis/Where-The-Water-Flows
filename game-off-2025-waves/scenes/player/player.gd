@@ -49,6 +49,7 @@ func _ready() -> void:
 	player_wrapper.global_position = global_position #updates wrapper
 	Events.connect("water_level_changed", check_swimming)
 	water_tile_map_layer.visible = false
+	Events.connect("player_freeze",player_freeze)
 
 func _input(event : InputEvent) -> void:
 	if event.is_action_pressed("use"):
@@ -57,16 +58,14 @@ func _input(event : InputEvent) -> void:
 		Events.player_drop.emit()
 		
 
+
+
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("water_up"):
 		move_water(true)
 	elif Input.is_action_just_pressed("water_down"):
 		move_water(false)
 	
-	if !GameStats.player_allowed_to_move:
-		can_move = false
-	else:
-		can_move = true
 		
 	#draws the tile under player if export true
 	if debug_mark_tile_under_player:
@@ -82,7 +81,11 @@ func _physics_process(delta: float) -> void:
 	if not is_on_platform: #platform change this bool
 		#if player is on platform. height should not be changed by player itself
 		_get_height_tile_under_player()
-	
+
+func player_freeze(player_can_move : bool) -> void:
+	can_move = player_can_move
+	print("from player can move: ", can_move)
+
 func check_swimming(new_height: int) -> void:
 	current_water_level = new_height
 

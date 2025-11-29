@@ -28,7 +28,7 @@ func _ready() -> void:
 	#print(get_tree_string_pretty())
 	get_window().focus_entered.connect(_on_window_focus_entered)
 	get_window().focus_exited.connect(_on_window_focus_exited)
-	GameStats.player_allowed_to_move = false
+	Events.emit_signal("player_freeze", false)
 
 func start_new_level(path: String) -> void: # should be called by elevator object
 	next_level_path = path
@@ -36,13 +36,15 @@ func start_new_level(path: String) -> void: # should be called by elevator objec
 	remove_active_cam()
 
 func _player_can_move_again() -> void:
-	GameStats.player_allowed_to_move = true
+	Events.emit_signal("player_freeze", true)
+
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_to_black":
 		_setup_new_level()
 	elif anim_name == "reccomended":
 		reccomended.queue_free()
+		
 		
 func _setup_new_level() -> void:
 	GameStats.SFX_allowed = false
