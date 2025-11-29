@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://qnvk28xsjc0y"]
+[gd_scene load_steps=27 format=3 uid="uid://qnvk28xsjc0y"]
 
 [ext_resource type="Script" uid="uid://dhrh3kakqatdw" path="res://scenes/main.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://c2wp7ixg7r8vm" path="res://scenes/ui/fps_label.gd" id="1_o5qli"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://4nqvueb1mhma" path="res://scenes/Text.tscn" id="11_a8y0u"]
 [ext_resource type="Script" path="res://scripts/debugInfo.gd" id="11_trceg"]
 [ext_resource type="PackedScene" uid="uid://ncmcfv787cej" path="res://scenes/ui/Menu.tscn" id="15_jkv2x"]
+[ext_resource type="Shader" uid="uid://swtigcwbqlyn" path="res://shaders/vignete.gdshader" id="16_jbj1t"]
 
 [sub_resource type="Environment" id="Environment_jkv2x"]
 background_mode = 3
@@ -85,6 +86,135 @@ _data = {
 &"fade_out": SubResource("Animation_jyhfs"),
 &"fade_to_black": SubResource("Animation_0wfyh")
 }
+
+[sub_resource type="Animation" id="Animation_jbj1t"]
+resource_name = "reccomended"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 12.933333, 14.033334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/VBoxContainer/headphones Rec:theme_override_colors/default_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6.0233326, 8.066667, 12.933333, 14.033334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/VBoxContainer/title:theme_override_colors/default_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.1000004, 5.02, 13.889999, 19.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("press here:theme_override_colors/default_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(8.333334, 9.033334, 12.7, 14.033334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(13.366667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_player_can_move_again"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_muem4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/VBoxContainer/headphones Rec:theme_override_colors/default_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/VBoxContainer/title:theme_override_colors/default_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("press here:theme_override_colors/default_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dp3eg"]
+_data = {
+&"RESET": SubResource("Animation_muem4"),
+&"reccomended": SubResource("Animation_jbj1t")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_muem4"]
+shader = ExtResource("16_jbj1t")
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.150000007125
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_0wfyh")
@@ -185,12 +315,73 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="levelContainer" type="Node2D" parent="."]
 
-[node name="Node" type="Node" parent="."]
+[node name="Reccomended" type="CanvasLayer" parent="."]
 
-[node name="menuCanvasLayer" type="CanvasLayer" parent="Node"]
+[node name="ColorRect" type="ColorRect" parent="Reccomended"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Reccomended"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Reccomended/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="title" parent="Reccomended/CenterContainer/VBoxContainer" instance=ExtResource("11_a8y0u")]
+custom_minimum_size = Vector2(1614.885, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/normal_font_size = 160
+text = "Where The Water Flows"
+
+[node name="headphones Rec" parent="Reccomended/CenterContainer/VBoxContainer" instance=ExtResource("11_a8y0u")]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 96
+text = "Fullscreen Recommended"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Reccomended"]
+libraries = {
+&"": SubResource("AnimationLibrary_dp3eg")
+}
+autoplay = "reccomended"
+
+[node name="press here" parent="Reccomended" instance=ExtResource("11_a8y0u")]
+custom_minimum_size = Vector2(288.48, 0)
+offset_left = 1576.0
+offset_top = 872.9999
+offset_right = 1864.48
+offset_bottom = 920.9999
+rotation = 0.35123947
+theme_override_colors/default_color = Color(1, 1, 1, 0)
+theme_override_font_sizes/normal_font_size = 48
+text = "Press here →"
+
+[node name="vignette" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="vignette"]
+material = SubResource("ShaderMaterial_muem4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="menuCanvasLayer" type="CanvasLayer" parent="."]
 visible = false
 
-[node name="Control" parent="Node/menuCanvasLayer" instance=ExtResource("15_jkv2x")]
+[node name="Control" parent="menuCanvasLayer" instance=ExtResource("15_jkv2x")]
 
 [connection signal="finished" from="AudioManager/musicIntro" to="AudioManager" method="_on_music_intro_finished"]
 [connection signal="animation_finished" from="SceneTransition/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Reccomended/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

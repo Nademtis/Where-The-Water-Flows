@@ -1,4 +1,6 @@
-[gd_scene load_steps=0 format=3 uid="uid://cr061jxpdaw0"]
+[gd_scene load_steps=2 format=3 uid="uid://d4dmmwej0eq2u"]
+
+[ext_resource type="PackedScene" uid="uid://4nqvueb1mhma" path="res://scenes/Text.tscn" id="1_yht8h"]
 
 [node name="levelEnd" type="Node2D"]
 
@@ -12,17 +14,15 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 32
-text = "Thanks for playing :))"
+
+[node name="RichTextLabel" parent="CanvasLayer/CenterContainer" instance=ExtResource("1_yht8h")]
+custom_minimum_size = Vector2(726.545, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 128
+text = "Thanks for playing :)"

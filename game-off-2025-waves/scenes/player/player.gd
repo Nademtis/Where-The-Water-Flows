@@ -63,7 +63,11 @@ func _process(_delta: float) -> void:
 	elif Input.is_action_just_pressed("water_down"):
 		move_water(false)
 	
-	
+	if !GameStats.player_allowed_to_move:
+		can_move = false
+	else:
+		can_move = true
+		
 	#draws the tile under player if export true
 	if debug_mark_tile_under_player:
 		queue_redraw()

@@ -6,11 +6,12 @@ extends Node2D
 #const FIRST_LEVEL_PATH: String = "res://levels/level_playground.tscn"
 #const FIRST_LEVEL_PATH: String = "res://levels/level_template.tscn"
 
-const FIRST_LEVEL_PATH: String = "res://levels/level_7.tscn"
+const FIRST_LEVEL_PATH: String = "res://levels/level_1.tscn"
 @onready var level_indicator: Label = $CanvasLayer/levelIndicator
 
 @onready var focus_menu: CanvasLayer = $AudioManager/focusMenu
-@onready var menu_canvas_layer: CanvasLayer = $Node/menuCanvasLayer
+@onready var menu_canvas_layer: CanvasLayer = $menuCanvasLayer
+@onready var reccomended: CanvasLayer = $Reccomended
 
 
 var next_level_path: String
@@ -27,15 +28,21 @@ func _ready() -> void:
 	#print(get_tree_string_pretty())
 	get_window().focus_entered.connect(_on_window_focus_entered)
 	get_window().focus_exited.connect(_on_window_focus_exited)
+	GameStats.player_allowed_to_move = false
 
 func start_new_level(path: String) -> void: # should be called by elevator object
 	next_level_path = path
 	animation_player.play("fade_to_black")
 	remove_active_cam()
 
+func _player_can_move_again() -> void:
+	GameStats.player_allowed_to_move = true
+
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_to_black":
 		_setup_new_level()
+	elif anim_name == "reccomended":
+		reccomended.queue_free()
 		
 func _setup_new_level() -> void:
 	GameStats.SFX_allowed = false

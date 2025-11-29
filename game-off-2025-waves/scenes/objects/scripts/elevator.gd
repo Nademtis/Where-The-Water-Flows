@@ -161,7 +161,7 @@ func animate_whole_elevator(target: Vector2, move_time : float) -> void:
 
 func shake_anim_whole_elevator(move_time: float) -> void:
 	var original_pos: Vector2 = global_position
-	var amplitude := 0.4
+	var amplitude := 0.35
 	var steps := 20
 
 	whole_elevator_tween_shake = get_tree().create_tween()

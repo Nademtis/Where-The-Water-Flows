@@ -330,7 +330,7 @@ stream = SubResource("AudioStreamRandomizer_ioxgp")
 bus = &"Sfx"
 
 [node name="itemDropPosVisuals" type="Sprite2D" parent="itemInHand"]
-modulate = Color(1, 1, 1, 0.49411765)
+modulate = Color(1, 1, 1, 0.27450982)
 position = Vector2(0, 8)
 texture = ExtResource("21_3j4b4")
 region_enabled = true
