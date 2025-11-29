@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://qnvk28xsjc0y"]
+[gd_scene load_steps=22 format=3 uid="uid://qnvk28xsjc0y"]
 
 [ext_resource type="Script" uid="uid://dhrh3kakqatdw" path="res://scenes/main.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://c2wp7ixg7r8vm" path="res://scenes/ui/fps_label.gd" id="1_o5qli"]
@@ -15,6 +15,13 @@
 [ext_resource type="PackedScene" uid="uid://4nqvueb1mhma" path="res://scenes/Text.tscn" id="11_a8y0u"]
 [ext_resource type="Script" path="res://scripts/debugInfo.gd" id="11_trceg"]
 [ext_resource type="PackedScene" uid="uid://ncmcfv787cej" path="res://scenes/ui/Menu.tscn" id="15_jkv2x"]
+
+[sub_resource type="Environment" id="Environment_jkv2x"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 3.42
+glow_hdr_threshold = 0.73
+glow_hdr_scale = 1.13
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_muem4"]
 streams_count = 5
@@ -81,6 +88,9 @@ _data = {
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_0wfyh")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jkv2x")
 
 [node name="AudioManager" type="Node" parent="."]
 script = ExtResource("2_o6xl0")

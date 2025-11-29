@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://df7m5uw61y0c0"]
+[gd_scene load_steps=29 format=4 uid="uid://df7m5uw61y0c0"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_8mt0c"]
 [ext_resource type="PackedScene" uid="uid://dviyuacx5uaa4" path="res://tiles/tilesets/decal.tscn" id="2_dp2yl"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://ocuxag5bwe8i" path="res://tiles/collision_map_container.gd" id="14_27cb5"]
 [ext_resource type="PackedScene" uid="uid://b88evg1mvgox8" path="res://tiles/tilesets/collision_tile_map.tscn" id="15_kiqbd"]
 [ext_resource type="PackedScene" uid="uid://ym65vt1sl83d" path="res://scenes/camera/cam.tscn" id="16_0l8tu"]
+[ext_resource type="PackedScene" uid="uid://7k8g1itafiax" path="res://misc/overallParticles.tscn" id="17_dp2yl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h4x42"]
 
@@ -535,3 +536,6 @@ priority = 1
 follow_mode = 4
 follow_target = NodePath("../../../YSort/walkable/PlayerWrapper/Player")
 follow_path = NodePath("..")
+
+[node name="CPUParticles2D" parent="." instance=ExtResource("17_dp2yl")]
+position = Vector2(-301, 220)

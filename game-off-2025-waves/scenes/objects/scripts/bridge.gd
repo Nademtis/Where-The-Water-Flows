@@ -77,12 +77,12 @@ func anim_water(new_height : int) -> void:
 
 func _on_player_is_on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		print("player entered  bridge")
+		#print("player entered  bridge")
 		body.is_on_bridge = true
 
 
 func _on_player_is_on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		print("player exit  bridge")
+		#print("player exit  bridge")
 		body.is_on_bridge = false
 		

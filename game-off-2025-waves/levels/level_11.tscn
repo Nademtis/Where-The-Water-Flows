@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://cjeotktc8jlq6"]
+[gd_scene load_steps=31 format=4 uid="uid://cjeotktc8jlq6"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_g3m3p"]
 [ext_resource type="PackedScene" uid="uid://dviyuacx5uaa4" path="res://tiles/tilesets/decal.tscn" id="2_46gci"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://c7v878ho36jpc" path="res://scenes/objects/obelisk.tscn" id="15_v6gi3"]
 [ext_resource type="PackedScene" uid="uid://ym65vt1sl83d" path="res://scenes/camera/cam.tscn" id="16_a0xac"]
 [ext_resource type="PackedScene" uid="uid://o7m6u6mncvb3" path="res://scenes/objects/rock.tscn" id="16_v6gi3"]
+[ext_resource type="PackedScene" uid="uid://7k8g1itafiax" path="res://misc/overallParticles.tscn" id="22_rjodl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h4x42"]
 
@@ -559,3 +560,6 @@ priority = 1
 follow_mode = 4
 follow_target = NodePath("../../../YSort/walkable/PlayerWrapper/Player")
 follow_path = NodePath("..")
+
+[node name="CPUParticles2D" parent="." instance=ExtResource("22_rjodl")]
+position = Vector2(-321, 164)

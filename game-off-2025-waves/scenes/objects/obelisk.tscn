@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c7v878ho36jpc"]
+[gd_scene load_steps=15 format=3 uid="uid://c7v878ho36jpc"]
 
 [ext_resource type="Script" uid="uid://tnsiq3ilkpnu" path="res://scenes/objects/scripts/obelisk.gd" id="1_o0g6v"]
 [ext_resource type="Texture2D" uid="uid://du54vh5anc2jm" path="res://scenes/big_spritesheet.aseprite" id="2_rtbaw"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dstsovo76oeh6" path="res://audio/sfx/GameOff_Obelisk_Rise.ogg" id="4_11tqd"]
 [ext_resource type="AudioStream" uid="uid://dha7iftm00nrb" path="res://audio/sfx/GameOff_Obelisk_Switch_ogg.ogg" id="4_dweql"]
 [ext_resource type="PackedScene" uid="uid://ck42nani505kg" path="res://audio/interact_indicator.tscn" id="6_r5cto"]
+[ext_resource type="Texture2D" uid="uid://x7f83g2rmqy" path="res://misc/lightTexture.webp" id="7_4yrox"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o0g6v"]
 radius = 27.0
@@ -57,6 +58,7 @@ region_enabled = true
 region_rect = Rect2(40, 177, 16, 28)
 
 [node name="playerInRangeToActivate" type="Area2D" parent="."]
+visible = false
 position = Vector2(0, -6)
 collision_layer = 8
 
@@ -120,6 +122,13 @@ bus = &"Sfx"
 
 [node name="interactIndicator" parent="." instance=ExtResource("6_r5cto")]
 position = Vector2(0, -26)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -8)
+color = Color(0.5023007, 0.2753966, 0.47670555, 1)
+energy = 0.5
+texture = ExtResource("7_4yrox")
+texture_scale = 0.25
 
 [connection signal="body_entered" from="playerInRangeToActivate" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="playerInRangeToActivate" to="." method="_on_area_2d_body_exited"]

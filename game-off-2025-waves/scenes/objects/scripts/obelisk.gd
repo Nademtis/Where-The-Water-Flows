@@ -22,9 +22,13 @@ const MOVE_TIME := 0.8
 @onready var go_down_sfx: AudioStreamPlayer2D = $goDownSFX
 @onready var interact_indicator: InteractIndicator = $interactIndicator
 
+@onready var point_light_2d: PointLight2D = $PointLight2D
+
 func _ready() -> void:
 	super._ready()
 	Events.connect("player_use", _on_player_use)
+	
+	point_light_2d.hide()
 	
 	if !placed_at_water_level:
 		push_error("water level not defined")
@@ -63,12 +67,17 @@ func update_active_logic(state : bool) -> void:
 		switch_to_activate.set_active(true)
 		active_sprite.visible = true
 		SFX.play_sfx(active_sfx)
+		point_light_2d.show()
+		
+		
 		
 	else:
 		if switch_to_activate and switch_to_activate.active:
 			not_active_sfx.play()
 		switch_to_activate.set_active(false)
 		active_sprite.visible = false
+		point_light_2d.hide()
+		
 		
 		
 

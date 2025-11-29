@@ -12,9 +12,10 @@ const Ambience_bus_name : String = "Player_Ambience"
 
 
 func _ready() -> void:
-	var tree : String = self.get_tree_string_pretty()
-	print(tree)
-	print(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(master_bus_name)))
+	pass
+	#var tree : String = self.get_tree_string_pretty()
+	#print(tree)
+	#print(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(master_bus_name)))
 	#set_sliders()
 	
 func _on_restartlevel_button_button_down() -> void:

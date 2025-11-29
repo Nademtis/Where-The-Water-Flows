@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://darag1463657v"]
+[gd_scene load_steps=26 format=4 uid="uid://darag1463657v"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_s3q8p"]
 [ext_resource type="PackedScene" uid="uid://dviyuacx5uaa4" path="res://tiles/tilesets/decal.tscn" id="2_svivd"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b88evg1mvgox8" path="res://tiles/tilesets/collision_tile_map.tscn" id="14_tv8m3"]
 [ext_resource type="PackedScene" uid="uid://ym65vt1sl83d" path="res://scenes/camera/cam.tscn" id="15_8nkwk"]
 [ext_resource type="PackedScene" uid="uid://4nqvueb1mhma" path="res://scenes/Text.tscn" id="17_svivd"]
+[ext_resource type="PackedScene" uid="uid://7k8g1itafiax" path="res://misc/overallParticles.tscn" id="18_yafm2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h4x42"]
 
@@ -491,3 +492,6 @@ text = "Press Arrow Up
 Control the waves
 
 "
+
+[node name="CPUParticles2D" parent="." instance=ExtResource("18_yafm2")]
+position = Vector2(-337, 201)

@@ -1,9 +1,15 @@
-[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://cpu5i8f3ii87r"]
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://cpu5i8f3ii87r"]
 
 [ext_resource type="Texture2D" uid="uid://ihvno5jl650i" path="res://tiles/assets/new_tiles.aseprite" id="1_hp1s3"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_hrh3s"]
 tile_data = PackedInt32Array(1, 1048576, 15, 65536, 1179648, 14, 131073, 983040, 11, 196608, 1245184, 11, 65537, 1245184, 11)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hp1s3"]
+polygon = PackedVector2Array(-16, -8, -16, 24, 16, 24, 16, -8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hrh3s"]
+polygon = PackedVector2Array(-16, -8, -16, 24, 16, 24, 16, -8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u3vgj"]
 texture = ExtResource("1_hp1s3")
@@ -36,8 +42,10 @@ texture_region_size = Vector2i(32, 32)
 9:0/0/custom_data_0 = "grass"
 18:0/0 = 0
 18:0/0/texture_origin = Vector2i(0, -8)
+18:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_hp1s3")
 19:0/0 = 0
 19:0/0/texture_origin = Vector2i(0, -8)
+19:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_hrh3s")
 0:1/0 = 0
 0:1/0/texture_origin = Vector2i(0, -8)
 0:1/0/probability = 0.3
@@ -391,6 +399,7 @@ texture_region_size = Vector2i(32, 32)
 [resource]
 tile_shape = 1
 tile_size = Vector2i(32, 16)
+occlusion_layer_0/light_mask = 1
 custom_data_layer_0/name = "surface_type"
 custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_u3vgj")

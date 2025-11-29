@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://cqqn3dr60lr2f"]
+[gd_scene load_steps=28 format=4 uid="uid://cqqn3dr60lr2f"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_64qpc"]
 [ext_resource type="PackedScene" uid="uid://opjx2dvm4ils" path="res://scenes/player/player.tscn" id="2_2ip8h"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bvxakbillx1n8" path="res://scenes/objects/bridge.tscn" id="13_phlur"]
 [ext_resource type="Script" uid="uid://btte8j4ymesff" path="res://scripts/base_switch.gd" id="16_3dbtp"]
 [ext_resource type="PackedScene" uid="uid://4nqvueb1mhma" path="res://scenes/Text.tscn" id="19_urb8h"]
+[ext_resource type="PackedScene" uid="uid://7k8g1itafiax" path="res://misc/overallParticles.tscn" id="20_f2ri3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h4x42"]
 
@@ -510,3 +511,6 @@ offset_top = 328.0
 offset_right = -317.0
 offset_bottom = 368.0
 text = "Press E next to stuff"
+
+[node name="CPUParticles2D" parent="." instance=ExtResource("20_f2ri3")]
+position = Vector2(-261, 252)

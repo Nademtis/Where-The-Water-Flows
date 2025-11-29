@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://wrksr0rg7akq"]
+[gd_scene load_steps=32 format=4 uid="uid://wrksr0rg7akq"]
 
 [ext_resource type="TileSet" uid="uid://cpu5i8f3ii87r" path="res://tiles/tilesets/new_tilemap.tres" id="1_s88sk"]
 [ext_resource type="PackedScene" uid="uid://dviyuacx5uaa4" path="res://tiles/tilesets/decal.tscn" id="2_aoyam"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://b88evg1mvgox8" path="res://tiles/tilesets/collision_tile_map.tscn" id="15_qbtoe"]
 [ext_resource type="PackedScene" uid="uid://d1q3p0e3cp3ix" path="res://scenes/objects/log.tscn" id="16_4tj2f"]
 [ext_resource type="PackedScene" uid="uid://ym65vt1sl83d" path="res://scenes/camera/cam.tscn" id="16_bcrxo"]
+[ext_resource type="PackedScene" uid="uid://7k8g1itafiax" path="res://misc/overallParticles.tscn" id="22_y2q43"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h4x42"]
 
@@ -485,8 +486,6 @@ position = Vector2(-243, 112)
 position = Vector2(-448, 257)
 start_height_level = 1
 bounce_height = 1.0
-bounce_speed = 1.0
-float_duration = 0.5
 
 [node name="heightMap" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
@@ -535,3 +534,6 @@ priority = 1
 follow_mode = 4
 follow_target = NodePath("../../../YSort/walkable/PlayerWrapper/Player")
 follow_path = NodePath("..")
+
+[node name="CPUParticles2D" parent="." instance=ExtResource("22_y2q43")]
+position = Vector2(-383, 141)

@@ -13,7 +13,7 @@ var interact_indicator : InteractIndicator
 func _ready() -> void:
 	original_parent = get_parent()
 	init_interact_indicator()
-	print("item _Ready")
+	#print("item _Ready")
 
 func pick_up(local_target: Vector2) -> void:
 	static_body_coll.set_deferred("disabled", true)
