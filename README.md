@@ -19,7 +19,7 @@ This game was made in 30 days for the GameOff2025 game jam, with the given theme
 - Ableton Live 12
 - Splice
 - Tiled
- 
+
 # Want to use our stuff?
 You can! but please give us credit\
 Find our info below
