@@ -18,6 +18,8 @@ var next_level_path: String
 var current_level_path: String
 
 var showing_menu : bool = false
+@onready var menu_controller: Control = $menuCanvasLayer/Control
+
 
 func _ready() -> void:
 	next_level_path = FIRST_LEVEL_PATH
@@ -97,8 +99,10 @@ func menu() ->  void:
 	
 	if showing_menu:
 		menu_canvas_layer.visible = true
+		menu_controller.play_menu_sfx(true)
 	else:
 		menu_canvas_layer.visible = false
+		menu_controller.play_menu_sfx(false)
 		
 	
 func _on_window_focus_entered() -> void:

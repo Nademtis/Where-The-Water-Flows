@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://ncmcfv787cej"]
+[gd_scene load_steps=16 format=3 uid="uid://ncmcfv787cej"]
 
 [ext_resource type="Script" uid="uid://btlaigwhq0fr3" path="res://scenes/ui/menu.gd" id="1_0dynd"]
 [ext_resource type="PackedScene" uid="uid://4nqvueb1mhma" path="res://scenes/Text.tscn" id="2_vhthp"]
 [ext_resource type="FontFile" uid="uid://c61txj1ps70wd" path="res://misc/BoldPixels.ttf" id="3_sh3q5"]
+[ext_resource type="AudioStream" uid="uid://cyo6xoo0cw16t" path="res://audio/UI/GameOff_UI_Open_Menu.ogg" id="4_b4fr7"]
+[ext_resource type="AudioStream" uid="uid://b53jvy0yvbdrm" path="res://audio/UI/GameOff_UI_Close_Menu.ogg" id="5_c1hn0"]
+[ext_resource type="AudioStream" uid="uid://dtynbhu32wmvc" path="res://audio/UI/GameOff_UI_Click.ogg" id="6_fd480"]
+[ext_resource type="AudioStream" uid="uid://f1n0866xjebh" path="res://audio/UI/GameOff_UI_Hover.ogg" id="7_tmidt"]
+[ext_resource type="AudioStream" uid="uid://fclfd0aumxom" path="res://audio/UI/GameOff_UI_Slip.ogg" id="8_ysqth"]
 
 [sub_resource type="Theme" id="Theme_vhthp"]
 
@@ -12,6 +17,26 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v0o8o"]
+streams_count = 1
+stream_0/stream = ExtResource("4_b4fr7")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rwf8r"]
+streams_count = 1
+stream_0/stream = ExtResource("5_c1hn0")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rawfg"]
+streams_count = 1
+stream_0/stream = ExtResource("6_fd480")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_y0r5t"]
+streams_count = 1
+stream_0/stream = ExtResource("7_tmidt")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pr5nv"]
+streams_count = 1
+stream_0/stream = ExtResource("8_ysqth")
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -125,6 +150,31 @@ theme_override_fonts/font = ExtResource("3_sh3q5")
 theme_override_font_sizes/font_size = 48
 text = "Restart Level
 "
+
+[node name="openMenuSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_v0o8o")
+volume_db = -4.0
+bus = &"Sfx"
+
+[node name="closeMenuSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_rwf8r")
+volume_db = -4.0
+bus = &"Sfx"
+
+[node name="clickSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_rawfg")
+volume_db = -4.0
+bus = &"Sfx"
+
+[node name="hoverSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_y0r5t")
+volume_db = -4.0
+bus = &"Sfx"
+
+[node name="letGoSfx" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_pr5nv")
+volume_db = -4.0
+bus = &"Sfx"
 
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/VBoxContainer/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/VBoxContainer/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
