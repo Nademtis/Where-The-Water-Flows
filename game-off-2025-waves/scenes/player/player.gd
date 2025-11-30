@@ -84,7 +84,6 @@ func _physics_process(delta: float) -> void:
 
 func player_freeze(player_can_move : bool) -> void:
 	can_move = player_can_move
-	print("from player can move: ", can_move)
 
 func check_swimming(new_height: int) -> void:
 	current_water_level = new_height
@@ -104,7 +103,8 @@ func check_swimming(new_height: int) -> void:
 		#print("water entered...")
 	else:
 		if is_swimming:
-			print("not swimming")
+			pass
+			#print("not swimming")
 		is_swimming = false
 		water_tile_map_layer.visible = false
 		
@@ -117,6 +117,8 @@ func _handle_footsteps(delta: float) -> void:
 
 		if footstep_cooldown <= 0.0:
 			_play_footstep()
+			GameStats.steps_taken += 1
+			#print(GameStats.steps_taken)
 			footstep_cooldown = footstep_interval
 	else:
 		# Reset when not moving so it plays instantly on next step
@@ -282,8 +284,8 @@ func _on_swim_grace_timer_timeout() -> void:
 
 	# check again
 	if current_player_height < current_water_level:
-		print("swimming")
 		is_swimming = true
+		GameStats.stuck_in_water_amount += 1
 		velocity = Vector2.ZERO
 		animated_sprite_2d.play("idle")
 		water_tile_map_layer.visible = true
