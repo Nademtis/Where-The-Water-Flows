@@ -100,9 +100,9 @@ text = "Music
 [node name="MusicVolumeSlider" type="HSlider" parent="CenterContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
-max_value = 1.0
+max_value = 2.0
 step = 0.001
-value = 0.5
+value = 1.0
 
 [node name="Padding2" type="Container" parent="CenterContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -118,9 +118,9 @@ text = "Sound Effects
 [node name="SFXVolumeSlider" type="HSlider" parent="CenterContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
-max_value = 1.0
+max_value = 2.0
 step = 0.001
-value = 0.5
+value = 1.0
 
 [node name="Padding3" type="Container" parent="CenterContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -136,9 +136,9 @@ text = "Ambience
 [node name="AmbienceSlider" type="HSlider" parent="CenterContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
-max_value = 1.0
+max_value = 2.0
 step = 0.001
-value = 0.5
+value = 1.0
 
 [node name="Padding4" type="Container" parent="CenterContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)

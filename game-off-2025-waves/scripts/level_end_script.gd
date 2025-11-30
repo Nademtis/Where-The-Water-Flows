@@ -1,8 +1,9 @@
 extends Node2D
 #level end script
 @onready var stuck_in_water_amount: RichTextLabel = $StuckInWaterAmount
-@onready var time_played: RichTextLabel = $TimePlayed
+#@onready var time_played: RichTextLabel = $TimePlayed
 @onready var steps_taken: RichTextLabel = $StepsTaken
+@onready var played_amount: RichTextLabel = $playedAmount
 
 var old_step_amount : int
 
@@ -17,11 +18,14 @@ func _process(_delta: float) -> void:
 		old_step_amount = GameStats.steps_taken
 		set_steps_taken(old_step_amount)
 
-func set_play_time(time : int) -> void:
-	time_played.text = str("Time Played: ", time)
+func set_play_time(time: float) -> void:
+	var total_sec := int(time)
+	var minutes : int = total_sec / 60
+	var seconds := total_sec % 60
+	played_amount.text = "%dmin and %dsec" % [minutes, seconds]
 
 func set_steps_taken(step_amount : int) -> void:
 	steps_taken.text = str("Steps taken: ", step_amount)
 	
 func set_stuck_in_water(stuck_amount : int) -> void:
-	stuck_in_water_amount.text = str("You were stuck in the water", stuck_amount, "times")
+	stuck_in_water_amount.text = str("You were stuck in the water ", stuck_amount, " times")

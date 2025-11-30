@@ -6,7 +6,7 @@ extends Node2D
 #const FIRST_LEVEL_PATH: String = "res://levels/level_playground.tscn"
 #const FIRST_LEVEL_PATH: String = "res://levels/level_template.tscn"
 
-const FIRST_LEVEL_PATH: String = "res://levels/level_end_new.tscn"
+const FIRST_LEVEL_PATH: String = "res://levels/level_1.tscn"
 @onready var level_indicator: Label = $CanvasLayer/levelIndicator
 
 @onready var focus_menu: CanvasLayer = $AudioManager/focusMenu
@@ -30,7 +30,7 @@ func _ready() -> void:
 	#print(get_tree_string_pretty())
 	get_window().focus_entered.connect(_on_window_focus_entered)
 	get_window().focus_exited.connect(_on_window_focus_exited)
-	#Events.emit_signal("player_freeze", false) #TODO uncomment BEFORE PUSH
+	Events.emit_signal("player_freeze", false) #TODO uncomment BEFORE PUSH
 
 func start_new_level(path: String) -> void: # should be called by elevator object
 	next_level_path = path

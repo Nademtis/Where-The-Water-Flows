@@ -48,8 +48,12 @@ func _ready() -> void:
 func play_menu_sfx(is_active : bool) -> void:
 	if is_active:
 		open_menu_sfx.play()
+		print("played open menu sfx")
+		
 	else:
 		close_menu_sfx.play()
+		print("played close menu sfx")
+		
 		
 
 func _on_restartlevel_button_button_down() -> void:

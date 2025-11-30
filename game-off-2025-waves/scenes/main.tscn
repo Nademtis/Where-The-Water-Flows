@@ -316,7 +316,6 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 [node name="levelContainer" type="Node2D" parent="."]
 
 [node name="Reccomended" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Reccomended"]
 anchors_preset = 15
