@@ -8,10 +8,10 @@ Is an 2D isometric puzzle platformer made for the GameOff2025 Game Jam.\
 - Can't load the game? - try running in Chrome
 
 
-### About
+# About
 This game was made in 30 days for the GameOff2025 game jam, with the given theme Waves.
 
-### TechStack
+# TechStack
 - Godot 4.5.1
   - PhantomCamera
   - Aseprite Wizard
@@ -20,7 +20,11 @@ This game was made in 30 days for the GameOff2025 game jam, with the given theme
 - Splice
 - Tiled
 
-### Credits
+# Want to use our stuff?
+You can! but please give us credit\
+Find our info below
+
+# Credits
 Concept [Nademtis](https://nademtis.itch.io/) & [Sara_Strm](https://sarastroem.com/)\
 Programming, Level Design & Art [Nademtis](https://nademtis.itch.io/)\
 Audio Design, Music & Additional Art [Sara_Strm](https://sarastroem.com/)
